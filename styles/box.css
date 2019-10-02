@@ -1,0 +1,153 @@
+/*
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+body {
+  padding: 2rem; }
+*/
+main {
+  
+    justify-content:center;
+    margin: 5px auto;
+    background-color: #FFFFFF;}
+
+footer {
+    max-width: 500px;
+    margin: 0 auto; }
+
+@supports (display: grid) {
+    main{
+        max-width: none;
+        margin: 0; 
+        padding: 0px 20px; 
+        
+    }
+    footer{
+        max-width: none;
+        margin: 0; 
+        padding: 0px 20px;}
+      
+    article {
+        margin: 0; }
+      
+    main{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 280px));
+        grid-gap: 15px;
+        justify-items: center;        
+    }
+       footer{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        grid-gap: 15px; }
+    
+   }
+
+article {
+    display: flex;
+    flex-flow: column; 
+    padding:15px;}
+
+article > img {
+  order: -1;
+  align-self: center; }
+
+
+
+article > h1 {
+  margin: 1rem 1rem 0; }
+
+
+article > ul {
+  margin: 0 0 1rem; }
+
+article > p {
+  margin: 0.25em 1rem 1rem; }
+
+/*
+main {
+  font-family: Avenir, Roboto, Helvetica, san-serif;
+  font-size: 80%; }
+
+article {
+  border: 1px solid black;
+  border-radius: 1rem; }
+*/
+
+
+.card--link {    
+    margin: 0px auto;
+    margin-top: auto;
+}
+
+.card--link a.button {
+    font-family: 'Open Sans Condensed', sans-serif;
+    background-color: white;
+    color: #242424 !important;
+    padding: 8px 13px;
+    font-size: 1em;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin: 0px auto;
+    margin-top: 10px;
+}
+
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid white;
+    width: 100%;
+}
+.footer_links {
+	color:#F78715 !important;
+     padding: 10px 0 0 15px;
+    text-shadow:  1px 1px 0 #000;   
+   }
+
+.social-links img{
+    padding: 10px 5px 0 0;
+    height:30px;
+}
+
+article .carddeck--title,
+	article .carddeck--number {
+		font-size: 1.5em;
+		line-height: 1em;
+	    padding: 1em 0;
+	    text-transform: uppercase;
+	    font-weight: bold;
+        text-align: center;
+	}
+
+article .card--title {	
+        text-align: center;
+	}
+ .card{
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+}
+
+@media screen and (max-width: 768px) {
+    @supports (display: grid) {
+          main, footer {
+            max-width: none;
+            margin: 0; }
+          article {
+            margin: 0;    
+            justify-content: center;
+            align-items: center;
+              width: 100%;
+                }
+        
+          main, footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-gap: 1rem; } }
+    
+    
+}
+
