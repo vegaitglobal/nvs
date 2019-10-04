@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^blog-([0-9A-ZA-Z-]+)$ blogpost.php?pro_id=$1 [QSA,NC,L]
+RewriteRule ^ponuda-([0-9A-ZA-Z-]+)$ details.php?pro_id=$1 [QSA,NC,L]
+RewriteRule ^pozicija-([0-9A-ZA-Z-]+)$ detailsview.php?pro_id=$1 [QSA,NC,L]

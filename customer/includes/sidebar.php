@@ -59,6 +59,12 @@ echo "
 
 </li>
 
+<li class="<?php if(isset($_GET['my_book'])){ echo "active"; } ?>">
+
+<a href="index.php?my_book"> <i class="fa fa-list"></i> Volonterska knjižica </a>
+
+</li>
+
 <li class="<?php if(isset($_GET['edit_account'])){ echo "active"; } ?>">
 
 <a href="index.php?edit_account"> <i class="fa fa-pencil text-yelow"></i> Ažuriraj nalog </a>
