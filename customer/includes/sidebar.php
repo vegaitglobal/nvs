@@ -49,19 +49,25 @@ echo "
 
 <li class="<?php if(isset($_GET['my_wishlist'])){ echo "active"; } ?>">
 
-<a href="index.php?my_wishlist"> <i class="fa fa-heart"></i> Moja lista želja </a>
+<a href="index.php?my_wishlist"> <i class="fa fa-heart text-yelow py-2"></i> Moja lista želja </a>
+
+</li>
+
+<li class="<?php if(isset($_GET['hours'])){ echo "active"; } ?>">
+
+<a href="index.php?hours"> <i class="fa fa-clock-o text-yelow"></i> Unos sati </a>
 
 </li>
 
 <li class="<?php if(isset($_GET['edit_account'])){ echo "active"; } ?>">
 
-<a href="index.php?edit_account"> <i class="fa fa-pencil"></i> Ažuriraj nalog </a>
+<a href="index.php?edit_account"> <i class="fa fa-pencil text-yelow"></i> Ažuriraj nalog </a>
 
 </li>
 
 <li class="<?php if(isset($_GET['change_pass'])){ echo "active"; } ?>">
 
-<a href="index.php?change_pass"> <i class="fa fa-user"></i> Promeni lozinku </a>
+<a href="index.php?change_pass"> <i class="fa fa-user text-yelow"></i> Promeni lozinku </a>
 
 </li>
 
@@ -69,13 +75,13 @@ echo "
 
 <li class="<?php if(isset($_GET['delete_account'])){ echo "active"; } ?>">
 
-<a href="index.php?delete_account"> <i class="fa fa-trash-o"></i> Izbriši nalog </a>
+<a href="index.php?delete_account"> <i class="fa fa-trash-o text-yelow"></i> Izbriši nalog </a>
 
 </li>
 
 <li>
 
-<a href="logout.php"> <i class="fa fa-sign-out"></i> Odjava </a>
+<a href="logout.php"> <i class="fa fa-sign-out text-yelow"></i> Odjava </a>
 
 </li>
 

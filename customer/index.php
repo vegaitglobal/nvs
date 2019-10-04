@@ -61,7 +61,7 @@ include("functions/functions.php");
 </button>
 
 
-<a href="#" class="btn btn-success btn-sm" >
+<a href="#" class="btn btn-sm btn-silver" >
 <?php
 
 if(!isset($_SESSION['customer_email'])){

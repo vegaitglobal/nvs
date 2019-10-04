@@ -60,12 +60,6 @@ text-align: center;
 
 }
 
-#top a {
-
-color: #fff; /* bela  */
-
-}
-
 #top ul.menu {
 
 padding-top: 5px;
@@ -1004,5 +998,12 @@ width:90%;
    
 }
 
+.text-yelow {
+  color: #ffb800;
+}
 
-
+.btn-silver {
+  color: #333333;
+  background-color: #cccccc;
+  border-radius: 5px;
+}
