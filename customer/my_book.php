@@ -19,9 +19,11 @@
 
             <th> Pozicija </th>
 
+            <th> Sati </th>
+
             <th> Status </th>
 
-            <th> Izbriši želju </th>
+            <th>&nbsp;</th>
 
         </tr>
 
@@ -55,7 +57,9 @@
 
             $product_id = $row_wishlist['product_id'];
 
-            $status= $row_wishlist['status'];
+            $hours = $row_wishlist['hours'];
+
+            $hours_approved = $row_wishlist['hours_approved'];
 
             $get_products = "select * from products where product_id='$product_id'";
 
@@ -92,20 +96,37 @@
                 </td>
 
                 <td style="vertical-align:middle" >
-                    <?php  if ($status==""){
-                        echo "Na obradi";
-                    }else{
-                        echo $status; }?>
+                    <?php  if ($hours==0): ?>
+                        <a href="javascript:">
+                            <i class="fa fa-plus"></i>
+                            Unesi
+                        </a>
+                    <?php else: ?>
+                        <?php echo $hours;?>
+                    <?php endif ?>
                 </td>
 
                 <td style="vertical-align:middle" >
+                    <?php if ($hours): ?>
+                        <?php  if (is_null($hours_approved)){
+                            echo "U obradi";
+                        }else{
+                            echo $hours_approved ? 'Prihvaćen' : 'Odbijeno'; }?>
+                    <?php endif ?>
+                </td>
 
-                    <a href="index.php?delete_wishlist=<?php echo $wishlist_id; ?>" class="btn btn-primary">
-
-                        <i class="fa fa-trash-o"> </i> Izbriši
-
-                    </a>
-
+                <td style="vertical-align:middle" >
+                    <?php if ($hours_approved): ?>
+                        <a class="btn btn-sm btn-default">
+                            <i class="fa fa-download"></i>
+                            PDF
+                        </a>
+                    <?php else: ?>
+                        <a href="javascript:">
+                            <i class="fa fa-pencil"></i>
+                            Izmeni
+                        </a>
+                    <?php endif ?>
                 </td>
 
             </tr>
