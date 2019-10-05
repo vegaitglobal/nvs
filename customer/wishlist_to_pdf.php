@@ -1,5 +1,16 @@
 <?php
 
+require_once __DIR__.'/../app/bootstrap.php';
+
+session_start();
+
+if (!isset($_SESSION['customer_email'])) {
+    echo "<script>window.open('../checkout.php','_self')</script>";
+} else {
+    include("includes/db.php");
+    include("functions/functions.php");
+}
+
 $customer_session = $_SESSION['customer_email'];
 
 $get_customer = "select * from volunteers where customer_email='$customer_session'";
@@ -26,27 +37,15 @@ if (!$wishlist) {
     $alertsService->addAlert('danger', 'Prijava ne postoji');
 }
 
-if (isset($_POST['hours'])) {
-    $hours = $_POST['hours'];
+$mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/../tmp']);
 
-    if (!$hours || !is_numeric($hours)) {
-        $alertsService->addAlert('danger', 'Greška u vrednosti sati');
-    }
-
-    if (!$alertsService->hasAlerts()) {
-        $wishlist->setHours($hours);
-
-        $entityManager->persist($wishlist);
-        $entityManager->flush();
-
-        $alertsService->addAlert('success', 'Sati uspešno snimljeni');
-    }
-}
-
-echo $twig->render('my_book_manage.html.twig', [
-    'title' => 'Unos sati',
-    'hasAlerts' => $alertsService->hasAlerts(),
-    'firstAlert' => $alertsService->getFirstAlert(),
+$html = $twig->render('wishlist_to_pdf.html.twig', [
     'wishlist' => $wishlist,
-    'hours' => $hours,
 ]);
+
+//TODO:remove
+echo $html;exit;
+
+$mpdf->WriteHTML($html);
+
+$mpdf->Output();
