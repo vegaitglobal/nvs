@@ -43,6 +43,40 @@ text-transform: uppercase;
 
 }
 
+.manifestation-container{
+  background-color: rgb(255,249,235);
+  padding: 10px 5px 30px 50px;
+  margin: -15px;
+  margin-top: 0;
+}
+
+.manifestation-container > p{
+  font-weight: 600;
+}
+
+.manifestation-container > .table-responsive > table{
+  background-color: #fff;
+  border-radius: 10px;
+  border: 0;
+}
+
+.manifestation-container > .table-responsive > table > tbody > tr > td{
+  border: none;
+}
+
+.manifestation-container .btn{
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+.manifestation-name {
+  background-color: rgb(255,218,127);
+}
+
+.volunteering-pdf {
+  background-color: rgb(85,85,85);
+}
+
 @media (max-width: 991px) {
 
 #top .offer {
@@ -1041,11 +1075,7 @@ width:90%;
   background-color: #ffb800;
 }
 
-<<<<<<< HEAD
-#user_pane  i {
-=======
-#user_panel a i {
->>>>>>> master
+.text-warning {
   color: #ffB800;
 }
 
