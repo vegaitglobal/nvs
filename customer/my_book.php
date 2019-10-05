@@ -61,7 +61,7 @@
 
                 <tr>
 
-                    <td width="100" style="vertical-align:middle"> <span class="manifestation-name"><?php echo $i; ?></span> </td>
+                    <td width="100" style="vertical-align:middle"> <span class="btn manifestation-name"><?php echo $i; ?></span> </td>
 
                     <td style="vertical-align:middle" >
 
@@ -100,15 +100,15 @@
 
                     <td style="vertical-align:middle" >
                         <?php if ($hours_approved) : ?>
-                            <a class="btn btn-sm btn-default">
-                                <i class="fa fa-download"></i>
+                            <a class="volunteering-pdf btn btn-sm btn-default">
                                 PDF
                             </a>
                         <?php else : ?>
-                            <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>">
-                                <i class="fa fa-pencil"></i>
-                                Izmeni
-                            </a>
+                            <span class="volunteering-pdf btn">
+                                <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>">
+                                    PDF
+                                </a>
+                            </span>
                         <?php endif ?>
                     </td>
 

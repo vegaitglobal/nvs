@@ -64,11 +64,19 @@ text-transform: uppercase;
   border: none;
 }
 
-.manifestation-name {
-  background-color: rgb(255,218,127);
+.manifestation-container .btn{
   border-radius: 10px;
   padding: 0 10px;
 }
+
+.manifestation-name {
+  background-color: rgb(255,218,127);
+}
+
+.volunteering-pdf {
+  background-color: rgb(85,85,85);
+}
+
 
 @media (max-width: 991px) {
 
