@@ -13,7 +13,9 @@ class AlertService
 
     public function getFirstAlert()
     {
-        return $this->alerts[0];
+        if ($this->hasAlerts()) {
+            return $this->alerts[0];
+        }
     }
 
     public function hasAlerts()
