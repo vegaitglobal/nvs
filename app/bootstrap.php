@@ -1,7 +1,36 @@
 <?php
 
-// Load our autoloader
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
+use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\Annotations\AnnotationRegistry;
+
 require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/../src/WishlistBundle/Entity/Wishlist.php';
+
+$paths = [
+    __DIR__.'/../src/',
+];
+
+$isDevMode = true;
+
+// the connection configuration
+$dbParams = [
+    'driver'   => 'pdo_mysql',
+    'user'     => 'root',
+    'password' => '',
+    'dbname'   => 'nvs_nvs',
+];
+
+$config = Setup::createConfiguration($isDevMode);
+$driver = new AnnotationDriver(new AnnotationReader(), $paths);
+
+// registering noop annotation autoloader - allow all annotations by default
+AnnotationRegistry::registerLoader('class_exists');
+$config->setMetadataDriverImpl($driver);
+
+$entityManager = EntityManager::create($dbParams, $config);
 
 // Specify our Twig templates location
 $loader = new Twig\Loader\FilesystemLoader([
