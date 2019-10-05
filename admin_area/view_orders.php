@@ -164,6 +164,7 @@ else {
 <th>Email:</th>
 <th>Telefon:</th>
 <th>Pozicija:</th>
+<th>Sati:</th>
 <th>Datum:</th>
 <th>Status:</th>
 <th class="noExl">Odobri:</th>
@@ -203,13 +204,17 @@ else {
 
         $order_status = $row_orders['status'];
 
+        $hours = $row_orders['hours']; 
+
+        $hours_approved = $row_orders['hours_approved']; 
+
         $get_products = "select * from products where product_id='$product_id'";
 
         $run_products = mysqli_query($con,$get_products);
 
         $row_products = mysqli_fetch_array($run_products);
 
-        $product_title = $row_products['product_title'];
+        $product_title = $row_products['product_title']; 
 
         $i++;
 
@@ -263,6 +268,14 @@ else {
          */
         ?>
     </td>
+    
+    <td>
+
+        <?php 
+            echo $hours; 
+        ?>
+
+    </td>
 
     <td>
         <?php
@@ -297,6 +310,9 @@ else {
         <?php echo $order_date;   ?>
         </td>
 
+        <td>
+        <?php echo $hours;   ?>
+        </td>
 
         <td>
         <?php  echo $order_status; ?>
@@ -352,6 +368,10 @@ if(isset($_POST['sortiraj'])){
             $product_id = $row_orders['product_id'];
 
             $order_date = $row_orders['datum'];
+
+            $hours = $row_orders['hours']; 
+            
+            $hours_approved = $row_orders['hours_approved']; 
 
             $order_status = $row_orders['status'];
 
@@ -449,6 +469,9 @@ if(isset($_POST['sortiraj'])){
             <?php echo $order_date;   ?>
             </td>
 
+            <td>
+            <?php echo $hours;   ?>
+            </td>
 
             <td>
             <?php  echo $order_status; ?>
@@ -596,6 +619,7 @@ if(isset($_POST['sortiraj'])){
         <?php echo $order_date;   ?>
         </td>
 
+        <td> <?php echo $hours; ?> </td>
 
         <td>
         <?php  echo $order_status; ?>

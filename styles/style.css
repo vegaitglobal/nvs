@@ -287,10 +287,8 @@ margin-bottom:20px;
 .box {
 background: #FFFACD;
 margin: 0 0 20px;
-border: solid 1px #F78715; /* srednje svetlo siva */
 box-sizing: border-box;
 padding:20px;
-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .box-beli {
@@ -906,15 +904,15 @@ color: #fff;
 /* INPUT groups */
 
 .form-control {
-    border: 1px solid #F78715;
+    border: 1px solid silver;
     color: black;
 }
 
 .form-control:focus{
     border-color: #F78715;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(247,135,21,6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(247,135,21,6);
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 .input-group-addon {
     color: black;
@@ -1137,5 +1135,9 @@ width:90%;
    
 }
 
+
+.btn {
+  border-radius: 5px;
+}
 
 
