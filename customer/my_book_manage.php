@@ -29,17 +29,17 @@ if (!$wishlist) {
 if (isset($_POST['hours'])) {
     $hours = $_POST['hours'];
 
-    if (!$hours || !is_numeric($hours)) {
-        $alertsService->addAlert('danger', 'Greška u vrednosti sati');
-    }
-
     if (!$alertsService->hasAlerts()) {
         $wishlist->setHours($hours);
 
-        $entityManager->persist($wishlist);
-        $entityManager->flush();
+        try {
+            $entityManager->persist($wishlist);
+            $entityManager->flush();
 
-        $alertsService->addAlert('success', 'Sati uspešno snimljeni');
+            $alertsService->addAlert('success', 'Sati uspešno snimljeni');
+        } catch (Exception $e) {
+            $alertsService->addAlert('danger', 'Nešto je pošlo po zlu');
+        }
     }
 }
 
