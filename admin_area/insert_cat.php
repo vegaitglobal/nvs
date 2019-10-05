@@ -1,15 +1,9 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -114,36 +108,32 @@ else {
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
+        $cat_title = escape($_POST['cat_title']);
 
-$cat_title = escape($_POST['cat_title']);
+        $cat_top = $_POST['cat_top'];
 
-$cat_top = $_POST['cat_top'];
+        $cat_image = $_FILES['cat_image']['name'];
 
-$cat_image = $_FILES['cat_image']['name'];
+        $temp_name = $_FILES['cat_image']['tmp_name'];
 
-$temp_name = $_FILES['cat_image']['tmp_name'];
+        move_uploaded_file($temp_name, "other_images/$cat_image");
 
-move_uploaded_file($temp_name,"other_images/$cat_image");
+        $insert_cat = "insert into categories (cat_title,cat_top,cat_image) values ('$cat_title','$cat_top','$cat_image')";
 
-$insert_cat = "insert into categories (cat_title,cat_top,cat_image) values ('$cat_title','$cat_top','$cat_image')";
+        $run_cat = mysqli_query($con, $insert_cat);
 
-$run_cat = mysqli_query($con,$insert_cat);
+        if ($run_cat) {
+            echo "<script> alert('Nov oblast je dodat')</script>";
 
-if($run_cat){
-
-echo "<script> alert('Nov oblast je dodat')</script>";
-
-echo "<script> window.open('index.php?view_cats','_self') </script>";
-
-}
-
-}
+            echo "<script> window.open('index.php?view_cats','_self') </script>";
+        }
+    }
 
 
 
-?>
+    ?>
 
 <?php } ?>

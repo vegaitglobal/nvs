@@ -3,100 +3,81 @@
 
 include("delete_modal.php");
 
-if(isset($_POST['checkBoxArray'])) {
-
-
-    
-    foreach($_POST['checkBoxArray'] as $postValueId ){
+if (isset($_POST['checkBoxArray'])) {
+    foreach ($_POST['checkBoxArray'] as $postValueId) {
+        $bulk_options = $_POST['bulk_options'];
         
-  $bulk_options = $_POST['bulk_options'];
+        switch ($bulk_options) {
+            case 'published':
+                $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}  ";
         
-        switch($bulk_options) {
-        case 'published':
-        
-$query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}  ";
-        
- $update_to_published_status = mysqli_query($connection,$query);       
-confirmQuery($update_to_published_status);
+                $update_to_published_status = mysqli_query($connection, $query);
+                confirmQuery($update_to_published_status);
 
 
             
-         break;
+                break;
             
             
-              case 'draft':
+            case 'draft':
+                $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}  ";
         
-$query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}  ";
-        
- $update_to_draft_status = mysqli_query($connection,$query);
+                $update_to_draft_status = mysqli_query($connection, $query);
             
-confirmQuery($update_to_draft_status);
+                confirmQuery($update_to_draft_status);
 
 
 
 
             
             
-         break;
+                break;
             
   
             
-               case 'delete':
+            case 'delete':
+                $query = "DELETE FROM posts WHERE post_id = {$postValueId}  ";
         
-$query = "DELETE FROM posts WHERE post_id = {$postValueId}  ";
-        
- $update_to_delete_status = mysqli_query($connection,$query);
+                $update_to_delete_status = mysqli_query($connection, $query);
             
-confirmQuery($update_to_delete_status);
+                confirmQuery($update_to_delete_status);
 
             
             
-         break;
+                break;
 
 
             case 'clone':
-
-
-            $query = "SELECT * FROM posts WHERE post_id = '{$postValueId}' ";
-            $select_post_query = mysqli_query($connection, $query);
+                $query = "SELECT * FROM posts WHERE post_id = '{$postValueId}' ";
+                $select_post_query = mysqli_query($connection, $query);
 
 
           
-            while ($row = mysqli_fetch_array($select_post_query)) {
-            $post_title         = $row['post_title'];
-            $post_category_id   = $row['post_category_id'];
-            $post_date          = $row['post_date']; 
-            $post_author        = $row['post_author'];
-            $post_status        = $row['post_status'];
-            $post_image         = $row['post_image'] ; 
-            $post_tags          = $row['post_tags']; 
-            $post_content       = $row['post_content'];
-
-          }
+                while ($row = mysqli_fetch_array($select_post_query)) {
+                    $post_title         = $row['post_title'];
+                    $post_category_id   = $row['post_category_id'];
+                    $post_date          = $row['post_date'];
+                    $post_author        = $row['post_author'];
+                    $post_status        = $row['post_status'];
+                    $post_image         = $row['post_image'] ;
+                    $post_tags          = $row['post_tags'];
+                    $post_content       = $row['post_content'];
+                }
 
                  
-      $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags,post_status) ";
+                $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags,post_status) ";
              
-      $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}') "; 
+                $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}') ";
 
-                $copy_query = mysqli_query($connection, $query);   
+                $copy_query = mysqli_query($connection, $query);
 
-               if(!$copy_query ) {
-
-                die("QUERY FAILED" . mysqli_error($connection));
-               }   
+                if (!$copy_query) {
+                    die("QUERY FAILED" . mysqli_error($connection));
+                }
                  
-                 break;
-
-  
-        
+                break;
         }
-    
-    
-    } 
-
-
-
+    }
 }
 
 
@@ -156,12 +137,12 @@ confirmQuery($update_to_delete_status);
                       <tbody>
                       
 
-  <?php 
+    <?php
     
     $query = "SELECT * FROM posts ORDER BY post_id DESC ";
-    $select_posts = mysqli_query($connection,$query);  
+    $select_posts = mysqli_query($connection, $query);
 
-    while($row = mysqli_fetch_assoc($select_posts )) {
+    while ($row = mysqli_fetch_assoc($select_posts)) {
         $post_id            = $row['post_id'];
         $post_author        = $row['post_author'];
         $post_user          = $row['post_user'];
@@ -186,16 +167,10 @@ confirmQuery($update_to_delete_status);
         echo "<td>$post_id </td>";
 
 
-        if(!empty($post_author)) {
-
+        if (!empty($post_author)) {
              echo "<td>$post_author</td>";
-
-
-        } elseif(!empty($post_user)) {
-
+        } elseif (!empty($post_user)) {
             echo "<td>$post_user</td>";
-
-
         }
 
 
@@ -209,21 +184,20 @@ confirmQuery($update_to_delete_status);
             
         
         $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id} ";
-        $select_categories_id = mysqli_query($connection,$query);  
+        $select_categories_id = mysqli_query($connection, $query);
 
-        while($row = mysqli_fetch_assoc($select_categories_id)) {
-        $cat_id = $row['cat_id'];
-        $cat_title = $row['cat_title'];
+        while ($row = mysqli_fetch_assoc($select_categories_id)) {
+            $cat_id = $row['cat_id'];
+            $cat_title = $row['cat_title'];
 
         
-        echo "<td>$cat_title</td>";
-            
+            echo "<td>$cat_title</td>";
         }
         
     
         
         echo "<td>$post_status</td>";
-echo "<td><img width='100' src='../images/$post_image' alt='image'></td>";
+        echo "<td><img width='100' src='../images/$post_image' alt='image'></td>";
         echo "<td>$post_tags</td>";
 
 
@@ -251,11 +225,11 @@ echo "<td><img width='100' src='../images/$post_image' alt='image'></td>";
 
             <input type="hidden" name="post_id" value="<?php echo $post_id ?>">
 
-         <?php   
+         <?php
 
             echo '<td><input class="btn btn-danger" type="submit" name="delete" value="Delete"></td>';
 
-          ?>
+            ?>
 
 
         </form>
@@ -277,12 +251,11 @@ echo "<td><img width='100' src='../images/$post_image' alt='image'></td>";
         // echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete'); \" href='posts.php?delete={$post_id}'>Delete</a></td>";
         echo "<td><a href='posts.php?reset={$post_id}'>{$post_views_count}</a></td>";
         echo "</tr>";
-   
     }
 
 
 
-      ?>
+    ?>
 
 
    
@@ -294,29 +267,23 @@ echo "<td><img width='100' src='../images/$post_image' alt='image'></td>";
 
             
             
-<?php 
+<?php
 
-if(isset($_POST['delete'])){
-    
+if (isset($_POST['delete'])) {
     $the_post_id = escape($_POST['post_id']);
     
     $query = "DELETE FROM posts WHERE post_id = {$the_post_id} ";
     $delete_query = mysqli_query($connection, $query);
     header("Location: /cms/admin/posts.php");
-    
-    
 }
 
 
-if(isset($_GET['reset'])){
-    
+if (isset($_GET['reset'])) {
     $the_post_id = escape($_GET['reset']);
     
     $query = "UPDATE posts SET post_views_count = 0 WHERE post_id = $the_post_id  ";
     $reset_query = mysqli_query($connection, $query);
     header("Location: posts.php");
-    
-    
 }
 
 
@@ -356,13 +323,11 @@ if(isset($_GET['reset'])){
 
 
 
-  <?php if(isset($_SESSION['message'])){
-
+    <?php if (isset($_SESSION['message'])) {
          unset($_SESSION['message']);
+    }
 
-     }
-
-         ?>
+    ?>
 
 
 

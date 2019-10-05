@@ -6,21 +6,16 @@ include("includes/db.php");
 
 include("functions/functions.php");
 
-switch($_REQUEST['sAction']){
+switch ($_REQUEST['sAction']) {
+    default:
+        getOrgs();
 
-    default :
-
-    getOrgs();
-
-    break;
+        break;
 
     
-    case'getPaginatorOrgs';
+    case 'getPaginatorOrgs';
 
-    getPaginatorOrgs();
+        getPaginatorOrgs();
 
     break;
-
 }
-
-?>

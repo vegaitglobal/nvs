@@ -190,31 +190,24 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                                 <a href="https://www.instagram.com/nsvolonterskiservis" target="_blank"><img class="social-top" src="images/icon-instagram.png" alt="Instagram"></a>-->
                                 <?php
                                   
-                                    if(!isset($_SESSION['customer_email'])){
-
-                                        //echo  "<a class='dugme' href='' >Dobrodošli :Gost</a>";
-
-                                    }else{
-
-                                        echo  "<a class='dugme' href='' >Dobrodošli : " . $_SESSION['customer_email'] . "</a>";
-
-                                    }
+                                if (!isset($_SESSION['customer_email'])) {
+                                    //echo  "<a class='dugme' href='' >Dobrodošli :Gost</a>";
+                                } else {
+                                    echo  "<a class='dugme' href='' >Dobrodošli : " . $_SESSION['customer_email'] . "</a>";
+                                }
 
                                 ?>
                             </div>
                             <div class="account-dugmes-top">
                             
-                                <?php 
+                                <?php
                                 
-                                    if(!isset($_SESSION['customer_email'])){
-
-                                        echo "<a class='dugme' href='customer_register.php' >Registracija</a>";
-                                        echo "<a class='dugme' href='checkout.php' >Prijava</a>";
-                                        
-                                    } else {
-
-                                        echo "<a class='dugme' href='customer/index.php?my_wishlist'>Moj nalog</a>";
-                                    }
+                                if (!isset($_SESSION['customer_email'])) {
+                                    echo "<a class='dugme' href='customer_register.php' >Registracija</a>";
+                                    echo "<a class='dugme' href='checkout.php' >Prijava</a>";
+                                } else {
+                                    echo "<a class='dugme' href='customer/index.php?my_wishlist'>Moj nalog</a>";
+                                }
 
                                 ?>
                             
@@ -245,17 +238,14 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                                 <div id="mobile-account-links">
                                     
                                     <div class="account-dugmes-top">
-                                <?php 
+                                <?php
                                 
-                                    if(!isset($_SESSION['customer_email'])){
-
-                                        echo "<a class='dugme' href='customer_register.php' >Registracija</a>";
-                                        echo "<a class='dugme' href='checkout.php' >Prijava</a>";
-                                        
-                                    } else {
-
-                                        echo "<a class='dugme' href='customer/index.php?my_wishlist'>Moj nalog</a>";
-                                    }
+                                if (!isset($_SESSION['customer_email'])) {
+                                    echo "<a class='dugme' href='customer_register.php' >Registracija</a>";
+                                    echo "<a class='dugme' href='checkout.php' >Prijava</a>";
+                                } else {
+                                    echo "<a class='dugme' href='customer/index.php?my_wishlist'>Moj nalog</a>";
+                                }
 
                                 ?>
                                     </div>
@@ -264,40 +254,40 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                         </nav>
                         <ul id="account-nav" class="account-nav dropmenu primary-nav">
                             <li class=" parent"><a  class="tab" href="index.php">Home</a></li>
-                            <?php 
-                                if ($page=="shop"){
-                                    echo "<li class='selected'>";
-                                }else {
-                                    echo "<li class=' parent'>";
-                                }
+                            <?php
+                            if ($page=="shop") {
+                                echo "<li class='selected'>";
+                            } else {
+                                echo "<li class=' parent'>";
+                            }
                             ?>        
                                 <a  class="tab" href="shop.php">Volonterske ponude</a></li>
                             
-                            <?php 
-                                if ($page=="org"){
-                                    echo "<li class='selected'>";
-                                }else {
-                                    echo "<li class=' parent'>";
-                                }
+                            <?php
+                            if ($page=="org") {
+                                echo "<li class='selected'>";
+                            } else {
+                                echo "<li class=' parent'>";
+                            }
                             ?>                            
                                 <a  class="tab" href="org.php">Organizacije</a></li>
                             
                             
-                            <?php 
-                                if ($page=="blog"){
-                                    echo "<li class='selected'>";
-                                }else {
-                                    echo "<li class=' parent'>";
-                                }
+                            <?php
+                            if ($page=="blog") {
+                                echo "<li class='selected'>";
+                            } else {
+                                echo "<li class=' parent'>";
+                            }
                             ?> 
                                 <a  class="tab" href="blog.php">Blog</a></li>
                                 
-                            <?php 
-                                if ($page=="about" or $page=="services" or $page=="contact"){
-                                    echo "<li class='selected'>";
-                                }else {
-                                    echo "<li class=' parent'>";
-                                }
+                            <?php
+                            if ($page=="about" or $page=="services" or $page=="contact") {
+                                echo "<li class='selected'>";
+                            } else {
+                                echo "<li class=' parent'>";
+                            }
                             ?>   
                                 <a  class="tab" href="javascript:void(0)">O nama</a>
                                 <ul id="">
@@ -324,20 +314,46 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                             <div class="body">
                                 <div class="kontent">
                                     <div class="header">
-                            <?php    
-                                if ($page=="shop"){ echo "<h1>Najnovije volonterske pozicije</h1>";}
-                                if (strpos($page,'ponuda') !== false){ echo "<h1>Detalji ponude</h1>";}
-                                if (strpos($page,'pozicija') !== false){ echo "<h1>Detalji ponude</h1>";}
-                                if ($page=="org"){ echo "<h1>Organizacije</h1>";}
-                                if (strpos($page,'blog') !== false){ echo "<h1>Vesti</h1>";}
-                                if ($page=="about"){ echo "<h1>Novosadski Volonterski Servis</h1>";}
-                                if ($page=="services"){ echo "<h1>Aktuelna dešavanja</h1>";}
-                                if ($page=="docs"){ echo "<h1>Dokumenti</h1>";}
-                                if ($page=="contact"){ echo "<h1>Kontaktirajte nas</h1>";}
-                                if (strpos($page,'register') !== false){ echo "<h1>Registracija</h1>";}
-                                if (strpos($page,'check') !== false){ echo "<h1>Prijava</h1>";}
-                                if ($page=="terms"){ echo "<h1>Uslovi i pravila</h1>";}
-                                if ($page=="forgot_pass"){ echo "<h1>Nova lozinka</h1>";}       
+                            <?php
+                            if ($page=="shop") {
+                                echo "<h1>Najnovije volonterske pozicije</h1>";
+                            }
+                            if (strpos($page, 'ponuda') !== false) {
+                                echo "<h1>Detalji ponude</h1>";
+                            }
+                            if (strpos($page, 'pozicija') !== false) {
+                                echo "<h1>Detalji ponude</h1>";
+                            }
+                            if ($page=="org") {
+                                echo "<h1>Organizacije</h1>";
+                            }
+                            if (strpos($page, 'blog') !== false) {
+                                echo "<h1>Vesti</h1>";
+                            }
+                            if ($page=="about") {
+                                echo "<h1>Novosadski Volonterski Servis</h1>";
+                            }
+                            if ($page=="services") {
+                                echo "<h1>Aktuelna dešavanja</h1>";
+                            }
+                            if ($page=="docs") {
+                                echo "<h1>Dokumenti</h1>";
+                            }
+                            if ($page=="contact") {
+                                echo "<h1>Kontaktirajte nas</h1>";
+                            }
+                            if (strpos($page, 'register') !== false) {
+                                echo "<h1>Registracija</h1>";
+                            }
+                            if (strpos($page, 'check') !== false) {
+                                echo "<h1>Prijava</h1>";
+                            }
+                            if ($page=="terms") {
+                                echo "<h1>Uslovi i pravila</h1>";
+                            }
+                            if ($page=="forgot_pass") {
+                                echo "<h1>Nova lozinka</h1>";
+                            }
                             ?>
                                         
                                       <!--  <div id="header_join_dugme"><a class="dugme" href="customer_register.php">PRIKLJUČI SE</a></div> -->

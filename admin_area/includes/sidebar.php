@@ -1,15 +1,10 @@
 <?php
 
 
-if(!isset($_SESSION['admin_email'])){
-
+if (!isset($_SESSION['admin_email'])) {
     echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-?>
+} else {
+    ?>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <!-- navbar navbar-inverse navbar-fixed-top Starts -->
@@ -624,4 +619,4 @@ else {
     </nav>
     <!-- navbar navbar-inverse navbar-fixed-top Ends -->
 
-    <?php } ?>
+<?php } ?>

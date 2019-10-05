@@ -2,18 +2,10 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row" ><!-- 1 row Starts -->
 
@@ -112,28 +104,26 @@ else {
 </div><!-- 2 row Ends -->
 
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
+        $box_title = escape($_POST['box_title']);
 
-$box_title = escape($_POST['box_title']);
-
-$box_desc = escape($_POST['box_desc']);
+        $box_desc = escape($_POST['box_desc']);
     
-$box_url = filter_var($_POST['box_url'], FILTER_SANITIZE_URL);
+        $box_url = filter_var($_POST['box_url'], FILTER_SANITIZE_URL);
 
-$insert_box = "insert into boxes_section (box_title,box_desc,box_url) values ('$box_title','$box_desc','$box_url')";
+        $insert_box = "insert into boxes_section (box_title,box_desc,box_url) values ('$box_title','$box_desc','$box_url')";
 
-$run_box = mysqli_query($con,$insert_box);
+        $run_box = mysqli_query($con, $insert_box);
 
-echo "<script>alert('New Box Has Been Inserted')</script>";
+        echo "<script>alert('New Box Has Been Inserted')</script>";
 
-echo "<script>window.open('index.php?view_boxes','_self')</script>";
+        echo "<script>window.open('index.php?view_boxes','_self')</script>";
+    }
 
-}
 
-
-?>
+    ?>
 
 
 

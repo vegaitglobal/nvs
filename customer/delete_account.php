@@ -17,10 +17,9 @@
 
 $c_email = $_SESSION['customer_email'];
 
-if(isset($_POST['yes'])){
-    
+if (isset($_POST['yes'])) {
      $select_customer = "select * from volunteers where customer_email='$c_email'";
-     $run_select = mysqli_query($con,$select_customer);
+     $run_select = mysqli_query($con, $select_customer);
      $row = mysqli_fetch_array($run_select);
             
             $delete_id = $row["customer_id"];
@@ -29,32 +28,27 @@ if(isset($_POST['yes'])){
             
     $delete_wishlist = "delete from wishlist where wishlist_id='$delete_id'";
 
-   $delete_customer = "delete from volunteers where customer_email='$c_email'";
+    $delete_customer = "delete from volunteers where customer_email='$c_email'";
 
-    $run_delete = mysqli_query($con,$delete_customer);
+    $run_delete = mysqli_query($con, $delete_customer);
 
-    if($run_delete){
+    if ($run_delete) {
+        $run_delete_wishlist = mysqli_query($con, $delete_wishlist);
         
-        $run_delete_wishlist = mysqli_query($con,$delete_wishlist);
-        
-         if (file_exists($file)) {
-                 unlink($file);
-            } 
+        if (file_exists($file)) {
+                unlink($file);
+        }
 
         session_destroy();
 
         echo "<script>alert('Vaš nalog je izbrisan. Doviđenja')</script>";
 
         echo "<script>window.open('../index.php','_self')</script>";
-
     }
-
 }
 
-if(isset($_POST['no'])){
-
-echo "<script>window.open('index.php?my_wishlist','_self')</script>";
-
+if (isset($_POST['no'])) {
+    echo "<script>window.open('index.php?my_wishlist','_self')</script>";
 }
 
 

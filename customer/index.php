@@ -1,22 +1,17 @@
 <?php
 
+require_once __DIR__.'/../app/bootstrap.php';
+
 session_start();
 
-if(!isset($_SESSION['customer_email'])){
+if (!isset($_SESSION['customer_email'])) {
+    echo "<script>window.open('../checkout.php','_self')</script>";
+} else {
+    include("includes/db.php");
 
-echo "<script>window.open('../checkout.php','_self')</script>";
+    include("functions/functions.php");
 
-
-}else {
-
-
-
-
-include("includes/db.php");
-
-include("functions/functions.php");
-
-?>
+    ?>
 <!DOCTYPE html>
 <html>
 
@@ -61,7 +56,12 @@ include("functions/functions.php");
 </button>
 
 
+<<<<<<< HEAD
 <a href="#" class="btn btn-sm btn-default" >
+=======
+<<<<<<< HEAD
+<a href="#" class="btn btn-sm btn-silver" >
+>>>>>>> master
 <?php
 
 if(!isset($_SESSION['customer_email'])){
@@ -72,11 +72,19 @@ echo "Dobrodošli :Guest";
 }else{
 
 echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
+=======
+<a href="#" class="btn btn-success btn-sm" >
+    <?php
+>>>>>>> 977e9528f4cae3603459318416bb719fff240d90
 
-}
+    if (!isset($_SESSION['customer_email'])) {
+        echo "Dobrodošli :Guest";
+    } else {
+        echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
+    }
 
 
-?>
+    ?>
 </a>
 
 
@@ -88,8 +96,7 @@ echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
 
     <?php
 
-    if(!isset($_SESSION['customer_email'])){
-
+    if (!isset($_SESSION['customer_email'])) {
         echo "<li>";
         echo "<a href='../customer_register.php'> Registracija </a>";
         echo "</li>";
@@ -100,15 +107,10 @@ echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
     <li>
     <?php
 
-    if(!isset($_SESSION['customer_email'])){
-
+    if (!isset($_SESSION['customer_email'])) {
         echo "<a href='../checkout.php' >Moj nalog</a>";
-
-    }
-    else{
-
+    } else {
         echo "<a href='index.php?my_wishlist'>Moj nalog</a>";
-
     }
 
 
@@ -119,14 +121,10 @@ echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
     <li>
     <?php
 
-    if(!isset($_SESSION['customer_email'])){
-
+    if (!isset($_SESSION['customer_email'])) {
         echo "<a href='../checkout.php'> Prijava </a>";
-
-    }else {
-
+    } else {
         echo "<a href='logout.php'> Odjava </a>";
-
     }
 
     ?>
@@ -189,15 +187,10 @@ echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
         <li class="active">
         <?php
 
-        if(!isset($_SESSION['customer_email'])){
-
+        if (!isset($_SESSION['customer_email'])) {
                 echo "<a href='../checkout.php' >Moj nalog</a>";
-
-            }
-            else{
-
-                echo "<a href='index.php?my_wishlist'>Moj nalog</a>";
-
+        } else {
+            echo "<a href='index.php?my_wishlist'>Moj nalog</a>";
         }
 
 
@@ -223,13 +216,11 @@ echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
 
 </div><!-- padding-nav Ends -->
 
-<?php
+    <?php
 
-if(!isset($_SESSION['customer_email'])){
-
-}
-else{
-?>
+    if (!isset($_SESSION['customer_email'])) {
+    } else {
+        ?>
     <a class="btn btn-primary navbar-btn right" href="index.php?my_wishlist"><!-- btn btn-primary navbar-btn right Starts -->
        
         <i class="fa fa-heart-o"></i>
@@ -238,10 +229,10 @@ else{
 
     </a><!-- btn btn-primary navbar-btn right Ends -->
 
-<?php
-}
+        <?php
+    }
 
-?>
+    ?>
 
 
 <div class="navbar-collapse collapse right"><!-- navbar-collapse collapse right Starts -->
@@ -291,22 +282,22 @@ else{
 
 <div class="col-md-12"><!-- col-md-12 Starts -->
 
-<?php
+    <?php
 
-$c_email = $_SESSION['customer_email'];
+    $c_email = $_SESSION['customer_email'];
 
-$get_customer = "select * from volunteers where customer_email='$c_email'";
+    $get_customer = "select * from volunteers where customer_email='$c_email'";
 
-$run_customer = mysqli_query($con,$get_customer);
+    $run_customer = mysqli_query($con, $get_customer);
 
-$row_customer = mysqli_fetch_array($run_customer);
+    $row_customer = mysqli_fetch_array($run_customer);
 
     $customer_confirm_code = $row_customer['customer_confirm_code'];
 
     $c_name = $row_customer['customer_name'];
 
 
-?>
+    ?>
 <!-- col-md-12 Ends -->
 
 <div class="col-md-3"><!-- col-md-3 Starts -->
@@ -321,20 +312,17 @@ $row_customer = mysqli_fetch_array($run_customer);
 
     <?php
 
-    if(isset($_GET[$customer_confirm_code])){
-
+    if (isset($_GET[$customer_confirm_code])) {
         $update_customer = "update volunteers set customer_confirm_code='' where customer_confirm_code='$customer_confirm_code'";
 
-        $run_confirm = mysqli_query($con,$update_customer);
+        $run_confirm = mysqli_query($con, $update_customer);
 
         echo "<script>alert('Vaša mail adresa je potvrđena')</script>";
 
         echo "<script>window.open('index.php?my_wishlist','_self')</script>";
-
     }
 
-    if(isset($_GET['send_email'])){
-
+    if (isset($_GET['send_email'])) {
         $subject = "Potvrda mail adrese";
 
         $from = "vojislavp@gmail.com";
@@ -357,49 +345,40 @@ $row_customer = mysqli_fetch_array($run_customer);
 
         $headers .= "Content-type: text/html\r\n";
 
-        mail($c_email,$subject,$message,$headers);
+        mail($c_email, $subject, $message, $headers);
 
         echo "<script>alert('Verifikacioni email vam je poslat, proverite poštu')</script>";
 
         echo "<script>window.open('index.php?my_wishlist','_self')</script>";
-
     }
 
 
-    if(isset($_GET['edit_account'])) {
-
-    include("edit_account.php");
-
+    if (isset($_GET['edit_account'])) {
+        include("edit_account.php");
     }
 
-    if(isset($_GET['change_pass'])){
-
-    include("change_pass.php");
-
+    if (isset($_GET['change_pass'])) {
+        include("change_pass.php");
     }
 
-    if(isset($_GET['delete_account'])){
-
-    include("delete_account.php");
-
+    if (isset($_GET['delete_account'])) {
+        include("delete_account.php");
     }
 
-    if(isset($_GET['my_wishlist'])){
-
-    include("my_wishlist.php");
-
+    if (isset($_GET['my_wishlist'])) {
+        include("my_wishlist.php");
     }
 
-    if(isset($_GET['my_book'])){
-
-    include("my_book.php");
-
+    if (isset($_GET['my_book'])) {
+        include("my_book.php");
     }
 
-    if(isset($_GET['delete_wishlist'])){
+    if (isset($_GET['my_book_manage'])) {
+        include("my_book_manage.php");
+    }
 
-    include("delete_wishlist.php");
-
+    if (isset($_GET['delete_wishlist'])) {
+        include("delete_wishlist.php");
     }
 
     ?>
@@ -414,11 +393,11 @@ $row_customer = mysqli_fetch_array($run_customer);
 
 
 
-<?php
+    <?php
 
-include("includes/footer.php");
+    include("includes/footer.php");
 
-?>
+    ?>
 
 <script src="js/jquery.min.js"> </script>
 

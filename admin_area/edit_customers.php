@@ -1,73 +1,66 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    if (isset($_GET['edit_volunteers'])) {
+        $edit_id = $_GET['edit_volunteers'];
 
-echo "<script>window.open('login.php','_self')</script>";
+        $get_d = "select * from volunteers where customer_id='$edit_id'";
 
-}
+        $run_edit = mysqli_query($con, $get_d);
 
-else {
+        $row_customer = mysqli_fetch_array($run_edit);
 
+        $customer_id = $row_customer['customer_id'];
 
-if(isset($_GET['edit_volunteers'])){
+        $customer_name = $row_customer['customer_name'];
 
-    $edit_id = $_GET['edit_volunteers'];
+        $customer_email = $row_customer['customer_email'];
 
-    $get_d = "select * from volunteers where customer_id='$edit_id'";
+        $customer_country = $row_customer['customer_country'];
 
-    $run_edit = mysqli_query($con,$get_d);
+        $customer_city = $row_customer['customer_city'];
 
-    $row_customer = mysqli_fetch_array($run_edit);
+        $customer_contact = $row_customer['customer_contact'];
 
-    $customer_id = $row_customer['customer_id'];
+        $customer_address = $row_customer['customer_address'];
 
-    $customer_name = $row_customer['customer_name'];
+        $customer_image = $row_customer['customer_image'];
+        $new_customer_image = $row_customer['customer_image'];
 
-    $customer_email = $row_customer['customer_email'];
+        $customer_cv = $row_customer['customer_cv'];
+        $new_customer_cv = $row_customer['customer_cv'];
 
-    $customer_country = $row_customer['customer_country'];
+        $customer_motiv = $row_customer['customer_motiv'];
+        $new_customer_motiv = $row_customer['customer_motiv'];
 
-    $customer_city = $row_customer['customer_city'];
+        $customer_datum = $row_customer['customer_datum'];
 
-    $customer_contact = $row_customer['customer_contact'];
+        $customer_pol = $row_customer['customer_pol'];
 
-    $customer_address = $row_customer['customer_address'];
+        $customer_sprema = $row_customer['customer_sprema'];
 
-    $customer_image = $row_customer['customer_image'];
-    $new_customer_image = $row_customer['customer_image'];
+        $customer_profil = $row_customer['customer_profil'];
 
-    $customer_cv = $row_customer['customer_cv'];
-    $new_customer_cv = $row_customer['customer_cv'];
+        $customer_desc = $row_customer['customer_desc'];
 
-    $customer_motiv = $row_customer['customer_motiv'];
-    $new_customer_motiv = $row_customer['customer_motiv'];
-
-    $customer_datum = $row_customer['customer_datum'];
-
-    $customer_pol = $row_customer['customer_pol'];
-
-    $customer_sprema = $row_customer['customer_sprema'];
-
-    $customer_profil = $row_customer['customer_profil'];
-
-    $customer_desc = $row_customer['customer_desc'];
-
-    $customer_vestina = $row_customer['customer_vestina'];
+        $customer_vestina = $row_customer['customer_vestina'];
     
-    $customer_sati = $row_customer['customer_sati'];
+        $customer_sati = $row_customer['customer_sati'];
     
-    $customer_eval = $row_customer['customer_eval'];
+        $customer_eval = $row_customer['customer_eval'];
     
         $get_cat = "select * from categories where cat_id='$customer_profil'";
 
-        $run_cat = mysqli_query($con,$get_cat);
+        $run_cat = mysqli_query($con, $get_cat);
 
         $row_cat = mysqli_fetch_array($run_cat);
 
         $cat_title = $row_cat['cat_title'];
-}
+    }
 
-?>
+    ?>
 
 <div class="row"><!-- row Starts -->
 
@@ -242,14 +235,12 @@ if(isset($_GET['edit_volunteers'])){
 
                 $get_cat = "select * from categories ";
 
-                $run_cat = mysqli_query($con,$get_cat);
+                $run_cat = mysqli_query($con, $get_cat);
 
                 while ($row_cat=mysqli_fetch_array($run_cat)) {
-
-                   $cat_title = $row_cat['cat_title'];
+                    $cat_title = $row_cat['cat_title'];
 
                     echo "<option value='$cat_title'>$cat_title</option>";
-
                 }
                    echo "<option value='Sve'>Sve</option>";
                 ?>
@@ -303,7 +294,9 @@ if(isset($_GET['edit_volunteers'])){
 
        <div class="col-md-6" > 
         <input type="file" name="c_cv" class="form-control" > <br>
-        <a href="<?php if (!empty($customer_cv)) {echo "../customer/customer_images/".$customer_cv;} ?>" ><?php echo $customer_cv; ?></a>
+        <a href="<?php if (!empty($customer_cv)) {
+            echo "../customer/customer_images/".$customer_cv;
+                 } ?>" ><?php echo $customer_cv; ?></a>
     </div>              
 
    
@@ -315,7 +308,9 @@ if(isset($_GET['edit_volunteers'])){
 
        <div class="col-md-6" > 
         <input type="file" name="c_motiv" class="form-control" > <br>
-           <a  href="<?php if (!empty($customer_motiv)) {echo "../customer/customer_images/".$customer_motiv;} ?>">
+           <a  href="<?php if (!empty($customer_motiv)) {
+                echo "../customer/customer_images/".$customer_motiv;
+                     } ?>">
                <?php echo $customer_motiv; ?> </a>
         </div>
    
@@ -369,111 +364,98 @@ if(isset($_GET['edit_volunteers'])){
 </div><!-- col-lg-12 Ends -->
 
 </div><!-- 2 row Ends --> 
-<?php
+    <?php
 
-if(isset($_POST['update'])){
+    if (isset($_POST['update'])) {
+        $update_id = $customer_id;
 
-    $update_id = $customer_id;
+        $c_name = escape($_POST['c_name']);
 
-    $c_name = escape($_POST['c_name']);
+        $c_email = filter_var($_POST['c_email'], FILTER_SANITIZE_EMAIL);
 
-    $c_email = filter_var($_POST['c_email'], FILTER_SANITIZE_EMAIL);
+        $c_country = escape($_POST['c_country']);
 
-    $c_country = escape($_POST['c_country']);
+        $c_city = escape($_POST['c_city']);
 
-    $c_city = escape($_POST['c_city']);
+        $c_contact = escape($_POST['c_contact']);
 
-    $c_contact = escape($_POST['c_contact']);
+        $c_address = escape($_POST['c_address']);
 
-    $c_address = escape($_POST['c_address']);
+        $c_pol = $_POST['pol'];
 
-    $c_pol = $_POST['pol'];
+        $c_datum = $_POST['datum'];
 
-    $c_datum = $_POST['datum'];
+        $c_profil = $_POST['profil'];
 
-    $c_profil = $_POST['profil'];  
-
-    $c_sprema = $_POST['sprema'];
+        $c_sprema = $_POST['sprema'];
     
-    $c_izreka = escape($_POST['c_izreka']);
+        $c_izreka = escape($_POST['c_izreka']);
     
-    $c_vestina = escape($_POST['c_vestina']);
+        $c_vestina = escape($_POST['c_vestina']);
     
-    $c_sati = escape($_POST['c_sati']);
+        $c_sati = escape($_POST['c_sati']);
     
-    $c_eval = escape($_POST['c_eval']);
+        $c_eval = escape($_POST['c_eval']);
 
-    $c_image = $_FILES['c_image']['name'];
+        $c_image = $_FILES['c_image']['name'];
 
-    $c_image_tmp = $_FILES['c_image']['tmp_name'];
+        $c_image_tmp = $_FILES['c_image']['tmp_name'];
 
-        if(empty($c_image)){
-
+        if (empty($c_image)) {
             $c_image = $new_customer_image;
-            
-        }else{
+        } else {
+            $file="../customer/customer_images" ."/". $new_customer_image;
 
-             $file="../customer/customer_images" ."/". $new_customer_image;
-
-              if (file_exists($file)) {
+            if (file_exists($file)) {
                     unlink($file);
-                }
+            }
         }
 
-    $c_cv = $_FILES['c_cv']['name'];
+        $c_cv = $_FILES['c_cv']['name'];
 
-    $c_cv_tmp = $_FILES['c_cv']['tmp_name'];
+        $c_cv_tmp = $_FILES['c_cv']['tmp_name'];
 
-        if(empty($c_cv)){
-
+        if (empty($c_cv)) {
             $c_cv = $new_customer_cv;
-            
-        }else{
-
+        } else {
              $file="../customer/customer_images" ."/". $new_customer_cv;
 
-              if (file_exists($file)) {
-                    unlink($file);
-                }
+            if (file_exists($file)) {
+                unlink($file);
+            }
         }
     
-     $c_motiv = $_FILES['c_motiv']['name'];
+        $c_motiv = $_FILES['c_motiv']['name'];
 
-     $c_motiv_tmp = $_FILES['c_motiv']['tmp_name'];
+        $c_motiv_tmp = $_FILES['c_motiv']['tmp_name'];
 
-        if(empty($c_motiv)){
-
+        if (empty($c_motiv)) {
             $c_motiv = $new_customer_motiv;
-            
-        }else{
-
+        } else {
              $file="../customer/customer_images" ."/". $new_customer_motiv;
 
-              if (file_exists($file)) {
-                    unlink($file);
-                }
+            if (file_exists($file)) {
+                unlink($file);
+            }
         }
 
-    $update_customer = "update volunteers set customer_name='$c_name',customer_email='$c_email',customer_country='$c_country',customer_city='$c_city',customer_contact='$c_contact',customer_address='$c_address',customer_image='$c_image',customer_cv='$c_cv',customer_motiv='$c_motiv',customer_pol='$c_pol',customer_datum='$c_datum',customer_profil='$c_profil',customer_sprema='$c_sprema',customer_desc='$c_izreka',customer_vestina='$c_vestina',customer_sati='$c_sati',customer_eval='$c_eval' where customer_id='$update_id'";
+        $update_customer = "update volunteers set customer_name='$c_name',customer_email='$c_email',customer_country='$c_country',customer_city='$c_city',customer_contact='$c_contact',customer_address='$c_address',customer_image='$c_image',customer_cv='$c_cv',customer_motiv='$c_motiv',customer_pol='$c_pol',customer_datum='$c_datum',customer_profil='$c_profil',customer_sprema='$c_sprema',customer_desc='$c_izreka',customer_vestina='$c_vestina',customer_sati='$c_sati',customer_eval='$c_eval' where customer_id='$update_id'";
 
-    $run_customer = mysqli_query($con,$update_customer);
+        $run_customer = mysqli_query($con, $update_customer);
 
-    if($run_customer){
-        
-        move_uploaded_file($c_image_tmp,"../customercustomer_images/$c_image");
-        move_uploaded_file($c_cv_tmp,"../customercustomer_images/$c_cv");
-        move_uploaded_file($c_motiv_tmp,"../customercustomer_images/$c_motiv");
+        if ($run_customer) {
+            move_uploaded_file($c_image_tmp, "../customercustomer_images/$c_image");
+            move_uploaded_file($c_cv_tmp, "../customercustomer_images/$c_cv");
+            move_uploaded_file($c_motiv_tmp, "../customercustomer_images/$c_motiv");
 
-        echo "<script>alert('Nalog je ažuriran.')</script>";
+            echo "<script>alert('Nalog je ažuriran.')</script>";
 
-        echo "<script>window.open('index.php?edit_volunteers=$edit_id','_self')</script>";
-
+            echo "<script>window.open('index.php?edit_volunteers=$edit_id','_self')</script>";
+        }
     }
 
-}
 
-
-?>
+    ?>
 <script>
     $(document).ready(function () {   // Help for the HTML4 version.
     $('select[name=oblast]').change(function () {

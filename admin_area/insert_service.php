@@ -1,15 +1,10 @@
 <?php
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 
 
@@ -142,53 +137,44 @@ else {
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
+        $service_title = escape($_POST['service_title']);
 
-$service_title = escape($_POST['service_title']);
+        $service_desc = $_POST['service_desc'];
 
-$service_desc = $_POST['service_desc'];
+        $service_button = escape($_POST['service_button']);
 
-$service_button = escape($_POST['service_button']);
+        $service_url = filter_var($_POST['service_url'], FILTER_SANITIZE_URL);
 
-$service_url = filter_var($_POST['service_url'], FILTER_SANITIZE_URL);
+        $service_image = $_FILES['service_image']['name'];
 
-$service_image = $_FILES['service_image']['name'];
+        $tmp_image = $_FILES['service_image']['tmp_name'];
 
-$tmp_image = $_FILES['service_image']['tmp_name'];
+        $sel_services = "select * from services";
 
-$sel_services = "select * from services";
+        $run_services = mysqli_query($con, $sel_services);
 
-$run_services = mysqli_query($con,$sel_services);
+        $count = mysqli_num_rows($run_services);
 
-$count = mysqli_num_rows($run_services);
+        if ($count == 3) {
+            echo "<script>alert('You Have already Inserted 3 Services columns')</script>";
+        } else {
+            move_uploaded_file($tmp_image, "services_images/$service_image");
 
-if($count == 3){
+            $insert_service = "insert into services (service_title,service_image,service_desc,service_button,service_url) values ('$service_title','$service_image','$service_desc','$service_button','$service_url')";
 
-echo "<script>alert('You Have already Inserted 3 Services columns')</script>";
+            $run_service = mysqli_query($con, $insert_service);
 
-}
-else{
+            if ($run_service) {
+                echo "<script>alert('New Service Column Has Been Inserted')</script>";
 
-move_uploaded_file($tmp_image,"services_images/$service_image");
+                echo "<script>window.open('index.php?view_services','_self')</script>";
+            }
+        }
+    }
 
-$insert_service = "insert into services (service_title,service_image,service_desc,service_button,service_url) values ('$service_title','$service_image','$service_desc','$service_button','$service_url')";
-
-$run_service = mysqli_query($con,$insert_service);
-
-if($run_service){
-
-echo "<script>alert('New Service Column Has Been Inserted')</script>";
-
-echo "<script>window.open('index.php?view_services','_self')</script>";
-
-}
-
-}
-
-}
-
-?>
+    ?>
 
 <?php } ?>

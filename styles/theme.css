@@ -6,9 +6,9 @@ html                { height:100%; }
 body                { height:100%; margin:0; padding:0;}
 #outerwrapper       { min-height:100%; position:relative; }
 #container:after    { content: ".";  display: block; height: 0; overflow:hidden; clear: both; visibility: hidden; }
-/** 
- * css only footer window-bottom anchoring rules 
- * #container.margin-bottom and #footer.margin-top must be sum of: 
+/**
+ * css only footer window-bottom anchoring rules
+ * #container.margin-bottom and #footer.margin-top must be sum of:
  * #footer.height + #footer.padding-top + #footer.padding-bottom
  * */
 #container          { margin-bottom:120px;}
@@ -27,24 +27,24 @@ a.icon,a.icon:hover {border:0px;}
 
 
 /* IE hacks */
-#header		{z-index:5000} /* For IE6; Required to get top menu overlapping all body elements. Relatively harmless for other browsers, YMMV */
+#header     {z-index:5000} /* For IE6; Required to get top menu overlapping all body elements. Relatively harmless for other browsers, YMMV */
 
 
 /* BUTTONS */
-a.button, input.button, span.button,.button .button-over { 
+a.button, input.button, span.button,.button .button-over {
     color:#fff;
     cursor:pointer;
     font-weight:bold;
     display:inline-block;
-    padding:8px 10px 7px; 
+    padding:8px 10px 7px;
     margin-right:5px;
     text-transform:uppercase;
     font-family: Helvetica;
-    letter-spacing:1px; 
+    letter-spacing:1px;
     font-size:11px;
     line-height:12px;
     position:relative;
-    border:0; 
+    border:0;
     text-shadow:0 1px 0 rgba(0,0,0,.3);
     border-radius:         5px;
     -webkit-border-radius: 5px;
@@ -60,15 +60,15 @@ a.button, input.button, span.button,.button .button-over {
 a.mini, input.mini, span.mini {
     padding:5px;
     font-size:9px;
-    letter-spacing:normal; 
+    letter-spacing:normal;
 }
 
 .button .icon {
-    vertical-align:middle; margin:-5px 5px 0 0; 
+    vertical-align:middle; margin:-5px 5px 0 0;
 }
 
 a.mini .icon, input.mini .icon{
-	margin: -2px 2px 0 0
+    margin: -2px 2px 0 0
 }
 
 a.button:hover, input.button:hover, span.button:hover, .button:hover .button-over:hover{}

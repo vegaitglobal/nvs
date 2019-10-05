@@ -1,25 +1,17 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-    if(isset($_GET['p_id'])){
-    
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    if (isset($_GET['p_id'])) {
         $the_post_id =  $_GET['p_id'];
-
     }
 
 
     $query = "SELECT * FROM posts WHERE post_id = $the_post_id  ";
-    $select_posts_by_id = mysqli_query($con,$query);  
+    $select_posts_by_id = mysqli_query($con, $query);
 
-    while($row = mysqli_fetch_assoc($select_posts_by_id)) {
+    while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
         $post_id            = $row['post_id'];
         $post_user          = $row['post_user'];
         $post_title         = $row['post_title'];
@@ -30,12 +22,10 @@ else {
         $post_content       = $row['post_content'];
         $post_tags          = $row['post_tags'];
         $post_date          = $row['post_date'];
-        
-         }
+    }
 
 
-    if(isset($_POST['update_post'])) {
-               
+    if (isset($_POST['update_post'])) {
         $post_user           =  $admin_name;
         $post_title          = escape($_POST['post_title']);
         $post_url            =  escape($_POST['post_url']);
@@ -46,19 +36,16 @@ else {
         $post_content        = $_POST['post_content'];
         $post_tags           =  escape($_POST['post_tags']);
         
-        move_uploaded_file($post_image_temp, "blogs_images/$post_image"); 
+        move_uploaded_file($post_image_temp, "blogs_images/$post_image");
         
-        if(empty($post_image)) {
-        
-        $query = "SELECT * FROM posts WHERE post_id = $the_post_id ";
-        $select_image = mysqli_query($con,$query);
+        if (empty($post_image)) {
+            $query = "SELECT * FROM posts WHERE post_id = $the_post_id ";
+            $select_image = mysqli_query($con, $query);
             
-            while($row = mysqli_fetch_array($select_image)) {
-
-               $post_image = $row['post_image'];
-
+            while ($row = mysqli_fetch_array($select_image)) {
+                $post_image = $row['post_image'];
             }
-         }
+        }
        
 
           $query = "UPDATE posts SET ";
@@ -73,14 +60,13 @@ else {
           $query .="post_image  = '{$post_image}' ";
           $query .= "WHERE post_id = {$the_post_id} ";
         
-        $update_post = mysqli_query($con,$query);
+        $update_post = mysqli_query($con, $query);
         
         confirmQuery($update_post);
         
         echo "<p class='bg-success'>Post Updated.  <a href='index.php?view_posts'>Edit More Posts</a></p>";
-      
     }
-?>
+    ?>
 
 
 
@@ -168,24 +154,21 @@ else {
                    <?php
 
                     $query = "SELECT * FROM categories ";
-                    $select_categories = mysqli_query($con,$query);
+                    $select_categories = mysqli_query($con, $query);
 
                     confirmQuery($select_categories);
 
-                    while($row = mysqli_fetch_assoc($select_categories )) {
+                    while ($row = mysqli_fetch_assoc($select_categories)) {
                         $cat_id = $row['cat_id'];
                         $cat_title = $row['cat_title'];
 
-                        if($cat_id == $post_cat_id) {
-
+                        if ($cat_id == $post_cat_id) {
                             echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
-
                         } else {
-
                             echo "<option value='{$cat_id}'>{$cat_title}</option>";
                         }
                     }
-                ?>
+                    ?>
 
             </select>
 
@@ -204,17 +187,13 @@ else {
           
           <?php
           
-          if($post_status == 'published' ) {          
-              
+            if ($post_status == 'published') {
                 echo "<option value='draft'>Draft</option>";
-          
-          } else {
-                  
+            } else {
                 echo "<option value='published'>Publish</option>";
-              
-          }
+            }
            
-        ?>
+            ?>
          </select>
            </div>
       </div>

@@ -2,15 +2,10 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 
 <div class="row"><!--  1 row Starts -->
@@ -75,35 +70,34 @@ else {
 
 <tbody>
 
-<?php
+    <?php
 
-$i = 0;
+    $i = 0;
 
-$get_pro = "select * from products where status='active'";
+    $get_pro = "select * from products where status='active'";
 
-$run_pro = mysqli_query($con,$get_pro);
+    $run_pro = mysqli_query($con, $get_pro);
 
-while($row_pro=mysqli_fetch_array($run_pro)){
-
-$pro_id = $row_pro['product_id'];
+    while ($row_pro=mysqli_fetch_array($run_pro)) {
+        $pro_id = $row_pro['product_id'];
     
-$pro_org = $row_pro['manufacturer_id'];    
+        $pro_org = $row_pro['manufacturer_id'];
     
-$pro_image = $row_pro['product_img1'];
+        $pro_image = $row_pro['product_img1'];
 
-$pro_title = $row_pro['product_title'];
+        $pro_title = $row_pro['product_title'];
 
-$pro_image = $row_pro['product_img1'];
+        $pro_image = $row_pro['product_img1'];
 
-$pro_kolicina = $row_pro['product_kolicina'];
+        $pro_kolicina = $row_pro['product_kolicina'];
 
-$pro_od = $row_pro['product_od'];
+        $pro_od = $row_pro['product_od'];
     
-$pro_do = $row_pro['product_do'];
+        $pro_do = $row_pro['product_do'];
 
-$i++;
+        $i++;
 
-?>
+        ?>
 
 <tr>
 
@@ -115,10 +109,10 @@ $i++;
 
 
 <td>
-    <?php
+        <?php
         $get_manufacturer = "select * from organizations where manufacturer_id='$pro_org'";
 
-        $run_manufacturer = mysqli_query($con,$get_manufacturer);
+        $run_manufacturer = mysqli_query($con, $get_manufacturer);
 
         $row_manfacturer = mysqli_fetch_array($run_manufacturer);
 
@@ -127,7 +121,7 @@ $i++;
         $manufacturer_title = $row_manfacturer['manufacturer_title'];
 
         echo $manufacturer_title;
-    ?>
+        ?>
 </td>
  
 <td> <?php echo $pro_kolicina; ?></td>
@@ -153,7 +147,7 @@ $i++;
 
 </tr>
 
-<?php } ?>
+    <?php } ?>
 
 
 </tbody>
@@ -202,35 +196,34 @@ $i++;
 
 <tbody>
 
-<?php
+    <?php
 
-$i = 0;
+    $i = 0;
 
-$get_pro = "select * from products where status != 'active'";
+    $get_pro = "select * from products where status != 'active'";
 
-$run_pro = mysqli_query($con,$get_pro);
+    $run_pro = mysqli_query($con, $get_pro);
 
-while($row_pro=mysqli_fetch_array($run_pro)){
-
-$pro_id = $row_pro['product_id'];
+    while ($row_pro=mysqli_fetch_array($run_pro)) {
+        $pro_id = $row_pro['product_id'];
     
-$pro_org = $row_pro['manufacturer_id'];    
+        $pro_org = $row_pro['manufacturer_id'];
     
-$pro_image = $row_pro['product_img1'];
+        $pro_image = $row_pro['product_img1'];
 
-$pro_title = $row_pro['product_title'];
+        $pro_title = $row_pro['product_title'];
 
-$pro_image = $row_pro['product_img1'];
+        $pro_image = $row_pro['product_img1'];
 
-$pro_kolicina = $row_pro['product_kolicina'];
+        $pro_kolicina = $row_pro['product_kolicina'];
 
-$pro_od = $row_pro['product_od'];
+        $pro_od = $row_pro['product_od'];
     
-$pro_do = $row_pro['product_do'];
+        $pro_do = $row_pro['product_do'];
 
-$i++;
+        $i++;
 
-?>
+        ?>
 
 <tr>
 
@@ -242,10 +235,10 @@ $i++;
 
 
 <td>
-    <?php
+        <?php
         $get_manufacturer = "select * from organizations where manufacturer_id='$pro_org'";
 
-        $run_manufacturer = mysqli_query($con,$get_manufacturer);
+        $run_manufacturer = mysqli_query($con, $get_manufacturer);
 
         $row_manfacturer = mysqli_fetch_array($run_manufacturer);
 
@@ -254,7 +247,7 @@ $i++;
         $manufacturer_title = $row_manfacturer['manufacturer_title'];
 
         echo $manufacturer_title;
-    ?>
+        ?>
 </td>
 
 <td> <?php echo $pro_kolicina; ?></td>
@@ -280,7 +273,7 @@ $i++;
 
 </tr>
 
-<?php } ?>
+    <?php } ?>
 
 
 </tbody>
@@ -304,33 +297,27 @@ $i++;
 
 
 
-<?php } 
+<?php }
 
 
 
-if(isset($_GET['archive'])){
-    
+if (isset($_GET['archive'])) {
     $the_id = $_GET['archive'];
     
 
     $query = "UPDATE products SET status = 'archive' WHERE product_id = $the_id   ";
     $approve_query = mysqli_query($con, $query);
     echo "<script>window.open('index.php?view_products','_self')</script>";
-    
-    
 }
 
 
 
-if(isset($_GET['active'])){
-    
+if (isset($_GET['active'])) {
     $the_id = $_GET['active'];
     
     $query = "UPDATE products SET status = 'active' WHERE product_id = $the_id   ";
     $unapprove_query = mysqli_query($con, $query);
-   echo "<script>window.open('index.php?view_products','_self')</script>";
-    
-    
+    echo "<script>window.open('index.php?view_products','_self')</script>";
 }
 
 

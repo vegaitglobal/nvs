@@ -1,16 +1,12 @@
 <?php
 
-if(!isset($_SESSION['manufacturer_email'])){
-
+if (!isset($_SESSION['manufacturer_email'])) {
     echo "<script>window.open('../org.php','_self')</script>";
-}
-
-else {
-
-$man_email=$_SESSION['manufacturer_email'];
-$man_id=$_SESSION['manufacturer_id'];
+} else {
+    $man_email=$_SESSION['manufacturer_email'];
+    $man_id=$_SESSION['manufacturer_id'];
     
-?>
+    ?>
     <div class="row"><!-- 1 row Starts -->
 
     <div class="col-lg-12"><!-- col-lg-12 Starts -->
@@ -182,49 +178,45 @@ $man_id=$_SESSION['manufacturer_id'];
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
+        $p_cat_title = escape($_POST['p_cat_title']);
 
-    $p_cat_title = escape($_POST['p_cat_title']);
+        $p_cat_opis = escape($_POST['p_cat_opis']);
 
-    $p_cat_opis = escape($_POST['p_cat_opis']);
+        $p_cat_top = "no";
 
-    $p_cat_top = "no";
+        $p_cat_image = $_FILES['p_cat_image']['name'];
 
-    $p_cat_image = $_FILES['p_cat_image']['name'];
+        $temp_name = $_FILES['p_cat_image']['tmp_name'];
 
-    $temp_name = $_FILES['p_cat_image']['tmp_name'];
+        $p_cat_lokacija = escape($_POST['p_cat_lokacija']);
 
-    $p_cat_lokacija = escape($_POST['p_cat_lokacija']);
+        $p_cat_od = $_POST['p_cat_od'];
 
-    $p_cat_od = $_POST['p_cat_od'];
+        $p_cat_do = $_POST['p_cat_do'];
 
-    $p_cat_do = $_POST['p_cat_do'];
+        $p_cat_hrana = $_POST['p_cat_hrana'];
 
-    $p_cat_hrana = $_POST['p_cat_hrana'];
+        $p_cat_smestaj = $_POST['p_cat_smestaj'];
 
-    $p_cat_smestaj = $_POST['p_cat_smestaj'];
-
-    $p_man_id = $man_id;
+        $p_man_id = $man_id;
 
 
-    $insert_p_cat = "insert into product_categories (p_cat_title,p_cat_opis,p_cat_top,p_cat_image,p_cat_lokacija,p_cat_od,p_cat_do,p_cat_hrana,p_cat_smestaj,p_man_id) values ('$p_cat_title','$p_cat_opis','$p_cat_top','$p_cat_image','$p_cat_lokacija','$p_cat_od','$p_cat_do','$p_cat_hrana','$p_cat_smestaj','$p_man_id')";
+        $insert_p_cat = "insert into product_categories (p_cat_title,p_cat_opis,p_cat_top,p_cat_image,p_cat_lokacija,p_cat_od,p_cat_do,p_cat_hrana,p_cat_smestaj,p_man_id) values ('$p_cat_title','$p_cat_opis','$p_cat_top','$p_cat_image','$p_cat_lokacija','$p_cat_od','$p_cat_do','$p_cat_hrana','$p_cat_smestaj','$p_man_id')";
 
-    $run_p_cat = mysqli_query($con,$insert_p_cat);
+        $run_p_cat = mysqli_query($con, $insert_p_cat);
 
-        if($run_p_cat){
-            
-            move_uploaded_file($temp_name,"../admin_area/other_images/$p_cat_image");
+        if ($run_p_cat) {
+            move_uploaded_file($temp_name, "../admin_area/other_images/$p_cat_image");
 
             echo "<script>alert('Nov program je unet')</script>";
 
             echo "<script>window.open('index.php?view_p_cats','_self')</script>";
-
         }
+    }
 
-}
-
-?>
+    ?>
 <?php } ?>
 

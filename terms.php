@@ -61,21 +61,20 @@ include("functions/functions.php");
 
 $get_terms = "select * from terms LIMIT 0,1";
 
-$run_terms = mysqli_query($con,$get_terms);
+$run_terms = mysqli_query($con, $get_terms);
 
-while($row_terms = mysqli_fetch_array($run_terms)){ 
+while ($row_terms = mysqli_fetch_array($run_terms)) {
+    $term_title = $row_terms['term_title'];
 
-$term_title = $row_terms['term_title'];
+    $term_link = $row_terms['term_link'];
 
-$term_link = $row_terms['term_link'];
-
-?>
+    ?>
 
 <li class="active">
 
 <a data-toggle="pill" href="#<?php echo $term_link; ?>">
 
-<?php echo $term_title; ?>
+    <?php echo $term_title; ?>
 
 </a>
 
@@ -87,27 +86,26 @@ $term_link = $row_terms['term_link'];
 
 $count_terms = "select * from terms";
 
-$run_count = mysqli_query($con,$count_terms);
+$run_count = mysqli_query($con, $count_terms);
 
 $count = mysqli_num_rows($run_count);
 
 $get_terms = "select * from terms LIMIT 1,$count";
 
-$run_terms = mysqli_query($con,$get_terms);
+$run_terms = mysqli_query($con, $get_terms);
 
-while($row_terms = mysqli_fetch_array($run_terms)){
+while ($row_terms = mysqli_fetch_array($run_terms)) {
+    $term_title = $row_terms['term_title'];
 
-$term_title = $row_terms['term_title'];
+    $term_link = $row_terms['term_link'];
 
-$term_link = $row_terms['term_link'];
-
-?>
+    ?>
 
 <li>
 
 <a data-toggle="pill" href="#<?php echo $term_link; ?>">
 
-<?php echo $term_title; ?>
+    <?php echo $term_title; ?>
 
 </a>
 
@@ -131,17 +129,16 @@ $term_link = $row_terms['term_link'];
 
 $get_terms = "select * from terms LIMIT 0,1";
 
-$run_terms = mysqli_query($con,$get_terms);
+$run_terms = mysqli_query($con, $get_terms);
 
-while($row_terms = mysqli_fetch_array($run_terms)){
+while ($row_terms = mysqli_fetch_array($run_terms)) {
+    $term_title = $row_terms['term_title'];
 
-$term_title = $row_terms['term_title'];
+    $term_desc = $row_terms['term_desc'];
 
-$term_desc = $row_terms['term_desc'];
+    $term_link = $row_terms['term_link'];
 
-$term_link = $row_terms['term_link'];
-
-?>
+    ?>
 
 <div id="<?php echo $term_link; ?>" class="tab-pane fade in active" ><!-- tab-pane fade in active Starts -->
 
@@ -158,23 +155,22 @@ $term_link = $row_terms['term_link'];
 
 $count_terms = "select * from terms";
 
-$run_count = mysqli_query($con,$count_terms);
+$run_count = mysqli_query($con, $count_terms);
 
 $count = mysqli_num_rows($run_count);
 
 $get_terms = "select * from terms LIMIT 1,$count";
 
-$run_terms = mysqli_query($con,$get_terms);
+$run_terms = mysqli_query($con, $get_terms);
 
-while($row_terms = mysqli_fetch_array($run_terms)){
+while ($row_terms = mysqli_fetch_array($run_terms)) {
+    $term_title = $row_terms['term_title'];
 
-$term_title = $row_terms['term_title'];
+    $term_desc = $row_terms['term_desc'];
 
-$term_desc = $row_terms['term_desc'];
+    $term_link = $row_terms['term_link'];
 
-$term_link = $row_terms['term_link'];
-
-?>
+    ?>
 
 <div id="<?php echo $term_link; ?>" class="tab-pane fade in"><!-- tab-pane fade in Starts -->
 

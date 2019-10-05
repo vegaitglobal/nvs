@@ -1,16 +1,10 @@
 <?php
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 
 <div class="row" ><!-- 1 row Starts -->
@@ -71,23 +65,22 @@ else {
 
 <tbody><!-- tbody Starts -->
 
-<?php
+    <?php
 
-$i = 0;
+    $i = 0;
 
-$get_enquiry_types = "select * from enquiry_types";
+    $get_enquiry_types = "select * from enquiry_types";
 
-$run_enquiry_types = mysqli_query($con,$get_enquiry_types);
+    $run_enquiry_types = mysqli_query($con, $get_enquiry_types);
 
-while($row_enquiry_types = mysqli_fetch_array($run_enquiry_types)){
+    while ($row_enquiry_types = mysqli_fetch_array($run_enquiry_types)) {
+        $enquiry_id = $row_enquiry_types['enquiry_id'];
 
-$enquiry_id = $row_enquiry_types['enquiry_id'];
+        $enquiry_title = $row_enquiry_types['enquiry_title'];
 
-$enquiry_title = $row_enquiry_types['enquiry_title'];
+        $i++;
 
-$i++;
-
-?>
+        ?>
 
 <tr>
 
@@ -119,7 +112,7 @@ $i++;
 
 </tr>
 
-<?php } ?>
+    <?php } ?>
 
 </tbody><!-- tbody Ends -->
 

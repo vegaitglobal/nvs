@@ -19,15 +19,10 @@
 <li>
 <?php
 
-if(!isset($_SESSION['manufacturer_email'])){
-
-echo "<a href='../org.php' >My Account</a>";
-
-}
-else{
-
-echo "<a href='index.php?my_wishlist'>My Account</a>";
-
+if (!isset($_SESSION['manufacturer_email'])) {
+    echo "<a href='../org.php' >My Account</a>";
+} else {
+    echo "<a href='index.php?my_wishlist'>My Account</a>";
 }
 
 
@@ -46,15 +41,10 @@ echo "<a href='index.php?my_wishlist'>My Account</a>";
 <li>
 <?php
 
-if(!isset($_SESSION['manufacturer_email'])){
-
-echo "<a href='../org.php' >Login</a>";
-
-}
-else{
-
-echo "<a href='index.php?my_wishlist'>My Account</a>";
-
+if (!isset($_SESSION['manufacturer_email'])) {
+    echo "<a href='../org.php' >Login</a>";
+} else {
+    echo "<a href='index.php?my_wishlist'>My Account</a>";
 }
 
 
@@ -82,16 +72,14 @@ echo "<a href='index.php?my_wishlist'>My Account</a>";
 
 $get_p_cats = "select * from product_categories";
 
-$run_p_cats = mysqli_query($con,$get_p_cats);
+$run_p_cats = mysqli_query($con, $get_p_cats);
 
-while($row_p_cats = mysqli_fetch_array($run_p_cats)){
+while ($row_p_cats = mysqli_fetch_array($run_p_cats)) {
+    $p_cat_id = $row_p_cats['p_cat_id'];
 
-$p_cat_id = $row_p_cats['p_cat_id'];
+    $p_cat_title = $row_p_cats['p_cat_title'];
 
-$p_cat_title = $row_p_cats['p_cat_title'];
-
-echo "<li> <a href='shop.php?p_cat=$p_cat_id'> $p_cat_title </a> </li>";
-
+    echo "<li> <a href='shop.php?p_cat=$p_cat_id'> $p_cat_title </a> </li>";
 }
 
 ?>

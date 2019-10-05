@@ -2,15 +2,10 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row" ><!-- 1 row Starts -->
 
@@ -70,26 +65,25 @@ else {
 
 <tbody><!-- tbody Starts -->
 
-<?php 
+    <?php
 
-$i=0;
+    $i=0;
 
-$get_cats = "select * from categories";
+    $get_cats = "select * from categories";
 
-$run_cats = mysqli_query($con,$get_cats);
+    $run_cats = mysqli_query($con, $get_cats);
 
-while($row_cats = mysqli_fetch_array($run_cats)){
+    while ($row_cats = mysqli_fetch_array($run_cats)) {
+        $cat_id = $row_cats['cat_id'];
 
-$cat_id = $row_cats['cat_id'];
-
-$cat_title = $row_cats['cat_title'];
-
-
-$i++;
+        $cat_title = $row_cats['cat_title'];
 
 
+        $i++;
 
-?>
+
+
+        ?>
 
 <tr>
 
@@ -121,7 +115,7 @@ $i++;
 </tr>
 
 
-<?php } ?>
+    <?php } ?>
 
 </tbody><!-- tbody Ends -->
 

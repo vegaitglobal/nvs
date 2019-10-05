@@ -2,40 +2,31 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
-echo "<script>window.open('login.php','_self')</script>";
+    <?php
 
-}
+    if (isset($_GET['delete_bundle'])) {
+        $delete_id = $_GET['delete_bundle'];
 
-else {
+        $delete_pro = "delete from products where product_id='$delete_id'";
 
-?>
+        $run_delete = mysqli_query($con, $delete_pro);
 
-<?php
+        $delete_rel = "delete from bundle_product_relation where bundle_id='$delete_id'";
 
-if(isset($_GET['delete_bundle'])){
+        $run_rel = mysqli_query($con, $delete_rel);
 
-$delete_id = $_GET['delete_bundle'];
+        if ($run_rel) {
+            echo "<script>alert('One Bundle Has been deleted')</script>";
 
-$delete_pro = "delete from products where product_id='$delete_id'";
+            echo "<script>window.open('index.php?view_bundles','_self')</script>";
+        }
+    }
 
-$run_delete = mysqli_query($con,$delete_pro);
+    ?>
 
-$delete_rel = "delete from bundle_product_relation where bundle_id='$delete_id'";
-
-$run_rel = mysqli_query($con,$delete_rel);
-
-if($run_rel){
-
-echo "<script>alert('One Bundle Has been deleted')</script>";
-
-echo "<script>window.open('index.php?view_bundles','_self')</script>";
-
-}
-
-}
-
-?>
-
-<?php } ?>
+<?php }

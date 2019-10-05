@@ -18,13 +18,13 @@ footer {
 @supports (display: grid) {
     main{
         max-width: none;
-        margin: 0; 
-        padding: 0px 20px; 
+        margin: 0;
+        padding: 0px 20px;
         
     }
     footer{
         max-width: none;
-        margin: 0; 
+        margin: 0;
         padding: 0px 20px;}
       
     article {
@@ -34,7 +34,7 @@ footer {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(170px, 280px));
         grid-gap: 15px;
-        justify-items: center;        
+        justify-items: center;
     }
        footer{
         display: grid;
@@ -45,7 +45,7 @@ footer {
 
 article {
     display: flex;
-    flex-flow: column; 
+    flex-flow: column;
     padding:15px;}
 
 article > img {
@@ -75,7 +75,7 @@ article {
 */
 
 
-.card--link {    
+.card--link {
     margin: 0px auto;
     margin-top: auto;
 }
@@ -104,9 +104,9 @@ hr {
     width: 100%;
 }
 .footer_links {
-	color:#F78715 !important;
+    color:#F78715 !important;
      padding: 10px 0 0 15px;
-    text-shadow:  1px 1px 0 #000;   
+    text-shadow:  1px 1px 0 #000;
    }
 
 .social-links img{
@@ -115,18 +115,18 @@ hr {
 }
 
 article .carddeck--title,
-	article .carddeck--number {
-		font-size: 1.5em;
-		line-height: 1em;
-	    padding: 1em 0;
-	    text-transform: uppercase;
-	    font-weight: bold;
+    article .carddeck--number {
+        font-size: 1.5em;
+        line-height: 1em;
+        padding: 1em 0;
+        text-transform: uppercase;
+        font-weight: bold;
         text-align: center;
-	}
+    }
 
-article .card--title {	
+article .card--title {
         text-align: center;
-	}
+    }
  .card{
         box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
 }
@@ -137,7 +137,7 @@ article .card--title {
             max-width: none;
             margin: 0; }
           article {
-            margin: 0;    
+            margin: 0;
             justify-content: center;
             align-items: center;
               width: 100%;

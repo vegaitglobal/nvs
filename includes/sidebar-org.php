@@ -7,18 +7,12 @@ $aPCat = array();
 
 /// Products Categories Code Starts ///
 
-if(isset($_REQUEST['m_org'])&&is_array($_REQUEST['m_org'])){
-
-    foreach($_REQUEST['m_org'] as $sKey=>$sVal){
-
-        if((int)$sVal!=0){
-
+if (isset($_REQUEST['m_org'])&&is_array($_REQUEST['m_org'])) {
+    foreach ($_REQUEST['m_org'] as $sKey => $sVal) {
+        if ((int)$sVal!=0) {
             $aPCat[(int)$sVal] = (int)$sVal;
-
         }
-
     }
-
 }
 
 /// Products Categories Code Ends ///
@@ -44,14 +38,10 @@ if(isset($_REQUEST['m_org'])&&is_array($_REQUEST['m_org'])){
 <div class="panel-body"><!-- panel-body Starts -->
 
  
-    <?php 
-        if(!isset($_SESSION['manufacturer_email'])){
-
-            include("organization/customer_login.php");
-
-
-        }else{
-          
+    <?php
+    if (!isset($_SESSION['manufacturer_email'])) {
+        include("organization/customer_login.php");
+    } else {
         ?>
              
              <h4>Prijavljeni ste kao <?php echo $_SESSION['manufacturer_email'] ?></h4>
@@ -60,7 +50,7 @@ if(isset($_REQUEST['m_org'])&&is_array($_REQUEST['m_org'])){
 
              <a href="organization/index.php" class="btn btn-primary">Admin</a>
 
-       <?php } ?>
+    <?php } ?>
     
  
 
@@ -115,10 +105,9 @@ if(isset($_REQUEST['m_org'])&&is_array($_REQUEST['m_org'])){
 
     $get_orgs = "select DISTINCT manufacturer_mesto from organizations  ";
 
-    $run_orgs = mysqli_query($con,$get_orgs);
+    $run_orgs = mysqli_query($con, $get_orgs);
 
-    while($row_orgs = mysqli_fetch_array($run_orgs)){
-
+    while ($row_orgs = mysqli_fetch_array($run_orgs)) {
         $m_org = $row_orgs['manufacturer_mesto'];
         $m_img="";
         echo "
@@ -131,7 +120,9 @@ if(isset($_REQUEST['m_org'])&&is_array($_REQUEST['m_org'])){
 
                 <input ";
 
-                if(isset($aPCat[$m_org])){ echo "checked='checked'"; }
+        if (isset($aPCat[$m_org])) {
+            echo "checked='checked'";
+        }
 
                 echo " type='checkbox' value='$m_org' name='m_org' class='get_m_org' id='m_org' >
 
@@ -147,8 +138,6 @@ if(isset($_REQUEST['m_org'])&&is_array($_REQUEST['m_org'])){
         </li>
 
         ";
-
-
     }
 
     

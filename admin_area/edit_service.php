@@ -1,44 +1,34 @@
 <?php
 
 
-if(!isset($_SESSION['admin_email'])){
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    if (isset($_GET['edit_service'])) {
+        $edit_id = $_GET['edit_service'];
 
-echo "<script>window.open('login.php','_self')</script>";
+        $get_services = "select * from services where service_id='$edit_id'";
 
-}
+        $run_services = mysqli_query($con, $get_services);
 
-else {
+        $row_services = mysqli_fetch_array($run_services);
 
+        $service_id = $row_services['service_id'];
 
+        $service_title = $row_services['service_title'];
 
-if(isset($_GET['edit_service'])){
+        $service_image = $row_services['service_image'];
 
-$edit_id = $_GET['edit_service'];
+        $service_desc = $row_services['service_desc'];
 
-$get_services = "select * from services where service_id='$edit_id'";
+        $service_button = $row_services['service_button'];
 
-$run_services = mysqli_query($con,$get_services);
+        $service_url = $row_services['service_url'];
 
-$row_services = mysqli_fetch_array($run_services);
+        $new_s_image = $row_services['service_image'];
+    }
 
-$service_id = $row_services['service_id'];
-
-$service_title = $row_services['service_title'];
-
-$service_image = $row_services['service_image'];
-
-$service_desc = $row_services['service_desc'];
-
-$service_button = $row_services['service_button'];
-
-$service_url = $row_services['service_url'];
-
-$new_s_image = $row_services['service_image'];
-
-
-}
-
-?>  
+    ?>  
 
 <div class="row" ><!-- 1 row Starts -->
 
@@ -117,7 +107,7 @@ $new_s_image = $row_services['service_image'];
 
 <textarea name="service_desc" class="form-control" id="content" rows="10" cols="19">
 
-<?php echo $service_desc; ?>
+    <?php echo $service_desc; ?>
 
 </textarea>
 
@@ -173,52 +163,45 @@ $new_s_image = $row_services['service_image'];
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['update'])){
+    if (isset($_POST['update'])) {
+        $service_title = escape($_POST['service_title']);
 
-    $service_title = escape($_POST['service_title']);
+        $service_desc = $_POST['service_desc'];
 
-    $service_desc = $_POST['service_desc'];
+        $service_button = escape($_POST['service_button']);
 
-    $service_button = escape($_POST['service_button']);
+        $service_url = filter_var($_POST['service_url'], FILTER_SANITIZE_URL);
 
-    $service_url = filter_var($_POST['service_url'], FILTER_SANITIZE_URL);
+        $service_image = $_FILES['service_image']['name'];
 
-    $service_image = $_FILES['service_image']['name'];
+        $tmp_image = $_FILES['service_image']['tmp_name'];
 
-    $tmp_image = $_FILES['service_image']['tmp_name'];
+        if (empty($service_image)) {
+            $service_image = $new_s_image;
+        } else {
+            $file="services_images" ."/". $new_s_image;
 
-    if(empty($service_image)){
+            if (file_exists($file)) {
+                  unlink($file);
+            }
+        }
 
-        $service_image = $new_s_image;
+   
+        $update_services = "update services set service_title='$service_title',service_image='$service_image',service_desc='$service_desc',service_button='$service_button',service_url='$service_url' where service_id='$service_id'";
 
-    }else{
+        $run_services = mysqli_query($con, $update_services);
 
-     $file="services_images" ."/". $new_s_image;
+        if ($run_services) {
+             move_uploaded_file($tmp_image, "services_images/$service_image");
 
-     if (file_exists($file)) {
-            unlink($file);
+            echo "<script>alert('One Service Column Has Been Updated')</script>";
+
+            echo "<script>window.open('index.php?view_services','_self')</script>";
         }
     }
 
-   
-    $update_services = "update services set service_title='$service_title',service_image='$service_image',service_desc='$service_desc',service_button='$service_button',service_url='$service_url' where service_id='$service_id'";
-
-    $run_services = mysqli_query($con,$update_services);
-
-    if($run_services){
-        
-         move_uploaded_file($tmp_image,"services_images/$service_image");
-
-        echo "<script>alert('One Service Column Has Been Updated')</script>";
-
-        echo "<script>window.open('index.php?view_services','_self')</script>";
-
-    }
-
-}
-
-?>
+    ?>
 
 <?php } ?>

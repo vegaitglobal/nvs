@@ -2,15 +2,10 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -48,21 +43,20 @@ else {
 
 <div class="panel-body"><!-- panel-body Starts -->
 
-<?php
+    <?php
 
-$get_terms = "select * from terms";
+    $get_terms = "select * from terms";
 
-$run_terms = mysqli_query($con,$get_terms);
+    $run_terms = mysqli_query($con, $get_terms);
 
-while($row_terms = mysqli_fetch_array($run_terms)){
+    while ($row_terms = mysqli_fetch_array($run_terms)) {
+        $term_id = $row_terms['term_id'];
 
-$term_id = $row_terms['term_id'];
+        $term_title = $row_terms['term_title'];
 
-$term_title = $row_terms['term_title'];
+        $term_desc = substr($row_terms['term_desc'], 0, 400);
 
-$term_desc = substr($row_terms['term_desc'],0,400);
-
-?>
+        ?>
 
 <div class="col-lg-4 col-md-4"><!-- col-lg-4 col-md-4 Starts -->
 
@@ -72,7 +66,7 @@ $term_desc = substr($row_terms['term_desc'],0,400);
 
 <h3 class="panel-title" align="center"><!-- panel-title Starts -->
 
-<?php echo $term_title; ?>
+        <?php echo $term_title; ?>
 
 </h3><!-- panel-title Ends -->
 
@@ -80,7 +74,7 @@ $term_desc = substr($row_terms['term_desc'],0,400);
 
 <div class="panel-body"><!-- panel-body Starts -->
 
-<?php echo $term_desc; ?>
+        <?php echo $term_desc; ?>
 
 </div><!-- panel-body Ends -->
 
@@ -108,7 +102,7 @@ $term_desc = substr($row_terms['term_desc'],0,400);
 
 </div><!-- col-lg-4 col-md-4 Ends -->
 
-<?php } ?>
+    <?php } ?>
 
 </div><!-- panel-body Ends -->
 

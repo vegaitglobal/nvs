@@ -47,9 +47,9 @@ include("functions/functions.php");
     <?php
         $get_sliders = "select * from slider";
 
-        $run_sliders = mysqli_query($con,$get_sliders);
+        $run_sliders = mysqli_query($con, $get_sliders);
 
-          $od = array(               
+          $od = array(
                 "#75AAD6",
                 "#87B787",
                 "rgba(255, 250, 230, 1)",
@@ -58,7 +58,7 @@ include("functions/functions.php");
                 "#BC8F8D"
             );
             
-            $do = array(             
+            $do = array(
                 "#0275D3",
                 "#10B510",
                 "rgba(247, 135, 21, 1)",
@@ -67,10 +67,10 @@ include("functions/functions.php");
                 "#BA0F09"
             );
 
-        $i = 0;
+            $i = 0;
 
-        while($sliders_section=mysqli_fetch_array($run_sliders)){ 
-     ?>  
+            while ($sliders_section=mysqli_fetch_array($run_sliders)) {
+                ?>  
         #accounts .display.features #features_block .feature .overlay_<?php echo $i; ?> {
              position: absolute;
             top: 0;
@@ -83,8 +83,11 @@ include("functions/functions.php");
             height: 100%;                              
           
           }
-            <?php $i = $i+1; if($i>5){$i=0;}  ?>
-        <?php } ?>    
+                <?php $i = $i+1;
+                if ($i>5) {
+                    $i=0;
+                }  ?>
+            <?php } ?>    
             
  
 
@@ -305,14 +308,11 @@ include("functions/functions.php");
                             
                                 <?php
 
-                                    if(!isset($_SESSION['customer_email'])){
-
-                                        echo "<a class='button' href='checkout.php' >Prijava</a>";
-                                        
-                                    } else {
-
-                                        echo "<a class='button' href='customer/index.php?my_wishlist'>Moj nalog</a>";
-                                    }
+                                if (!isset($_SESSION['customer_email'])) {
+                                    echo "<a class='button' href='checkout.php' >Prijava</a>";
+                                } else {
+                                    echo "<a class='button' href='customer/index.php?my_wishlist'>Moj nalog</a>";
+                                }
 
                                 ?>
                             
@@ -343,18 +343,15 @@ include("functions/functions.php");
                                 <div id="mobile-account-links">
                                     
                                     <div class="account-buttons-top">
-                                          <?php
+                                            <?php
 
-                                            if(!isset($_SESSION['customer_email'])){
-
+                                            if (!isset($_SESSION['customer_email'])) {
                                                 echo "<a class='button' href='checkout.php' >Prijava</a>";
-
                                             } else {
-
                                                 echo "<a class='button' href='customer/index.php?my_wishlist'>Moj nalog</a>";
                                             }
 
-                                        ?>
+                                            ?>
                                     </div>
                                 </div>
                             </div>
@@ -531,12 +528,11 @@ include("functions/functions.php");
 
                                                         $get_slides = "select * from slider";
 
-                                                        $run_slides = mysqli_query($con,$get_slides);
+                                                        $run_slides = mysqli_query($con, $get_slides);
                                                         
                                                         $i=0;
                                                         
-                                                        while($row_slides = mysqli_fetch_array($run_slides)) {
-
+                                                        while ($row_slides = mysqli_fetch_array($run_slides)) {
                                                             $slide_name = $row_slides['slide_name'];
 
                                                             $slide_image = $row_slides['slide_image'];
@@ -552,12 +548,14 @@ include("functions/functions.php");
                                                             echo "<h3><a href='$slide_url'>$slide_name</a></h3>";
                                                             echo "<a href='$slide_url' class='learnMore'>Saznajte više</a>";
                                                             echo "</div>";
-                                                            echo "</div>";                                                            
+                                                            echo "</div>";
                                                             echo "</li>";
-                                                            $i = $i+1; 
-                                                            if($i>5){$i=0;} 
+                                                            $i = $i+1;
+                                                            if ($i>5) {
+                                                                $i=0;
+                                                            }
                                                         }
-                                                    ?>
+                                                        ?>
 
                                                     </ul>
                                                 </div><a href="#" class="jcarousel-control-prev">&lsaquo;</a><a href="#" class="jcarousel-control-next">&rsaquo;</a>
@@ -652,7 +650,7 @@ include("functions/functions.php");
 
                                 $get_boxes = "select * from boxes_section";
 
-                                $run_boxes = mysqli_query($con,$get_boxes);
+                                $run_boxes = mysqli_query($con, $get_boxes);
 
                                 $boja = array(
                                         "224,158,147",
@@ -665,8 +663,7 @@ include("functions/functions.php");
 
                                 $i = 0;
 
-                                while($run_boxes_section=mysqli_fetch_array($run_boxes)){
-
+                                while ($run_boxes_section=mysqli_fetch_array($run_boxes)) {
                                     $box_id = $run_boxes_section['box_id'];
 
                                     $box_title = $run_boxes_section['box_title'];
@@ -692,7 +689,10 @@ include("functions/functions.php");
                                 </article>
 
 
-                                <?php $i = $i+1; if($i>5){$i=0;}  ?>
+                                    <?php $i = $i+1;
+                                    if ($i>5) {
+                                        $i=0;
+                                    }  ?>
                                 <?php } ?>
 
                             </main><!-- custom content -->
@@ -721,15 +721,14 @@ include("functions/functions.php");
                 <hr>
 
                 <h4>Korisnički kutak</h4>
-                 <?php
+                    <?php
 
-                    if(!isset($_SESSION['customer_email'])){
-                    echo "<a class= 'footer_links' href='checkout.php' >Prijava</a>";
+                    if (!isset($_SESSION['customer_email'])) {
+                        echo "<a class= 'footer_links' href='checkout.php' >Prijava</a>";
+                    } else {
+                        echo "<a class= 'footer_links' href='customer/index.php?my_wishlist'>Moj nalog</a>";
                     }
-                    else{
-                    echo "<a class= 'footer_links' href='customer/index.php?my_wishlist'>Moj nalog</a>";
-                    }
-                ?>
+                    ?>
 
                 <a class= "footer_links" href="customer_register.php">Registracija</a>
                  <a class= "footer_links" href="terms.php">Uslovi i pravila </a>

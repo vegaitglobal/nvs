@@ -2,18 +2,10 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -257,27 +249,26 @@ else {
 
 <tbody><!-- tbody Starts -->
 
-<?php
+    <?php
 
-$i = 0;
+    $i = 0;
 
-$get_wishlist = "select * from wishlist order by datum DESC LIMIT 0,5";
+    $get_wishlist = "select * from wishlist order by datum DESC LIMIT 0,5";
 
-$run_wishlist = mysqli_query($con,$get_wishlist);
+    $run_wishlist = mysqli_query($con, $get_wishlist);
 
-while($row_wishlist = mysqli_fetch_array($run_wishlist)){
+    while ($row_wishlist = mysqli_fetch_array($run_wishlist)) {
+        $wishlist_id = $row_wishlist['wishlist_id'];
 
-    $wishlist_id = $row_wishlist['wishlist_id'];
+        $status = $row_wishlist['status'];
 
-    $status = $row_wishlist['status'];
+        $product_id = $row_wishlist['product_id'];
 
-    $product_id = $row_wishlist['product_id'];
+        $get_products = "select * from products where product_id='$product_id'";
 
-    $get_products = "select * from products where product_id='$product_id'";
+        $run_products = mysqli_query($con, $get_products);
 
-    $run_products = mysqli_query($con,$get_products);
-
-    $row_products = mysqli_fetch_array($run_products);
+        $row_products = mysqli_fetch_array($run_products);
 
         $product_title = $row_products['product_title'];
 
@@ -287,9 +278,9 @@ while($row_wishlist = mysqli_fetch_array($run_wishlist)){
 
         $c_id = $row_wishlist['customer_id'];
 
-    $i++;
+        $i++;
 
-    ?>      
+        ?>      
 
 
     <tr>
@@ -297,13 +288,13 @@ while($row_wishlist = mysqli_fetch_array($run_wishlist)){
     <td><?php echo $i; ?></td>
 
     <td>
-    <?php
+        <?php
 
-    $get_customer = "select * from volunteers where customer_id='$c_id'";
-    $run_customer = mysqli_query($con,$get_customer);
-    $row_customer = mysqli_fetch_array($run_customer);
-    $customer_email = $row_customer['customer_email'];
-     ?>
+        $get_customer = "select * from volunteers where customer_id='$c_id'";
+        $run_customer = mysqli_query($con, $get_customer);
+        $row_customer = mysqli_fetch_array($run_customer);
+        $customer_email = $row_customer['customer_email'];
+        ?>
     <a href="index.php?edit_volunteers=<?php echo $c_id; ?>" > <?php echo $customer_email;?> </a>
    
     
@@ -317,7 +308,7 @@ while($row_wishlist = mysqli_fetch_array($run_wishlist)){
 
     </tr>
 
-<?php } ?>
+    <?php } ?>
 
 </tbody><!-- tbody Ends -->
 
@@ -374,28 +365,27 @@ Pogledaj i ostale <i class="fa fa-arrow-circle-right" ></i>
 
 <tbody><!-- tbody Starts -->
 
-<?php
+    <?php
 
-$i = 0;
+    $i = 0;
 
-$get_list = "select * from organizations order by date DESC LIMIT 0,5";
+    $get_list = "select * from organizations order by date DESC LIMIT 0,5";
 
-$run_list = mysqli_query($con,$get_list);
+    $run_list = mysqli_query($con, $get_list);
 
-while($row_list = mysqli_fetch_array($run_list)){
+    while ($row_list = mysqli_fetch_array($run_list)) {
+        $list_id = $row_list['manufacturer_id'];
 
-    $list_id = $row_list['manufacturer_id'];
-
-    $list_title = $row_list['manufacturer_title_full'];
+        $list_title = $row_list['manufacturer_title_full'];
     
-    $list_mesto = $row_list['manufacturer_mesto'];
+        $list_mesto = $row_list['manufacturer_mesto'];
     
-    $list_email = $row_list['manufacturer_email'];
+        $list_email = $row_list['manufacturer_email'];
  
 
-    $i++;
+        $i++;
 
-    ?>      
+        ?>      
 
 
     <tr>
@@ -414,7 +404,7 @@ while($row_list = mysqli_fetch_array($run_list)){
 
     </tr>
 
-<?php } ?>
+    <?php } ?>
 
 </tbody><!-- tbody Ends -->
 
@@ -451,12 +441,12 @@ Pogledaj i ostale <i class="fa fa-arrow-circle-right" ></i>
 
     <div class="thumb-info mb-md"><!-- thumb-info mb-md Starts -->
 
-        <img src="admin_images/<?php if ($admin_image==""){
+        <img src="admin_images/<?php if ($admin_image=="") {
                 echo "slika.jpg";
-            } else {
-                echo $admin_image;
-            }
-           ?>  " class="rounded img-responsive">
+                               } else {
+                                   echo $admin_image;
+                               }
+                                ?>  " class="rounded img-responsive">
         <div class="thumb-info-title"><!-- thumb-info-title Starts -->
 
             <span class="thumb-info-inner"> <?php echo $admin_name; ?> </span>

@@ -2,15 +2,10 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -69,27 +64,26 @@ else {
 
 <tbody><!-- tbody Starts -->
 
-<?php
+    <?php
 
-$i = 0;
+    $i = 0;
 
-$get_organizations = "select * from organizations";
+    $get_organizations = "select * from organizations";
 
-$run_organizations = mysqli_query($con,$get_organizations);
+    $run_organizations = mysqli_query($con, $get_organizations);
 
-while($row_organizations = mysqli_fetch_array($run_organizations)){
+    while ($row_organizations = mysqli_fetch_array($run_organizations)) {
+        $manufacturer_id = $row_organizations['manufacturer_id'];
 
-$manufacturer_id = $row_organizations['manufacturer_id'];
+        $manufacturer_title_full = $row_organizations['manufacturer_title_full'];
 
-$manufacturer_title_full = $row_organizations['manufacturer_title_full'];
-
-$manufacturer_mesto = $row_organizations['manufacturer_mesto'];
+        $manufacturer_mesto = $row_organizations['manufacturer_mesto'];
     
-$manufacturer_adresa = $row_organizations['manufacturer_adresa'];
+        $manufacturer_adresa = $row_organizations['manufacturer_adresa'];
 
-$i++;
+        $i++;
 
-?>
+        ?>
 
 <tr>
 
@@ -121,7 +115,7 @@ $i++;
 
 </tr>
 
-<?php } ?>
+    <?php } ?>
 
 </tbody><!-- tbody Ends -->
 

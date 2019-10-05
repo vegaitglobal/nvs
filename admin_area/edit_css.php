@@ -1,26 +1,19 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
-echo "<script>window.open('login.php','_self')</script>";
+    <?php
 
-}
+    $file = "../styles/style.css";
 
-else {
+    if (file_exists($file)) {
+        $data = file_get_contents($file);
+    }
 
-?>
-
-<?php
-
-$file = "../styles/style.css";
-
-if(file_exists($file)){
-
-$data = file_get_contents($file);
-
-}
-
-?>
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -66,7 +59,7 @@ $data = file_get_contents($file);
 <div class="col-md-12">
 
 <textarea class="form-control" name="newdata" rows="25">
-<?php echo $data; ?>
+    <?php echo $data; ?>
 </textarea>
 
 </div>
@@ -96,24 +89,22 @@ $data = file_get_contents($file);
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['update'])){
+    if (isset($_POST['update'])) {
+        $newdata = $_POST['newdata'];
 
-$newdata = $_POST['newdata'];
+        $handle = fopen($file, "w");
 
-$handle = fopen($file, "w");
+        fwrite($handle, $newdata);
 
-fwrite($handle, $newdata);
+        fclose($handle);
 
-fclose($handle);
+        echo "<script>alert('css File Has Been Updated')</script>";
 
-echo "<script>alert('css File Has Been Updated')</script>";
+        echo "<script>window.open('index.php?edit_css','_self')</script>";
+    }
 
-echo "<script>window.open('index.php?edit_css','_self')</script>";
-
-}
-
-?>
+    ?>
 
 <?php } ?>

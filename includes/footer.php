@@ -9,13 +9,12 @@
                 <h4>Korisnički kutak</h4>
                  <?php
 
-                    if(!isset($_SESSION['customer_email'])){
-                    echo "<a class= 'footer_links' href='checkout.php' >Prijava</a>";
-                    }
-                    else{
-                    echo "<a class= 'footer_links' href='customer/index.php?my_wishlist'>Moj nalog</a>";
-                    }
-                ?>
+                 if (!isset($_SESSION['customer_email'])) {
+                     echo "<a class= 'footer_links' href='checkout.php' >Prijava</a>";
+                 } else {
+                     echo "<a class= 'footer_links' href='customer/index.php?my_wishlist'>Moj nalog</a>";
+                 }
+                    ?>
 
                 <a class= "footer_links" href="customer_register.php">Registracija</a>
                  <a class= "footer_links" href="terms.php">Uslovi i pravila </a>

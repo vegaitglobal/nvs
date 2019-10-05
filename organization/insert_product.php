@@ -1,16 +1,12 @@
 <?php
 
-if(!isset($_SESSION['manufacturer_email'])){
-
+if (!isset($_SESSION['manufacturer_email'])) {
     echo "<script>window.open('../org.php','_self')</script>";
-}
-
-else {
-
-$man_email=$_SESSION['manufacturer_email'];
-$man_id=$_SESSION['manufacturer_id'];
+} else {
+    $man_email=$_SESSION['manufacturer_email'];
+    $man_id=$_SESSION['manufacturer_id'];
     
-?>
+    ?>
 
 
 <div class="row"><!-- row Starts -->
@@ -100,16 +96,14 @@ $man_id=$_SESSION['manufacturer_id'];
 
                     $get_cat = "select * from categories ";
 
-                    $run_cat = mysqli_query($con,$get_cat);
+                    $run_cat = mysqli_query($con, $get_cat);
 
                     while ($row_cat=mysqli_fetch_array($run_cat)) {
-
                         $cat_id = $row_cat['cat_id'];
 
                         $cat_title = $row_cat['cat_title'];
 
                         echo "<option value='$cat_id'>$cat_title</option>";
-
                     }
 
                     ?>
@@ -316,62 +310,58 @@ $man_id=$_SESSION['manufacturer_id'];
 </div><!-- 2 row Ends --> 
 
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
+        $product_title = escape($_POST['product_title']);
+        $cat = $_POST['cat'];
+        $manufacturer_id = $man_id;
 
-    $product_title = escape($_POST['product_title']);
-    $cat = $_POST['cat'];
-    $manufacturer_id = $man_id;
+        $product_desc = escape($_POST['product_desc']);
+        $product_keywords = escape($_POST['product_keywords']);
 
-    $product_desc = escape($_POST['product_desc']);
-    $product_keywords = escape($_POST['product_keywords']);
+        $product_kolicina = escape($_POST['product_kolicina']);
+        $product_od = $_POST['product_od'];
+        $product_do = $_POST['product_do'];
+        $product_lokacija = escape($_POST['product_lokacija']);
 
-    $product_kolicina = escape($_POST['product_kolicina']);   
-    $product_od = $_POST['product_od'];   
-    $product_do = $_POST['product_do']; 
-    $product_lokacija = escape($_POST['product_lokacija']); 
+        $product_label = escape($_POST['product_label']);
 
-    $product_label = escape($_POST['product_label']);
+        $product_url = escape($_POST['product_url']);
 
-    $product_url = escape($_POST['product_url']);
+        $product_features = escape($_POST['product_features']);
 
-    $product_features = escape($_POST['product_features']);
+        $product_video = escape($_POST['product_video']);
 
-    $product_video = escape($_POST['product_video']);
+        $status = "product";
 
-    $status = "product";
+        $product_img1 = $_FILES['product_img1']['name'];
+        $product_img2 = $_FILES['product_img2']['name'];
+        $product_img3 = $_FILES['product_img3']['name'];
 
-    $product_img1 = $_FILES['product_img1']['name'];
-    $product_img2 = $_FILES['product_img2']['name'];
-    $product_img3 = $_FILES['product_img3']['name'];
-
-    $temp_name1 = $_FILES['product_img1']['tmp_name'];
-    $temp_name2 = $_FILES['product_img2']['tmp_name'];
-    $temp_name3 = $_FILES['product_img3']['tmp_name'];
+        $temp_name1 = $_FILES['product_img1']['tmp_name'];
+        $temp_name2 = $_FILES['product_img2']['tmp_name'];
+        $temp_name3 = $_FILES['product_img3']['tmp_name'];
 
     
 
-    $insert_product = "insert into products (cat_id,manufacturer_id,date,product_title,product_url,product_img1,product_img2,product_img3,product_kolicina,product_desc,product_features,product_video,product_keywords,product_label,status,product_lokacija,product_od,product_do) values ('$cat','$manufacturer_id',NOW(),'$product_title','$product_url','$product_img1','$product_img2','$product_img3','$product_kolicina','$product_desc','$product_features','$product_video','$product_keywords','$product_label','$status','$product_lokacija','$product_od','$product_do')";
+        $insert_product = "insert into products (cat_id,manufacturer_id,date,product_title,product_url,product_img1,product_img2,product_img3,product_kolicina,product_desc,product_features,product_video,product_keywords,product_label,status,product_lokacija,product_od,product_do) values ('$cat','$manufacturer_id',NOW(),'$product_title','$product_url','$product_img1','$product_img2','$product_img3','$product_kolicina','$product_desc','$product_features','$product_video','$product_keywords','$product_label','$status','$product_lokacija','$product_od','$product_do')";
 
-    $run_product = mysqli_query($con,$insert_product);
+        $run_product = mysqli_query($con, $insert_product);
     
 
-        if($run_product){
-            
-        move_uploaded_file($temp_name1,"../admin_area/product_images/$product_img1");
-        move_uploaded_file($temp_name2,"../admin_area/product_images/$product_img2");
-        move_uploaded_file($temp_name3,"../admin_area/product_images/$product_img3");
+        if ($run_product) {
+            move_uploaded_file($temp_name1, "../admin_area/product_images/$product_img1");
+            move_uploaded_file($temp_name2, "../admin_area/product_images/$product_img2");
+            move_uploaded_file($temp_name3, "../admin_area/product_images/$product_img3");
 
-        echo "<script>alert('Pozicija je uneta')</script>";
+            echo "<script>alert('Pozicija je uneta')</script>";
 
-        echo "<script>window.open('index.php?view_products','_self')</script>";
-
+            echo "<script>window.open('index.php?view_products','_self')</script>";
         }
+    }
 
-}
-
-?>
+    ?>
 
 <?php } ?>
 
