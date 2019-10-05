@@ -65,7 +65,7 @@ if (isset($_POST['admin_login'])) {
 
         echo "<script>alert('You are Logged in into admin panel')</script>";
 
-        echo "<script>window.open('index.php?dashboard','_self')</script>";
+        echo "<script>window.open('index.php?path=dashboard','_self')</script>";
     } else {
         echo "<script>alert('Email or Password is Wrong')</script>";
     }

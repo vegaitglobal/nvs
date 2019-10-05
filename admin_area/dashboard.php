@@ -56,7 +56,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </div><!-- panel-heading Ends -->
 
-<a href="index.php?view_products">
+<a href="index.php?path=view_products">
 
 <div class="panel-footer"><!-- panel-footer Starts -->
 
@@ -101,7 +101,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </div><!-- panel-heading Ends -->
 
-<a href="index.php?view_volunteers">
+<a href="index.php?path=view_customers">
 
 <div class="panel-footer"><!-- panel-footer Starts -->
 
@@ -146,7 +146,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </div><!-- panel-heading Ends -->
 
-<a href="index.php?view_p_cats">
+<a href="index.php?path=view_p_cats">
 
 <div class="panel-footer"><!-- panel-footer Starts -->
 
@@ -191,7 +191,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </div><!-- panel-heading Ends -->
 
-<a href="index.php?view_orders">
+<a href="index.php?path=view_orders">
 
 <div class="panel-footer"><!-- panel-footer Starts -->
 
@@ -319,7 +319,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="text-right" ><!-- text-right Starts -->
 
-<a href="index.php?view_orders" >
+<a href="index.php?path=view_orders" >
 
 Pogledaj i ostale <i class="fa fa-arrow-circle-right" ></i>
 
@@ -415,7 +415,7 @@ Pogledaj i ostale <i class="fa fa-arrow-circle-right" ></i>
 
 <div class="text-right" ><!-- text-right Starts -->
 
-<a href="index.php?view_organizations" >
+<a href="index.php?path=view_manufacturers" >
 
 Pogledaj i ostale <i class="fa fa-arrow-circle-right" ></i>
 

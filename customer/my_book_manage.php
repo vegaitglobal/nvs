@@ -48,5 +48,5 @@ echo $twig->render('my_book_manage.html.twig', [
     'hasAlerts' => $alertsService->hasAlerts(),
     'firstAlert' => $alertsService->getFirstAlert(),
     'wishlist' => $wishlist,
-    'hours' => $hours,
+    'hours' => $hours ?? null,
 ]);
