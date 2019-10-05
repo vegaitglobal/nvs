@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__.'/../app/bootstrap.php';
+
 session_start();
 
 if(!isset($_SESSION['customer_email'])){
@@ -8,7 +10,6 @@ echo "<script>window.open('../checkout.php','_self')</script>";
 
 
 }else {
-
 
 
 
@@ -397,9 +398,7 @@ $row_customer = mysqli_fetch_array($run_customer);
     }
 
     if(isset($_GET['my_book_manage'])){
-
-    include("my_book_manage.php");
-
+        include("my_book_manage.php");
     }
 
     if(isset($_GET['delete_wishlist'])){
