@@ -102,7 +102,7 @@
 
                     <td style="vertical-align:middle" >
                         <?php if ($hours_approved) : ?>
-                            <a class="volunteering-pdf btn btn-sm btn-default">
+                            <a href="wishlist_to_pdf.php?wishlist_id=<?php echo $wishlist_id ?>" class="volunteering-pdf btn btn-sm btn-default">
                                 PDF
                             </a>
                         <?php else : ?>

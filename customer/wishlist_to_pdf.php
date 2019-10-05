@@ -43,9 +43,9 @@ $html = $twig->render('wishlist_to_pdf.html.twig', [
     'wishlist' => $wishlist,
 ]);
 
-//TODO:remove
+// TODO: remove temporary preview
 echo $html;exit;
 
 $mpdf->WriteHTML($html);
 
-$mpdf->Output();
+$mpdf->Output('Potvrda o volontiranju.pdf', 'D');
