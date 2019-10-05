@@ -46,7 +46,7 @@ text-transform: uppercase;
 .manifestation-container{
   background-color: rgb(255,249,235);
   padding: 10px 5px 30px 50px;
-  margin: -20px;
+  margin: -15px;
   margin-top: 0;
 }
 
@@ -76,7 +76,6 @@ text-transform: uppercase;
 .volunteering-pdf {
   background-color: rgb(85,85,85);
 }
-
 
 @media (max-width: 991px) {
 

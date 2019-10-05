@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../app/bootstrap.php';
+require_once __DIR__ . '/../app/bootstrap.php';
 
 session_start();
 
@@ -12,356 +12,356 @@ if (!isset($_SESSION['customer_email'])) {
     include("functions/functions.php");
 
     ?>
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
-<title>NVS</title>
+    <head>
+        <title>NVS</title>
 
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100" rel="stylesheet" >
+        <link href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100" rel="stylesheet">
 
-<link href="styles/bootstrap.min.css" rel="stylesheet">
+        <link href="styles/bootstrap.min.css" rel="stylesheet">
 
-<link href="styles/style.css" rel="stylesheet">
+        <link href="styles/style.css" rel="stylesheet">
 
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
 
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    </head>
 
-</head>
+    <body>
 
-<body>
+    <div id="top" class="navbar"><!-- top Starts -->
 
-<div id="top" class="navbar"><!-- top Starts -->
+        <div class="container"><!-- container Starts -->
 
-<div class="container"><!-- container Starts -->
+            <div class="navbar-header">
+                <!-- navbar-header Starts -->
 
-<div class="navbar-header">
-            <!-- navbar-header Starts -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation1">
 
-<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation1">
+                    <span class="sr-only">Toggle Navigation </span>
 
-<span class="sr-only" >Toggle Navigation </span>
+                    <i class="fa fa-align-justify"></i>
 
-<i class="fa fa-align-justify"></i>
+                </button>
 
-</button>
 
+                <a href="#" class="btn btn-sm btn-default">
 
+                    <?php
 
-<a href="#" class="btn btn-sm btn-default" >
+                    if (!isset($_SESSION['customer_email'])) {
 
-<?php
+                        echo "Dobrodošli :Guest";
 
-if(!isset($_SESSION['customer_email'])){
 
-echo "Dobrodošli :Guest";
+                    } else {
 
+                        echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
+                    }
+                    ?>
+                </a>
 
-}else{
+            </div><!-- col-md-6 offer Ends -->
+            <div class="navbar-collapse collapse right" id="navigation1">
 
-echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
-}
-?>
-</a>
+                <ul class="menu"><!-- menu Starts -->
 
-</div><!-- col-md-6 offer Ends -->
-<div class="navbar-collapse collapse right" id="navigation1">
+                    <?php
 
-    <ul class="menu"><!-- menu Starts -->
+                    if (!isset($_SESSION['customer_email'])) {
+                        echo "<li>";
+                        echo "<a href='../customer_register.php'> Registracija </a>";
+                        echo "</li>";
+                    }
 
-    <?php
+                    ?>
 
-    if (!isset($_SESSION['customer_email'])) {
-        echo "<li>";
-        echo "<a href='../customer_register.php'> Registracija </a>";
-        echo "</li>";
-    }
+                    <li>
+                        <?php
 
-    ?>
+                        if (!isset($_SESSION['customer_email'])) {
+                            echo "<a href='../checkout.php' >Moj nalog</a>";
+                        } else {
+                            echo "<a href='index.php?my_wishlist'>Moj nalog</a>";
+                        }
 
-    <li>
-    <?php
 
-    if (!isset($_SESSION['customer_email'])) {
-        echo "<a href='../checkout.php' >Moj nalog</a>";
-    } else {
-        echo "<a href='index.php?my_wishlist'>Moj nalog</a>";
-    }
+                        ?>
+                    </li>
 
 
-    ?>
-    </li>
+                    <li>
+                        <?php
 
+                        if (!isset($_SESSION['customer_email'])) {
+                            echo "<a href='../checkout.php'> Prijava </a>";
+                        } else {
+                            echo "<a href='logout.php'> Odjava </a>";
+                        }
 
-    <li>
-    <?php
+                        ?>
+                    </li>
 
-    if (!isset($_SESSION['customer_email'])) {
-        echo "<a href='../checkout.php'> Prijava </a>";
-    } else {
-        echo "<a href='logout.php'> Odjava </a>";
-    }
+                </ul><!-- menu Ends -->
 
-    ?>
-    </li>
+            </div><!-- col-md-6 Ends -->
 
-    </ul><!-- menu Ends -->
+        </div><!-- container Ends -->
+    </div><!-- top Ends -->
 
-</div><!-- col-md-6 Ends -->
+    <div class="navbar navbar-default" id="navbar"><!-- navbar navbar-default Starts -->
+        <div class="container"><!-- container Starts -->
 
-</div><!-- container Ends -->
-</div><!-- top Ends -->
+            <div class="navbar-header"><!-- navbar-header Starts -->
 
-<div class="navbar navbar-default" id="navbar"><!-- navbar navbar-default Starts -->
-<div class="container" ><!-- container Starts -->
 
-<div class="navbar-header"><!-- navbar-header Starts -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
 
+                    <span class="sr-only">Toggle Navigation </span>
 
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation"  >
+                    <i class="fa fa-align-justify"></i>
 
-        <span class="sr-only" >Toggle Navigation </span>
+                </button>
 
-        <i class="fa fa-align-justify"></i>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
 
-    </button>
+                    <span class="sr-only">Toggle Search</span>
 
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search" >
+                    <i class="fa fa-search"></i>
 
-        <span class="sr-only" >Toggle Search</span>
+                </button>
 
-        <i class="fa fa-search" ></i>
 
-    </button>
+            </div><!-- navbar-header Ends -->
 
+            <div class="navbar-collapse collapse" id="navigation"><!-- navbar-collapse collapse Starts -->
 
-</div><!-- navbar-header Ends -->
+                <div class="padding-nav"><!-- padding-nav Starts -->
 
-<div class="navbar-collapse collapse" id="navigation" ><!-- navbar-collapse collapse Starts -->
+                    <ul class="nav navbar-nav navbar-left"><!-- nav navbar-nav navbar-left Starts -->
 
-<div class="padding-nav" ><!-- padding-nav Starts -->
+                        <li>
+                            <a href="../index.php"> Naslovna strana </a>
+                        </li>
 
-    <ul class="nav navbar-nav navbar-left"><!-- nav navbar-nav navbar-left Starts -->
+                        <li>
+                            <a href="../blog.php"> Blog </a>
+                        </li>
 
-        <li>
-        <a href="../index.php"> Naslovna strana </a>
-        </li>
+                        <li>
+                            <a href="../shop.php"> Ponude </a>
+                        </li>
 
-        <li>
-        <a href="../blog.php"> Blog </a>
-        </li>
+                        <li>
+                            <a href="../org.php"> Organizacije </a>
+                        </li>
 
-        <li>
-        <a href="../shop.php"> Ponude </a>
-        </li>
+                        <li class="active">
+                            <?php
 
-        <li>
-        <a href="../org.php"> Organizacije </a>
-        </li>
+                            if (!isset($_SESSION['customer_email'])) {
+                                echo "<a href='../checkout.php' >Moj nalog</a>";
+                            } else {
+                                echo "<a href='index.php?my_wishlist'>Moj nalog</a>";
+                            }
 
-        <li class="active">
-        <?php
 
-        if (!isset($_SESSION['customer_email'])) {
-                echo "<a href='../checkout.php' >Moj nalog</a>";
-        } else {
-            echo "<a href='index.php?my_wishlist'>Moj nalog</a>";
-        }
+                            ?>
+                        </li>
 
 
-        ?>
-        </li>
+                        <li class='dropdown'>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">O nama <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../about.php"> O nama </a></li>
 
+                                <li><a href="../services.php"> Services </a></li>
 
-          <li class='dropdown'>
-                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">O nama <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>  <a href="../about.php"> O nama </a> </li>
+                                <li><a href="../docs.php"> Dokumenti </a></li>
 
-                            <li>  <a href="../services.php"> Services </a> </li>
+                                <li><a href="../contact.php"> Kontakt </a></li>
 
-                            <li>  <a href="../docs.php"> Dokumenti </a> </li>
+                            </ul>
+                        </li>
 
-                            <li>  <a href="../contact.php"> Kontakt </a> </li>
+                    </ul><!-- nav navbar-nav navbar-left Ends -->
 
-                        </ul>
-                 </li>
+                </div><!-- padding-nav Ends -->
 
-    </ul><!-- nav navbar-nav navbar-left Ends -->
+                <?php
 
-</div><!-- padding-nav Ends -->
+                if (!isset($_SESSION['customer_email'])) {
+                } else {
+                    ?>
+                    <a class="btn btn-primary navbar-btn right" href="index.php?my_wishlist">
+                        <!-- btn btn-primary navbar-btn right Starts -->
 
-    <?php
+                        <i class="fa fa-heart-o"></i>
 
-    if (!isset($_SESSION['customer_email'])) {
-    } else {
-        ?>
-    <a class="btn btn-primary navbar-btn right" href="index.php?my_wishlist"><!-- btn btn-primary navbar-btn right Starts -->
+                        <span> <?php items($_SESSION['customer_email']); ?> želja na listi </span>
 
-        <i class="fa fa-heart-o"></i>
+                    </a><!-- btn btn-primary navbar-btn right Ends -->
 
-        <span> <?php items($_SESSION['customer_email']); ?> želja na listi </span>
+                    <?php
+                }
 
-    </a><!-- btn btn-primary navbar-btn right Ends -->
+                ?>
 
-        <?php
-    }
 
-    ?>
+                <div class="navbar-collapse collapse right"><!-- navbar-collapse collapse right Starts -->
 
+                    <button class="btn navbar-btn btn-primary" type="button" data-toggle="collapse"
+                            data-target="#search">
 
-<div class="navbar-collapse collapse right"><!-- navbar-collapse collapse right Starts -->
+                        <span class="sr-only">Toggle Search</span>
 
-    <button class="btn navbar-btn btn-primary" type="button" data-toggle="collapse" data-target="#search">
+                        <i class="fa fa-search"></i>
 
-        <span class="sr-only">Toggle Search</span>
+                    </button>
 
-        <i class="fa fa-search"></i>
+                </div><!-- navbar-collapse collapse right Ends -->
 
-    </button>
+                <div class="collapse clearfix" id="search"><!-- collapse clearfix Starts -->
 
-</div><!-- navbar-collapse collapse right Ends -->
+                    <form class="navbar-form" method="get" action="results.php"><!-- navbar-form Starts -->
 
-<div class="collapse clearfix" id="search"><!-- collapse clearfix Starts -->
+                        <div class="input-group"><!-- input-group Starts -->
 
-<form class="navbar-form" method="get" action="results.php"><!-- navbar-form Starts -->
+                            <input class="form-control" type="text" placeholder="Search" name="user_query" required>
 
-    <div class="input-group"><!-- input-group Starts -->
+                            <span class="input-group-btn"><!-- input-group-btn Starts -->
 
-        <input class="form-control" type="text" placeholder="Search" name="user_query" required>
+                                <button type="submit" value="Search" name="search" class="btn btn-primary">
 
-        <span class="input-group-btn"><!-- input-group-btn Starts -->
+                                    <i class="fa fa-search"></i>
 
-        <button type="submit" value="Search" name="search" class="btn btn-primary">
+                                </button>
 
-            <i class="fa fa-search"></i>
+                            </span><!-- input-group-btn Ends -->
 
-        </button>
+                        </div><!-- input-group Ends -->
 
-        </span><!-- input-group-btn Ends -->
+                    </form><!-- navbar-form Ends -->
 
-    </div><!-- input-group Ends -->
+                </div><!-- collapse clearfix Ends -->
 
-</form><!-- navbar-form Ends -->
+            </div><!-- navbar-collapse collapse Ends -->
 
-</div><!-- collapse clearfix Ends -->
+        </div><!-- container Ends -->
+    </div><!-- navbar navbar-default Ends -->
 
-</div><!-- navbar-collapse collapse Ends -->
 
-</div><!-- container Ends -->
-</div><!-- navbar navbar-default Ends -->
+    <div id="content"><!-- content Starts -->
+        <div class="container"><!-- container Starts -->
 
+            <div class="col-md-12"><!-- col-md-12 Starts -->
 
-<div id="content" ><!-- content Starts -->
-<div class="container" ><!-- container Starts -->
+                <?php
 
-<div class="col-md-12"><!-- col-md-12 Starts -->
+                $c_email = $_SESSION['customer_email'];
 
-    <?php
+                $get_customer = "select * from volunteers where customer_email='$c_email'";
 
-    $c_email = $_SESSION['customer_email'];
+                $run_customer = mysqli_query($con, $get_customer);
 
-    $get_customer = "select * from volunteers where customer_email='$c_email'";
+                $row_customer = mysqli_fetch_array($run_customer);
 
-    $run_customer = mysqli_query($con, $get_customer);
+                $customer_confirm_code = $row_customer['customer_confirm_code'];
 
-    $row_customer = mysqli_fetch_array($run_customer);
+                $c_name = $row_customer['customer_name'];
 
-    $customer_confirm_code = $row_customer['customer_confirm_code'];
 
-    $c_name = $row_customer['customer_name'];
+                ?>
+                <!-- col-md-12 Ends -->
 
+                <div class="col-12 col-sm-4 col-md-3"><!-- col-md-3 Starts -->
 
-    ?>
-<!-- col-md-12 Ends -->
+                    <?php include("includes/sidebar.php"); ?>
 
-<div class="col-12 col-sm-4 col-md-3"><!-- col-md-3 Starts -->
+                </div><!-- col-md-3 Ends -->
 
-    <?php include("includes/sidebar.php"); ?>
+                <div class="col-12 col-sm-8 col-md-9"> <!--- col-md-9 Starts -->
 
-</div><!-- col-md-3 Ends -->
+                    <div id="panel" class="panel panel-default"><!-- box Starts -->
 
-<div class="col-12 col-sm-8 col-md-9"> <!--- col-md-9 Starts -->
+                        <?php
 
-<div id="panel" class="panel panel-default" ><!-- box Starts -->
+                        if (isset($_GET[$customer_confirm_code])) {
+                            $update_customer = "update volunteers set customer_confirm_code='' where customer_confirm_code='$customer_confirm_code'";
 
-    <?php
+                            $run_confirm = mysqli_query($con, $update_customer);
 
-    if (isset($_GET[$customer_confirm_code])) {
-        $update_customer = "update volunteers set customer_confirm_code='' where customer_confirm_code='$customer_confirm_code'";
+                            echo "<script>alert('Vaša mail adresa je potvrđena')</script>";
 
-        $run_confirm = mysqli_query($con, $update_customer);
+                            echo "<script>window.open('index.php?my_wishlist','_self')</script>";
+                        }
 
-        echo "<script>alert('Vaša mail adresa je potvrđena')</script>";
+                        if (isset($_GET['send_email'])) {
+                            $subject = "Potvrda mail adrese";
 
-        echo "<script>window.open('index.php?my_wishlist','_self')</script>";
-    }
+                            $from = "vojislavp@gmail.com";
 
-    if (isset($_GET['send_email'])) {
-        $subject = "Potvrda mail adrese";
+                            $mailer->sendEmail($c_email, $subject, [
+                                "Email Confirmation By NVS.rs $c_name",
+                                "<a href='db25.cpanelhosting.rs/nvs/customer/index.php?$customer_confirm_code'>
+                Klikni ovde da potvrdiš email adresu
+                </a>"
+                            ], $from);
 
-        $from = "vojislavp@gmail.com";
+                            echo "<script>alert('Verifikacioni email vam je poslat, proverite poštu')</script>";
 
-        $mailer->sendEmail($c_email, $subject, [
-            "Email Confirmation By NVS.rs $c_name",
-            "<a href='db25.cpanelhosting.rs/nvs/customer/index.php?$customer_confirm_code'>
-            Klikni ovde da potvrdiš email adresu
-            </a>"
-        ], $from);
+                            echo "<script>window.open('index.php?my_wishlist','_self')</script>";
+                        }
 
-        echo "<script>alert('Verifikacioni email vam je poslat, proverite poštu')</script>";
 
-        echo "<script>window.open('index.php?my_wishlist','_self')</script>";
-    }
+                        if (isset($_GET['edit_account'])) {
+                            include("edit_account.php");
+                        }
 
+                        if (isset($_GET['change_pass'])) {
+                            include("change_pass.php");
+                        }
 
-    if (isset($_GET['edit_account'])) {
-        include("edit_account.php");
-    }
+                        if (isset($_GET['delete_account'])) {
+                            include("delete_account.php");
+                        }
 
-    if (isset($_GET['change_pass'])) {
-        include("change_pass.php");
-    }
+                        if (isset($_GET['my_wishlist'])) {
+                            include("my_wishlist.php");
+                        }
 
-    if (isset($_GET['delete_account'])) {
-        include("delete_account.php");
-    }
+                        if (isset($_GET['my_book'])) {
+                            include("my_book.php");
+                        }
 
-    if (isset($_GET['my_wishlist'])) {
-        include("my_wishlist.php");
-    }
+                        if (isset($_GET['my_book_manage'])) {
+                            include("my_book_manage.php");
+                        }
 
-    if (isset($_GET['my_book'])) {
-        include("my_book.php");
-    }
+                        if (isset($_GET['delete_wishlist'])) {
+                            include("delete_wishlist.php");
+                        }
 
-    if (isset($_GET['my_book_manage'])) {
-        include("my_book_manage.php");
-    }
+                        ?>
+                    </div><!-- panel Ends -->
+                </div><!--- col-md-9 Ends -->
 
-    if (isset($_GET['delete_wishlist'])) {
-        include("delete_wishlist.php");
-    }
+            </div>
 
-    ?>
-</div><!-- panel Ends -->
 
-
-</div><!--- col-md-9 Ends -->
-
-</div><!-- container Ends -->
-</div><!-- content Ends -->
-
-
+        </div><!-- container Ends -->
+    </div><!-- content Ends -->
 
     <?php
 
@@ -369,10 +369,10 @@ echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
 
     ?>
 
-<script src="js/jquery.min.js"> </script>
+    <script src="js/jquery.min.js"></script>
 
-<script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-</body>
-</html>
+    </body>
+    </html>
 <?php } ?>
