@@ -11,6 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Wishlist
 {
+    // https://www.php.net/manual/en/function.hash.php
+    const CODE_HASH_ALGORITHM = 'crc32b';
+
     /**
      * @var int
      *
@@ -19,6 +22,13 @@ class Wishlist
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    protected $code;
 
     /**
      * @var int
@@ -82,20 +92,6 @@ class Wishlist
     private $product;
 
     /**
-     * @ORM\PrePersist @ORM\PreUpdate
-     */
-    public function validate()
-    {
-        if ($this->hours <= 0) {
-            throw new Exception();
-        }
-
-        if (!is_numeric($this->hours)) {
-            throw new Exception();
-        }
-    }
-
-    /**
      * Get id.
      *
      * @return int
@@ -103,6 +99,22 @@ class Wishlist
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode(): string
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode(string $code)
+    {
+        $this->code = $code;
     }
 
     /**
@@ -287,5 +299,36 @@ class Wishlist
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * @ORM\PrePersist @ORM\PreUpdate
+     */
+    public function validate()
+    {
+        if ($this->hours <= 0) {
+            throw new Exception();
+        }
+
+        if (!is_numeric($this->hours)) {
+            throw new Exception();
+        }
+    }
+
+    /**
+     * Generate and set code if doesn't exist
+     * @ORM\PrePersist @ORM\PreUpdate
+     */
+    public function generateCode()
+    {
+        $code = sprintf(
+            'NVS%s.%s',
+            hash(self::CODE_HASH_ALGORITHM, $this->id),
+            date_format($this->datum,'y')
+        );
+
+        $this->setCode($code);
+
+        return $this;
     }
 }
