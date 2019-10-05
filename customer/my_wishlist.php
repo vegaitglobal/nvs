@@ -1,5 +1,5 @@
 <div class="panel-heading">
-    <h1> LISTA ŽELJA </h1>
+    <h1> Lista Želja </h1>
 
     <p class="lead"> Sve vaše želje na jednom mestu. </p>
 

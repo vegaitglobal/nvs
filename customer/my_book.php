@@ -1,6 +1,6 @@
 
 <div class="panel-heading">
-    <h1> MOJA VOLONTERSKA KNJIŽICA </h1
+    <h1> Moja Volonterska Knjižica</h1
 </div>
       <div class="manifestation-container"><!-- manifestation-container Starts -->
 

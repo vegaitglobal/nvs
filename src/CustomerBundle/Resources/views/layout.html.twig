@@ -1,9 +1,11 @@
-<h1 class="text-center">{{ title }}</h1>
+<div class="panel-heading">
+    <h1>{{ title }}</h1>
+</div>
 
-<hr>
+<div class="panel-body">
+    {% if (hasAlerts) %}
+        {{ firstAlert | raw }}
+    {% endif %}
 
-{% if (hasAlerts) %}
-    {{ firstAlert | raw }}
-{% endif %}
-
-{% block body %}{% endblock %}
+    {% block body %}{% endblock %}
+</div>
