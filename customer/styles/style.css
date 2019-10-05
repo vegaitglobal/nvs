@@ -994,13 +994,10 @@ width:90%;
    
 }
 
-.text-yelow {
-  color: #ffb800;
-}
-
-.btn-silver {
+.navbar#top .btn-default {
   color: #333333;
   background-color: #cccccc;
+  border: none;
 }
 
 
