@@ -7,10 +7,11 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
 require_once __DIR__.'/../vendor/autoload.php';
-require_once __DIR__.'/../src/WishlistBundle/Entity/Wishlist.php';
+require_once __DIR__.'/../src/Entity/Wishlist.php';
+require_once __DIR__.'/../src/Utils/AlertService.php';
 
 $paths = [
-    __DIR__.'/../src/',
+    __DIR__.'/../src/Entity',
 ];
 
 $isDevMode = true;
@@ -31,6 +32,8 @@ AnnotationRegistry::registerLoader('class_exists');
 $config->setMetadataDriverImpl($driver);
 
 $entityManager = EntityManager::create($dbParams, $config);
+
+$alertsService = new AlertService();
 
 // Specify our Twig templates location
 $loader = new Twig\Loader\FilesystemLoader([
