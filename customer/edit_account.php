@@ -51,9 +51,11 @@ $row_cat = mysqli_fetch_array($run_cat);
 
     $cat_title = $row_cat['cat_title'];
 ?>
-
-<h1 align="center" > Ažuriranje podataka </h1>
-
+<div class="panel-heading">
+<h1> AŽURIRANJE PODATAKA </h1>
+</div>
+<div class="panel-body">
+<div class="container-fluid">
 <form action="" method="post" enctype="multipart/form-data" ><!--- form Starts -->
 
     <div class="form-group" ><!-- form-group Starts -->
@@ -271,6 +273,9 @@ $row_cat = mysqli_fetch_array($run_cat);
 
 
 </form><!--- form Ends -->
+
+</div>
+</div>
 
 <?php
 

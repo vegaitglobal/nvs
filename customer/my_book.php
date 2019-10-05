@@ -1,11 +1,7 @@
-<center><!-- center Starts -->
-
-    <h1> Volonterska knjižica </h1>
-
-</center><!-- center Ends -->
-
-<hr>
-
+<div class="panel-heading">
+    <h1> MOJA VOLONTERSKA KNJIŽICA </h1>
+</div>
+<div class="panel-body">
 <div class="table-responsive"><!-- table-responsive Starts -->
 
     <table class="table table-bordered table-hover"><!-- table table-bordered table-hover Starts -->
@@ -137,3 +133,4 @@
     </table><!-- table table-bordered table-hover Ends -->
 
 </div><!-- table-responsive Ends -->
+</div>

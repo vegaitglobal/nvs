@@ -1,14 +1,10 @@
-
-<center><!-- center Starts -->
-
-    <h1> Lista želja </h1>
+<div class="panel-heading">
+    <h1> LISTA ŽELJA </h1>
 
     <p class="lead"> Sve vaše želje na jednom mestu. </p>
 
-</center><!-- center Ends -->
-
-<hr>
-
+</div>
+<div class="panel-body">
 <div class="table-responsive"><!-- table-responsive Starts -->
 
 <table class="table table-bordered table-hover"><!-- table table-bordered table-hover Starts -->
@@ -119,3 +115,4 @@
 </table><!-- table table-bordered table-hover Ends -->
 
 </div><!-- table-responsive Ends -->
+</div>

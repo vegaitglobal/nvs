@@ -59,8 +59,6 @@ if (!isset($_SESSION['customer_email'])) {
 
 <a href="#" class="btn btn-sm btn-default" >
 
-<a href="#" class="btn btn-sm btn-silver" >
-
 <?php
 
 if(!isset($_SESSION['customer_email'])){
@@ -71,21 +69,9 @@ echo "Dobrodošli :Guest";
 }else{
 
 echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
+}
 ?>
-<a href="#" class="btn btn-success btn-sm" >
-    <?php
-
-    if (!isset($_SESSION['customer_email'])) {
-        echo "Dobrodošli :Guest";
-    } else {
-        echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
-    }
-
-
-    ?>
 </a>
-
-
 
 </div><!-- col-md-6 offer Ends -->
 <div class="navbar-collapse collapse right" id="navigation1">
@@ -298,15 +284,15 @@ echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
     ?>
 <!-- col-md-12 Ends -->
 
-<div class="col-md-3"><!-- col-md-3 Starts -->
+<div class="col-12 col-sm-4 col-md-3"><!-- col-md-3 Starts -->
 
     <?php include("includes/sidebar.php"); ?>
 
 </div><!-- col-md-3 Ends -->
 
-<div class="col-md-9" ><!--- col-md-9 Starts -->
+<div class="col-12 col-sm-8 col-md-9"> <!--- col-md-9 Starts -->
 
-<div class="box" ><!-- box Starts -->
+<div id="panel" class="panel panel-default" ><!-- box Starts -->
 
     <?php
 
@@ -380,8 +366,7 @@ echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
     }
 
     ?>
-
-</div><!-- box Ends -->
+</div><!-- panel Ends -->
 
 
 </div><!--- col-md-9 Ends -->
