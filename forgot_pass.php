@@ -6,6 +6,8 @@ include("includes/db.php");
 
 include("functions/functions.php");
 
+require_once __DIR__.'/app/bootstrap.php';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,14 +23,14 @@ include("functions/functions.php");
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100" rel="stylesheet" >
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
- 
-   <link rel="stylesheet" title="" type="text/css" href="styles/dropmenu.css" media="all" />  
-   <link rel="stylesheet" title="" type="text/css" href="styles/header.css" media="all" /> 
-   
-      
+
+   <link rel="stylesheet" title="" type="text/css" href="styles/dropmenu.css" media="all" />
+   <link rel="stylesheet" title="" type="text/css" href="styles/header.css" media="all" />
+
+
     <link href="styles/bootstrap.min.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet">
-    
+
 <link rel="stylesheet" title="" type="text/css" href="styles/footer.css" media="all" />
 
 <script src="js/jquery-3.3.1.min.js"></script>
@@ -135,39 +137,16 @@ if (isset($_POST['forgot_pass'])) {
 
         exit();
     } else {
-        $message = "
-
-        <h1 align='center'> Vaša lozinka je poslata </h1>
-
-        <h2 align='center'> Dragi $c_name </h2>
-
-        <h3 align='center'>
-
-        Your Password is : <span> <b>$c_pass</b> </span>
-
-        </h3>
-
-        <h3 align='center'>
-
-        <a href='checkout.php'>
-
-        Kliknite ovde da bi pristupili vašem nalogu 
-
-        </a>
-
-        </h3>
-
-        ";
-
         $from = "vojislavp@gmail.com";
 
         $subject = "Vaša lozinka je";
 
-        $headers = "From: $from\r\n";
-
-        $headers .= "Content-type: text/html\r\n";
-
-        mail($c_email, $subject, $message, $headers);
+        $mailer->sendEmail($c_email, $subject, [
+            "Vaša lozinka je poslata.",
+            "Dragi $c_name ",
+            "vaša lozinka je <b>$c_pass</b>.",
+            "<a href='checkout.php'>Kliknite ovde da bi pristupili vašem nalogu</a>"
+        ], $from);
 
         echo "<script> alert('Vaša lozinka je poslata, proverite vaš email ') </script>";
 

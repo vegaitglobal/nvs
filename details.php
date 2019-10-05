@@ -6,6 +6,8 @@ include("includes/db.php");
 
 include("functions/functions.php");
 
+require_once __DIR__.'/app/bootstrap.php';
+
 $product_id = @$_GET['pro_id'];
 
 $get_product = "select * from products where product_url='$product_id'";
@@ -46,9 +48,9 @@ if ($check_product == 0) {
     $pro_url = $row_product['product_url'];
 
     $pro_od = $row_product['product_od'];
-    
+
     $pro_do = $row_product['product_do'];
-    
+
     $pro_lokacija = $row_product['product_lokacija'];
 
     if ($pro_label == "") {
@@ -84,14 +86,14 @@ if ($check_product == 0) {
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100" rel="stylesheet" >
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
- 
-   <link rel="stylesheet" title="" type="text/css" href="styles/dropmenu.css" media="all" />  
-   <link rel="stylesheet" title="" type="text/css" href="styles/header.css" media="all" /> 
-   
-      
+
+   <link rel="stylesheet" title="" type="text/css" href="styles/dropmenu.css" media="all" />
+   <link rel="stylesheet" title="" type="text/css" href="styles/header.css" media="all" />
+
+
     <link href="styles/bootstrap.min.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet">
-    
+
 <link rel="stylesheet" title="" type="text/css" href="styles/footer.css" media="all" />
 
 <script src="js/jquery-3.3.1.min.js"></script>
@@ -137,7 +139,7 @@ if ($check_product == 0) {
 
     <h1 class="text-center" > <?php echo $pro_title; ?> </h1>
 
-    
+
 
     <form action="" method="post" class="form-horizontal" ><!-- form-horizontal Starts -->
 
@@ -222,35 +224,17 @@ if ($check_product == 0) {
                     if ($run_wishlist) {
                             $subject = "Hvala što ste se prijavili na  $pro_title";
 
-                            $from = "office@nvs.rs";
+                            $mailer->sendEmail($c_email, $subject, [
+                                "Hvala vam što ste se prijavili na  $pro_title, svi prijavljeni će biti kontaktirani putem elektronske pošte nakon isteka roka za prijavu."
+                            ]);
 
-                            $message = "
-
-                                    <h2> Hvala vam što ste se prijavili na  $pro_title, svi prijavljeni će biti kontaktirani putem elektronske pošte nakon isteka roka za prijavu. </h2> 
-                                    
-                                    ";
-
-                            $headers = "From: $from \r\n";
-                            $headers .= "Reply-To: $from \r\n";
-                            $headers .= "Return-Path: $from \r\n";
-                            $headers .= "Content-type: text/html \r\n";
-
-                            mail($c_email, $subject, $message, $headers);
-                                
-                            $from = "office@nvs.rs";
                             $nvs_email = "office@nvs.rs";
                             $nvs_subject = "NOVA PRIJAVA";
-                            $nvs_message= "  <h2>Prijavio/la se : $customer_name, iz $customer_city na  $pro_title </h2> 
-                                    <br>
-                                    <br>
-                                     <h3><a href='https://www.nvs.rs/admin_area'>Administriranje</a> </h3>
-                                    ";
-                            $nvs_headers = "From: $from \r\n";
-                            $nvs_headers .= "Reply-To: $from \r\n";
-                            $nvs_headers .= "Return-Path: $from \r\n";
-                            $nvs_headers .= "Content-type: text/html \r\n";
-                                    
-                            mail($nvs_email, $nvs_subject, $nvs_message, $nvs_headers);
+
+                            $mailer->sendEmail($nvs_email, $nvs_subject, [
+                                "Prijavio/la se : $customer_name, iz $customer_city na  $pro_title ",
+                                "<a href='https://www.nvs.rs/admin_area'>Administriranje</a>"
+                            ]);
 
                         echo "<script> alert('Dodato') </script>";
 
@@ -291,7 +275,7 @@ if ($check_product == 0) {
     <a class="btn btn-primary" href="<?php if (!empty($pro_img2)) {
         echo "admin_area/product_images/".$pro_img2;
                                      } ?>">
-   Prilog 1 
+   Prilog 1
     </a>
 
 
