@@ -396,6 +396,12 @@ $row_customer = mysqli_fetch_array($run_customer);
 
     }
 
+    if(isset($_GET['my_book_manage'])){
+
+    include("my_book_manage.php");
+
+    }
+
     if(isset($_GET['delete_wishlist'])){
 
     include("delete_wishlist.php");
