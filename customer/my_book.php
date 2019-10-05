@@ -121,7 +121,7 @@
                             PDF
                         </a>
                     <?php else: ?>
-                        <a href="javascript:">
+                        <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>">
                             <i class="fa fa-pencil"></i>
                             Izmeni
                         </a>

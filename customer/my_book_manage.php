@@ -111,8 +111,8 @@ if (isset($_POST['hours'])) {
 
     <div class="form-group">
         <label class="control-label">
-            Unesi broj sati:
-            <input type="text" class="form-control" required name="hours" value="<?php echo $hours ?>"/>
+            Broj sati:
+            <input type="text" class="form-control" required name="hours" value="<?php echo $hours ?? $row_wishlist['hours'] ?>"/>
         </label>
     </div>
 
