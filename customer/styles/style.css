@@ -1041,7 +1041,11 @@ width:90%;
   background-color: #ffb800;
 }
 
+<<<<<<< HEAD
 #user_pane  i {
+=======
+#user_panel a i {
+>>>>>>> master
   color: #ffB800;
 }
 

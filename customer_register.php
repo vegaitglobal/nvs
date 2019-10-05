@@ -6,6 +6,8 @@ include("includes/db.php");
 
 include("functions/functions.php");
 
+require_once __DIR__.'/app/bootstrap.php';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,14 +23,14 @@ include("functions/functions.php");
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100" rel="stylesheet" >
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
- 
-   <link rel="stylesheet" title="" type="text/css" href="styles/dropmenu.css" media="all" />  
-   <link rel="stylesheet" title="" type="text/css" href="styles/header.css" media="all" /> 
-   
-      
+
+   <link rel="stylesheet" title="" type="text/css" href="styles/dropmenu.css" media="all" />
+   <link rel="stylesheet" title="" type="text/css" href="styles/header.css" media="all" />
+
+
     <link href="styles/bootstrap.min.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet">
-    
+
 <link rel="stylesheet" title="" type="text/css" href="styles/footer.css" media="all" />
 
 <script src="js/jquery-3.3.1.min.js"></script>
@@ -74,7 +76,7 @@ include("functions/functions.php");
             <input type="text" class="form-control" name="c_name" required>
 
         </div><!-- form-group Ends -->
-        
+
 
         <div class="form-group"><!-- form-group Starts -->
 
@@ -146,7 +148,7 @@ include("functions/functions.php");
             <input type="text" class="form-control" name="c_country" required>
 
         </div><!-- form-group Ends -->
-        
+
 
         <div class="form-group"><!-- form-group Starts -->
 
@@ -155,7 +157,7 @@ include("functions/functions.php");
             <input type="text" class="form-control" name="c_city" required>
 
         </div><!-- form-group Ends -->
-            
+
 
         <div class="form-group"><!-- form-group Starts -->
 
@@ -164,8 +166,8 @@ include("functions/functions.php");
             <input type="text" class="form-control" name="c_address" required>
 
         </div><!-- form-group Ends -->
-        
-        
+
+
         <div class="form-group"><!-- form-group Starts -->
 
             <label> Telefon </label>
@@ -173,7 +175,7 @@ include("functions/functions.php");
             <input type="text" class="form-control" name="c_contact" required>
 
         </div><!-- form-group Ends -->
-         
+
 
          <div class="form-group"><!-- form-group Starts -->
 
@@ -182,25 +184,25 @@ include("functions/functions.php");
             <input type="date" class="form-control" name="datum" required>
 
         </div><!-- form-group Ends -->
-        
-        
+
+
         <div class="form-group"><!-- form-group Starts -->
 
             <label>Koja je tvoja omiljena izreka? </label>
-            
+
             <textarea  class="form-control" name="c_desc" id="c_desc" rows="5" required></textarea>
-         
+
         </div><!-- form-group Ends -->
-        
-        
+
+
         <div class="form-group"><!-- form-group Starts -->
 
             <label>Najznačajnija znanja i veštine: </label>
-            
+
             <textarea  class="form-control" name="c_vestina" id="c_vestina" rows="5" required></textarea>
-         
+
         </div><!-- form-group Ends -->
-        
+
         <div class="form-group"><!-- form-group Starts -->
 
             <label> Slika (nije obavezna)</label>
@@ -208,7 +210,7 @@ include("functions/functions.php");
             <input type="file" class="form-control" name="c_image">
 
         </div><!-- form-group Ends -->
-        
+
         <div class="form-group"><!-- form-group Starts -->
 
             <label> CV (nije obavezna)</label>
@@ -216,7 +218,7 @@ include("functions/functions.php");
             <input type="file" class="form-control" name="c_cv">
 
         </div><!-- form-group Ends -->
-        
+
         <div class="form-group"><!-- form-group Starts -->
 
             <label> Motivaciono pismo (nije obavezna)</label>
@@ -224,9 +226,9 @@ include("functions/functions.php");
             <input type="file" class="form-control" name="c_motiv">
 
         </div><!-- form-group Ends -->
-        
+
         <div class="row" style="margin-bottom:5px;">
-        
+
             <div class="col-md-3">
                 <label  class="control-label"> Pol </label>
             </div>
@@ -240,10 +242,10 @@ include("functions/functions.php");
             </div>
 
         </div><!-- form-group Ends -->
-       
-        
+
+
         <div class="row" style="margin-bottom:5px;">
-        
+
             <div class="col-md-3" >
                 <label class="control-label" >Oblast interesovanja</label>
              </div>
@@ -267,14 +269,14 @@ include("functions/functions.php");
                     }
                     echo "<option value='Sve'>Sve</option>";
                     ?>
-                </select>           
+                </select>
             </div>
             <div class="col-md-6">
                 <input type="text" class="form-control" placeholder="ili upiši ovde ako nije navedeno" name="profil" required>
             </div>
-       
+
         </div>
-        
+
          <div class="row" style="margin-bottom:25px;"><!-- form-group Starts -->
             <div class="col-md-3">
                 <label class="control-label" > Školska sprema </label>
@@ -293,16 +295,16 @@ include("functions/functions.php");
             </div>
 
         </div><!-- form-group Ends -->
-        
-       
+
+
         <div class="form-group"><!-- form-group Starts -->
 
             <center>
 
                 <label> Nisam robot </label>
-                
+
                  <div class="g-recaptcha" data-sitekey="6LciB1EUAAAAAAjwWqhEa2LxXgu-ATt10OcD_pMO" ></div>
-             
+
 
             </center>
 
@@ -339,7 +341,7 @@ include("includes/footer.php");
 
 
 <script>
-     
+
     $(document).ready(function(){
 
         $('.tick1').hide();
@@ -489,33 +491,33 @@ if (isset($_POST['register'])) {
         $c_contact = escape($_POST['c_contact']);
 
         $c_address = escape($_POST['c_address']);
-        
+
         $c_desc = escape($_POST['c_desc']);
-        
+
         $c_vestina = escape($_POST['c_vestina']);
 
         $c_image = $_FILES['c_image']['name'];
 
         $c_image_tmp = $_FILES['c_image']['tmp_name'];
-        
+
         $c_cv = $_FILES['c_cv']['name'];
 
         $c_cv_tmp = $_FILES['c_cv']['tmp_name'];
-        
+
         $c_motiv = $_FILES['c_motiv']['name'];
 
         $c_motiv_tmp = $_FILES['c_motiv']['tmp_name'];
 
         $c_status ="";
-        
+
         $customer_datum =$_POST['datum'];
-                
+
         $c_pol=escape($_POST['pol']);
-        
+
         $c_profil=escape($_POST['profil']);
-        
+
         $c_sprema=escape($_POST['sprema']);
-        
+
         $get_email = "select * from volunteers where customer_email='$c_email'";
 
         $run_email = mysqli_query($con, $get_email);
@@ -527,48 +529,29 @@ if (isset($_POST['register'])) {
 
             exit();
         }
-        
+
         move_uploaded_file($c_image_tmp, "customer/customer_images/$c_image");
         move_uploaded_file($c_cv_tmp, "customer/customer_images/$c_cv");
         move_uploaded_file($c_motiv_tmp, "customer/customer_images/$c_motiv");
-        
+
             $customer_confirm_code = mt_rand();
 
             $subject = "Hvala što ste se prijavili";
 
-            $from = "office@nvs.rs";
+            $mailer->sendEmail($c_email, $subject, [
+                "Hvala vam što ste se registrovali na platformu Novosadskog volonterskog servisa, ovim ste ušli u našu bazu volontera i volonterki.",
+                "Povremeno ćemo vam slati informacije o ponudama za volontiranje. Pratite aktuelnosti na našoj stranici."
+            ]);
 
-            $message = "
-
-            <h2>Hvala vam što ste se registrovali na platformu Novosadskog volonterskog servisa, ovim ste ušli u našu bazu volontera i volonterki.</h2> 
-            <br>
-            <br>
-           <h3> Povremeno ćemo vam slati informacije o ponudama za volontiranje. Pratite aktuelnosti na našoj stranici. </h3>
-
-            ";
-
-            $headers = "From: $from \r\n";
-            $headers .= "Reply-To: $from \r\n";
-            $headers .= "Return-Path: $from \r\n";
-            $headers .= "Content-type: text/html \r\n";
-
-            mail($c_email, $subject, $message, $headers);
-            
             $nvs_email = "office@nvs.rs";
             $nvs_subject = "NOVA REGISTRACIJA";
-            $nvs_message= "  <h2>Registrovao/la se : $c_name, iz $c_city </h2> 
-            <br>
-            <br>
-            <h3><a href='https://www.nvs.rs/admin_area'>Administriranje</a></h3>
-            ";
-            $nvs_headers = "From: $from \r\n";
-            $nvs_headers .= "Reply-To: $from \r\n";
-            $nvs_headers .= "Return-Path: $from \r\n";
-            $nvs_headers .= "Content-type: text/html \r\n";
-         
-            mail($nvs_email, $nvs_subject, $nvs_message, $nvs_headers);
-        
-        
+
+            $mailer->sendEmail($nvs_email, $nvs_subject, [
+                "Registrovao/la se : $c_name, iz $c_city",
+                "<a href='https://www.nvs.rs/admin_area'>Administriranje</a>"
+            ]);
+
+
         $insert_customer = "insert into volunteers (customer_name,customer_email,customer_pass,customer_country,customer_city,customer_contact,customer_address,customer_image,customer_status,customer_confirm_code,customer_datum,customer_pol,customer_profil,customer_sprema,customer_desc,customer_cv,customer_motiv,customer_vestina) values ('$c_name','$c_email','$c_pass','$c_country','$c_city','$c_contact','$c_address','$c_image','$c_status','$customer_confirm_code','$customer_datum','$c_pol','$c_profil','$c_sprema','$c_desc','$c_cv','$c_motiv','$c_vestina')";
 
 
@@ -579,7 +562,7 @@ if (isset($_POST['register'])) {
         $run_cart = mysqli_query($con, $sel_cart);
 
         $check_cart = mysqli_num_rows($run_cart);
-        
+
         $c_id=$customer_id;
 
         if ($check_cart>0) {

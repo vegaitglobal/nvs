@@ -2,6 +2,8 @@
 
 session_start();
 
+require_once __DIR__.'/../app/bootstrap.php';
+
 if (!isset($_SESSION['manufacturer_email'])) {
     echo "<script>window.open('../org.php','_self')</script>";
 } else {
@@ -32,7 +34,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
 
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-      <script>tinymce.init({ selector:'#text1,#product_desc,#product_video,#product_features', 
+      <script>tinymce.init({ selector:'#text1,#product_desc,#product_video,#product_features',
                 menubar: true,
                 plugins: [
                 'advlist autolink lists link image charmap print preview anchor textcolor',
@@ -42,13 +44,13 @@ if (!isset($_SESSION['manufacturer_email'])) {
               toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
               content_css: [
                 '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-                '//www.tinymce.com/css/codepen.min.css']            
-                                         
+                '//www.tinymce.com/css/codepen.min.css']
+
           });</script>
 
      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
-    
+      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 </head>
 
 <body>
@@ -77,11 +79,11 @@ if (!isset($_SESSION['manufacturer_email'])) {
             } else {
                 echo "Dobrodošli : " . $_SESSION['manufacturer_email'] . "";
             }   ?>
-            
+
             </a>
 
         </div><!-- col-md-6 offer Ends -->
-        
+
         <div class="navbar-collapse collapse right" id="navigation1">
 
             <ul class="menu"><!-- menu Starts -->
@@ -163,7 +165,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
                 <li>
                     <a href="../index.php"> Home </a>
                 </li>
-             
+
                 <li>
                     <a href="../shop.php"> Ponude </a>
                 </li>
@@ -179,9 +181,9 @@ if (!isset($_SESSION['manufacturer_email'])) {
                 } else {
                     echo "<a href='index.php?dashboard'>My Account</a>";
                 }  ?>
-                
+
                 </li>
-                  
+
                    <li>
                     <a href="../blog.php"> Vesti </a>
                 </li>
@@ -192,12 +194,12 @@ if (!isset($_SESSION['manufacturer_email'])) {
                     <li>  <a href="../about.php"> O nama </a> </li>
 
                     <li>  <a href="../services.php"> Services </a> </li>
-                    
+
                     <li>  <a href="../docs.php"> Dokumenti </a> </li>
 
                     <li>  <a href="../contact.php"> Contact Us </a> </li>
 
-                </ul>               
+                </ul>
          </li>
 
 
@@ -276,25 +278,17 @@ if (!isset($_SESSION['manufacturer_email'])) {
         <div class="box" ><!-- box Starts -->
 
             <?php
-    
+
 
             if (isset($_GET['send_email'])) {
                 $subject = "Email Confirmation Message";
 
                 $from = "vojislavp@gmail.com";
 
-                $message = "
-
-                    <h2> Email Confirmation By NVS.rs $c_name </h2>
-                      <p> Pozdravna forma... </p>
-               
-                ";
-
-                $headers = "From: $from \r\n";
-
-                $headers .= "Content-type: text/html\r\n";
-
-                mail($c_email, $subject, $message, $headers);
+                $mailer->sendEmail($c_email, $subject, [
+                    "Email Confirmation By NVS.rs $c_name ",
+                    "Pozdravna forma..."
+                ], $from);
 
                 echo "<script>alert('pozdrav')</script>";
 
@@ -321,40 +315,40 @@ if (!isset($_SESSION['manufacturer_email'])) {
             if (isset($_GET['delete_wishlist'])) {
                 include("delete_wishlist.php");
             }
-    
+
             if (isset($_GET['dashboard'])) {
                 include("dashboard.php");
             }
-            
-    
+
+
             if (isset($_GET['insert_product'])) {
                 include("insert_product.php");
             }
-    
+
             if (isset($_GET['view_products'])) {
                 include("view_products.php");
             }
-    
+
             if (isset($_GET['edit_product'])) {
                 include("edit_product.php");
             }
-    
+
             if (isset($_GET['delete_product'])) {
                 include("delete_product.php");
             }
-    
+
             if (isset($_GET['delete_p_cat'])) {
                 include("delete_p_cat.php");
             }
-    
+
             if (isset($_GET['view_p_cats'])) {
                 include("view_p_cats.php");
             }
-    
+
             if (isset($_GET['insert_p_cat'])) {
                 include("insert_p_cat.php");
             }
-    
+
             if (isset($_GET['edit_p_cat'])) {
                 include("edit_p_cat.php");
             }
