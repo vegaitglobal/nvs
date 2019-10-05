@@ -56,7 +56,7 @@ if (!isset($_SESSION['admin_email'])) {
                     <li>
                         <!-- li Starts -->
 
-                        <a href="index.php?user_profile=<?php echo $admin_id; ?>">
+                        <a href="index.php?path=user_profile&user_profile=<?php echo $admin_id; ?>">
 
                             <i class="fa fa-fw fa-user" ></i> Profil
 
@@ -94,7 +94,7 @@ if (!isset($_SESSION['admin_email'])) {
                     <li>
                         <!-- li Starts -->
 
-                        <a href="index.php?path=view_volunteers">
+                        <a href="index.php?path=view_customers">
 
                         <i class="fa fa-fw fa-gear" ></i> Volonteri
 
@@ -216,7 +216,7 @@ if (!isset($_SESSION['admin_email'])) {
                         </li>
 
                         <li>
-                            <a href="index.php?path=view_organizations"> Pogledaj organizations </a>
+                            <a href="index.php?path=view_manufacturers"> Pogledaj organizations </a>
                         </li>
 
                     </ul>
@@ -285,7 +285,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                 <li>
 
-                    <a href="index.php?view_volunteers">
+                    <a href="index.php?path=view_customers">
 
                     <i class="fa fa-fw fa-edit"></i> Volonteri
 
@@ -554,7 +554,7 @@ if (!isset($_SESSION['admin_email'])) {
                 <li>
                     <!-- Edit Css li Starts -->
 
-                    <a href="index.php?edit_css">
+                    <a href="index.php?path=edit_css">
 
                     <i class="fa fa-fw fa-list"></i> Uređivanje Css fajla
 
@@ -590,7 +590,7 @@ if (!isset($_SESSION['admin_email'])) {
                         </li>
 
                         <li>
-                            <a href="index.php?path=user_profile=<?php echo $admin_id; ?>"> Uredi Profil </a>
+                            <a href="index.php?path=user_profile&user_profile=<?php echo $admin_id; ?>"> Uredi Profil </a>
                         </li>
 
                     </ul>

@@ -192,25 +192,13 @@ if (!isset($_SESSION['admin_email'])) {
 
             $order_status = $row_orders['status'];
 
-<<<<<<< HEAD
-        $hours = $row_orders['hours']; 
-
-        $hours_approved = $row_orders['hours_approved']; 
-
-        $get_products = "select * from products where product_id='$product_id'";
-=======
             $get_products = "select * from products where product_id='$product_id'";
->>>>>>> master
 
             $run_products = mysqli_query($con, $get_products);
 
             $row_products = mysqli_fetch_array($run_products);
 
-<<<<<<< HEAD
-        $product_title = $row_products['product_title']; 
-=======
             $product_title = $row_products['product_title'];
->>>>>>> master
 
             $i++;
 
@@ -267,9 +255,7 @@ if (!isset($_SESSION['admin_email'])) {
     
     <td>
 
-        <?php 
-            echo $hours; 
-        ?>
+       
 
     </td>
 
@@ -306,9 +292,7 @@ if (!isset($_SESSION['admin_email'])) {
             <?php echo $order_date;   ?>
         </td>
 
-        <td>
-        <?php echo $hours;   ?>
-        </td>
+        
 
         <td>
             <?php  echo $order_status; ?>
@@ -365,15 +349,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                 $order_status = $row_orders['status'];
 
-<<<<<<< HEAD
-            $hours = $row_orders['hours']; 
-            
-            $hours_approved = $row_orders['hours_approved']; 
-
-            $order_status = $row_orders['status'];
-=======
                 $get_products = "select * from products where product_id='$product_id'";
->>>>>>> master
 
                 $run_products = mysqli_query($con, $get_products);
 
