@@ -17,7 +17,6 @@ foreach ($files as $file) {
 
 // Utils
 require_once __DIR__.'/../src/Utils/AlertService.php';
-require_once __DIR__.'/../src/Utils/TwigExtensions/Hash.php';
 require_once __DIR__.'/../src/Mails/Mailer.php';
 require_once __DIR__.'/config.php';
 
@@ -55,6 +54,5 @@ $twig = new Twig\Environment($loader, [
 ]);
 
 $twig->addExtension(new Twig\Extension\DebugExtension());
-$twig->addExtension(new Hash());
 
 $mailer = new Mailer($twig);
