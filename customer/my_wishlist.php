@@ -38,7 +38,7 @@
 
     $get_customer = "select * from volunteers where customer_email='$customer_session'";
 
-    $run_customer = mysqli_query($con,$get_customer);
+    $run_customer = mysqli_query($con, $get_customer);
 
     $row_customer = mysqli_fetch_array($run_customer);
 
@@ -49,10 +49,9 @@
 
     $get_wishlist = "select * from wishlist where customer_id='$customer_id'";
 
-    $run_wishlist = mysqli_query($con,$get_wishlist);
+    $run_wishlist = mysqli_query($con, $get_wishlist);
 
-    while($row_wishlist = mysqli_fetch_array($run_wishlist)){
-
+    while ($row_wishlist = mysqli_fetch_array($run_wishlist)) {
         $wishlist_id = $row_wishlist['wishlist_id'];
 
         $product_id = $row_wishlist['product_id'];
@@ -61,7 +60,7 @@
 
         $get_products = "select * from products where product_id='$product_id'";
 
-        $run_products = mysqli_query($con,$get_products);
+        $run_products = mysqli_query($con, $get_products);
 
         $row_products = mysqli_fetch_array($run_products);
 
@@ -94,10 +93,11 @@
         </td>
         
         <td style="vertical-align:middle" >
-            <?php  if ($status==""){
+            <?php  if ($status=="") {
                 echo "Na obradi";
-            }else{
-                echo $status; }?>
+            } else {
+                echo $status;
+            }?>
         </td>
 
         <td style="vertical-align:middle" >

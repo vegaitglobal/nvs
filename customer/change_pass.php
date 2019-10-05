@@ -42,50 +42,42 @@
 </form><!-- form Ends -->
 <?php
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
+    $c_email = $_SESSION['customer_email'];
 
-$c_email = $_SESSION['customer_email'];
+    $old_pass = escape($_POST['old_pass']);
 
-$old_pass = escape($_POST['old_pass']);
+    $new_pass = escape($_POST['new_pass']);
 
-$new_pass = escape($_POST['new_pass']);
+    $new_pass_again = escape($_POST['new_pass_again']);
 
-$new_pass_again = escape($_POST['new_pass_again']);
+    $sel_old_pass = "select * from volunteers where customer_pass='$old_pass'";
 
-$sel_old_pass = "select * from volunteers where customer_pass='$old_pass'";
+    $run_old_pass = mysqli_query($con, $sel_old_pass);
 
-$run_old_pass = mysqli_query($con,$sel_old_pass);
+    $check_old_pass = mysqli_num_rows($run_old_pass);
 
-$check_old_pass = mysqli_num_rows($run_old_pass);
+    if ($check_old_pass==0) {
+        echo "<script>alert('Vaša lozinka nije ispravna, pokušajte ponovo')</script>";
 
-if($check_old_pass==0){
+        exit();
+    }
 
-    echo "<script>alert('Vaša lozinka nije ispravna, pokušajte ponovo')</script>";
+    if ($new_pass!=$new_pass_again) {
+        echo "<script>alert('Nova lozinka se ne poklapa')</script>";
 
-    exit();
+        exit();
+    }
 
-}
+    $update_pass = "update volunteers set customer_pass='$new_pass' where customer_email='$c_email'";
 
-if($new_pass!=$new_pass_again){
+    $run_pass = mysqli_query($con, $update_pass);
 
-    echo "<script>alert('Nova lozinka se ne poklapa')</script>";
+    if ($run_pass) {
+        echo "<script>alert('Uspešno ste promenili lozinku')</script>";
 
-    exit();
-
-}
-
-$update_pass = "update volunteers set customer_pass='$new_pass' where customer_email='$c_email'";
-
-$run_pass = mysqli_query($con,$update_pass);
-
-if($run_pass){
-
-    echo "<script>alert('Uspešno ste promenili lozinku')</script>";
-
-    echo "<script>window.open('index.php?my_wishlist','_self')</script>";
-
-}
-
+        echo "<script>window.open('index.php?my_wishlist','_self')</script>";
+    }
 }
 
 ?>

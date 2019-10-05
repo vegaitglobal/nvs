@@ -2,15 +2,10 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 
 <div class="row"><!--  1 row Starts -->
@@ -71,25 +66,24 @@ else {
 
 <tbody>
 
-<?php
+    <?php
 
-$i = 0;
+    $i = 0;
 
-$get_pro = "select * from docs order by docs_title";
+    $get_pro = "select * from docs order by docs_title";
 
-$run_pro = mysqli_query($con,$get_pro);
+    $run_pro = mysqli_query($con, $get_pro);
 
-while($row_pro=mysqli_fetch_array($run_pro)){
+    while ($row_pro=mysqli_fetch_array($run_pro)) {
+        $docs_id = $row_pro['docs_id'];
 
-    $docs_id = $row_pro['docs_id'];
-
-    $docs_title = $row_pro['docs_title'];
+        $docs_title = $row_pro['docs_title'];
    
-    $docs_doc = $row_pro['docs_doc'];
+        $docs_doc = $row_pro['docs_doc'];
 
-    $i++;
+        $i++;
 
-    ?>
+        ?>
 
     <tr>
 
@@ -121,7 +115,7 @@ while($row_pro=mysqli_fetch_array($run_pro)){
 
     </tr>
 
-<?php } ?>
+    <?php } ?>
 
 
 </tbody>

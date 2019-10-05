@@ -1,15 +1,9 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 
 <div class="row"><!-- row Starts -->
@@ -101,16 +95,14 @@ else {
 
         $get_cat = "select * from categories ";
 
-        $run_cat = mysqli_query($con,$get_cat);
+        $run_cat = mysqli_query($con, $get_cat);
 
         while ($row_cat=mysqli_fetch_array($run_cat)) {
-
             $cat_id = $row_cat['cat_id'];
 
             $cat_title = $row_cat['cat_title'];
 
             echo "<option value='$cat_id'>$cat_title</option>";
-
         }
 
         ?>
@@ -180,11 +172,10 @@ else {
 
 
 
-<?php
+    <?php
    
 
-   if(isset($_POST['create_post'])) {
-   
+    if (isset($_POST['create_post'])) {
             $post_title        = escape($_POST['title']);
        
             $post_user         = $admin_name;
@@ -202,29 +193,24 @@ else {
 
        
            
-      $query = "INSERT INTO posts(post_cat_id, post_title, post_user, post_date,post_image,post_content,post_tags,post_status,post_url) ";
+        $query = "INSERT INTO posts(post_cat_id, post_title, post_user, post_date,post_image,post_content,post_tags,post_status,post_url) ";
              
-      $query .= "VALUES({$post_cat_id},'{$post_title}','{$post_user}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}','{$post_url}') "; 
+        $query .= "VALUES({$post_cat_id},'{$post_title}','{$post_user}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}','{$post_url}') ";
              
-      $create_post_query = mysqli_query($con, $query);  
+        $create_post_query = mysqli_query($con, $query);
           
-      confirmQuery($create_post_query);
+        confirmQuery($create_post_query);
 
-      $the_post_id = mysqli_insert_id($con);
+        $the_post_id = mysqli_insert_id($con);
 
 
              
-       if($create_post_query){
-         
-           move_uploaded_file($post_image_temp, "blogs_images/$post_image" );  
+        if ($create_post_query) {
+            move_uploaded_file($post_image_temp, "blogs_images/$post_image");
 
             echo "<script>alert('Blog je unet')</script>";
 
             echo "<script>window.open('index.php?view_posts','_self')</script>";
-
         }
-
-   }
-    
-
- } ?>   
+    }
+} ?>   

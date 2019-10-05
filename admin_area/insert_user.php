@@ -2,15 +2,10 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 
 <div class="row" ><!-- 1  row Starts -->
@@ -181,49 +176,44 @@ else {
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
+        $admin_name = escape($_POST['admin_name']);
 
-$admin_name = escape($_POST['admin_name']);
+        $admin_email = filter_var($_POST['admin_email'], FILTER_SANITIZE_EMAIL);
 
-$admin_email = filter_var($_POST['admin_email'], FILTER_SANITIZE_EMAIL);
+        $admin_pass = escape($_POST['admin_pass']);
 
-$admin_pass = escape($_POST['admin_pass']);
+        $admin_country = escape($_POST['admin_country']);
 
-$admin_country = escape($_POST['admin_country']);
+        $admin_job = $_POST['admin_job'];
 
-$admin_job = $_POST['admin_job'];
+        $admin_contact = escape($_POST['admin_contact']);
 
-$admin_contact = escape($_POST['admin_contact']);
-
-$admin_about = escape($_POST['admin_about']);
-
-
-$admin_image = $_FILES['admin_image']['name'];
-
-$temp_admin_image = $_FILES['admin_image']['tmp_name'];
-
-move_uploaded_file($temp_admin_image,"admin_images/$admin_image");
-
-$insert_admin = "insert into admins (admin_name,admin_email,admin_pass,admin_image,admin_contact,admin_country,admin_job,admin_about) values ('$admin_name','$admin_email','$admin_pass','$admin_image','$admin_contact','$admin_country','$admin_job','$admin_about')";
-
-$run_admin = mysqli_query($con,$insert_admin);
+        $admin_about = escape($_POST['admin_about']);
 
 
-if($run_admin){
+        $admin_image = $_FILES['admin_image']['name'];
 
-echo "<script>alert('One User Has Been Inserted successfully')</script>";
+        $temp_admin_image = $_FILES['admin_image']['tmp_name'];
 
-echo "<script>window.open('index.php?view_users','_self')</script>";
+        move_uploaded_file($temp_admin_image, "admin_images/$admin_image");
 
-}
+        $insert_admin = "insert into admins (admin_name,admin_email,admin_pass,admin_image,admin_contact,admin_country,admin_job,admin_about) values ('$admin_name','$admin_email','$admin_pass','$admin_image','$admin_contact','$admin_country','$admin_job','$admin_about')";
+
+        $run_admin = mysqli_query($con, $insert_admin);
 
 
-}
+        if ($run_admin) {
+            echo "<script>alert('One User Has Been Inserted successfully')</script>";
+
+            echo "<script>window.open('index.php?view_users','_self')</script>";
+        }
+    }
 
 
-?>
+    ?>
 
 
 

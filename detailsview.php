@@ -2,68 +2,60 @@
 
 session_start();
 
-include("includes/db.php");                       
+include("includes/db.php");
 
-include("functions/functions.php");                
+include("functions/functions.php");
 
 $product_id = @$_GET['pro_id'];
 
 $get_product = "select * from products where product_url='$product_id'";
 
-$run_product = mysqli_query($con,$get_product);
+$run_product = mysqli_query($con, $get_product);
 
 $check_product = mysqli_num_rows($run_product);
 
-if($check_product == 0){
-
+if ($check_product == 0) {
     echo "<script> window.open('index.php','_self') </script>";
+} else {
+    $row_product = mysqli_fetch_array($run_product);
 
-}
-else{
+    $p_cat_id = $row_product['p_cat_id'];
 
+    $pro_id = $row_product['product_id'];
 
-$row_product = mysqli_fetch_array($run_product);
+    $pro_title = $row_product['product_title'];
 
-$p_cat_id = $row_product['p_cat_id'];
+    $pro_kolicina = $row_product['product_kolicina'];
 
-$pro_id = $row_product['product_id'];
+    $pro_desc = $row_product['product_desc'];
 
-$pro_title = $row_product['product_title'];
+    $pro_img1 = $row_product['product_img1'];
 
-$pro_kolicina = $row_product['product_kolicina'];
+    $pro_img2 = $row_product['product_img2'];
 
-$pro_desc = $row_product['product_desc'];
+    $pro_img3 = $row_product['product_img3'];
 
-$pro_img1 = $row_product['product_img1'];
-
-$pro_img2 = $row_product['product_img2'];
-
-$pro_img3 = $row_product['product_img3']; 
-
-$pro_label = $row_product['product_label'];
+    $pro_label = $row_product['product_label'];
 
 
-$pro_features = $row_product['product_features'];
+    $pro_features = $row_product['product_features'];
 
-$pro_video = $row_product['product_video'];
+    $pro_video = $row_product['product_video'];
 
-$status = $row_product['status'];
+    $status = $row_product['status'];
 
-$pro_url = $row_product['product_url'];
+    $pro_url = $row_product['product_url'];
 
-$pro_od = $row_product['product_od'];
+    $pro_od = $row_product['product_od'];
     
-$pro_do = $row_product['product_do'];
+    $pro_do = $row_product['product_do'];
     
-$pro_lokacija = $row_product['product_lokacija'];
+    $pro_lokacija = $row_product['product_lokacija'];
 
-if($pro_label == ""){
-
-    $product_label = "";
-}
-else{
-
-$product_label = "
+    if ($pro_label == "") {
+        $product_label = "";
+    } else {
+        $product_label = "
 
 <a class='label sale' href='#' style='color:black;'>
 
@@ -74,21 +66,20 @@ $product_label = "
 </a>
 
 ";
+    }
 
-}
+    $get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
 
-$get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
+    $run_p_cat = mysqli_query($con, $get_p_cat);
 
-$run_p_cat = mysqli_query($con,$get_p_cat);
+    $row_p_cat = mysqli_fetch_array($run_p_cat);
 
-$row_p_cat = mysqli_fetch_array($run_p_cat);
-
-$p_cat_title = $row_p_cat['p_cat_title'];
-
+    $p_cat_title = $row_p_cat['p_cat_title'];
 
 
 
-?>
+
+    ?>
 
 <!DOCTYPE html>
 <html lang="sr-SP">
@@ -122,7 +113,7 @@ $p_cat_title = $row_p_cat['p_cat_title'];
 
 <body>
 
-<?php include("nav.php");?>
+    <?php include("nav.php");?>
 
 
 
@@ -158,10 +149,10 @@ $p_cat_title = $row_p_cat['p_cat_title'];
     <h1 class="text-center" > <?php echo $pro_title; ?> </h1>
 
 
-<?php
+    <?php
 
     echo "<p class='price'> Ukupno potrebno volontera : $pro_kolicina </p>";
-?>
+    ?>
 
     <br>
     
@@ -174,7 +165,9 @@ $p_cat_title = $row_p_cat['p_cat_title'];
 
 <div class="col-xs-4" ><!-- col-xs-4 Starts -->
 
-     <a class="btn btn-primary" href="<?php if (!empty($pro_img1)) {echo "admin_area/product_images/".$pro_img1;} ?>">
+     <a class="btn btn-primary" href="<?php if (!empty($pro_img1)) {
+            echo "admin_area/product_images/".$pro_img1;
+                                      } ?>">
    Slika
     </a>
 
@@ -182,7 +175,9 @@ $p_cat_title = $row_p_cat['p_cat_title'];
 
 <div class="col-xs-4" ><!-- col-xs-4 Starts -->
 
-    <a class="btn btn-primary" href="<?php if (!empty($pro_img2)) {echo "admin_area/product_images/".$pro_img2;} ?>">
+    <a class="btn btn-primary" href="<?php if (!empty($pro_img2)) {
+        echo "admin_area/product_images/".$pro_img2;
+                                     } ?>">
    Prilog 1 
     </a>
 
@@ -191,7 +186,9 @@ $p_cat_title = $row_p_cat['p_cat_title'];
 
 <div class="col-xs-4" ><!-- col-xs-4 Starts -->
 
-    <a class="btn btn-primary" href="<?php if (!empty($pro_img3)) {echo "admin_area/product_images/".$pro_img3;} ?>">
+    <a class="btn btn-primary" href="<?php if (!empty($pro_img3)) {
+        echo "admin_area/product_images/".$pro_img3;
+                                     } ?>">
    Prilog 2
     </a>
 
@@ -210,20 +207,15 @@ $p_cat_title = $row_p_cat['p_cat_title'];
 
 <a class="btn btn-primary tab" style="margin-bottom:10px;" href="#description" data-toggle="tab"><!-- btn btn-primary tab Starts -->
 
-<?php
+    <?php
 
-if($status == "product"){
+    if ($status == "product") {
+        echo "Opis pozicije";
+    } else {
+        echo "Pozicija";
+    }
 
-    echo "Opis pozicije";
-
-}
-else{
-
-    echo "Pozicija";
-
-}
-
-?>
+    ?>
 
 </a><!-- btn btn-primary tab Ends -->
 
@@ -245,19 +237,19 @@ Video
 
 <div id="description" class="tab-pane fade in active" style="margin-top:7px;" ><!-- description tab-pane fade in active Starts -->
 
-<?php echo $pro_desc; ?>
+    <?php echo $pro_desc; ?>
 
 </div><!-- description tab-pane fade in active Ends -->
 
 <div id="features" class="tab-pane fade in" style="margin-top:7px;" ><!-- features tab-pane fade in  Starts -->
 
-<?php echo $pro_features; ?>
+    <?php echo $pro_features; ?>
 
 </div><!-- features tab-pane fade in  Ends -->
 
 <div id="video" class="tab-pane fade in" style="margin-top:7px;" ><!-- video tab-pane fade in Starts -->
 
-<?php echo $pro_video; ?>
+    <?php echo $pro_video; ?>
 
 </div><!-- video tab-pane fade in  Ends -->
 
@@ -276,11 +268,11 @@ Video
 
 
 
-<?php
+    <?php
 
-include("includes/footer.php");
+    include("includes/footer.php");
 
-?>
+    ?>
 
 
 </body>

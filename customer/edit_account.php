@@ -4,7 +4,7 @@ $customer_session = $_SESSION['customer_email'];
 
 $get_customer = "select * from volunteers where customer_email='$customer_session'";
 
-$run_customer = mysqli_query($con,$get_customer);
+$run_customer = mysqli_query($con, $get_customer);
 
 $row_customer = mysqli_fetch_array($run_customer);
 
@@ -45,7 +45,7 @@ $row_customer = mysqli_fetch_array($run_customer);
     
 $get_cat = "select * from categories where cat_id='$customer_profil'";
 
-$run_cat = mysqli_query($con,$get_cat);
+$run_cat = mysqli_query($con, $get_cat);
 
 $row_cat = mysqli_fetch_array($run_cat);
 
@@ -153,14 +153,12 @@ $row_cat = mysqli_fetch_array($run_cat);
 
                 $get_cat = "select * from categories ";
 
-                $run_cat = mysqli_query($con,$get_cat);
+                $run_cat = mysqli_query($con, $get_cat);
 
                 while ($row_cat=mysqli_fetch_array($run_cat)) {
-
-                   $cat_title = $row_cat['cat_title'];
+                    $cat_title = $row_cat['cat_title'];
 
                     echo "<option value='$cat_title'>$cat_title</option>";
-
                 }
                    echo "<option value='Sve'>Sve</option>";
                 ?>
@@ -212,7 +210,9 @@ $row_cat = mysqli_fetch_array($run_cat);
         <label class="control-label" > CV :</label>
 
         <input type="file" name="c_cv" class="form-control" > <br>
-        <a href="<?php if (!empty($customer_cv)) {echo "customer_images/".$customer_cv;} ?>" ><?php echo $customer_cv; ?></a>
+        <a href="<?php if (!empty($customer_cv)) {
+            echo "customer_images/".$customer_cv;
+                 } ?>" ><?php echo $customer_cv; ?></a>
   
                
 
@@ -224,8 +224,10 @@ $row_cat = mysqli_fetch_array($run_cat);
         <label class="control-label" > Motivaciono pismo:</label>
 
         <input type="file" name="c_motiv" class="form-control" > <br>
-           <a  href="<?php if (!empty($customer_motiv)) {echo "customer_images/".$customer_motiv;} ?>">
-               <?php echo $customer_motiv; ?> </a>
+           <a  href="<?php if (!empty($customer_motiv)) {
+                echo "customer_images/".$customer_motiv;
+                     } ?>">
+                <?php echo $customer_motiv; ?> </a>
 
    
     </div><!-- form-group Ends -->
@@ -272,8 +274,7 @@ $row_cat = mysqli_fetch_array($run_cat);
 
 <?php
 
-if(isset($_POST['update'])){
-
+if (isset($_POST['update'])) {
     $update_id = $customer_id;
 
     $c_name = escape($_POST['c_name']);
@@ -292,7 +293,7 @@ if(isset($_POST['update'])){
 
     $c_datum = $_POST['datum'];
 
-    $c_profil = $_POST['profil'];  
+    $c_profil = $_POST['profil'];
 
     $c_sprema = $_POST['sprema'];
     
@@ -304,69 +305,57 @@ if(isset($_POST['update'])){
 
     $c_image_tmp = $_FILES['c_image']['tmp_name'];
 
-        if(empty($c_image)){
+    if (empty($c_image)) {
+        $c_image = $new_customer_image;
+    } else {
+         $file="customer_images" ."/". $new_customer_image;
 
-            $c_image = $new_customer_image;
-            
-        }else{
-
-             $file="customer_images" ."/". $new_customer_image;
-
-              if (file_exists($file)) {
-                    unlink($file);
-                }
+        if (file_exists($file)) {
+                  unlink($file);
         }
+    }
 
     $c_cv = $_FILES['c_cv']['name'];
 
     $c_cv_tmp = $_FILES['c_cv']['tmp_name'];
 
-        if(empty($c_cv)){
+    if (empty($c_cv)) {
+        $c_cv = $new_customer_cv;
+    } else {
+         $file="customer_images" ."/". $new_customer_cv;
 
-            $c_cv = $new_customer_cv;
-            
-        }else{
-
-             $file="customer_images" ."/". $new_customer_cv;
-
-              if (file_exists($file)) {
-                    unlink($file);
-                }
+        if (file_exists($file)) {
+                unlink($file);
         }
+    }
     
      $c_motiv = $_FILES['c_motiv']['name'];
 
      $c_motiv_tmp = $_FILES['c_motiv']['tmp_name'];
 
-        if(empty($c_motiv)){
+    if (empty($c_motiv)) {
+        $c_motiv = $new_customer_motiv;
+    } else {
+         $file="customer_images" ."/". $new_customer_motiv;
 
-            $c_motiv = $new_customer_motiv;
-            
-        }else{
-
-             $file="customer_images" ."/". $new_customer_motiv;
-
-              if (file_exists($file)) {
-                    unlink($file);
-                }
+        if (file_exists($file)) {
+                unlink($file);
         }
+    }
 
     $update_customer = "update volunteers set customer_name='$c_name',customer_email='$c_email',customer_country='$c_country',customer_city='$c_city',customer_contact='$c_contact',customer_address='$c_address',customer_image='$c_image',customer_cv='$c_cv',customer_motiv='$c_motiv',customer_pol='$c_pol',customer_datum='$c_datum',customer_profil='$c_profil',customer_sprema='$c_sprema',customer_desc='$c_izreka',customer_vestina='$c_vestina' where customer_id='$update_id'";
 
-    $run_customer = mysqli_query($con,$update_customer);
+    $run_customer = mysqli_query($con, $update_customer);
 
-    if($run_customer){
-        
-        move_uploaded_file($c_image_tmp,"customer_images/$c_image");
-        move_uploaded_file($c_cv_tmp,"customer_images/$c_cv");
-        move_uploaded_file($c_motiv_tmp,"customer_images/$c_motiv");
+    if ($run_customer) {
+        move_uploaded_file($c_image_tmp, "customer_images/$c_image");
+        move_uploaded_file($c_cv_tmp, "customer_images/$c_cv");
+        move_uploaded_file($c_motiv_tmp, "customer_images/$c_motiv");
 
         echo "<script>alert('Vaš nalog je ažuriran. Ako ste promenili email ulogujte se ponovo ')</script>";
 
         echo "<script>window.open('index.php','_self')</script>";
-
     }
-
 }
 
 

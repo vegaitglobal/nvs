@@ -1,16 +1,12 @@
 <?php
 
-if(!isset($_SESSION['manufacturer_email'])){
-
+if (!isset($_SESSION['manufacturer_email'])) {
     echo "<script>window.open('../org.php','_self')</script>";
-}
-
-else {
-
-$man_email=$_SESSION['manufacturer_email'];
-$man_id=$_SESSION['manufacturer_id'];
+} else {
+    $man_email=$_SESSION['manufacturer_email'];
+    $man_id=$_SESSION['manufacturer_id'];
     
-?>
+    ?>
 
 
 
@@ -37,21 +33,19 @@ $man_id=$_SESSION['manufacturer_id'];
 
 <div class="row" id="Products" ><!-- row Starts -->
 
-<?php
+    <?php
 
-if(isset($_GET['search'])){
+    if (isset($_GET['search'])) {
+        $user_keyword = $_GET['user_query'];
 
-    $user_keyword = $_GET['user_query'];
+        $get_products = "select * from products where product_title like '%$user_keyword%'";
 
-    $get_products = "select * from products where product_title like '%$user_keyword%'";
+        $run_products = mysqli_query($con, $get_products);
 
-    $run_products = mysqli_query($con,$get_products);
+        $count = mysqli_num_rows($run_products);
 
-    $count = mysqli_num_rows($run_products);
-
-    if($count==0){
-
-        echo "
+        if ($count==0) {
+            echo "
 
         <div class='box'>
 
@@ -60,43 +54,37 @@ if(isset($_GET['search'])){
         </div>
 
         ";
+        } else {
+            while ($row_products=mysqli_fetch_array($run_products)) {
+                $pro_id = $row_products['product_id'];
 
-    }else{
+                $pro_title = $row_products['product_title'];
 
-    while($row_products=mysqli_fetch_array($run_products)){
+                $pro_img1 = $row_products['product_img1'];
 
-        $pro_id = $row_products['product_id'];
+                $pro_label = $row_products['product_label'];
 
-        $pro_title = $row_products['product_title'];
+                $manufacturer_id = $row_products['manufacturer_id'];
 
-        $pro_img1 = $row_products['product_img1'];
+                $get_manufacturer = "select * from organizations where manufacturer_id='$manufacturer_id'";
 
-        $pro_label = $row_products['product_label'];
+                $run_manufacturer = mysqli_query($db, $get_manufacturer);
 
-        $manufacturer_id = $row_products['manufacturer_id'];
+                $row_manufacturer = mysqli_fetch_array($run_manufacturer);
 
-        $get_manufacturer = "select * from organizations where manufacturer_id='$manufacturer_id'";
+                $manufacturer_name = $row_manufacturer['manufacturer_title'];
 
-        $run_manufacturer = mysqli_query($db,$get_manufacturer);
+                $pro_url = $row_products['product_url'];
 
-        $row_manufacturer = mysqli_fetch_array($run_manufacturer);
-
-        $manufacturer_name = $row_manufacturer['manufacturer_title'];
-
-        $pro_url = $row_products['product_url'];
-
-        $pro_kolicina = $row_products['product_kolicina'];
+                $pro_kolicina = $row_products['product_kolicina'];
 
 
 
 
-        if($pro_label == ""){
-
-        $product_label = "";
-        }
-        else{
-
-        $product_label = "
+                if ($pro_label == "") {
+                    $product_label = "";
+                } else {
+                    $product_label = "
 
         <a class='label sale' href='#' style='color:black;'>
 
@@ -107,11 +95,10 @@ if(isset($_GET['search'])){
         </a>
 
         ";
+                }
 
-        }
 
-
-        echo "
+                echo "
 
         <div class='col-md-3 col-sm-6 center-responsive' >
 
@@ -160,13 +147,10 @@ if(isset($_GET['search'])){
         </div>
 
         ";
-
+            }
+        }
     }
-
-    }
-
-}
- ?>
+    ?>
 
 </div><!-- row Ends -->
 
@@ -177,7 +161,6 @@ if(isset($_GET['search'])){
 </div><!-- content Ends -->
 
 
-<?php
-
+    <?php
 }
 ?>

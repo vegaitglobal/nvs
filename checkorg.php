@@ -67,16 +67,11 @@ include("functions/functions.php");
 
 <?php
 
-if(!isset($_SESSION['manufacturer_email'])){
-
+if (!isset($_SESSION['manufacturer_email'])) {
     include("organization/customer_login.php");
-
-
-}else{
-
+} else {
     echo "<script> window.open('org.php','_self') </script>";
-
- }
+}
 
 
 

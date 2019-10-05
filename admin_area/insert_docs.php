@@ -1,15 +1,9 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 
 <div class="row"><!-- row Starts -->
@@ -105,36 +99,32 @@ else {
 
 
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
-
-    $docs_title = escape($_POST['docs_title']);
+    if (isset($_POST['submit'])) {
+        $docs_title = escape($_POST['docs_title']);
     
-    $docs_doc = $_FILES['docs_doc']['name'];
+        $docs_doc = $_FILES['docs_doc']['name'];
    
-    $temp_name1 = $_FILES['docs_doc']['tmp_name'];
+        $temp_name1 = $_FILES['docs_doc']['tmp_name'];
   
     
   
-    $insert_doc = "insert into docs (docs_title,docs_doc) values ('$docs_title','$docs_doc')";
+        $insert_doc = "insert into docs (docs_title,docs_doc) values ('$docs_title','$docs_doc')";
 
-    $run_doc = mysqli_query($con,$insert_doc);
+        $run_doc = mysqli_query($con, $insert_doc);
     
 
-        if($run_doc){
-            
-        move_uploaded_file($temp_name1,"../docs/$docs_doc");     
+        if ($run_doc) {
+            move_uploaded_file($temp_name1, "../docs/$docs_doc");
 
-        echo "<script>alert('Dokumenat je unet')</script>";
+            echo "<script>alert('Dokumenat je unet')</script>";
 
-        echo "<script>window.open('index.php?view_docs','_self')</script>";
-
+            echo "<script>window.open('index.php?view_docs','_self')</script>";
         }
+    }
 
-}
-
-?>
+    ?>
 
 <?php } ?>
 

@@ -57,7 +57,7 @@ include("nav.php");
 
 $get_about_us = "select * from about_us";
 
-$run_about_us = mysqli_query($con,$get_about_us);
+$run_about_us = mysqli_query($con, $get_about_us);
 
 $row_about_us = mysqli_fetch_array($run_about_us);
 

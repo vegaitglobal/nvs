@@ -1,15 +1,9 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
  
 <div class="row"><!-- 1 row Starts -->
@@ -114,32 +108,28 @@ else {
 </div><!-- 2 row Ends -->
 
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
+        $term_title = escape($_POST['term_title']);
 
-$term_title = escape($_POST['term_title']);
+        $term_desc = $_POST['term_desc'];
 
-$term_desc = $_POST['term_desc'];
+        $term_link = escape($_POST['term_link']);
 
-$term_link = escape($_POST['term_link']);
+        $insert_term = "insert into terms (term_title,term_link,term_desc) values ('$term_title','$term_link','$term_desc')";
 
-$insert_term = "insert into terms (term_title,term_link,term_desc) values ('$term_title','$term_link','$term_desc')";
+        $run_term = mysqli_query($con, $insert_term);
 
-$run_term = mysqli_query($con,$insert_term);
+        if ($run_term) {
+            echo "<script>alert('New Term Has Been Inserted')</script>";
 
-if($run_term){
-
-echo "<script>alert('New Term Has Been Inserted')</script>";
-
-echo "<script>window.open('index.php?view_terms','_self')</script>";
-
-}
-
-}
+            echo "<script>window.open('index.php?view_terms','_self')</script>";
+        }
+    }
 
 
-?>
+    ?>
 
 
 <?php } ?>

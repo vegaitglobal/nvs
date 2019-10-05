@@ -2,27 +2,21 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
-echo "<script>window.open('login.php','_self')</script>";
+    <?php
 
-}
+    if (isset($_GET['edit_box'])) {
+        $edit_box = $_GET['edit_box'];
 
-else {
+        $get_boxes = "select * from boxes_section where box_id='$edit_box'";
 
-?>
+        $run_boxes = mysqli_query($con, $get_boxes);
 
-<?php
-
-if(isset($_GET['edit_box'])){
-
-    $edit_box = $_GET['edit_box'];
-
-    $get_boxes = "select * from boxes_section where box_id='$edit_box'";
-
-    $run_boxes = mysqli_query($con,$get_boxes);
-
-    $row_boxes = mysqli_fetch_array($run_boxes);
+        $row_boxes = mysqli_fetch_array($run_boxes);
 
         $box_id = $row_boxes['box_id'];
 
@@ -31,11 +25,10 @@ if(isset($_GET['edit_box'])){
         $box_desc = $row_boxes['box_desc'];
         
         $box_url = $row_boxes['box_url'];
+    }
 
-}
 
-
-?>
+    ?>
 
 <div class="row" ><!-- 1 row Starts -->
 
@@ -93,7 +86,7 @@ if(isset($_GET['edit_box'])){
 <div class="col-md-6">
 
 <textarea name="box_desc" class="form-control" rows="6" cols="19">
-<?php echo $box_desc; ?>
+    <?php echo $box_desc; ?>
  </textarea>
 
 </div>
@@ -137,28 +130,26 @@ if(isset($_GET['edit_box'])){
 </div><!-- 2 row Ends -->
 
 
-<?php
+    <?php
 
-if(isset($_POST['update'])){
+    if (isset($_POST['update'])) {
+        $box_title = escape($_POST['box_title']);
 
-    $box_title = escape($_POST['box_title']);
-
-    $box_desc = escape($_POST['box_desc']);
+        $box_desc = escape($_POST['box_desc']);
     
-    $box_url = filter_var($_POST['box_url'], FILTER_SANITIZE_URL);
+        $box_url = filter_var($_POST['box_url'], FILTER_SANITIZE_URL);
 
-    $update_box = "update boxes_section set box_title='$box_title',box_desc='$box_desc',box_url='$box_url' where box_id='$box_id'";
+        $update_box = "update boxes_section set box_title='$box_title',box_desc='$box_desc',box_url='$box_url' where box_id='$box_id'";
 
-    $run_box = mysqli_query($con,$update_box);
+        $run_box = mysqli_query($con, $update_box);
 
-    echo "<script>alert('Box je ažuriran')</script>";
+        echo "<script>alert('Box je ažuriran')</script>";
 
-    echo "<script>window.open('index.php?view_boxes','_self')</script>";
+        echo "<script>window.open('index.php?view_boxes','_self')</script>";
+    }
 
-}
 
-
-?>
+    ?>
 
 
 

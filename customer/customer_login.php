@@ -4,15 +4,14 @@
 $login_failure = false;
 $login_success = false;
 
-if(isset($_POST['login'])){
-
+if (isset($_POST['login'])) {
     $customer_email = filter_var($_POST['c_email'], FILTER_SANITIZE_EMAIL);
 
     $customer_pass = escape($_POST['c_pass']);
 
     $select_customer = "select * from volunteers where customer_email='$customer_email' AND customer_pass='$customer_pass'";
 
-    $run_customer = mysqli_query($con,$select_customer);
+    $run_customer = mysqli_query($con, $select_customer);
 
     $check_customer = mysqli_num_rows($run_customer);
 

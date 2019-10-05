@@ -2,43 +2,36 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 
-<?php 
+    <?php
 
-if(isset($_GET['edit_slide'])){
+    if (isset($_GET['edit_slide'])) {
+        $edit_id = $_GET['edit_slide'];
 
-$edit_id = $_GET['edit_slide'];
+        $edit_slide = "select * from slider where slide_id='$edit_id'";
 
-$edit_slide = "select * from slider where slide_id='$edit_id'";
+        $run_edit = mysqli_query($con, $edit_slide);
 
-$run_edit = mysqli_query($con,$edit_slide);
+        $row_edit = mysqli_fetch_array($run_edit);
 
-$row_edit = mysqli_fetch_array($run_edit);
+        $slide_id = $row_edit['slide_id'];
 
-$slide_id = $row_edit['slide_id'];
+        $slide_name = $row_edit['slide_name'];
 
-$slide_name = $row_edit['slide_name'];
+        $slide_image = $row_edit['slide_image'];
 
-$slide_image = $row_edit['slide_image'];
+        $slide_url = $row_edit['slide_url'];
 
-$slide_url = $row_edit['slide_url'];
-
-$new_slide_image = $row_edit['slide_image'];
-
-}
+        $new_slide_image = $row_edit['slide_image'];
+    }
 
 
-?>
+    ?>
 
 <div class="row" ><!-- 1 row Starts -->
 
@@ -145,51 +138,44 @@ $new_slide_image = $row_edit['slide_image'];
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['update'])){
+    if (isset($_POST['update'])) {
+        $slide_name = escape($_POST['slide_name']);
 
-$slide_name = escape($_POST['slide_name']);
+        $slide_image = $_FILES['slide_image']['name'];
 
-$slide_image = $_FILES['slide_image']['name'];
+        $temp_name = $_FILES['slide_image']['tmp_name'];
 
-$temp_name = $_FILES['slide_image']['tmp_name'];
-
-$slide_url = $_POST['slide_url'];
-
+        $slide_url = $_POST['slide_url'];
 
 
-if(empty($slide_image)){
 
-    $slide_image = $new_slide_image;
+        if (empty($slide_image)) {
+            $slide_image = $new_slide_image;
+        } else {
+             $file="slides_images" ."/". $new_slide_image;
 
-}else{
+            if (file_exists($file)) {
+                unlink($file);
+            }
+        }
 
-     $file="slides_images" ."/". $new_slide_image;
+        $update_slide = "update slider set slide_name='$slide_name',slide_image='$slide_image',slide_url='$slide_url' where slide_id='$slide_id'";
 
-     if (file_exists($file)) {
-            unlink($file);
+        $run_slide = mysqli_query($con, $update_slide);
+
+        if ($run_slide) {
+            move_uploaded_file($temp_name, "slides_images/$slide_image");
+
+            echo "<script>alert('One Slide Has Been Updated')</script>";
+
+            echo "<script>window.open('index.php?view_slides','_self')</script>";
         }
     }
 
-$update_slide = "update slider set slide_name='$slide_name',slide_image='$slide_image',slide_url='$slide_url' where slide_id='$slide_id'";
 
-$run_slide = mysqli_query($con,$update_slide);
-
-if($run_slide){
-   
-    move_uploaded_file($temp_name,"slides_images/$slide_image");
-
-    echo "<script>alert('One Slide Has Been Updated')</script>";
-
-    echo "<script>window.open('index.php?view_slides','_self')</script>";
-
-}
-
-}
-
-
-?>
+    ?>
 
 
 

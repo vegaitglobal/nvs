@@ -2,15 +2,10 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row" ><!-- 1 row Starts -->
 
@@ -114,47 +109,40 @@ else {
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
+        $slide_name = escape($_POST['slide_name']);
 
-$slide_name = escape($_POST['slide_name']);
+        $slide_image = $_FILES['slide_image']['name'];
 
-$slide_image = $_FILES['slide_image']['name'];
+        $temp_name = $_FILES['slide_image']['tmp_name'];
 
-$temp_name = $_FILES['slide_image']['tmp_name'];
+        $slide_url = filter_var($_POST['slide_url'], FILTER_SANITIZE_URL);
 
-$slide_url = filter_var($_POST['slide_url'], FILTER_SANITIZE_URL);
+        $view_slides = "select * from slider";
 
-$view_slides = "select * from slider";
+        $view_run_slides = mysqli_query($con, $view_slides);
 
-$view_run_slides = mysqli_query($con,$view_slides);
+        $count = mysqli_num_rows($view_run_slides);
 
-$count = mysqli_num_rows($view_run_slides);
+        if ($count<4) {
+            move_uploaded_file($temp_name, "slides_images/$slide_image");
 
-if($count<4){
+            $insert_slide = "insert into slider (slide_name,slide_image,slide_url) values ('$slide_name','$slide_image','$slide_url')";
 
-move_uploaded_file($temp_name,"slides_images/$slide_image");
+            $run_slide = mysqli_query($con, $insert_slide);
 
-$insert_slide = "insert into slider (slide_name,slide_image,slide_url) values ('$slide_name','$slide_image','$slide_url')";
+            echo "<script>alert('New Slide Has Been Inserted')</script>";
 
-$run_slide = mysqli_query($con,$insert_slide);
-
-echo "<script>alert('New Slide Has Been Inserted')</script>";
-
-echo "<script>window.open('index.php?view_slides','_self')</script>";
-
-}
-else {
-
-echo "<script>alert('You have already inserted 4 slides')</script>";
-
-}
-
-}
+            echo "<script>window.open('index.php?view_slides','_self')</script>";
+        } else {
+            echo "<script>alert('You have already inserted 4 slides')</script>";
+        }
+    }
 
 
-?>
+    ?>
 
 
 

@@ -6,12 +6,12 @@
 /* styles for anchoring footer to browser window */
 html                { height:100%; }
 body                { height:100%; margin:0; padding:0;}
-img				{}
+img             {}
 #outerwrapper       { min-height:100%; position:relative; }
 #kontainer:after    { content: ".";  display: block; height: 0; overflow:hidden; clear: both; visibility: hidden; }
-/** 
- * css only footer window-bottom anchoring rules 
- * #kontainer.margin-bottom and #footer.margin-top must be sum of: 
+/**
+ * css only footer window-bottom anchoring rules
+ * #kontainer.margin-bottom and #footer.margin-top must be sum of:
  * #footer.height + #footer.padding-top + #footer.padding-bottom
  * */
 #kontainer          { margin-bottom:120px;}
@@ -36,61 +36,61 @@ a.icon,a.icon:hover {border:0px;}
 
 
 /* IE hacks */
-#header		{z-index:5000} /* For IE6; Required to get top menu overlapping all body elements. Relatively harmless for other browsers, YMMV */
+#header     {z-index:5000} /* For IE6; Required to get top menu overlapping all body elements. Relatively harmless for other browsers, YMMV */
 
 
-.blocks1, #wrapper, #kontent	{width:100% !important; margin:0 !important; padding:0 !important;}
+.blocks1, #wrapper, #kontent    {width:100% !important; margin:0 !important; padding:0 !important;}
 
 #header {
-	background:url(../images/topband_pattern.jpg) #FFFFFF;
-	/*min-width:945px;*/	
+    background:url(../images/topband_pattern.jpg) #FFFFFF;
+    /*min-width:945px;*/
 }
 .mod_site_title { position:relative; z-index:50; }
 
 div.kontainer,
-	div#kontainer           {width:auto;margin:0 auto;}
+    div#kontainer           {width:auto;margin:0 auto;}
 
 div.kontainer, #accounts.displaymode .body .header, #features_block,
-	#accounts.sectiondisplaymode div#kontainer  {
-    	width: 100%;
-	}
+    #accounts.sectiondisplaymode div#kontainer  {
+        width: 100%;
+    }
 
-	div.kontainer, #accounts.displaymode .body .header, #features_block,
-	#accounts.sectiondisplaymode div#kontainer  {
-    	width: 100%;
-	}
+    div.kontainer, #accounts.displaymode .body .header, #features_block,
+    #accounts.sectiondisplaymode div#kontainer  {
+        width: 100%;
+    }
 
-#bittop				{clear:both; text-align:center; padding:0; position:relative; } /* todo remove height limit */
-#bittop img			{border:none}
-#bitbottom			{padding:10px;}
-#bittop #account-links	{ display:inline; position:absolute; z-index:100; text-align:right; top:0; right:0;}
-	#bittop a 			{ color:#fff; text-align:center; margin-bottom:0px; font-weight:bold; }
-	#bittop a:hover 	{ text-decoration:none;}
-	#bittop #logo a		{ display:block; }
-	#bittop #account-links a {
-		margin:0 0 0 4px; 
-		text-transform:uppercase;
-		border-radius:         0 0 5px 5px;
-		-webkit-border-top-left-radius: 0;
-		-webkit-border-top-right-radius: 0;
-		-moz-border-radius:    0 0 5px 5px;
-		-o-border-radius:      0 0 5px 5px;
-		-khtml-border-radius:  0 0 5px 5px;
-	}
-	#bittop h1			{ font-size:45px; line-height:45px; margin:0; letter-spacing:1px; text-transform:uppercase;}
-	#bittop h3			{ font-size:13px; line-height:13px; letter-spacing:3px; margin:0; text-transform:uppercase;}
-	#bittop h1 a		{ margin-bottom:0px; }
-	#logo 				{ width:955px; height:160px; padding-top:15px; margin:0 auto; z-index:10; position:relative; }
-	#mobile-logo,
-	#mobile-account-links		{ display:none; }
-	/* google translate */
-	#bittop #google-translate-element	{ display:inline; position:absolute; z-index:100; text-align:right; top:0; left:0;}
-	#bittop #google-translate-element a { color: #000; font-weight:normal;}
- 	/* #logo span 			{ visibility:hidden;} */
-	#bittop .glow 		{ width:940px; height:206px; background:url(../images/bg-glow.png) top center no-repeat; top:0; position:absolute; z-index:1; left:0;}
-	#bittop .account-nav {float:left;}
-	#bittop .social { padding-top: 5px; position: absolute; right: 0; z-index: 150;}
-	#bittop .social .fb-like, #bittop .social .tweet {float:left;margin:0;padding: 0 0 0 10px;}
+#bittop             {clear:both; text-align:center; padding:0; position:relative; } /* todo remove height limit */
+#bittop img         {border:none}
+#bitbottom          {padding:10px;}
+#bittop #account-links  { display:inline; position:absolute; z-index:100; text-align:right; top:0; right:0;}
+    #bittop a           { color:#fff; text-align:center; margin-bottom:0px; font-weight:bold; }
+    #bittop a:hover     { text-decoration:none;}
+    #bittop #logo a     { display:block; }
+    #bittop #account-links a {
+        margin:0 0 0 4px;
+        text-transform:uppercase;
+        border-radius:         0 0 5px 5px;
+        -webkit-border-top-left-radius: 0;
+        -webkit-border-top-right-radius: 0;
+        -moz-border-radius:    0 0 5px 5px;
+        -o-border-radius:      0 0 5px 5px;
+        -khtml-border-radius:  0 0 5px 5px;
+    }
+    #bittop h1          { font-size:45px; line-height:45px; margin:0; letter-spacing:1px; text-transform:uppercase;}
+    #bittop h3          { font-size:13px; line-height:13px; letter-spacing:3px; margin:0; text-transform:uppercase;}
+    #bittop h1 a        { margin-bottom:0px; }
+    #logo               { width:955px; height:160px; padding-top:15px; margin:0 auto; z-index:10; position:relative; }
+    #mobile-logo,
+    #mobile-account-links       { display:none; }
+    /* google translate */
+    #bittop #google-translate-element   { display:inline; position:absolute; z-index:100; text-align:right; top:0; left:0;}
+    #bittop #google-translate-element a { color: #000; font-weight:normal;}
+    /* #logo span           { visibility:hidden;} */
+    #bittop .glow       { width:940px; height:206px; background:url(../images/bg-glow.png) top center no-repeat; top:0; position:absolute; z-index:1; left:0;}
+    #bittop .account-nav {float:left;}
+    #bittop .social { padding-top: 5px; position: absolute; right: 0; z-index: 150;}
+    #bittop .social .fb-like, #bittop .social .tweet {float:left;margin:0;padding: 0 0 0 10px;}
 
 a.dugme, input.dugme, span.dugme, .dugme .dugme-over {
     color: #fff;
@@ -128,8 +128,8 @@ div.kontainer {
    
 }
 #header {
-	background:url(../images/topband_pattern.jpg) #FFFFFF;
-	/*min-width:945px;*/	
+    background:url(../images/topband_pattern.jpg) #FFFFFF;
+    /*min-width:945px;*/
 }
 
 .header h1 {
@@ -138,69 +138,69 @@ div.kontainer {
 .header h1 {
     /* font-size: 42px; */
     color: #fff;
-}	
+}
 #bittop {
-	text-align:left;
+    text-align:left;
 }
 #bittop h3 {
-	display:none;
-	visibility:hidden
+    display:none;
+    visibility:hidden
 }
 #bittop a {
-	text-align:left;
+    text-align:left;
 }
 
 
 #logo { width:955px; height:160px; padding-top:15px; margin:0 auto; z-index:10; position:relative; }
 #logo {
-	margin:auto;
-	width:auto;
-	height:7em;
+    margin:auto;
+    width:auto;
+    height:7em;
 }
 #logo {
-		width:auto;
-		height:auto;
-		padding:3% 0 3% 0;
-		margin:0;
-	}
+        width:auto;
+        height:auto;
+        padding:3% 0 3% 0;
+        margin:0;
+    }
 #bittop #logo a {
-	display: inline-block;
+    display: inline-block;
 }
 #bittop img.thumb {
-		width:75%;
-	}
+        width:75%;
+    }
 #bittop img {
-	height:70px;
+    height:70px;
 }
 #bittop .social {
-	float:right;
+    float:right;
 }
 #bittop .social .fb-like, #bittop .social .tweet {
-	float:left;
-	margin:0;
-	padding: 0 0 0 10px;
+    float:left;
+    margin:0;
+    padding: 0 0 0 10px;
 }
 #bittop img.social-top {
-	height:25px;
-	width: 25px;
-	padding: 2px 2px 0 0;
+    height:25px;
+    width: 25px;
+    padding: 2px 2px 0 0;
 }
 
 #bittop .social-links-top {
-	margin-right: 15px;
+    margin-right: 15px;
 }
 #bittop .social-links-top .social-links-top--prompt {
-	display: inline-block;
+    display: inline-block;
     position: relative;
     top: -8px;
     left: -8px;
 }
 #bittop #account-links {
-	display: flex;
+    display: flex;
 }
 
 #bittop .glow {
-	display:none;
+    display:none;
 }
 
 /****navigation overwrites****/
@@ -216,7 +216,7 @@ div.kontainer {
     list-style: none;
 }
 #bittop .account-nav {
-	float:left;
+    float:left;
 }
 #bittop .account-nav li a, #bittop .account-nav li a.tab {
     display: block;
@@ -236,16 +236,16 @@ div.kontainer {
     border-top-right-radius: 5px;
 }
 #bittop .account-nav li a, #bittop .account-nav li a.tab {
-	font-size:1.1em;
+    font-size:1.1em;
 }
 a.dugme, input.dugme, span.dugme, .dugme .dugme-over {
-	font-size:1.1em;
+    font-size:1.1em;
 }
 input.dugme.mini {
-	font-size:small;
+    font-size:small;
 }
 #bittop .account-nav li:hover a.tab, #bittop .account-nav li.selected a.tab {
-	background-color: #f78715;
+    background-color: #f78715;
     color: #fff;
 }
 #bittop .account-nav li {
@@ -300,41 +300,41 @@ input.dugme.mini {
     border-radius: 0;
 }
 #bittop .account-nav li ul li {
-	background:#f78715;
-	border-color: #d57411;
-	padding:5px 0;
-	}
+    background:#f78715;
+    border-color: #d57411;
+    padding:5px 0;
+    }
 #bittop .account-nav li ul li:last-child {
-	border-bottom: 1px solid #d57411;
+    border-bottom: 1px solid #d57411;
 }
 #bittop .account-nav li ul li a {
-	color:#fff;
-	line-height:0.9em;
+    color:#fff;
+    line-height:0.9em;
 }
 #bittop .account-nav li ul li a:hover {
-	color:#272727 !important;
+    color:#272727 !important;
 }
 
 
 /********** HOME PAGE ***********/
 .display.accounts.account {
-	/*homepage only!  */
-	/*background:url("./images/nycs/main-banner.png") no-repeat center top #f78715;*/
-	background-color:#F78715;
-	margin-top:-30px;
-	padding-top:10px;
+    /*homepage only!  */
+    /*background:url("./images/nycs/main-banner.png") no-repeat center top #f78715;*/
+    background-color:#F78715;
+    margin-top:-30px;
+    padding-top:10px;
 }
 /*.display.accounts.account .header{
-	background:url("../images/header-bg.jpg") no-repeat center bottom;
+    background:url("../images/header-bg.jpg") no-repeat center bottom;
 }
 .display.accounts.account .inner{
-	background:url("../images/homepage-inner-bg.png") no-repeat center top;
+    background:url("../images/homepage-inner-bg.png") no-repeat center top;
 }
 */
 #accounts.displaymode .body .header {
     font-size: 50px;
     line-height: 55px;
-    color: #666;    
+    color: #666;
     text-align: center;
    
 }
@@ -352,53 +352,53 @@ input.dugme.mini {
 
 
 #accounts .display.classic #features_block .feature.full-width .thumbnail {
-	/*width: 33.96825%; 321/945*/ 
-	/*margin-right:1.0582%;  10/945 */
-	width: 47.61904%; /* 450/945 */
-	margin-right: 2.1164%; /* 20/945 */
-	height:200px;
+    /*width: 33.96825%; 321/945*/
+    /*margin-right:1.0582%;  10/945 */
+    width: 47.61904%; /* 450/945 */
+    margin-right: 2.1164%; /* 20/945 */
+    height:200px;
 }
 #accounts .display.classic #features_block .feature.full-width .thumbnail img {
-	width:100%;
+    width:100%;
 }
 /*#features_block .feature.full-width .parsed_data {
-	font-size:1.3em;
+    font-size:1.3em;
 }*/
 #accounts .display.classic #features_block .feature.full-width .body {
-	/*width:64.97354%  614/945 */
-	width:50.26455%; /*470/945*/
+    /*width:64.97354%  614/945 */
+    width:50.26455%; /*470/945*/
 }
 #accounts .display.classic #features_block .features-row {
-	width:945px;
-	margin:0 auto;
-	padding:20px 0 0;
+    width:945px;
+    margin:0 auto;
+    padding:20px 0 0;
 }
 #accounts .display.classic #features_block {
-	margin:0;
-	background:#fff;
+    margin:0;
+    background:#fff;
 }
 
 #accounts .display.classic #features_block h3 {
-	text-transform:uppercase;
-	font-size:2em;
-	line-height:1em;
+    text-transform:uppercase;
+    font-size:2em;
+    line-height:1em;
 }
 #accounts .display.features #features_block .feature .body h3 {
-	text-transform:uppercase;
-	line-height:0.9em;
-	text-transform:uppercase;
+    text-transform:uppercase;
+    line-height:0.9em;
+    text-transform:uppercase;
 }
 
 #accounts .display.features  .mc_copy,
-	#accounts .display.features  .mc-side {
-		margin-right: 1.0582%; /* 10px/945px */
-    	width: 32.2751%; /* 305px/945px */
-    	float:left;
+    #accounts .display.features  .mc-side {
+        margin-right: 1.0582%; /* 10px/945px */
+        width: 32.2751%; /* 305px/945px */
+        float:left;
 
-	}
+    }
 #accounts .display.features .mc-submit {
-		margin-left: 315px;
-	}
+        margin-left: 315px;
+    }
 #accounts .display.features #header_join_dugme {
     padding-bottom: 25px;
 }
@@ -421,16 +421,16 @@ input.dugme.mini {
 /*************************************************/
 
 /* --- Float Hack --- */
-	.row:after,
-	.cf:after	{ content: ".";  display: block; height: 0; overflow:hidden; clear: both; visibility: hidden; } 
-	.cf, .row { display:inline-block;}
-	/* Hides from IE-mac \*/
-	* html .cf {height: 1%;}
-	/* End hide from IE-mac */
-	.cf, .row { display:block;}
+    .row:after,
+    .cf:after   { content: ".";  display: block; height: 0; overflow:hidden; clear: both; visibility: hidden; }
+    .cf, .row { display:inline-block;}
+    /* Hides from IE-mac \*/
+    * html .cf {height: 1%;}
+    /* End hide from IE-mac */
+    .cf, .row { display:block;}
 
 #bittop #account-links {
-	display: flex;
+    display: flex;
 }
 
 #responsive-nav { display:none }
@@ -439,350 +439,350 @@ input.dugme.mini {
 /**********************************************************************************************************************************/
 
 @media screen and (max-width: 768px) {
-	
+    
     body {
-		font-size: 100%;
-	}
-	
-	.display.accounts.account {
-		background:none;		
-		padding:0;
-	}
-	 
-	.header {
-		width:100% !important;
-	}
-	div.kontainer, #accounts.displaymode .body .header, #minisearch.listmode .body .header, #minisearch.listmode .sub-kontainer, #main_search_header, #features_block,
-	#accounts.sectiondisplaymode div#kontainer, #organizations.managemode #kontainer, #opportunities.managemode #kontainer, #opportunities.editmode #kontainer, #feedback.editmode #kontainer, #users.displaymode #outerwrapper.blocks2n #kontainer, #organizations.managemode #kontainer #navigation, #opportunities.managemode #kontainer #navigation, #opportunities.editmode #kontainer #navigation, #feedback.editmode #kontainer #navigation, #users.displaymode #outerwrapper.blocks2n #kontainer #navigation  {
-    	width: 100%;
-	}
-	#main_search_reset,
-	#opportunities.editmode .apply .dugmeHolder.submit,
-	#pledge.editmode .apply .dugmeHolder.submit {
-		display:none;
-	}
-	div#kontainer {
-		margin:0;
-		width:100%;
-	}
-	
-	#search_widget_embed {
-		display:none
-	}
-	a.dugme, input.dugme, span.dugme, .dugme .dugme-over {
-		padding:0.5em;
-		font-size:1.5em;
-	}
-	#bittop {
-	text-align:center;
+        font-size: 100%;
+    }
+    
+    .display.accounts.account {
+        background:none;
+        padding:0;
+    }
+     
+    .header {
+        width:100% !important;
+    }
+    div.kontainer, #accounts.displaymode .body .header, #minisearch.listmode .body .header, #minisearch.listmode .sub-kontainer, #main_search_header, #features_block,
+    #accounts.sectiondisplaymode div#kontainer, #organizations.managemode #kontainer, #opportunities.managemode #kontainer, #opportunities.editmode #kontainer, #feedback.editmode #kontainer, #users.displaymode #outerwrapper.blocks2n #kontainer, #organizations.managemode #kontainer #navigation, #opportunities.managemode #kontainer #navigation, #opportunities.editmode #kontainer #navigation, #feedback.editmode #kontainer #navigation, #users.displaymode #outerwrapper.blocks2n #kontainer #navigation  {
+        width: 100%;
+    }
+    #main_search_reset,
+    #opportunities.editmode .apply .dugmeHolder.submit,
+    #pledge.editmode .apply .dugmeHolder.submit {
+        display:none;
+    }
+    div#kontainer {
+        margin:0;
+        width:100%;
+    }
+    
+    #search_widget_embed {
+        display:none
+    }
+    a.dugme, input.dugme, span.dugme, .dugme .dugme-over {
+        padding:0.5em;
+        font-size:1.5em;
+    }
+    #bittop {
+    text-align:center;
         height: 65px;
-	}
-	#bittop .glow {
-		background:none;
-    	height:auto;
-		width:100%;
-	}
-	#bittop .social {
-		float: none;
-   		margin: 0 auto;
-    	padding: 0;
-    	width: 90%;
-	}
-	#bittop img {
-		height:auto;
-	}
-	#logo {
-		width:auto;
-		height:auto;
-		padding:3% 0 3% 0;
-		margin:0;
-	}
-	#bittop img.thumb {
-		width:75%;
-	}
+    }
+    #bittop .glow {
+        background:none;
+        height:auto;
+        width:100%;
+    }
+    #bittop .social {
+        float: none;
+        margin: 0 auto;
+        padding: 0;
+        width: 90%;
+    }
+    #bittop img {
+        height:auto;
+    }
+    #logo {
+        width:auto;
+        height:auto;
+        padding:3% 0 3% 0;
+        margin:0;
+    }
+    #bittop img.thumb {
+        width:75%;
+    }
 
-	#bittop .social-links-top,
-	#bittop #account-links,
-	.discover {
-		display: none;
-	}
-	#mobile-logo {
-		text-align:left;
-	}
-	#main {
-		/*width:95%;
-		margin:0 0 .5em 2.5%;*/
-		width:100%;
-		margin:0;
-	}
-	div.title {
-		line-height:normal;
-	}
-	/*.body .content {
-		padding:10px;
-	}*/
-	.body .kontent{
-		padding:0;
-	}
-	
-	#accounts .display.features #header_join_dugme .dugme {
-		font-size:80%;
-		padding: 4px 11px 5px;
-	}
-	#accounts .display.features #header_join_dugme {
-		padding-top:15px;
-		padding-bottom:15px;
-	}
-	
-
-	/*************   navigation ***************/
-	form {
-		font-size:100%
-	}
-	form#responsive-nav, form#responsive_search_dropdown {
-    	display: inline-block !important;
-    	margin: 5px 0 15px;
-    	width: 90% !important;
-		float:none;
-	}
-	select.chzn-select {
-    	height: auto;
-    	padding: 1em;
-		font-size:1em;
-    	width: 100%;
-	}
-	
-	#bittop .account-nav li:hover a.tab, #bittop .account-nav li.selected a.tab,
-	#bittop .account-nav li ul li {
-		background:#424242;
-		color:#DDD;
-	}
-	#bittop .account-nav li ul li:last-child {
-		border-bottom:none;
-	}
-	#bittop .account-nav li a:hover {
-		background:#272727;
-	}
-	
-	
-	/************ end nav *****************/
+    #bittop .social-links-top,
+    #bittop #account-links,
+    .discover {
+        display: none;
+    }
+    #mobile-logo {
+        text-align:left;
+    }
+    #main {
+        /*width:95%;
+        margin:0 0 .5em 2.5%;*/
+        width:100%;
+        margin:0;
+    }
+    div.title {
+        line-height:normal;
+    }
+    /*.body .content {
+        padding:10px;
+    }*/
+    .body .kontent{
+        padding:0;
+    }
+    
+    #accounts .display.features #header_join_dugme .dugme {
+        font-size:80%;
+        padding: 4px 11px 5px;
+    }
+    #accounts .display.features #header_join_dugme {
+        padding-top:15px;
+        padding-bottom:15px;
+    }
     
 
-	.body .kontent{
-		padding:0;
-	}
-		    
+    /*************   navigation ***************/
+    form {
+        font-size:100%
+    }
+    form#responsive-nav, form#responsive_search_dropdown {
+        display: inline-block !important;
+        margin: 5px 0 15px;
+        width: 90% !important;
+        float:none;
+    }
+    select.chzn-select {
+        height: auto;
+        padding: 1em;
+        font-size:1em;
+        width: 100%;
+    }
+    
+    #bittop .account-nav li:hover a.tab, #bittop .account-nav li.selected a.tab,
+    #bittop .account-nav li ul li {
+        background:#424242;
+        color:#DDD;
+    }
+    #bittop .account-nav li ul li:last-child {
+        border-bottom:none;
+    }
+    #bittop .account-nav li a:hover {
+        background:#272727;
+    }
+    
+    
+    /************ end nav *****************/
+    
+
+    .body .kontent{
+        padding:0;
+    }
+            
     #bittop .social { padding: 5px 0 10px 8px; position: relative; right:inherit}
-	
-	#bittop #account-links {
-		display: inline;
-    	margin: 0 auto;
-    	position: relative;
-	}
+    
+    #bittop #account-links {
+        display: inline;
+        margin: 0 auto;
+        position: relative;
+    }
     #bittop img.thumb {
-		width:80%;
-		height:auto;
-	}
+        width:80%;
+        height:auto;
+    }
     
     /*** RESPONSIVE NAVIGATION ***************/
     
-	nav#responsive-nav {
-		display:block;
-		background:#303030;
-		box-shadow: 0 1px 2px rgba(0,0,0,.6);
-	}
-	
-	nav#responsive-nav .nav-dugmes {
-		float:left;
-	}
-	nav#responsive-nav .account-dugmes {
-		float:right;
-	}
-	nav#responsive-nav .nav-stack,
-	#mobile-account-links a {
-		-webkit-border-radius: 5px;
+    nav#responsive-nav {
+        display:block;
+        background:#303030;
+        box-shadow: 0 1px 2px rgba(0,0,0,.6);
+    }
+    
+    nav#responsive-nav .nav-dugmes {
+        float:left;
+    }
+    nav#responsive-nav .account-dugmes {
+        float:right;
+    }
+    nav#responsive-nav .nav-stack,
+    #mobile-account-links a {
+        -webkit-border-radius: 5px;
         border-radius: 5px;
         border:2px solid #000;
         background:#303030;
-		background: -moz-linear-gradient(top,  #303030 1%, #262626 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#303030), color-stop(100%,#262626)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top,  #303030 1%,#262626 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top,  #303030 1%,#262626 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top,  #303030 1%,#262626 100%); /* IE10+ */
-		background: linear-gradient(to bottom,  #303030 1%,#262626 100%); /* W3C */
+        background: -moz-linear-gradient(top,  #303030 1%, #262626 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#303030), color-stop(100%,#262626)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #303030 1%,#262626 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #303030 1%,#262626 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #303030 1%,#262626 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #303030 1%,#262626 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303030', endColorstr='#262626',GradientType=0 ); /* IE6-9 */
-		margin:3px;
-		padding:0.5em 0.5em 0.3em;
-		color:#ddd;
-		text-shadow: -1px -1px 0 rgba(0,0,0,.5);
+        margin:3px;
+        padding:0.5em 0.5em 0.3em;
+        color:#ddd;
+        text-shadow: -1px -1px 0 rgba(0,0,0,.5);
     }
     
     nav#responsive-nav .nav-stack img{
         vertical-align: inherit;
     }
     #mobile-account-links {
-    	display:block;
+        display:block;
     }
     #mobile-account-links a {
-    	font-size:0.875em;
-    	padding: 0.7em;
-    	text-transform:uppercase;
-    	margin-left:0;
-    	}
-	
-	
-	#bittop .account-nav {
-		
-	}
-	#bittop .account-nav li {
-		display: none;
-		width: 100%;
-		background:#303030;
-		border-radius:0;
-	}
-	#bittop .account-nav li a {
-		display: block;
-		width: auto;
-		padding: 10px 5%;
-		font-size: 14px;
-		font-weight: bold;
-		text-shadow: -1px -1px 0 rgba(0,0,0,.15);
-		color: white;
-		text-decoration: none;
-		/*border-bottom: 1px solid rgba(0,0,0,.2);*/
-		border-top: 1px solid rgba(255,255,255,.1); 
-		border-radius:0 !important;
-		text-align:left;
-	}
-	#bittop .account-nav li:hover a.tab, #bittop .account-nav li.selected a.tab {
-		background:#424242;
-		color:#DDD;
-	}
-	#bittop .account-nav li a:hover {
-		background-color: rgba(0,0,0,.5);
-		border-top-color: transparent;
-	}
-	#bittop .account-nav > li:first-child {
-		border-top: 1px solid rgba(0,0,0,.2);
-	}
+        font-size:0.875em;
+        padding: 0.7em;
+        text-transform:uppercase;
+        margin-left:0;
+        }
+    
+    
+    #bittop .account-nav {
+        
+    }
+    #bittop .account-nav li {
+        display: none;
+        width: 100%;
+        background:#303030;
+        border-radius:0;
+    }
+    #bittop .account-nav li a {
+        display: block;
+        width: auto;
+        padding: 10px 5%;
+        font-size: 14px;
+        font-weight: bold;
+        text-shadow: -1px -1px 0 rgba(0,0,0,.15);
+        color: white;
+        text-decoration: none;
+        /*border-bottom: 1px solid rgba(0,0,0,.2);*/
+        border-top: 1px solid rgba(255,255,255,.1);
+        border-radius:0 !important;
+        text-align:left;
+    }
+    #bittop .account-nav li:hover a.tab, #bittop .account-nav li.selected a.tab {
+        background:#424242;
+        color:#DDD;
+    }
+    #bittop .account-nav li a:hover {
+        background-color: rgba(0,0,0,.5);
+        border-top-color: transparent;
+    }
+    #bittop .account-nav > li:first-child {
+        border-top: 1px solid rgba(0,0,0,.2);
+    }
 
-	/* Toggle the navigation bar open  */
+    /* Toggle the navigation bar open  */
 
-	#bittop .account-nav.open { 
-		height: auto; 
-	}
-	#bittop .account-nav.open li { 
-		display: block; 
-	}
-	#bittop ul.submenu {
-		display:none !important;
-	}
-	
-	
+    #bittop .account-nav.open {
+        height: auto;
+    }
+    #bittop .account-nav.open li {
+        display: block;
+    }
+    #bittop ul.submenu {
+        display:none !important;
+    }
+    
+    
 
-	/* Submenus – optional .parent class indicates dropdowns */
+    /* Submenus – optional .parent class indicates dropdowns */
 
-	#bittop .account-nav > li:hover > a {
-		background: rgba(0,0,0,.5);
-		border-bottom-color: transparent;
-	}
-	#bittop .account-nav li.parent > a:after {
-		content: "▼";
-		color: rgba(255,255,255,.5);
-		float: right;
-	}
-	#bittop .account-nav li.parent > a:hover {
-		background: rgba(0,0,0,.75);
-	}
-	#bittop .account-nav li ul {
-		display: none;
-		background: rgba(0,0,0,.5);
-		border-top: 0 none;
-		padding: 0;
-		width:100%;
-		box-shadow:0;
-		position:relative !important;
-		left:0;
-		top:0;
-	}
-	#bittop .account-nav li ul li {
-		width:auto;
-		border:0;
-		background:#424242;
-	}
-	#bittop .account-nav li ul a {
-		border-bottom:1px solid #3d3d3d;
-		border-top:1px solid #3d3d3d;
-		border-top:none;
-		font-size: 12px;
-		padding: 10px 5%;
-		font-weight: normal;
-		color: #c2c2c2 !important;
-		padding-left:2.5em;
-		
-  	}
-  	#bittop .account-nav li ul a:hover {
-  		color:#000 !important;
-  		border-top:none;
-  		
-  	}
-  	#bittop .account-nav li ul li:last-child {
-  		border:0;
-  		border-radius:0;
-  	}
-	#bittop .account-nav li:hover ul {
-		display: block;
-	}
-	/* end nav */
-	/*^*^*^**^*^*^*^*^*^*^*^*^*^*^*^*^*^*^*^*^*/
-	
-	
-	
-	
-	div.band_header,
-	div.band_f0f0f0,
-	div.band_ebebeb,
-	#bittop #account-links,
-	#logo,
-	#bittop .social{
-		display:none;
-	}
+    #bittop .account-nav > li:hover > a {
+        background: rgba(0,0,0,.5);
+        border-bottom-color: transparent;
+    }
+    #bittop .account-nav li.parent > a:after {
+        content: "▼";
+        color: rgba(255,255,255,.5);
+        float: right;
+    }
+    #bittop .account-nav li.parent > a:hover {
+        background: rgba(0,0,0,.75);
+    }
+    #bittop .account-nav li ul {
+        display: none;
+        background: rgba(0,0,0,.5);
+        border-top: 0 none;
+        padding: 0;
+        width:100%;
+        box-shadow:0;
+        position:relative !important;
+        left:0;
+        top:0;
+    }
+    #bittop .account-nav li ul li {
+        width:auto;
+        border:0;
+        background:#424242;
+    }
+    #bittop .account-nav li ul a {
+        border-bottom:1px solid #3d3d3d;
+        border-top:1px solid #3d3d3d;
+        border-top:none;
+        font-size: 12px;
+        padding: 10px 5%;
+        font-weight: normal;
+        color: #c2c2c2 !important;
+        padding-left:2.5em;
+        
+    }
+    #bittop .account-nav li ul a:hover {
+        color:#000 !important;
+        border-top:none;
+        
+    }
+    #bittop .account-nav li ul li:last-child {
+        border:0;
+        border-radius:0;
+    }
+    #bittop .account-nav li:hover ul {
+        display: block;
+    }
+    /* end nav */
+    /*^*^*^**^*^*^*^*^*^*^*^*^*^*^*^*^*^*^*^*^*/
+    
+    
+    
+    
+    div.band_header,
+    div.band_f0f0f0,
+    div.band_ebebeb,
+    #bittop #account-links,
+    #logo,
+    #bittop .social{
+        display:none;
+    }
     /*********************** HOMEPAGE */
     
     #accounts .display.features #header_join_dugme .dugme {
-		font-size:80%;
-		padding: 4px 11px 5px;
-	}
-	#accounts .display.features #header_join_dugme {
-		padding-top:15px;
-		padding-bottom:15px;
-	}
-    #accounts.displaymode .body .header {
-		font-size:1.5em;
-		line-height:normal;
-		background:#F78715;
-	}
-	.header h1 {
-		font-size:100%;
+        font-size:80%;
+        padding: 4px 11px 5px;
     }
-	
-	#accounts.displaymode .display.accounts.account .header h1 {
-		margin:0 auto;
-		background:none; 
-		padding:10px 0 0 0;
-		width:95%;
-	}
-	
-	.display.accounts.account .inner {
-		background:none;
-	}
-	
+    #accounts .display.features #header_join_dugme {
+        padding-top:15px;
+        padding-bottom:15px;
+    }
+    #accounts.displaymode .body .header {
+        font-size:1.5em;
+        line-height:normal;
+        background:#F78715;
+    }
+    .header h1 {
+        font-size:100%;
+    }
+    
+    #accounts.displaymode .display.accounts.account .header h1 {
+        margin:0 auto;
+        background:none;
+        padding:10px 0 0 0;
+        width:95%;
+    }
+    
+    .display.accounts.account .inner {
+        background:none;
+    }
+    
     
 }
 
 @media (min-width: 1200px){
 div.kontainer {
-     width: 1170px; 
+     width: 1170px;
     margin: 0 auto;
      height: 189px;
 }
@@ -801,7 +801,7 @@ div.kontainer {
         margin-top: 0px;
             padding-top: 0;
     }
-    #accounts.displaymode .body .header { 
+    #accounts.displaymode .body .header {
         padding-top: 10px;
     
     }

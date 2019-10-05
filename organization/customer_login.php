@@ -58,41 +58,34 @@
 
 <?php
 
-if(isset($_POST['login'])){
-
+if (isset($_POST['login'])) {
     $manufacturer_email = escape($_POST['c_email']);
 
     $manufacturer_pass = escape($_POST['c_pass']);
 
     $select_customer = "select * from organizations where manufacturer_email='$manufacturer_email' AND manufacturer_pass='$manufacturer_pass'";
 
-    $run_customer = mysqli_query($con,$select_customer);
+    $run_customer = mysqli_query($con, $select_customer);
     $row_man = mysqli_fetch_array($run_customer);
     $m_id = $row_man['manufacturer_id'];
 
     $check_customer = mysqli_num_rows($run_customer);
 
     
-    if($check_customer==0){
-
+    if ($check_customer==0) {
         echo "<script>alert('Nalog ili lozinka su neispravni')</script>";
 
         exit();
-
     }
 
-    if($check_customer==1){
-
+    if ($check_customer==1) {
             $_SESSION['manufacturer_email']=$manufacturer_email;
             $_SESSION['manufacturer_id']=$m_id;
 
         echo "<script>alert('Prijavljeni ste')</script>";
 
         echo "<script>window.open('organization/index.php?dashboard','_self')</script>";
-
     }
-
-
 }
 
 ?>

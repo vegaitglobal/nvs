@@ -94,7 +94,7 @@ color: #eeeeee;
 }
 
 #top ul.menu > li + li:before {
-content: "|\00a0"; 
+content: "|\00a0";
 padding: 0 5px;
 color: #f7f7f7;
 
@@ -396,7 +396,7 @@ box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 border : solid 2px transparent;
 }
 
-#content .headline { 
+#content .headline {
 height: 350px;
 }
 

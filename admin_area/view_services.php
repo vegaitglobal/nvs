@@ -1,16 +1,10 @@
 <?php
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 
 
@@ -51,28 +45,27 @@ else {
 
 <div class="panel-body"><!-- panel-body Starts -->
 
-<?php
+    <?php
 
-$get_services = "select * from services";
+    $get_services = "select * from services";
 
-$run_services = mysqli_query($con,$get_services);
+    $run_services = mysqli_query($con, $get_services);
 
-while($row_services = mysqli_fetch_array($run_services)){
+    while ($row_services = mysqli_fetch_array($run_services)) {
+        $service_id = $row_services['service_id'];
 
-$service_id = $row_services['service_id'];
+        $service_title = $row_services['service_title'];
 
-$service_title = $row_services['service_title'];
+        $service_image = $row_services['service_image'];
 
-$service_image = $row_services['service_image'];
+        $service_desc = substr($row_services['service_desc'], 0, 400);
 
-$service_desc = substr($row_services['service_desc'],0,400);
+        $service_button = $row_services['service_button'];
 
-$service_button = $row_services['service_button'];
-
-$service_url = $row_services['service_url'];
+        $service_url = $row_services['service_url'];
 
 
-?>
+        ?>
 
 <div class="col-lg-4 col-md-4"><!-- col-lg-4 col-md-4 Starts -->
 
@@ -82,7 +75,7 @@ $service_url = $row_services['service_url'];
 
 <h3 class="panel-title" align="center">
 
-<?php echo $service_title; ?>
+        <?php echo $service_title; ?>
 
 </h3>
 
@@ -120,7 +113,7 @@ $service_url = $row_services['service_url'];
 
 </div><!-- col-lg-4 col-md-4 Ends -->
 
-<?php } ?>
+    <?php } ?>
 
 </div><!-- panel-body Ends -->
 

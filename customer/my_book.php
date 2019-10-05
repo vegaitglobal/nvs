@@ -37,7 +37,7 @@
 
         $get_customer = "select * from volunteers where customer_email='$customer_session'";
 
-        $run_customer = mysqli_query($con,$get_customer);
+        $run_customer = mysqli_query($con, $get_customer);
 
         $row_customer = mysqli_fetch_array($run_customer);
 
@@ -48,10 +48,9 @@
 
         $get_wishlist = "select * from wishlist where customer_id='$customer_id' AND status='Prihvaćen'";
 
-        $run_wishlist = mysqli_query($con,$get_wishlist);
+        $run_wishlist = mysqli_query($con, $get_wishlist);
 
-        while($row_wishlist = mysqli_fetch_array($run_wishlist)){
-
+        while ($row_wishlist = mysqli_fetch_array($run_wishlist)) {
             $wishlist_id = $row_wishlist['wishlist_id'];
 
             $product_id = $row_wishlist['product_id'];
@@ -62,7 +61,7 @@
 
             $get_products = "select * from products where product_id='$product_id'";
 
-            $run_products = mysqli_query($con,$get_products);
+            $run_products = mysqli_query($con, $get_products);
 
             $row_products = mysqli_fetch_array($run_products);
 
@@ -95,32 +94,33 @@
                 </td>
 
                 <td style="vertical-align:middle" >
-                    <?php  if ($hours==0): ?>
+                    <?php  if ($hours==0) : ?>
                         <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>">
                             <i class="fa fa-plus"></i>
                             Unesi
                         </a>
-                    <?php else: ?>
+                    <?php else : ?>
                         <?php echo $hours;?>
                     <?php endif ?>
                 </td>
 
                 <td style="vertical-align:middle" >
-                    <?php if ($hours): ?>
-                        <?php  if (is_null($hours_approved)){
+                    <?php if ($hours) : ?>
+                        <?php  if (is_null($hours_approved)) {
                             echo "U obradi";
-                        }else{
-                            echo $hours_approved ? 'Prihvaćen' : 'Odbijeno'; }?>
+                        } else {
+                            echo $hours_approved ? 'Prihvaćen' : 'Odbijeno';
+                        }?>
                     <?php endif ?>
                 </td>
 
                 <td style="vertical-align:middle" >
-                    <?php if ($hours_approved): ?>
+                    <?php if ($hours_approved) : ?>
                         <a class="btn btn-sm btn-default">
                             <i class="fa fa-download"></i>
                             PDF
                         </a>
-                    <?php else: ?>
+                    <?php else : ?>
                         <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>">
                             <i class="fa fa-pencil"></i>
                             Izmeni

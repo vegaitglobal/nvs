@@ -57,17 +57,17 @@ include("nav.php");
                     <h2>Dokumenti</h2>
                     <p>Dokumenti koje možete preuzeti:</p>
                     <ul class="elements">
-                      <?php
-                        $get_docs = "select * from docs order by docs_title";
-                        $run_docs = mysqli_query($con,$get_docs);
-                        while($row_docs = mysqli_fetch_array($run_docs)){
-                            $doc_title = $row_docs['docs_title']; 
-                            $doc_doc = $row_docs['docs_doc'];
-                        ?>
-                        <li><i class="fa fa-angle-right"></i><a href="docs/<?php echo $doc_doc; ?>"><?php echo $doc_title; ?> </a></li>
                         <?php
+                        $get_docs = "select * from docs order by docs_title";
+                        $run_docs = mysqli_query($con, $get_docs);
+                        while ($row_docs = mysqli_fetch_array($run_docs)) {
+                            $doc_title = $row_docs['docs_title'];
+                            $doc_doc = $row_docs['docs_doc'];
+                            ?>
+                        <li><i class="fa fa-angle-right"></i><a href="docs/<?php echo $doc_doc; ?>"><?php echo $doc_title; ?> </a></li>
+                            <?php
                         }
-                         ?>   
+                        ?>   
                     </ul>
                 </div>
             </div>

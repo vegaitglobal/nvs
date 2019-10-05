@@ -1,35 +1,27 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    if (isset($_GET['edit_docs'])) {
+        $edit_id = $_GET['edit_docs'];
 
-echo "<script>window.open('login.php','_self')</script>";
+        $get_d = "select * from docs where docs_id='$edit_id'";
 
-}
+        $run_edit = mysqli_query($con, $get_d);
 
-else {
+        $row_edit = mysqli_fetch_array($run_edit);
 
+        $d_id = $row_edit['docs_id'];
 
-if(isset($_GET['edit_docs'])){
+        $d_title = $row_edit['docs_title'];
 
-    $edit_id = $_GET['edit_docs'];
+        $d_doc = $row_edit['docs_doc'];
 
-    $get_d = "select * from docs where docs_id='$edit_id'";
+        $new_d_doc = $row_edit['docs_doc'];
+    }
 
-    $run_edit = mysqli_query($con,$get_d);
-
-    $row_edit = mysqli_fetch_array($run_edit);
-
-    $d_id = $row_edit['docs_id'];
-
-    $d_title = $row_edit['docs_title'];
-
-    $d_doc = $row_edit['docs_doc'];
-
-    $new_d_doc = $row_edit['docs_doc'];
-
-}
-
-?>
+    ?>
 
 <div class="row"><!-- row Starts -->
 
@@ -91,7 +83,9 @@ if(isset($_GET['edit_docs'])){
         <div class="col-md-6" >
 
             <input type="file" name="docs_doc" class="form-control" >
-            <br><a  href="<?php if (!empty($d_doc)) {echo "../docs/".$d_doc;} ?>">
+            <br><a  href="<?php if (!empty($d_doc)) {
+                echo "../docs/".$d_doc;
+                          } ?>">
                <?php echo $d_doc; ?> </a>
 
         </div>
@@ -124,40 +118,34 @@ if(isset($_GET['edit_docs'])){
 
 
 
-<?php
+    <?php
 
-if(isset($_POST['update'])){
+    if (isset($_POST['update'])) {
+        $docs_title = $_POST['docs_title'];
 
-    $docs_title = $_POST['docs_title'];
+        $docs_doc = $_FILES['docs_doc']['name'];
 
-    $docs_doc = $_FILES['docs_doc']['name'];
+        $temp_name1 = $_FILES['docs_doc']['tmp_name'];
 
-    $temp_name1 = $_FILES['docs_doc']['tmp_name'];
+        if (empty($docs_doc)) {
+            $docs_doc = $new_d_doc;
+        } else {
+             $file="../docs" ."/". $new_d_doc;
 
-    if(empty($docs_doc)){
-
-        $docs_doc = $new_d_doc;
-
-    }else{
-        
-         $file="../docs" ."/". $new_d_doc;
-
-          if (file_exists($file)) {
+            if (file_exists($file)) {
                 unlink($file);
             }
-    }
+        }
 
    
-    $update_docs = "update docs set docs_title='$docs_title',docs_doc='$docs_doc' where docs_id='$d_id'";
+        $update_docs = "update docs set docs_title='$docs_title',docs_doc='$docs_doc' where docs_id='$d_id'";
 
-    $run_product = mysqli_query($con,$update_docs);
+        $run_product = mysqli_query($con, $update_docs);
 
-    if($run_product){
-        
-             move_uploaded_file($temp_name1,"../docs/$docs_doc");
+        if ($run_product) {
+             move_uploaded_file($temp_name1, "../docs/$docs_doc");
 
-           echo "<script>window.open('index.php?view_docs','_self')</script>";
-
+               echo "<script>window.open('index.php?view_docs','_self')</script>";
+        }
     }
-
-} } ?>
+} ?>

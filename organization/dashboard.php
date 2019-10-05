@@ -5,11 +5,11 @@ $man_id=$_SESSION['manufacturer_id'];
 
 
 $get_p_categories = "select * from product_categories where p_man_id= '$man_id'";
-$run_p_categories = mysqli_query($con,$get_p_categories);
+$run_p_categories = mysqli_query($con, $get_p_categories);
 $count_p_categories = mysqli_num_rows($run_p_categories);
 
 $get_products = "select * from products where manufacturer_id= '$man_id'";
-$run_products = mysqli_query($con,$get_products);
+$run_products = mysqli_query($con, $get_products);
 $count_products = mysqli_num_rows($run_products);
 
 ?>

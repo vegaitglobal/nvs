@@ -26,15 +26,10 @@
 
 <?php
 
-if(!isset($_SESSION['customer_email'])){
-
-echo "<a href='checkout.php' >Prijava</a>";
-
-}
-else{
-
-echo "<a href='customer/index.php?my_wishlist'>Moj nalog</a>";
-
+if (!isset($_SESSION['customer_email'])) {
+    echo "<a href='checkout.php' >Prijava</a>";
+} else {
+    echo "<a href='customer/index.php?my_wishlist'>Moj nalog</a>";
 }
 
 

@@ -1,55 +1,58 @@
 <?php
 
-$db = mysqli_connect("localhost","admin","admin","nvs_nvs");
+$db = mysqli_connect("localhost", "admin", "admin", "nvs_nvs");
 
 
-function escape($string) {
+function escape($string)
+{
 
     global $db;
 
     $str = mysqli_real_escape_string($db, trim($string));
 
-    $string = str_replace(array('\r', '\n',"'",'"'), array(chr(13), chr(10),Chr(32),Chr(32)), $str);    
+    $string = str_replace(array('\r', '\n',"'",'"'), array(chr(13), chr(10),Chr(32),Chr(32)), $str);
 
         return $string;
- 
 }
 
 /// IP address code starts /////
-function getRealUserIp(){
-    switch(true){
-      case (!empty($_SERVER['HTTP_X_REAL_IP'])) : return $_SERVER['HTTP_X_REAL_IP'];
-      case (!empty($_SERVER['HTTP_CLIENT_IP'])) : return $_SERVER['HTTP_CLIENT_IP'];
-      case (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) : return $_SERVER['HTTP_X_FORWARDED_FOR'];
-      default : return $_SERVER['REMOTE_ADDR'];
+function getRealUserIp()
+{
+    switch (true) {
+        case (!empty($_SERVER['HTTP_X_REAL_IP'])):
+            return $_SERVER['HTTP_X_REAL_IP'];
+        case (!empty($_SERVER['HTTP_CLIENT_IP'])):
+            return $_SERVER['HTTP_CLIENT_IP'];
+        case (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])):
+            return $_SERVER['HTTP_X_FORWARDED_FOR'];
+        default:
+            return $_SERVER['REMOTE_ADDR'];
     }
- }
+}
 /// IP address code Ends /////
 
 
 // items function Starts ///
 
-function items(&$email){
+function items(&$email)
+{
 
     global $db;
     
     $get_id="select * from volunteers where customer_email='$email'";
-    $run_id = mysqli_query($db,$get_id);
+    $run_id = mysqli_query($db, $get_id);
     
-        while ($row_cat=mysqli_fetch_array($run_id)) {
-
-            $cat_id = $row_cat['customer_id'];
-
-          }
+    while ($row_cat=mysqli_fetch_array($run_id)) {
+        $cat_id = $row_cat['customer_id'];
+    }
     
     $get_items = "select * from wishlist where customer_id='$cat_id'";
 
-    $run_items = mysqli_query($db,$get_items);
+    $run_items = mysqli_query($db, $get_items);
 
     $count_items = mysqli_num_rows($run_items);
 
     echo $count_items;
-
 }
 
 
@@ -58,51 +61,47 @@ function items(&$email){
 
 // getPro function Starts //
 
-function getPro(){
+function getPro()
+{
 
-global $db;
+    global $db;
 
-$get_products = "select * from products where status='active' order by 1 DESC LIMIT 0,8";
+    $get_products = "select * from products where status='active' order by 1 DESC LIMIT 0,8";
 
-$run_products = mysqli_query($db,$get_products);
+    $run_products = mysqli_query($db, $get_products);
 
-while($row_products=mysqli_fetch_array($run_products)){
+    while ($row_products=mysqli_fetch_array($run_products)) {
+        $pro_id = $row_products['product_id'];
 
-    $pro_id = $row_products['product_id'];
+        $pro_title = $row_products['product_title'];
 
-    $pro_title = $row_products['product_title'];
-
-    $pro_kolicina = $row_products['product_kolicina'];
+        $pro_kolicina = $row_products['product_kolicina'];
 
 
-    $pro_img1 = $row_products['product_img1'];
+        $pro_img1 = $row_products['product_img1'];
 
-    $pro_label = $row_products['product_label'];
+        $pro_label = $row_products['product_label'];
 
-    $manufacturer_id = $row_products['manufacturer_id'];
+        $manufacturer_id = $row_products['manufacturer_id'];
 
-    $get_manufacturer = "select * from organizations where manufacturer_id='$manufacturer_id'";
+        $get_manufacturer = "select * from organizations where manufacturer_id='$manufacturer_id'";
 
-    $run_manufacturer = mysqli_query($db,$get_manufacturer);
+        $run_manufacturer = mysqli_query($db, $get_manufacturer);
 
-    $row_manufacturer = mysqli_fetch_array($run_manufacturer);
+        $row_manufacturer = mysqli_fetch_array($run_manufacturer);
 
-    $manufacturer_name = $row_manufacturer['manufacturer_title'];
+        $manufacturer_name = $row_manufacturer['manufacturer_title'];
 
     
 
-    $pro_url = $row_products['product_url'];
+        $pro_url = $row_products['product_url'];
 
 
 
-    if($pro_label == ""){
-        
-        $product_label="";
-
-    }
-    else{
-
-        $product_label = "
+        if ($pro_label == "") {
+            $product_label="";
+        } else {
+            $product_label = "
 
         <a class='label sale' href='#' style='color:black;'>
 
@@ -113,10 +112,10 @@ while($row_products=mysqli_fetch_array($run_products)){
         </a>
 
         ";
-    }
+        }
 
 
-    echo "
+        echo "
 
     <div class='col-md-4 col-sm-6 single'>
 
@@ -155,9 +154,7 @@ while($row_products=mysqli_fetch_array($run_products)){
     </div>
 
     ";
-                            
-}
-
+    }
 }
 
 // getPro function Ends //
@@ -165,29 +162,24 @@ while($row_products=mysqli_fetch_array($run_products)){
 
 /// getProducts Function Starts ///
 
-function getProducts(){
+function getProducts()
+{
 
 /// getProducts function Code Starts ///
 
-global $db;
+    global $db;
 
-$aWhere = array();
+    $aWhere = array();
 
 /// organizations Code Starts ///
 
-if(isset($_REQUEST['man'])&&is_array($_REQUEST['man'])){
-
-    foreach($_REQUEST['man'] as $sKey=>$sVal){
-
-        if((int)$sVal!=0){
-
-            $aWhere[] = 'manufacturer_id='.(int)$sVal;
-
+    if (isset($_REQUEST['man'])&&is_array($_REQUEST['man'])) {
+        foreach ($_REQUEST['man'] as $sKey => $sVal) {
+            if ((int)$sVal!=0) {
+                $aWhere[] = 'manufacturer_id='.(int)$sVal;
+            }
         }
-
     }
-
-}
 
 /// organizations Code Ends ///
 
@@ -205,84 +197,70 @@ if(isset($_REQUEST['man'])&&is_array($_REQUEST['man'])){
 
 /// Categories Code Starts ///
 
-if(isset($_REQUEST['cat'])&&is_array($_REQUEST['cat'])){
-
-    foreach($_REQUEST['cat'] as $sKey=>$sVal){
-
-        if((int)$sVal!=0){
-
-            $aWhere[] = 'cat_id='.(int)$sVal;
-
+    if (isset($_REQUEST['cat'])&&is_array($_REQUEST['cat'])) {
+        foreach ($_REQUEST['cat'] as $sKey => $sVal) {
+            if ((int)$sVal!=0) {
+                $aWhere[] = 'cat_id='.(int)$sVal;
+            }
         }
-
     }
-
-}
 
 /// Categories Code Ends ///
 
-$per_page=2;
+    $per_page=2;
 
-if(isset($_GET['page'])){
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+    } else {
+        $page=1;
+    }
 
-    $page = $_GET['page'];
+    $start_from = ($page-1) * $per_page ;
 
-}else {
-
-    $page=1;
-
-}
-
-$start_from = ($page-1) * $per_page ;
-
-$sLimit = " order by 1 DESC LIMIT $start_from, $per_page";
+    $sLimit = " order by 1 DESC LIMIT $start_from, $per_page";
     
 //$sWhere = (count($aWhere)>0?" WHERE status='active' and ".implode(' or ',$aWhere):" WHERE status='active' ").$sLimit;
     
 //$get_products = "select * from products  ".$sWhere;
  
-$sWhere = (count($aWhere)>0?' AND ('.implode(' or ',$aWhere).')':' ').$sLimit;
+    $sWhere = (count($aWhere)>0?' AND ('.implode(' or ', $aWhere).')':' ').$sLimit;
     
-$get_products = "select * from products WHERE status='active' ".$sWhere;
+    $get_products = "select * from products WHERE status='active' ".$sWhere;
 
-$run_products = mysqli_query($db,$get_products);
+    $run_products = mysqli_query($db, $get_products);
 
-while($row_products=mysqli_fetch_array($run_products)){
+    while ($row_products=mysqli_fetch_array($run_products)) {
+        $pro_id = $row_products['product_id'];
 
-    $pro_id = $row_products['product_id'];
+        $pro_title = $row_products['product_title'];
 
-    $pro_title = $row_products['product_title'];
+        $pro_kolicina = $row_products['product_kolicina'];
 
-    $pro_kolicina = $row_products['product_kolicina'];
+        $pro_img1 = $row_products['product_img1'];
 
-    $pro_img1 = $row_products['product_img1'];
-
-    $pro_label = $row_products['product_label'];
+        $pro_label = $row_products['product_label'];
     
-    $pro_od = date("d.m.Y", strtotime($row_products['product_od']));
+        $pro_od = date("d.m.Y", strtotime($row_products['product_od']));
        
-    $pro_do = date("d.m.Y", strtotime($row_products['product_do']));
+        $pro_do = date("d.m.Y", strtotime($row_products['product_do']));
 
-    $manufacturer_id = $row_products['manufacturer_id'];
+        $manufacturer_id = $row_products['manufacturer_id'];
 
-    $get_manufacturer = "select * from organizations where manufacturer_id='$manufacturer_id'";
+        $get_manufacturer = "select * from organizations where manufacturer_id='$manufacturer_id'";
 
-    $run_manufacturer = mysqli_query($db,$get_manufacturer);
+        $run_manufacturer = mysqli_query($db, $get_manufacturer);
 
-    $row_manufacturer = mysqli_fetch_array($run_manufacturer);
+        $row_manufacturer = mysqli_fetch_array($run_manufacturer);
 
-    $manufacturer_name = $row_manufacturer['manufacturer_title'];
+        $manufacturer_name = $row_manufacturer['manufacturer_title'];
 
-    $pro_url = $row_products['product_url'];
+        $pro_url = $row_products['product_url'];
 
 
-    if($pro_label == ""){
-
-        $product_label = "";
-    }
-    else{
-
-    $product_label = "
+        if ($pro_label == "") {
+            $product_label = "";
+        } else {
+            $product_label = "
 
         <a class='label sale' href='#' style='color:black;'>
 
@@ -293,11 +271,10 @@ while($row_products=mysqli_fetch_array($run_products)){
         </a>
 
         ";
+        }
 
-    }
 
-
-    echo "
+        echo "
 
     <div class='col-md-6 col-sm-6'>
 
@@ -339,12 +316,8 @@ while($row_products=mysqli_fetch_array($run_products)){
     </div>
 
     ";
-
-}
+    }
 /// getProducts function Code Ends ///
-
-
-
 }
 
 
@@ -353,7 +326,8 @@ while($row_products=mysqli_fetch_array($run_products)){
 
 /// getBlogs Function Starts ///
 
-function getBlogs(){
+function getBlogs()
+{
 
 /// getBlogs function Code Starts ///
 
@@ -365,65 +339,48 @@ function getBlogs(){
 
     /// Products Categories Code Starts ///
 
-    if(isset($_REQUEST['p_tag'])&&is_array($_REQUEST['p_tag'])){
-
-        foreach($_REQUEST['p_tag'] as $sKey=>$sVal){
-
-            if($sVal!=""){
-
+    if (isset($_REQUEST['p_tag'])&&is_array($_REQUEST['p_tag'])) {
+        foreach ($_REQUEST['p_tag'] as $sKey => $sVal) {
+            if ($sVal!="") {
                 $aWhere[] = "post_tags='".$sVal. "'";
-            
             }
-
         }
-
     }
 
     /// Products Categories Code Ends ///
 
     /// Categories Code Starts ///
 
-    if(isset($_REQUEST['cat'])&&is_array($_REQUEST['cat'])){
-
-        foreach($_REQUEST['cat'] as $sKey=>$sVal){
-
-            if((int)$sVal!=0){
-
-            $aWhere[] = 'post_cat_id=' . $sVal;
-         
+    if (isset($_REQUEST['cat'])&&is_array($_REQUEST['cat'])) {
+        foreach ($_REQUEST['cat'] as $sKey => $sVal) {
+            if ((int)$sVal!=0) {
+                $aWhere[] = 'post_cat_id=' . $sVal;
             }
-
         }
-
     }
 
     /// Categories Code Ends ///
 
     $per_page=3;
 
-    if(isset($_GET['page'])){
-
+    if (isset($_GET['page'])) {
         $page = $_GET['page'];
-
-        }else {
-
+    } else {
         $page=1;
-
     }
 
     $start_from = ($page-1) * $per_page ;
 
     $sLimit = " order by post_date DESC LIMIT $start_from,$per_page";
 
-    $sWhere = (count($aWhere)>0?' WHERE '.implode(' or ',$aWhere):'').$sLimit;
+    $sWhere = (count($aWhere)>0?' WHERE '.implode(' or ', $aWhere):'').$sLimit;
 
     $get_products = "select * from posts  ".$sWhere;
 
-    $run_products = mysqli_query($db,$get_products);
+    $run_products = mysqli_query($db, $get_products);
     
 
-    while($row_products=mysqli_fetch_array($run_products)){
-
+    while ($row_products=mysqli_fetch_array($run_products)) {
         $pro_id = $row_products['post_id'];
         
         $pro_url = $row_products['post_url'];
@@ -444,20 +401,16 @@ function getBlogs(){
         
         $get_category = "select * from categories where cat_id='$pro_cat_id'";
 
-    $run_category = mysqli_query($db,$get_category);
+        $run_category = mysqli_query($db, $get_category);
 
-    $row_category = mysqli_fetch_array($run_category);
+        $row_category = mysqli_fetch_array($run_category);
 
         $category_name = $row_category['cat_title'];
         
-        if($pro_label == ""){
-
+        if ($pro_label == "") {
             $product_label = "";
-        }
-        else{
-
+        } else {
             $product_label = $pro_label;
-
         }
 
 
@@ -489,12 +442,8 @@ function getBlogs(){
         </div>
 
         ";
-  
     }
     /// getBlogs function Code Ends ///
-
-
-
 }
 
 
@@ -504,7 +453,8 @@ function getBlogs(){
 
 /// getOrgs Function Starts ///
 
-function getOrgs(){
+function getOrgs()
+{
 
 /// getBlogs function Code Starts ///
 
@@ -517,44 +467,36 @@ function getOrgs(){
      /// Products Categories Code Starts ///
     
    
-    if(isset($_REQUEST['m_org'])&&is_array($_REQUEST['m_org'])){
-
-        foreach($_REQUEST['m_org'] as $sKey=>$sVal){
-
-            if($sVal!=""){
-
-               $aWhere[] = "manufacturer_mesto='". $sVal."'";
-
-           }  }  }
+    if (isset($_REQUEST['m_org'])&&is_array($_REQUEST['m_org'])) {
+        foreach ($_REQUEST['m_org'] as $sKey => $sVal) {
+            if ($sVal!="") {
+                $aWhere[] = "manufacturer_mesto='". $sVal."'";
+            }
+        }
+    }
 
    
     /// Categories Code Ends ///
 
     $per_page=3;
 
-    if(isset($_GET['page'])){
-
+    if (isset($_GET['page'])) {
         $page = $_GET['page'];
-
-        }else {
-
+    } else {
         $page=1;
-
     }
 
     $start_from = ($page-1) * $per_page ;
 
     $sLimit = " order by manufacturer_title_full DESC LIMIT $start_from,$per_page";
 
-    $sWhere = (count($aWhere)>0?' WHERE '.implode(' or ',$aWhere):'').$sLimit;
+    $sWhere = (count($aWhere)>0?' WHERE '.implode(' or ', $aWhere):'').$sLimit;
 
     $get_products = "select * from organizations  ".$sWhere;
 
-    $run_products = mysqli_query($db,$get_products);
+    $run_products = mysqli_query($db, $get_products);
 
-    while($row_manufacturer=mysqli_fetch_array($run_products)){
-
-        
+    while ($row_manufacturer=mysqli_fetch_array($run_products)) {
         $m_id = $row_manufacturer['manufacturer_id'];
 
         $m_title = $row_manufacturer['manufacturer_title'];
@@ -605,12 +547,8 @@ function getOrgs(){
         </div>
 
         ";
-  
     }
     /// getBlogs function Code Ends ///
-
-
-
 }
 
 
@@ -619,35 +557,30 @@ function getOrgs(){
 
 /// getPaginator Function Starts ///
 
-function getPaginator(){
+function getPaginator()
+{
 
 /// getPaginator Function Code Starts ///
 
-$per_page = 2;
+    $per_page = 2;
 
-global $db;
+    global $db;
 
-$aWhere = array();
+    $aWhere = array();
 
-$aPath = '';
+    $aPath = '';
 
 /// organizations Code Starts ///
 
-if(isset($_REQUEST['man'])&&is_array($_REQUEST['man'])){
+    if (isset($_REQUEST['man'])&&is_array($_REQUEST['man'])) {
+        foreach ($_REQUEST['man'] as $sKey => $sVal) {
+            if ((int)$sVal!=0) {
+                $aWhere[] = 'manufacturer_id='.(int)$sVal;
 
-foreach($_REQUEST['man'] as $sKey=>$sVal){
-
-if((int)$sVal!=0){
-
-$aWhere[] = 'manufacturer_id='.(int)$sVal;
-
-$aPath .= 'man[]='.(int)$sVal.'&';
-
-}
-
-}
-
-}
+                $aPath .= 'man[]='.(int)$sVal.'&';
+            }
+        }
+    }
 
 /// organizations Code Ends ///
 
@@ -666,55 +599,50 @@ $aPath .= 'man[]='.(int)$sVal.'&';
 
 /// Categories Code Starts ///
 
-if(isset($_REQUEST['cat'])&&is_array($_REQUEST['cat'])){
+    if (isset($_REQUEST['cat'])&&is_array($_REQUEST['cat'])) {
+        foreach ($_REQUEST['cat'] as $sKey => $sVal) {
+            if ((int)$sVal!=0) {
+                $aWhere[] = 'cat_id='.(int)$sVal;
 
-    foreach($_REQUEST['cat'] as $sKey=>$sVal){
-
-        if((int)$sVal!=0){
-
-            $aWhere[] = 'cat_id='.(int)$sVal;
-
-            $aPath .= 'cat[]='.(int)$sVal.'&';
-
+                $aPath .= 'cat[]='.(int)$sVal.'&';
+            }
         }
-
     }
-
-}
 
 /// Categories Code Ends ///
 
 
-$sWhere = (count($aWhere)>0?" WHERE status='active' and (".implode(' or ',$aWhere).")":" WHERE status='active' ");
+    $sWhere = (count($aWhere)>0?" WHERE status='active' and (".implode(' or ', $aWhere).")":" WHERE status='active' ");
 
-$query = "select * from products ".$sWhere;
+    $query = "select * from products ".$sWhere;
 
-$result = mysqli_query($db,$query);
+    $result = mysqli_query($db, $query);
 
-$total_records = mysqli_num_rows($result);
+    $total_records = mysqli_num_rows($result);
 
-$total_pages = ceil($total_records / $per_page);
+    $total_pages = ceil($total_records / $per_page);
 
-echo "<li><a href='shop.php?page=1";
+    echo "<li><a href='shop.php?page=1";
 
-if(!empty($aPath)){ echo "&".$aPath; }
+    if (!empty($aPath)) {
+        echo "&".$aPath;
+    }
 
-echo "' >".'Prva'."</a></li>";
+    echo "' >".'Prva'."</a></li>";
 
-for ($i=1; $i<=$total_pages; $i++){
+    for ($i=1; $i<=$total_pages; $i++) {
+        echo "<li><a href='shop.php?page=".$i.(!empty($aPath)?'&'.$aPath:'')."' >".$i."</a></li>";
+    };
 
-    echo "<li><a href='shop.php?page=".$i.(!empty($aPath)?'&'.$aPath:'')."' >".$i."</a></li>";
+    echo "<li><a href='shop.php?page=$total_pages";
 
-};
+    if (!empty($aPath)) {
+        echo "&".$aPath;
+    }
 
-echo "<li><a href='shop.php?page=$total_pages";
-
-if(!empty($aPath)){ echo "&".$aPath; }
-
-echo "' >".'Zadnja'."</a></li>";
+    echo "' >".'Zadnja'."</a></li>";
 
 /// getPaginator Function Code Ends ///
-
 }
 
 /// getPaginator Function Ends ///
@@ -723,7 +651,8 @@ echo "' >".'Zadnja'."</a></li>";
  
 
 
-function getPaginatorBlog(){
+function getPaginatorBlog()
+{
 
 /// getPaginator Function Code Starts ///
 
@@ -739,49 +668,37 @@ function getPaginatorBlog(){
 
     /// Products Categories Code Starts ///
 
-    if(isset($_REQUEST['p_tag'])&&is_array($_REQUEST['p_tag'])){
-
-        foreach($_REQUEST['p_tag'] as $sKey=>$sVal){
-
-            if((int)$sVal!=0){
-
+    if (isset($_REQUEST['p_tag'])&&is_array($_REQUEST['p_tag'])) {
+        foreach ($_REQUEST['p_tag'] as $sKey => $sVal) {
+            if ((int)$sVal!=0) {
                 $aWhere[] = 'post_tags='.(int)$sVal;
 
                 $aPath .= 'p_tag[]='.(int)$sVal.'&';
-
             }
-
         }
-
     }
 
     /// Products Categories Code Ends ///
 
     /// Categories Code Starts ///
 
-    if(isset($_REQUEST['cat'])&&is_array($_REQUEST['cat'])){
-
-        foreach($_REQUEST['cat'] as $sKey=>$sVal){
-
-            if((int)$sVal!=0){
-
+    if (isset($_REQUEST['cat'])&&is_array($_REQUEST['cat'])) {
+        foreach ($_REQUEST['cat'] as $sKey => $sVal) {
+            if ((int)$sVal!=0) {
                 $aWhere[] = ' post_cat_id='.(int)$sVal;
 
                 $aPath .= 'cat[]='.(int)$sVal.'&';
-
             }
-
         }
-
     }
 
     /// Categories Code Ends ///
 
-    $sWhere = (count($aWhere)>0?' WHERE '.implode(' or ',$aWhere):'');
+    $sWhere = (count($aWhere)>0?' WHERE '.implode(' or ', $aWhere):'');
 
     $query = "select * from posts ".$sWhere;
 
-    $result = mysqli_query($db,$query);
+    $result = mysqli_query($db, $query);
 
     $total_records = mysqli_num_rows($result);
 
@@ -789,29 +706,31 @@ function getPaginatorBlog(){
 
     echo "<li><a href='blog.php?page=1";
 
-    if(!empty($aPath)){ echo "&".$aPath; }
+    if (!empty($aPath)) {
+        echo "&".$aPath;
+    }
 
     echo "' >".'Prva'."</a></li>";
 
-    for ($i=1; $i<=$total_pages; $i++){
-
+    for ($i=1; $i<=$total_pages; $i++) {
         echo "<li><a href='blog.php?page=".$i.(!empty($aPath)?'&'.$aPath:'')."' >".$i."</a></li>";
-
     };
 
     echo "<li><a href='blog.php?page=$total_pages";
 
-    if(!empty($aPath)){ echo "&".$aPath; }
+    if (!empty($aPath)) {
+        echo "&".$aPath;
+    }
 
     echo "' >".'Zadnja'."</a></li>";
 
     /// getPaginator Function Code Ends ///
-
 }
 
 /// getPaginator Function Ends ///
 
-function getPaginatorOrgs(){
+function getPaginatorOrgs()
+{
 
 /// getPaginator Function Code Starts ///
 
@@ -827,26 +746,24 @@ function getPaginatorOrgs(){
 
     /// Products Categories Code Starts ///
 
-    if(isset($_REQUEST['m_org'])&&is_array($_REQUEST['m_org'])){
+    if (isset($_REQUEST['m_org'])&&is_array($_REQUEST['m_org'])) {
+        foreach ($_REQUEST['m_org'] as $sKey => $sVal) {
+            if ((int)$sVal!=0) {
+                $aWhere[] = 'manufacturer_mesto='.(int)$sVal;
 
-        foreach($_REQUEST['m_org'] as $sKey=>$sVal){
-
-            if((int)$sVal!=0){
-
-               $aWhere[] = 'manufacturer_mesto='.(int)$sVal;
-
-               $aPath .= 'm_org[]='.(int)$sVal.'&';
-
-           }  }  }
+                $aPath .= 'm_org[]='.(int)$sVal.'&';
+            }
+        }
+    }
 
     /// Products Categories Code Ends ///
 
    
-    $sWhere = (count($aWhere)>0?' WHERE '.implode(' or ',$aWhere):'');
+    $sWhere = (count($aWhere)>0?' WHERE '.implode(' or ', $aWhere):'');
 
     $query = "select * from organizations ".$sWhere;
 
-    $result = mysqli_query($db,$query);
+    $result = mysqli_query($db, $query);
 
     $total_records = mysqli_num_rows($result);
 
@@ -854,29 +771,25 @@ function getPaginatorOrgs(){
 
     echo "<li><a href='org.php?page=1";
 
-    if(!empty($aPath)){ echo "&".$aPath; }
+    if (!empty($aPath)) {
+        echo "&".$aPath;
+    }
 
     echo "' >".'Prva'."</a></li>";
 
-    for ($i=1; $i<=$total_pages; $i++){
-
+    for ($i=1; $i<=$total_pages; $i++) {
         echo "<li><a href='org.php?page=".$i.(!empty($aPath)?'&'.$aPath:'')."' >".$i."</a></li>";
-
     };
 
     echo "<li><a href='org.php?page=$total_pages";
 
-    if(!empty($aPath)){ echo "&".$aPath; }
+    if (!empty($aPath)) {
+        echo "&".$aPath;
+    }
 
     echo "' >".'Zadnja'."</a></li>";
 
     /// getPaginator Function Code Ends ///
-
 }
 
 /// getPaginator Function Ends ///
-
-
-
- 
-?>

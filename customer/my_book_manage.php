@@ -71,7 +71,6 @@ if (!mysqli_num_rows($run_wishlist)) {
 $row_wishlist = mysqli_fetch_array($run_wishlist);
 
 if (isset($_POST['hours'])) {
-
     $hours = $_POST['hours'];
 
     if (!$hours || !is_numeric($hours)) {
@@ -98,4 +97,4 @@ echo $twig->render('my_book_manage.html.twig', [
     'firstAlert' => $AlertsService->getFirstAlert(),
     'wishlist' => $row_wishlist,
     'hours' => $hours,
-] );
+]);

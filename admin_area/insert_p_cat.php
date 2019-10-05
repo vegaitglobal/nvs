@@ -1,15 +1,9 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -85,21 +79,20 @@ else {
 
 <option> izaberi organizaciju </option>
 
-<?php
+    <?php
 
-$get_manufacturer = "select * from organizations";
-$run_manufacturer = mysqli_query($con,$get_manufacturer);
-while($row_manufacturer= mysqli_fetch_array($run_manufacturer)){
-$manufacturer_id = $row_manufacturer['manufacturer_id'];
-$manufacturer_title = $row_manufacturer['manufacturer_title'];
+    $get_manufacturer = "select * from organizations";
+    $run_manufacturer = mysqli_query($con, $get_manufacturer);
+    while ($row_manufacturer= mysqli_fetch_array($run_manufacturer)) {
+        $manufacturer_id = $row_manufacturer['manufacturer_id'];
+        $manufacturer_title = $row_manufacturer['manufacturer_title'];
 
-echo "<option value='$manufacturer_id'>
+        echo "<option value='$manufacturer_id'>
 $manufacturer_title
 </option>";
+    }
 
-}
-
-?>
+    ?>
 
 </select><!-- select manufacturer Ends -->
 
@@ -232,56 +225,50 @@ $manufacturer_title
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
+        $p_cat_title = escape($_POST['p_cat_title']);
+    
+        $p_cat_opis = $_POST['p_cat_opis'];
 
-$p_cat_title = escape($_POST['p_cat_title']);
-    
-$p_cat_opis = $_POST['p_cat_opis'];
+        $p_cat_top = $_POST['p_cat_top'];
 
-$p_cat_top = $_POST['p_cat_top'];
+        $p_cat_image = $_FILES['p_cat_image']['name'];
 
-$p_cat_image = $_FILES['p_cat_image']['name'];
-
-$temp_name = $_FILES['p_cat_image']['tmp_name'];
+        $temp_name = $_FILES['p_cat_image']['tmp_name'];
 
     
-$p_cat_lokacija = escape($_POST['p_cat_lokacija']);
+        $p_cat_lokacija = escape($_POST['p_cat_lokacija']);
     
-$p_cat_od = $_POST['p_cat_od'];
+        $p_cat_od = $_POST['p_cat_od'];
     
-$p_cat_do = $_POST['p_cat_do'];
+        $p_cat_do = $_POST['p_cat_do'];
     
-$p_cat_hrana = $_POST['p_cat_hrana'];
+        $p_cat_hrana = $_POST['p_cat_hrana'];
 
-$p_cat_smestaj = $_POST['p_cat_smestaj'];
+        $p_cat_smestaj = $_POST['p_cat_smestaj'];
     
-$p_man_id = $_POST['manufacturer'];
-    
+        $p_man_id = $_POST['manufacturer'];
     
     
-$insert_p_cat = "insert into product_categories (p_cat_title,p_cat_opis,p_cat_top,p_cat_image,p_cat_lokacija,p_cat_od,p_cat_do,p_cat_hrana,p_cat_smestaj,p_man_id) values ('$p_cat_title','$p_cat_opis','$p_cat_top','$p_cat_image','$p_cat_lokacija','$p_cat_od','$p_cat_do','$p_cat_hrana','$p_cat_smestaj','$p_man_id')";
-
-$run_p_cat = mysqli_query($con,$insert_p_cat);
-
-if($run_p_cat){
     
-    move_uploaded_file($temp_name,"other_images/$p_cat_image");
+        $insert_p_cat = "insert into product_categories (p_cat_title,p_cat_opis,p_cat_top,p_cat_image,p_cat_lokacija,p_cat_od,p_cat_do,p_cat_hrana,p_cat_smestaj,p_man_id) values ('$p_cat_title','$p_cat_opis','$p_cat_top','$p_cat_image','$p_cat_lokacija','$p_cat_od','$p_cat_do','$p_cat_hrana','$p_cat_smestaj','$p_man_id')";
 
-    echo "<script>alert('Nov program je unet')</script>";
+        $run_p_cat = mysqli_query($con, $insert_p_cat);
 
-    echo "<script>window.open('index.php?view_p_cats','_self')</script>";
+        if ($run_p_cat) {
+            move_uploaded_file($temp_name, "other_images/$p_cat_image");
 
-}
+            echo "<script>alert('Nov program je unet')</script>";
+
+            echo "<script>window.open('index.php?view_p_cats','_self')</script>";
+        }
+    }
 
 
 
-}
-
-
-
-?>
+    ?>
 
 
 <?php } ?>

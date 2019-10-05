@@ -1,78 +1,72 @@
 <?php
 
-if(!isset($_SESSION['manufacturer_email'])){
-
+if (!isset($_SESSION['manufacturer_email'])) {
     echo "<script>window.open('../org.php','_self')</script>";
-}
-
-else {
-
-$man_email=$_SESSION['manufacturer_email'];
-$man_id=$_SESSION['manufacturer_id'];
+} else {
+    $man_email=$_SESSION['manufacturer_email'];
+    $man_id=$_SESSION['manufacturer_id'];
     
 
 
-if(isset($_GET['edit_product'])){
+    if (isset($_GET['edit_product'])) {
+        $edit_id = $_GET['edit_product'];
 
-    $edit_id = $_GET['edit_product'];
+        $get_p = "select * from products where product_id='$edit_id'";
 
-    $get_p = "select * from products where product_id='$edit_id'";
+        $run_edit = mysqli_query($con, $get_p);
 
-    $run_edit = mysqli_query($con,$get_p);
+        $row_edit = mysqli_fetch_array($run_edit);
 
-    $row_edit = mysqli_fetch_array($run_edit);
+        $p_id = $row_edit['product_id'];
 
-    $p_id = $row_edit['product_id'];
+        $p_title = $row_edit['product_title'];
 
-    $p_title = $row_edit['product_title'];
+        $cat = $row_edit['cat_id'];
 
-    $cat = $row_edit['cat_id'];
+        $m_id = $row_edit['manufacturer_id'];
 
-    $m_id = $row_edit['manufacturer_id'];
+        $p_image1 = $row_edit['product_img1'];
 
-    $p_image1 = $row_edit['product_img1'];
+        $p_image2 = $row_edit['product_img2'];
 
-    $p_image2 = $row_edit['product_img2'];
+        $p_image3 = $row_edit['product_img3'];
 
-    $p_image3 = $row_edit['product_img3'];
+        $new_p_image1 = $row_edit['product_img1'];
 
-    $new_p_image1 = $row_edit['product_img1'];
+        $new_p_image2 = $row_edit['product_img2'];
 
-    $new_p_image2 = $row_edit['product_img2'];
+        $new_p_image3 = $row_edit['product_img3'];
 
-    $new_p_image3 = $row_edit['product_img3'];
+        $p_kolicina = $row_edit['product_kolicina'];
 
-    $p_kolicina = $row_edit['product_kolicina'];
+        $p_keywords = $row_edit['product_keywords'];
 
-    $p_keywords = $row_edit['product_keywords'];
+        $p_od = $row_edit['product_od'];
+        $p_do = $row_edit['product_do'];
+        $p_lokacija = $row_edit['product_lokacija'];
 
-    $p_od = $row_edit['product_od'];   
-    $p_do = $row_edit['product_do']; 
-    $p_lokacija = $row_edit['product_lokacija']; 
+        $p_desc = $row_edit['product_desc'];
 
-    $p_desc = $row_edit['product_desc'];
+        $p_label = $row_edit['product_label'];
 
-    $p_label = $row_edit['product_label'];
+        $p_url = $row_edit['product_url'];
 
-    $p_url = $row_edit['product_url'];
+        $p_features = $row_edit['product_features'];
 
-    $p_features = $row_edit['product_features'];
-
-    $p_video = $row_edit['product_video'];
-
-}
+        $p_video = $row_edit['product_video'];
+    }
 
 
 
-$get_cat = "select * from categories where cat_id='$cat'";
+    $get_cat = "select * from categories where cat_id='$cat'";
 
-$run_cat = mysqli_query($con,$get_cat);
+    $run_cat = mysqli_query($con, $get_cat);
 
-$row_cat = mysqli_fetch_array($run_cat);
+    $row_cat = mysqli_fetch_array($run_cat);
 
-$cat_title = $row_cat['cat_title'];
+    $cat_title = $row_cat['cat_title'];
 
-?>
+    ?>
 
 
 <div class="row"><!-- row Starts -->
@@ -163,16 +157,14 @@ $cat_title = $row_cat['cat_title'];
 
                     $get_cat = "select * from categories ";
 
-                    $run_cat = mysqli_query($con,$get_cat);
+                    $run_cat = mysqli_query($con, $get_cat);
 
                     while ($row_cat=mysqli_fetch_array($run_cat)) {
+                        $cat_id = $row_cat['cat_id'];
 
-                    $cat_id = $row_cat['cat_id'];
+                        $cat_title = $row_cat['cat_title'];
 
-                    $cat_title = $row_cat['cat_title'];
-
-                    echo "<option value='$cat_id'>$cat_title</option>";
-
+                        echo "<option value='$cat_id'>$cat_title</option>";
                     }
 
                     ?>
@@ -203,7 +195,9 @@ $cat_title = $row_cat['cat_title'];
             <div class="col-md-6" >
 
                 <input type="file" name="product_img2" class="form-control" >
-                <br><a class="btn btn-primary" href="<?php if (!empty($p_image2)) {echo "../admin_area/product_images/".$p_image2;} ?>">
+                <br><a class="btn btn-primary" href="<?php if (!empty($p_image2)) {
+                    echo "../admin_area/product_images/".$p_image2;
+                                                     } ?>">
                <?php echo $p_image2; ?> 
                 </a>
 
@@ -218,7 +212,9 @@ $cat_title = $row_cat['cat_title'];
             <div class="col-md-6" >
 
                 <input type="file" name="product_img3" class="form-control" >
-                <br><a class="btn btn-primary " href="<?php if (!empty($p_image3)) {echo "../admin_area/product_images/".$p_image3;} ?>">
+                <br><a class="btn btn-primary " href="<?php if (!empty($p_image3)) {
+                    echo "../admin_area/product_images/".$p_image3;
+                                                      } ?>">
                    <?php echo $p_image3; ?> 
                 </a>
 
@@ -385,99 +381,86 @@ $cat_title = $row_cat['cat_title'];
 
 
 
-<?php
+    <?php
 
-if(isset($_POST['update'])){
+    if (isset($_POST['update'])) {
+        $product_title = escape($_POST['product_title']);
+        $product_cat = $_POST['product_cat'];
+        $cat = $_POST['cat'];
 
-    $product_title = escape($_POST['product_title']);
-    $product_cat = $_POST['product_cat'];
-    $cat = $_POST['cat'];
+        $product_kolicina = escape($_POST['product_kolicina']);
+        $product_keywords = escape($_POST['product_keywords']);
+        $product_od = $_POST['product_od'];
+        $product_do = $_POST['product_do'];
+        $product_lokacija =escape($_POST['product_lokacija']);
 
-    $product_kolicina = escape($_POST['product_kolicina']);
-    $product_keywords = escape($_POST['product_keywords']);
-    $product_od = $_POST['product_od'];   
-    $product_do = $_POST['product_do']; 
-    $product_lokacija =escape($_POST['product_lokacija']); 
+        $product_desc = escape($_POST['product_desc']);
 
-    $product_desc = escape($_POST['product_desc']);
+        $product_label = escape($_POST['product_label']);
 
-    $product_label = escape($_POST['product_label']);
+        $product_url = filter_var($_POST['product_url'], FILTER_SANITIZE_URL);
 
-    $product_url = filter_var( $_POST['product_url'], FILTER_SANITIZE_URL);
+        $product_features = escape($_POST['product_features']);
 
-    $product_features = escape($_POST['product_features']);
+        $product_video = escape($_POST['product_video']);
 
-    $product_video = escape($_POST['product_video']);
+        $status = "product";
 
-    $status = "product";
+        $product_img1 = $_FILES['product_img1']['name'];
+        $product_img2 = $_FILES['product_img2']['name'];
+        $product_img3 = $_FILES['product_img3']['name'];
 
-    $product_img1 = $_FILES['product_img1']['name'];
-    $product_img2 = $_FILES['product_img2']['name'];
-    $product_img3 = $_FILES['product_img3']['name'];
+        $temp_name1 = $_FILES['product_img1']['tmp_name'];
+        $temp_name2 = $_FILES['product_img2']['tmp_name'];
+        $temp_name3 = $_FILES['product_img3']['tmp_name'];
 
-    $temp_name1 = $_FILES['product_img1']['tmp_name'];
-    $temp_name2 = $_FILES['product_img2']['tmp_name'];
-    $temp_name3 = $_FILES['product_img3']['tmp_name'];
+        if (empty($product_img1)) {
+            $product_img1 = $new_p_image1;
+        } else {
+            $file="../admin_area/product_images" ."/". $new_p_image1;
 
-    if(empty($product_img1)){
-
-        $product_img1 = $new_p_image1;
-
-        }else{
-
-             $file="../admin_area/product_images" ."/". $new_p_image1;
-
-              if (file_exists($file)) {
+            if (file_exists($file)) {
                     unlink($file);
-                }
-    }
+            }
+        }
 
 
-    if(empty($product_img2)){
-
-        $product_img2 = $new_p_image2;
-
-        }else{
-
+        if (empty($product_img2)) {
+            $product_img2 = $new_p_image2;
+        } else {
              $file="../admin_area/product_images" ."/". $new_p_image2;
 
-              if (file_exists($file)) {
-                    unlink($file);
-                }
-    }
-
-    if(empty($product_img3)){
-
-        $product_img3 = $new_p_image3;
-
-     }else{
-        
-         $file="../admin_area/product_images" ."/". $new_p_image3;
-
-          if (file_exists($file)) {
+            if (file_exists($file)) {
                 unlink($file);
             }
+        }
+
+        if (empty($product_img3)) {
+            $product_img3 = $new_p_image3;
+        } else {
+            $file="../admin_area/product_images" ."/". $new_p_image3;
+
+            if (file_exists($file)) {
+                unlink($file);
+            }
+        }
+
+
+        move_uploaded_file($temp_name1, "../admin_area/product_images/$product_img1");
+        move_uploaded_file($temp_name2, "../admin_area/product_images/$product_img2");
+        move_uploaded_file($temp_name3, "../admin_area/product_images/$product_img3");
+
+        $update_product = "update products set cat_id='$cat',date=NOW(),product_title='$product_title',product_url='$product_url',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_kolicina='$product_kolicina',product_desc='$product_desc',product_features='$product_features',product_video='$product_video',product_keywords='$product_keywords',product_label='$product_label',status='$status',product_lokacija='$product_lokacija',product_od='$product_od',product_do='$product_do' where product_id='$p_id'";
+
+        $run_product = mysqli_query($con, $update_product);
+
+        if ($run_product) {
+            echo "<script> alert('Pozicija je ažurirana') </script>";
+
+            echo "<script>window.open('index.php?view_products','_self')</script>";
+        }
     }
 
-
-    move_uploaded_file($temp_name1,"../admin_area/product_images/$product_img1");
-    move_uploaded_file($temp_name2,"../admin_area/product_images/$product_img2");
-    move_uploaded_file($temp_name3,"../admin_area/product_images/$product_img3");
-
-    $update_product = "update products set cat_id='$cat',date=NOW(),product_title='$product_title',product_url='$product_url',product_img1='$product_img1',product_img2='$product_img2',product_img3='$product_img3',product_kolicina='$product_kolicina',product_desc='$product_desc',product_features='$product_features',product_video='$product_video',product_keywords='$product_keywords',product_label='$product_label',status='$status',product_lokacija='$product_lokacija',product_od='$product_od',product_do='$product_do' where product_id='$p_id'";
-
-    $run_product = mysqli_query($con,$update_product);
-
-    if($run_product){
-
-        echo "<script> alert('Pozicija je ažurirana') </script>";
-
-        echo "<script>window.open('index.php?view_products','_self')</script>";
-
-    }
-
-}
-
-?>
+    ?>
 
 <?php } ?>

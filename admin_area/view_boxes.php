@@ -2,18 +2,10 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -52,21 +44,20 @@ else {
 
 <div class="panel-body"><!-- panel-body Starts -->
 
-<?php
+    <?php
 
-$get_boxes = "select * from boxes_section";
+    $get_boxes = "select * from boxes_section";
 
-$run_boxes = mysqli_query($con,$get_boxes);
+    $run_boxes = mysqli_query($con, $get_boxes);
 
-while($row_boxes = mysqli_fetch_array($run_boxes)){
+    while ($row_boxes = mysqli_fetch_array($run_boxes)) {
+        $box_id = $row_boxes['box_id'];
 
-$box_id = $row_boxes['box_id'];
+        $box_title = $row_boxes['box_title'];
 
-$box_title = $row_boxes['box_title'];
+        $box_desc = $row_boxes['box_desc'];
 
-$box_desc = $row_boxes['box_desc'];
-
-?>
+        ?>
 
 
 <div class="col-lg-4 col-md-4"><!-- col-lg-4 col-md-4 Starts -->
@@ -79,7 +70,7 @@ $box_desc = $row_boxes['box_desc'];
 
 <h3 class="panel-title" align="center"><!-- panel-title Starts -->
 
-<?php echo $box_title; ?>
+        <?php echo $box_title; ?>
 
 </h3><!-- panel-title Ends -->
 
@@ -87,7 +78,7 @@ $box_desc = $row_boxes['box_desc'];
 
 <div class="panel-body"><!-- panel-body Starts -->
 
-<?php echo $box_desc; ?>
+        <?php echo $box_desc; ?>
 
 </div><!-- panel-body Ends -->
 
@@ -113,7 +104,7 @@ $box_desc = $row_boxes['box_desc'];
 
 </div><!-- col-lg-4 col-md-4 Ends -->
 
-<?php } ?>
+    <?php } ?>
 
 </div><!-- panel-body Ends -->
 

@@ -1,15 +1,9 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -78,36 +72,35 @@ else {
 
 <tbody><!-- tbody Starts -->
 
-<?php
+    <?php
 
-$i=0;
+    $i=0;
 
-$get_c = "select * from volunteers";
+    $get_c = "select * from volunteers";
 
-$run_c = mysqli_query($con,$get_c);
+    $run_c = mysqli_query($con, $get_c);
 
-while($row_c=mysqli_fetch_array($run_c)){
+    while ($row_c=mysqli_fetch_array($run_c)) {
+        $c_id = $row_c['customer_id'];
 
-$c_id = $row_c['customer_id'];
+        $c_name = $row_c['customer_name'];
 
-$c_name = $row_c['customer_name'];
+        $c_email = $row_c['customer_email'];
 
-$c_email = $row_c['customer_email'];
+        $c_image = $row_c['customer_image'];
 
-$c_image = $row_c['customer_image'];
+        $c_country = $row_c['customer_country'];
 
-$c_country = $row_c['customer_country'];
+        $c_city = $row_c['customer_city'];
 
-$c_city = $row_c['customer_city'];
+        $c_contact = $row_c['customer_contact'];
 
-$c_contact = $row_c['customer_contact'];
-
-$i++;
-
+        $i++;
 
 
 
-?>
+
+        ?>
 
 <tr>
 
@@ -158,7 +151,7 @@ $i++;
 
 </tr>
 
-<?php } ?>
+    <?php } ?>
 
 
 </tbody><!-- tbody Ends -->
@@ -184,18 +177,18 @@ $i++;
 
 <script>
     $("button").click(function(){
-			$(function() {
-				$("#table2excel").table2excel({
-					exclude: ".noExl",
-					name: "Excel Document Name",
-					filename: "volonteri",
-					fileext: ".xls",
-					exclude_img: true,
-					exclude_links: true,
-					exclude_inputs: true
-				});
-			});
+            $(function() {
+                $("#table2excel").table2excel({
+                    exclude: ".noExl",
+                    name: "Excel Document Name",
+                    filename: "volonteri",
+                    fileext: ".xls",
+                    exclude_img: true,
+                    exclude_links: true,
+                    exclude_inputs: true
+                });
+            });
     });
-		</script>
+        </script>
 
 <?php } ?>
