@@ -141,10 +141,6 @@ font-weight:bold;
 font-size:14px;
 }
 
-.padding-nav{
-padding-top:10px;
-}
-
 
 .navbar ul.nav > li > a:hover{
 background:#FFDEAD; /*  NavajoWhite */
@@ -1005,5 +1001,14 @@ width:90%;
 .btn-silver {
   color: #333333;
   background-color: #cccccc;
+}
+
+
+.btn {
   border-radius: 5px;
+}
+
+.navbar {
+  border: none;
+  border-radius: 0px 
 }
