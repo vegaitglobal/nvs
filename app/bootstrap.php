@@ -9,9 +9,11 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 require_once __DIR__.'/../vendor/autoload.php';
 
 // Entity
-require_once __DIR__.'/../src/Entity/Product.php';
-require_once __DIR__.'/../src/Entity/Volunteer.php';
-require_once __DIR__.'/../src/Entity/Wishlist.php';
+$files = glob(__DIR__ . '/../src/Entity/*.php');
+
+foreach ($files as $file) {
+    require_once $file;
+}
 
 // Utils
 require_once __DIR__.'/../src/Utils/AlertService.php';

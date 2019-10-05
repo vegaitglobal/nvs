@@ -1,7 +1,9 @@
-{{ wishlist.volunteer.name }}
-{{ wishlist.product.title }}
-{{ wishlist.product.od | date('d. m. Y.') }}
-{{ wishlist.product.do | date }}
-{{ wishlist.product.lokacija }}
-{{ "now" | date }}
-{{ wishlist.id | hash }}
+"volonter" {{ wishlist.volunteer.name }}
+"Novi Sad Business Run" {{ wishlist.product.title }}
+"10. 10. 2019." {{ wishlist.product.od | date('d. m. Y.') }}
+"October 10, 2019 00:00" {{ wishlist.product.do | date }}
+"Novi Sad" {{ wishlist.product.lokacija }}
+"Novi Sad evropska prestonica kulture 2021" {{ wishlist.product.productCategory.title }}
+"Zdravlje" {{ wishlist.product.category.title }}
+"October 5, 2019 21:56" {{ "now" | date }}
+"681fa0b9" {{ wishlist.id | hash }}
