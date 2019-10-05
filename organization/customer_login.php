@@ -71,7 +71,7 @@ if (isset($_POST['login'])) {
 
     $check_customer = mysqli_num_rows($run_customer);
 
-    
+
     if ($check_customer==0) {
         echo "<script>alert('Nalog ili lozinka su neispravni')</script>";
 

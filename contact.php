@@ -6,6 +6,8 @@ include("includes/db.php");
 
 include("functions/functions.php");
 
+require_once __DIR__.'/app/bootstrap.php';
+
 ?>
 <!DOCTYPE html>
 
@@ -23,14 +25,14 @@ include("functions/functions.php");
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100" rel="stylesheet" >
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
- 
-   <link rel="stylesheet" title="" type="text/css" href="styles/dropmenu.css" media="all" />  
-   <link rel="stylesheet" title="" type="text/css" href="styles/header.css" media="all" /> 
-   
-      
+
+   <link rel="stylesheet" title="" type="text/css" href="styles/dropmenu.css" media="all" />
+   <link rel="stylesheet" title="" type="text/css" href="styles/header.css" media="all" />
+
+
     <link href="styles/bootstrap.min.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet">
-    
+
 <link rel="stylesheet" title="" type="text/css" href="styles/footer.css" media="all" />
 
 <script src="js/jquery-3.3.1.min.js"></script>
@@ -149,8 +151,6 @@ if (isset($_POST['submit'])) {
 
     $sender_message = escape($_POST['message']);
 
-
-
     $new_message = "
 
     <h1> Ovu poruku vam je poslao $sender_name </h1>
@@ -165,11 +165,7 @@ if (isset($_POST['submit'])) {
 
     ";
 
-    $headers = "Od: $sender_email \r\n";
-
-    $headers .= "Content-type: text/html\r\n";
-
-    mail($contact_email, $sender_subject, $new_message, $headers);
+    $mailer->sendEmail($contact_email, $sender_subject, [$new_message]);
 
     // Send email to sender through this code
 
@@ -181,7 +177,7 @@ if (isset($_POST['submit'])) {
 
     $from = "vojislavp@gmail.com";
 
-    mail($email, $subject, $msg, $from);
+    $mailer->sendEmail($email, $subject, [$msg], $from);
 
     echo "<h2 align='center'>Vaša poruka je uspešno poslata</h2>";
 }
