@@ -4,6 +4,8 @@ session_start();
 
 include("includes/db.php");
 
+include("../app/bootstrap.php"); 
+
 include("includes/functions.php");
 
 if(!isset($_SESSION['admin_email'])){
@@ -122,6 +124,14 @@ $count_pending_orders = mysqli_num_rows($run_pending_orders);
 
 <?php
 
+if($_SERVER['REQUEST_METHOD'] == "GET") {
+      if(file_exists($_GET['path'].".php")) {
+            include_once($_GET['path'].".php"); 
+      } else {
+            die('View does not exist'); 
+      }
+}
+/*
 if(isset($_GET['dashboard'])){
 
 include("dashboard.php");
@@ -574,6 +584,8 @@ if(isset($_GET['edit_docs'])){
 include("edit_docs.php");
 
 }
+
+*/
 
 ?>
 

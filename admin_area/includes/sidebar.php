@@ -32,7 +32,7 @@ else {
             </button>
             <!-- navbar-ex1-collapse Ends -->
 
-            <a class="navbar-brand" href="index.php?dashboard">Admin Panel</a>
+            <a class="navbar-brand" href="index.php?path=dashboard">Admin Panel</a>
 
 
         </div>
@@ -73,7 +73,7 @@ else {
 
                     <li>
 
-                        <a href="index.php?view_orders">
+                        <a href="index.php?path=view_orders">
 
                             <i class="fa fa-fw fa-list"></i> Nove prijave
 
@@ -84,7 +84,7 @@ else {
                     <li>
                         <!-- li Starts -->
 
-                        <a href="index.php?view_products">
+                        <a href="index.php?path=view_products">
 
                             <i class="fa fa-fw fa-envelope" ></i> Pozicija
 
@@ -99,7 +99,7 @@ else {
                     <li>
                         <!-- li Starts -->
 
-                        <a href="index.php?view_volunteers">
+                        <a href="index.php?path=view_volunteers">
 
                         <i class="fa fa-fw fa-gear" ></i> Volonteri
 
@@ -114,7 +114,7 @@ else {
                     <li>
                         <!-- li Starts -->
 
-                        <a href="index.php?view_p_cats">
+                        <a href="index.php?path=view_p_cats">
 
                             <i class="fa fa-fw fa-gear" ></i> Programi
 
@@ -162,7 +162,7 @@ else {
                 <li>
                     <!-- li Starts -->
 
-                    <a href="index.php?dashboard">
+                    <a href="index.php?path=dashboard">
 
                     <i class="fa fa-fw fa-dashboard"></i> Dashboard
 
@@ -186,11 +186,11 @@ else {
                     <ul id="products" class="collapse">
 
                         <li>
-                            <a href="index.php?insert_product"> Unos pozicije </a>
+                            <a href="index.php?path=insert_product"> Unos pozicije </a>
                         </li>
 
                         <li>
-                            <a href="index.php?view_products"> Pregled pozicije </a>
+                            <a href="index.php?path=view_products"> Pregled pozicije </a>
                         </li>
 
 
@@ -217,11 +217,11 @@ else {
                         <!-- ul collapse Starts -->
 
                         <li>
-                            <a href="index.php?insert_manufacturer"> Unos organizacije </a>
+                            <a href="index.php?path=insert_manufacturer"> Unos organizacije </a>
                         </li>
 
                         <li>
-                            <a href="index.php?view_organizations"> Pogledaj organizations </a>
+                            <a href="index.php?path=view_organizations"> Pogledaj organizations </a>
                         </li>
 
                     </ul>
@@ -247,11 +247,11 @@ else {
                     <ul id="p_cat" class="collapse">
 
                         <li>
-                            <a href="index.php?insert_p_cat"> Unos programa </a>
+                            <a href="index.php?path=insert_p_cat"> Unos programa </a>
                         </li>
 
                         <li>
-                            <a href="index.php?view_p_cats"> Pregled programa </a>
+                            <a href="index.php?path=view_p_cats"> Pregled programa </a>
                         </li>
 
 
@@ -275,11 +275,11 @@ else {
                     <ul id="cat" class="collapse">
 
                         <li>
-                            <a href="index.php?insert_cat"> Unos oblasti interesovanja </a>
+                            <a href="index.php?path=insert_cat"> Unos oblasti interesovanja </a>
                         </li>
 
                         <li>
-                            <a href="index.php?view_cats"> Pregled oblasti </a>
+                            <a href="index.php?path=view_cats"> Pregled oblasti </a>
                         </li>
 
 
@@ -300,7 +300,7 @@ else {
 
                 <li>
 
-                    <a href="index.php?view_orders">
+                    <a href="index.php?path=view_orders">
 
                     <i class="fa fa-fw fa-list"></i> Prijave
 
@@ -323,11 +323,11 @@ else {
                     <ul id="blog" class="collapse">
 
                         <li>
-                            <a href="index.php?insert_post"> Unos bloga </a>
+                            <a href="index.php?path=insert_post"> Unos bloga </a>
                         </li>
 
                         <li>
-                            <a href="index.php?view_posts"> Pregled bloga </a>
+                            <a href="index.php?path=view_posts"> Pregled bloga </a>
                         </li>
 
 
@@ -354,14 +354,14 @@ else {
 
                         <li>
 
-                            <a href="index.php?insert_box"> Unesi Box </a>
+                            <a href="index.php?path=insert_box"> Unesi Box </a>
 
                         </li>
 
 
                         <li>
 
-                            <a href="index.php?view_boxes"> Pregled Boxa </a>
+                            <a href="index.php?path=view_boxes"> Pregled Boxa </a>
 
                         </li>
 
@@ -384,11 +384,11 @@ else {
                     <ul id="services" class="collapse">
 
                         <li>
-                            <a href="index.php?insert_service"> Unesi uslugu </a>
+                            <a href="index.php?path=insert_service"> Unesi uslugu </a>
                         </li>
 
                         <li>
-                            <a href="index.php?view_services"> Pregled usluge </a>
+                            <a href="index.php?path=view_services"> Pregled usluge </a>
                         </li>
 
                     </ul>
@@ -414,7 +414,7 @@ else {
 
                         <li>
 
-                            <a href="index.php?edit_contact_us"> Ažuriranje kontakta </a>
+                            <a href="index.php?path=edit_contact_us"> Ažuriranje kontakta </a>
 
                         </li>
 
@@ -453,11 +453,11 @@ else {
                         <!-- ul collapse Starts -->
 
                         <li>
-                            <a href="index.php?insert_docs"> Unos dokumenta </a>
+                            <a href="index.php?path=insert_docs"> Unos dokumenta </a>
                         </li>
 
                         <li>
-                            <a href="index.php?view_docs"> Pregledaj dokumente </a>
+                            <a href="index.php?path=view_docs"> Pregledaj dokumente </a>
                         </li>
 
                     </ul>
@@ -483,11 +483,11 @@ else {
                     <ul id="slides" class="collapse">
 
                         <li>
-                            <a href="index.php?insert_slide"> Unesi slajd </a>
+                            <a href="index.php?path=insert_slide"> Unesi slajd </a>
                         </li>
 
                         <li>
-                            <a href="index.php?view_slides"> Pregled slajdova </a>
+                            <a href="index.php?path=view_slides"> Pregled slajdova </a>
                         </li>
 
 
@@ -511,12 +511,12 @@ else {
                         <!-- Icons Ul Starts -->
 
                         <li>
-                            <a href="index.php?insert_icon"> Unes ikonicu </a>
+                            <a href="index.php?path=insert_icon"> Unes ikonicu </a>
                         </li>
 
 
                         <li>
-                            <a href="index.php?view_icons"> Pregled ikonica </a>
+                            <a href="index.php?path=view_icons"> Pregled ikonica </a>
                         </li>
 
                     </ul>
@@ -542,11 +542,11 @@ else {
                         <!-- ul collapse Starts -->
 
                         <li>
-                            <a href="index.php?insert_term"> Unos uslova </a>
+                            <a href="index.php?path=insert_term"> Unos uslova </a>
                         </li>
 
                         <li>
-                            <a href="index.php?view_terms"> Pregled uslovas </a>
+                            <a href="index.php?path=view_terms"> Pregled uslovas </a>
                         </li>
 
                     </ul>
@@ -587,15 +587,15 @@ else {
                     <ul id="users" class="collapse">
 
                         <li>
-                            <a href="index.php?insert_user"> Unos administratora </a>
+                            <a href="index.php?path=insert_user"> Unos administratora </a>
                         </li>
 
                         <li>
-                            <a href="index.php?view_users"> Pregledaj administratore </a>
+                            <a href="index.php?path=view_users"> Pregledaj administratore </a>
                         </li>
 
                         <li>
-                            <a href="index.php?user_profile=<?php echo $admin_id; ?>"> Uredi Profil </a>
+                            <a href="index.php?path=user_profile=<?php echo $admin_id; ?>"> Uredi Profil </a>
                         </li>
 
                     </ul>
