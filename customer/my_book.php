@@ -106,9 +106,10 @@
                                 PDF
                             </a>
                         <?php else : ?>
-                            <span class="volunteering-pdf btn">
+                            <span class="btn btn-link">
                                 <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>">
-                                    PDF
+                                    <i class="fa fa-pencil"></i>
+                                    Izmeni
                                 </a>
                             </span>
                         <?php endif ?>

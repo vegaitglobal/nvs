@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="wishlist")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Wishlist
 {
@@ -79,6 +80,20 @@ class Wishlist
      * @ORM\JoinColumn(name="product_id", referencedColumnName="product_id")
      */
     private $product;
+
+    /**
+     * @ORM\PrePersist @ORM\PreUpdate
+     */
+    public function validate()
+    {
+        if ($this->hours <= 0) {
+            throw new Exception();
+        }
+
+        if (!is_numeric($this->hours)) {
+            throw new Exception();
+        }
+    }
 
     /**
      * Get id.
