@@ -2,20 +2,14 @@
 
 session_start();
 
-if(!isset($_SESSION['manufacturer_email'])){
+if (!isset($_SESSION['manufacturer_email'])) {
+    echo "<script>window.open('../org.php','_self')</script>";
+} else {
+    include("includes/db.php");
 
-echo "<script>window.open('../org.php','_self')</script>";
+    include("functions/functions.php");
 
-
-}else {
-
-
-
-include("includes/db.php");
-
-include("functions/functions.php");
-
-?>
+    ?>
 <!DOCTYPE html>
 <html>
 
@@ -78,14 +72,10 @@ include("functions/functions.php");
             <a href="#" class="btn btn-success btn-sm" >
             <?php
 
-            if(!isset($_SESSION['manufacturer_email'])){
-
+            if (!isset($_SESSION['manufacturer_email'])) {
                 echo "Dobrodošli :Guest";
-
-            }else{
-
+            } else {
                 echo "Dobrodošli : " . $_SESSION['manufacturer_email'] . "";
-
             }   ?>
             
             </a>
@@ -98,8 +88,7 @@ include("functions/functions.php");
 
                 <?php
 
-                if(!isset($_SESSION['manufacturer_email'])){
-
+                if (!isset($_SESSION['manufacturer_email'])) {
                     echo "<li>";
                     echo "<a href='../org_register.php'> Register </a>";
                     echo "</li>";
@@ -108,27 +97,19 @@ include("functions/functions.php");
                 <li>
                 <?php
 
-                if(!isset($_SESSION['manufacturer_email'])){
-
+                if (!isset($_SESSION['manufacturer_email'])) {
                     echo "<a href='../org.php' >My Account</a>";
-
-                }
-                else{
-
+                } else {
                     echo "<a href='index.php?/view_products'>My Account</a>";
-
                 }   ?>
                 </li>
 
                 <li>
                 <?php
 
-                if(!isset($_SESSION['manufacturer_email'])){
-
+                if (!isset($_SESSION['manufacturer_email'])) {
                     echo "<a href='../org.php'> Login </a>";
-
-                }else {
-
+                } else {
                     echo "<a href='logout.php'> Logout </a>";
                 }
 
@@ -193,15 +174,10 @@ include("functions/functions.php");
                 <li class="active">
                 <?php
 
-                if(!isset($_SESSION['manufacturer_email'])){
-
+                if (!isset($_SESSION['manufacturer_email'])) {
                         echo "<a href='../org.php' >My Account</a>";
-
-                    }
-                    else{
-
-                        echo "<a href='index.php?dashboard'>My Account</a>";
-
+                } else {
+                    echo "<a href='index.php?dashboard'>My Account</a>";
                 }  ?>
                 
                 </li>
@@ -231,11 +207,9 @@ include("functions/functions.php");
 
         <?php
 
-        if(!isset($_SESSION['manufacturer_email'])){
-
-        }
-        else{
-        ?>
+        if (!isset($_SESSION['manufacturer_email'])) {
+        } else {
+            ?>
             <a class="btn btn-primary navbar-btn right" href="index.php?view_products"><!-- btn btn-primary navbar-btn right Starts -->
 
             <i class="fa fa-heart-o"></i>
@@ -244,7 +218,7 @@ include("functions/functions.php");
 
             </a><!-- btn btn-primary navbar-btn right Ends -->
 
-        <?php
+            <?php
         }
 
         ?>
@@ -281,7 +255,7 @@ include("functions/functions.php");
 
         $get_customer = "select * from organizations where manufacturer_email='$c_email'";
 
-        $run_customer = mysqli_query($con,$get_customer);
+        $run_customer = mysqli_query($con, $get_customer);
 
         $row_customer = mysqli_fetch_array($run_customer);
 
@@ -304,8 +278,7 @@ include("functions/functions.php");
             <?php
     
 
-            if(isset($_GET['send_email'])){
-
+            if (isset($_GET['send_email'])) {
                 $subject = "Email Confirmation Message";
 
                 $from = "vojislavp@gmail.com";
@@ -321,98 +294,69 @@ include("functions/functions.php");
 
                 $headers .= "Content-type: text/html\r\n";
 
-                mail($c_email,$subject,$message,$headers);
+                mail($c_email, $subject, $message, $headers);
 
                 echo "<script>alert('pozdrav')</script>";
 
                 echo "<script>window.open('index.php?my_wishlist','_self')</script>";
-
             }
 
 
-            if(isset($_GET['edit_account'])) {
-
-            include("edit_account.php");
-
+            if (isset($_GET['edit_account'])) {
+                include("edit_account.php");
             }
 
-            if(isset($_GET['change_pass'])){
-
-            include("change_pass.php");
-
+            if (isset($_GET['change_pass'])) {
+                include("change_pass.php");
             }
 
-            if(isset($_GET['delete_account'])){
-
-            include("delete_account.php");
-
+            if (isset($_GET['delete_account'])) {
+                include("delete_account.php");
             }
 
-            if(isset($_GET['my_wishlist'])){
-
-            include("my_wishlist.php");
-
+            if (isset($_GET['my_wishlist'])) {
+                include("my_wishlist.php");
             }
 
-            if(isset($_GET['delete_wishlist'])){
-
-            include("delete_wishlist.php");
-
+            if (isset($_GET['delete_wishlist'])) {
+                include("delete_wishlist.php");
             }
     
-            if(isset($_GET['dashboard'])){
-
-            include("dashboard.php");
-
+            if (isset($_GET['dashboard'])) {
+                include("dashboard.php");
             }
             
     
-            if(isset($_GET['insert_product'])){
-
-            include("insert_product.php");
-
+            if (isset($_GET['insert_product'])) {
+                include("insert_product.php");
             }
     
-            if(isset($_GET['view_products'])){
-
-            include("view_products.php");
-
+            if (isset($_GET['view_products'])) {
+                include("view_products.php");
             }
     
-             if(isset($_GET['edit_product'])){
-
-            include("edit_product.php");
-
+            if (isset($_GET['edit_product'])) {
+                include("edit_product.php");
             }
     
-            if(isset($_GET['delete_product'])){
-
-            include("delete_product.php");
-
+            if (isset($_GET['delete_product'])) {
+                include("delete_product.php");
             }
     
-            if(isset($_GET['delete_p_cat'])){
-
-            include("delete_p_cat.php");
-
+            if (isset($_GET['delete_p_cat'])) {
+                include("delete_p_cat.php");
             }
     
-             if(isset($_GET['view_p_cats'])){
-
-            include("view_p_cats.php");
-                 
+            if (isset($_GET['view_p_cats'])) {
+                include("view_p_cats.php");
             }
     
-             if(isset($_GET['insert_p_cat'])){
-
-            include("insert_p_cat.php");
-                 
+            if (isset($_GET['insert_p_cat'])) {
+                include("insert_p_cat.php");
             }
     
-            if(isset($_GET['edit_p_cat'])){
-
-            include("edit_p_cat.php");
-                 
+            if (isset($_GET['edit_p_cat'])) {
+                include("edit_p_cat.php");
             }
             ?>
 
@@ -425,11 +369,11 @@ include("functions/functions.php");
 
 
 
-<?php
+    <?php
 
-include("includes/footer.php");
+    include("includes/footer.php");
 
-?>
+    ?>
 
 <script src="js/jquery.min.js"> </script>
 

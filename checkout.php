@@ -50,16 +50,11 @@ include("functions/functions.php");
 
 
 
-if(!isset($_SESSION['customer_email'])){
-
+if (!isset($_SESSION['customer_email'])) {
     include("customer/customer_login.php");
-
-
-}else{
-
+} else {
     echo "<script> window.open('index.php','_self') </script>";
-
- }
+}
 
 
 

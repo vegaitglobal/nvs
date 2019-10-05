@@ -4,7 +4,7 @@ $customer_session = $_SESSION['customer_email'];
 
 $get_customer = "select * from volunteers where customer_email='$customer_session'";
 
-$run_customer = mysqli_query($con,$get_customer);
+$run_customer = mysqli_query($con, $get_customer);
 
 $row_customer = mysqli_fetch_array($run_customer);
 
@@ -37,7 +37,7 @@ $row_customer = mysqli_fetch_array($run_customer);
     
 $get_cat = "select * from categories where cat_id='$customer_profil'";
 
-$run_cat = mysqli_query($con,$get_cat);
+$run_cat = mysqli_query($con, $get_cat);
 
 $row_cat = mysqli_fetch_array($run_cat);
 
@@ -145,16 +145,14 @@ $row_cat = mysqli_fetch_array($run_cat);
 
                 $get_cat = "select * from categories ";
 
-                $run_cat = mysqli_query($con,$get_cat);
+                $run_cat = mysqli_query($con, $get_cat);
 
                 while ($row_cat=mysqli_fetch_array($run_cat)) {
-
                     $cat_id = $row_cat['cat_id'];
 
                     $cat_title = $row_cat['cat_title'];
 
                     echo "<option value='$cat_id'>$cat_title</option>";
-
                 }
                 ?>
             </select>
@@ -225,8 +223,7 @@ $row_cat = mysqli_fetch_array($run_cat);
 
 <?php
 
-if(isset($_POST['update'])){
-
+if (isset($_POST['update'])) {
     $update_id = $customer_id;
 
     $c_name = escape($_POST['c_name']);
@@ -245,7 +242,7 @@ if(isset($_POST['update'])){
 
     $c_datum = $_POST['datum'];
 
-    $c_profil = $_POST['profil'];  
+    $c_profil = $_POST['profil'];
 
     $c_sprema = $_POST['sprema'];
     
@@ -255,35 +252,29 @@ if(isset($_POST['update'])){
 
     $c_image_tmp = $_FILES['c_image']['tmp_name'];
 
-        if(empty($c_image)){
+    if (empty($c_image)) {
+        $c_image = $new_customer_image;
+    } else {
+         $file="customer_images" ."/". $new_customer_image;
 
-            $c_image = $new_customer_image;
-            
-        }else{
-
-             $file="customer_images" ."/". $new_customer_image;
-
-              if (file_exists($file)) {
-                    unlink($file);
-                }
+        if (file_exists($file)) {
+                unlink($file);
         }
+    }
 
    
 
     $update_customer = "update volunteers set customer_name='$c_name',customer_email='$c_email',customer_country='$c_country',customer_city='$c_city',customer_contact='$c_contact',customer_address='$c_address',customer_image='$c_image',customer_pol='$c_pol',customer_datum='$c_datum',customer_profil='$c_profil',customer_sprema='$c_sprema',customer_desc='$c_opis' where customer_id='$update_id'";
 
-    $run_customer = mysqli_query($con,$update_customer);
+    $run_customer = mysqli_query($con, $update_customer);
 
-    if($run_customer){
-        
-        move_uploaded_file($c_image_tmp,"customer_images/$c_image");
+    if ($run_customer) {
+        move_uploaded_file($c_image_tmp, "customer_images/$c_image");
 
         echo "<script>alert('Vaš nalog je ažuriran. Ako ste promenili email ulogujte se ponovo ')</script>";
 
         echo "<script>window.open('index.php','_self')</script>";
-
     }
-
 }
 
 

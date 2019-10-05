@@ -4,7 +4,7 @@ $manufacturer_email = $_SESSION['manufacturer_email'];
 
 $get_manufacturer = "select * from organizations where manufacturer_email='$manufacturer_email'";
 
-$run_manufacturer = mysqli_query($con,$get_manufacturer);
+$run_manufacturer = mysqli_query($con, $get_manufacturer);
 
 $row_manufacturer = mysqli_fetch_array($run_manufacturer);
 
@@ -192,8 +192,7 @@ $row_manufacturer = mysqli_fetch_array($run_manufacturer);
 
 <?php
 
-if(isset($_POST['update'])){
-
+if (isset($_POST['update'])) {
     $manufacturer_name = escape($_POST['manufacturer_name']);
 
     $manufacturer_name_full = escape($_POST['manufacturer_name_full']);
@@ -206,7 +205,7 @@ if(isset($_POST['update'])){
 
     $manufacturer_email = filter_var($_POST['manufacturer_email'], FILTER_SANITIZE_EMAIL);
     
-    $manufacturer_url = filter_var($_POST['manufacturer_url'],FILTER_SANITIZE_URL);
+    $manufacturer_url = filter_var($_POST['manufacturer_url'], FILTER_SANITIZE_URL);
 
     $manufacturer_opis = escape($_POST['manufacturer_opis']);
 
@@ -215,33 +214,27 @@ if(isset($_POST['update'])){
     $tmp_name = $_FILES['manufacturer_image']['tmp_name'];
 
 
-    if(empty($manufacturer_image)){
-
+    if (empty($manufacturer_image)) {
         $manufacturer_image = $new_m_image;
-
-    }else{
-        
+    } else {
          $file="../admin_area/other_images" ."/". $new_m_image;
 
-          if (file_exists($file)) {
-                unlink($file);
-            }
+        if (file_exists($file)) {
+              unlink($file);
+        }
     }
     
-    move_uploaded_file($tmp_name,"../admin_area/other_images/$manufacturer_image");
+    move_uploaded_file($tmp_name, "../admin_area/other_images/$manufacturer_image");
 
     $update_manufacturer = "update organizations set manufacturer_title='$manufacturer_name',manufacturer_title_full='$manufacturer_name_full',manufacturer_image='$manufacturer_image',manufacturer_opis='$manufacturer_opis',manufacturer_mesto='$manufacturer_mesto',manufacturer_adresa='$manufacturer_adresa',manufacturer_tel='$manufacturer_telefon',manufacturer_email='$manufacturer_email', manufacturer_url='$manufacturer_url' where manufacturer_id='$m_id'";
 
-    $run_manufacturer = mysqli_query($con,$update_manufacturer);
+    $run_manufacturer = mysqli_query($con, $update_manufacturer);
 
-    if($run_manufacturer){
-
+    if ($run_manufacturer) {
         echo "<script>alert('Organizacija je ažuriran')</script>";
 
         echo "<script>window.open('index.php?dashboard','_self')</script>";
-
     }
-
 }
 
 ?>

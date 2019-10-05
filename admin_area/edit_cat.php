@@ -1,27 +1,20 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
-echo "<script>window.open('login.php','_self')</script>";
+    <?php
 
-}
+    if (isset($_GET['edit_cat'])) {
+        $edit_id = $_GET['edit_cat'];
 
-else {
+        $edit_cat = "select * from categories where cat_id='$edit_id'";
 
+        $run_edit = mysqli_query($con, $edit_cat);
 
-?>
-
-<?php
-
-if(isset($_GET['edit_cat'])){
-
-    $edit_id = $_GET['edit_cat'];
-
-    $edit_cat = "select * from categories where cat_id='$edit_id'";
-
-    $run_edit = mysqli_query($con,$edit_cat);
-
-    $row_edit = mysqli_fetch_array($run_edit);
+        $row_edit = mysqli_fetch_array($run_edit);
 
         $c_id = $row_edit['cat_id'];
 
@@ -32,10 +25,9 @@ if(isset($_GET['edit_cat'])){
         $c_image = $row_edit['cat_image'];
 
         $new_c_image = $row_edit['cat_image'];
+    }
 
-}
-
-?>
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -94,12 +86,18 @@ if(isset($_GET['edit_cat'])){
 <div class="col-md-6">
 
 <input type="radio" name="cat_top" value="yes" 
-<?php if($c_top == 'no'){}else{ echo "checked='checked'"; } ?>>
+    <?php if ($c_top == 'no') {
+    } else {
+        echo "checked='checked'";
+    } ?>>
 
 <label>Da</label>
 
 <input type="radio" name="cat_top" value="no" 
-<?php if($c_top == 'no'){ echo "checked='checked'"; }else{} ?>>
+    <?php if ($c_top == 'no') {
+        echo "checked='checked'";
+    } else {
+    } ?>>
 
 <label>Ne</label>
 
@@ -146,53 +144,46 @@ if(isset($_GET['edit_cat'])){
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['update'])){
+    if (isset($_POST['update'])) {
+        $cat_title = escape($_POST['cat_title']);
 
-    $cat_title = escape($_POST['cat_title']);
+        $cat_top = $_POST['cat_top'];
 
-    $cat_top = $_POST['cat_top'];
+        $cat_image = $_FILES['cat_image']['name'];
 
-    $cat_image = $_FILES['cat_image']['name'];
-
-    $temp_name = $_FILES['cat_image']['tmp_name'];
+        $temp_name = $_FILES['cat_image']['tmp_name'];
 
         
 
-    if(empty($cat_image)){
-
-    $cat_image= $new_c_image;
-
-    }else{
-
+        if (empty($cat_image)) {
+            $cat_image= $new_c_image;
+        } else {
              $file="other_images" ."/". $new_c_image;
 
-              if (file_exists($file)) {
-                    unlink($file);
-                }
-    }
+            if (file_exists($file)) {
+                  unlink($file);
+            }
+        }
     
-    move_uploaded_file($temp_name,"other_images/$cat_image");
+        move_uploaded_file($temp_name, "other_images/$cat_image");
 
-    $update_cat = "update categories set cat_title='$cat_title',cat_top='$cat_top',cat_image='$cat_image' where cat_id='$c_id'";
+        $update_cat = "update categories set cat_title='$cat_title',cat_top='$cat_top',cat_image='$cat_image' where cat_id='$c_id'";
 
-    $run_cat = mysqli_query($con,$update_cat);
+        $run_cat = mysqli_query($con, $update_cat);
 
-    if($run_cat){
-        
-        move_uploaded_file($temp_name,"other_images/$cat_image");
+        if ($run_cat) {
+            move_uploaded_file($temp_name, "other_images/$cat_image");
 
-        echo "<script>alert('Oblast je ažurirana')</script>";
+            echo "<script>alert('Oblast je ažurirana')</script>";
 
-        echo "<script>window.open('index.php?view_cats','_self')</script>";
-
+            echo "<script>window.open('index.php?view_cats','_self')</script>";
+        }
     }
 
-}
 
 
-
-?>
+    ?>
 
 <?php } ?>

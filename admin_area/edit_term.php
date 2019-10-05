@@ -1,36 +1,27 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    if (isset($_GET['edit_term'])) {
+        $edit_id = $_GET['edit_term'];
 
-echo "<script>window.open('login.php','_self')</script>";
+        $get_term = "select * from terms where term_id='$edit_id'";
 
-}
+        $run_term = mysqli_query($con, $get_term);
 
-else {
+        $row_term = mysqli_fetch_array($run_term);
 
+        $term_id = $row_term['term_id'];
 
+        $term_title = $row_term['term_title'];
 
-if(isset($_GET['edit_term'])){
+        $term_link = $row_term['term_link'];
 
-$edit_id = $_GET['edit_term'];
+        $term_desc = $row_term['term_desc'];
+    }
 
-$get_term = "select * from terms where term_id='$edit_id'";
-
-$run_term = mysqli_query($con,$get_term);
-
-$row_term = mysqli_fetch_array($run_term);
-
-$term_id = $row_term['term_id'];
-
-$term_title = $row_term['term_title'];
-
-$term_link = $row_term['term_link'];
-
-$term_desc = $row_term['term_desc'];
-
-}
-
-?>
+    ?>
 
 
 
@@ -95,7 +86,7 @@ $term_desc = $row_term['term_desc'];
 <div class="col-md-6"><!-- col-md-6 Starts -->
 
 <textarea name="term_desc" class="form-control" id="content" rows="15" cols="19" >
-<?php echo $term_desc; ?>
+    <?php echo $term_desc; ?>
 </textarea>
 
 </div><!-- col-md-6 Ends -->
@@ -138,32 +129,28 @@ $term_desc = $row_term['term_desc'];
 </div><!-- 2 row Ends -->
 
 
-<?php
+    <?php
 
-if(isset($_POST['update'])){
+    if (isset($_POST['update'])) {
+        $term_title = escape($_POST['term_title']);
 
-$term_title = escape($_POST['term_title']);
+        $term_desc = $_POST['term_desc'];
 
-$term_desc = $_POST['term_desc'];
+        $term_link = escape($_POST['term_link']);
 
-$term_link = escape($_POST['term_link']);
+        $update_term = "update terms set term_title='$term_title',term_link='$term_link',term_desc='$term_desc' where term_id='$term_id'";
 
-$update_term = "update terms set term_title='$term_title',term_link='$term_link',term_desc='$term_desc' where term_id='$term_id'";
+        $run_term = mysqli_query($con, $update_term);
 
-$run_term = mysqli_query($con,$update_term);
+        if ($run_term) {
+            echo "<script>alert('One Term Box Has Been Updated ')</script>";
 
-if($run_term){
-
-echo "<script>alert('One Term Box Has Been Updated ')</script>";
-
-echo "<script>window.open('index.php?view_terms','_self')</script>";
-
-}
-
-}
+            echo "<script>window.open('index.php?view_terms','_self')</script>";
+        }
+    }
 
 
-?>
+    ?>
 
 
 <?php } ?>

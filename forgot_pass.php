@@ -115,13 +115,12 @@ include("includes/footer.php");
 
 <?php
 
-if(isset($_POST['forgot_pass'])){
-
+if (isset($_POST['forgot_pass'])) {
     $c_email = escape($_POST['c_email']);
 
     $sel_c = "select * from volunteers where customer_email='$c_email'";
 
-    $run_c = mysqli_query($con,$sel_c);
+    $run_c = mysqli_query($con, $sel_c);
 
     $count_c = mysqli_num_rows($run_c);
 
@@ -131,15 +130,11 @@ if(isset($_POST['forgot_pass'])){
 
     $c_pass = $row_c['customer_pass'];
 
-    if($count_c == 0){
-
+    if ($count_c == 0) {
         echo "<script> alert('Žao nam je, vaš email nije u našoj evidenciji') </script>";
 
         exit();
-
-        }
-    else{
-
+    } else {
         $message = "
 
         <h1 align='center'> Vaša lozinka je poslata </h1>
@@ -164,7 +159,7 @@ if(isset($_POST['forgot_pass'])){
 
         ";
 
-        $from = "vojislavp@gmail.com"; 
+        $from = "vojislavp@gmail.com";
 
         $subject = "Vaša lozinka je";
 
@@ -172,14 +167,12 @@ if(isset($_POST['forgot_pass'])){
 
         $headers .= "Content-type: text/html\r\n";
 
-        mail($c_email,$subject,$message,$headers);
+        mail($c_email, $subject, $message, $headers);
 
         echo "<script> alert('Vaša lozinka je poslata, proverite vaš email ') </script>";
 
         echo "<script>window.open('checkout.php','_self')</script>";
-
     }
-
 }
 
 ?>

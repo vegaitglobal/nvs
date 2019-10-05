@@ -8,7 +8,7 @@ $customer_session = $_SESSION['customer_email'];
 
 $get_customer = "select * from volunteers where customer_email='$customer_session'";
 
-$run_customer = mysqli_query($con,$get_customer);
+$run_customer = mysqli_query($con, $get_customer);
 
 $row_customer = mysqli_fetch_array($run_customer);
 
@@ -16,13 +16,9 @@ $customer_image = $row_customer['customer_image'];
 
 $customer_name = $row_customer['customer_name'];
 
-if(!isset($_SESSION['customer_email'])){
-
-
-}
-else {
-
-echo "
+if (!isset($_SESSION['customer_email'])) {
+} else {
+    echo "
 
 <center>
 
@@ -35,7 +31,6 @@ echo "
 <h3 align='center' class='panel-title'> Prezime i ime : $customer_name </h3>
 
 ";
-
 }
 
 ?>
@@ -47,7 +42,9 @@ echo "
 <ul class="nav nav-pills nav-stacked"><!-- nav nav-pills nav-stacked Starts -->
 
 
-<li class="<?php if(isset($_GET['my_wishlist'])){ echo "active"; } ?>">
+<li class="<?php if (isset($_GET['my_wishlist'])) {
+    echo "active";
+           } ?>">
 
 <<<<<<< HEAD
 <a href="index.php?my_wishlist"> <i class="fa fa-heart text-yelow py-2"></i> Moja lista želja </a>
@@ -63,13 +60,17 @@ echo "
 
 </li>
 
-<li class="<?php if(isset($_GET['my_book'])){ echo "active"; } ?>">
+<li class="<?php if (isset($_GET['my_book'])) {
+    echo "active";
+           } ?>">
 
 <a href="index.php?my_book"> <i class="fa fa-list fa-fw"></i> Volonterska knjižica </a>
 
 </li>
 
-<li class="<?php if(isset($_GET['edit_account'])){ echo "active"; } ?>">
+<li class="<?php if (isset($_GET['edit_account'])) {
+    echo "active";
+           } ?>">
 
 <<<<<<< HEAD
 <a href="index.php?edit_account"> <i class="fa fa-pencil text-yelow"></i> Ažuriraj nalog </a>
@@ -79,7 +80,9 @@ echo "
 
 </li>
 
-<li class="<?php if(isset($_GET['change_pass'])){ echo "active"; } ?>">
+<li class="<?php if (isset($_GET['change_pass'])) {
+    echo "active";
+           } ?>">
 
 <<<<<<< HEAD
 <a href="index.php?change_pass"> <i class="fa fa-user text-yelow"></i> Promeni lozinku </a>
@@ -91,7 +94,9 @@ echo "
 
 
 
-<li class="<?php if(isset($_GET['delete_account'])){ echo "active"; } ?>">
+<li class="<?php if (isset($_GET['delete_account'])) {
+    echo "active";
+           } ?>">
 
 <<<<<<< HEAD
 <a href="index.php?delete_account"> <i class="fa fa-trash-o text-yelow"></i> Izbriši nalog </a>

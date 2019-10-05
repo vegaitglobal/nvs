@@ -8,24 +8,21 @@
 
     $get_customer = "select * from organizations where manufacturer_email='$customer_session'";
 
-    $run_customer = mysqli_query($con,$get_customer);
+    $run_customer = mysqli_query($con, $get_customer);
 
     $row_customer = mysqli_fetch_array($run_customer);
 
     $customer_image = $row_customer['manufacturer_image'];
     
 
-    if($customer_image==""){
-
+    if ($customer_image=="") {
         $customer_image="slika.jpg";
     }
 
     $manufacturer_title_full = $row_customer['manufacturer_title_full'];
 
-    if(!isset($_SESSION['manufacturer_email'])){
-
+    if (!isset($_SESSION['manufacturer_email'])) {
     } else {
-
         echo "
 
         <center>
@@ -37,7 +34,6 @@
         <h3 align='center' class='panel-title'> $manufacturer_title_full </h3>
 
         ";
-
     }
 
     ?>
@@ -48,7 +44,9 @@
 
     <ul class="nav nav-pills nav-stacked"><!-- nav nav-pills nav-stacked Starts -->
 
-              <li class="<?php if(isset($_GET['view_p_cats']) or isset($_GET['insert_p_cat']) ){ echo "active"; } ?>">
+              <li class="<?php if (isset($_GET['view_p_cats']) or isset($_GET['insert_p_cat'])) {
+                    echo "active";
+                         } ?>">
        
                     <a href="#" data-toggle="collapse" data-target="#p_cat">
 
@@ -73,7 +71,9 @@
 
                 </li>
                 
-             <li class="<?php if(isset($_GET['view_products']) or isset($_GET['insert_product']) ){ echo "active"; } ?>">
+             <li class="<?php if (isset($_GET['view_products']) or isset($_GET['insert_product'])) {
+                    echo "active";
+                        } ?>">
  
                     <a  href="#" data-toggle="collapse" data-target="#products">
 
@@ -101,13 +101,17 @@
 
             
       
-        <li class="<?php if(isset($_GET['edit_account'])){ echo "active"; } ?>">
+        <li class="<?php if (isset($_GET['edit_account'])) {
+            echo "active";
+                   } ?>">
 
             <a href="index.php?edit_account"> <i class="fa fa-pencil"></i> Uredi nalog </a>
 
         </li>
 
-        <li class="<?php if(isset($_GET['change_pass'])){ echo "active"; } ?>">
+        <li class="<?php if (isset($_GET['change_pass'])) {
+            echo "active";
+                   } ?>">
 
             <a href="index.php?change_pass"> <i class="fa fa-user"></i> Promeni lozinku </a>
 
@@ -115,7 +119,9 @@
 
 
 
-        <li class="<?php if(isset($_GET['delete_account'])){ echo "active"; } ?>">
+        <li class="<?php if (isset($_GET['delete_account'])) {
+            echo "active";
+                   } ?>">
 
             <a href="index.php?delete_account"> <i class="fa fa-trash-o"></i> Izbriši nalog </a>
 

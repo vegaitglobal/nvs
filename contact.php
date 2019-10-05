@@ -66,7 +66,7 @@ include("functions/functions.php");
 
         $get_contact_us = "select * from contact_us";
 
-        $run_conatct_us = mysqli_query($con,$get_contact_us);
+        $run_conatct_us = mysqli_query($con, $get_contact_us);
 
         $row_conatct_us = mysqli_fetch_array($run_conatct_us);
 
@@ -138,8 +138,7 @@ include("functions/functions.php");
 
 <?php
 
-if(isset($_POST['submit'])){
-
+if (isset($_POST['submit'])) {
 // Admin receives email through this code
 
     $sender_name = escape($_POST['name']);
@@ -170,7 +169,7 @@ if(isset($_POST['submit'])){
 
     $headers .= "Content-type: text/html\r\n";
 
-    mail($contact_email,$sender_subject,$new_message,$headers);
+    mail($contact_email, $sender_subject, $new_message, $headers);
 
     // Send email to sender through this code
 
@@ -182,10 +181,9 @@ if(isset($_POST['submit'])){
 
     $from = "vojislavp@gmail.com";
 
-    mail($email,$subject,$msg,$from);
+    mail($email, $subject, $msg, $from);
 
     echo "<h2 align='center'>Vaša poruka je uspešno poslata</h2>";
-
 }
 
 

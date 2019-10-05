@@ -1,16 +1,12 @@
 <?php
 
-if(!isset($_SESSION['manufacturer_email'])){
-
+if (!isset($_SESSION['manufacturer_email'])) {
     echo "<script>window.open('../org.php','_self')</script>";
-}
-
-else {
-
-$man_email=$_SESSION['manufacturer_email'];
-$man_id=$_SESSION['manufacturer_id'];
+} else {
+    $man_email=$_SESSION['manufacturer_email'];
+    $man_id=$_SESSION['manufacturer_id'];
     
-?>
+    ?>
 
 <div class="row"><!--  1 row Starts -->
 
@@ -76,13 +72,12 @@ $man_id=$_SESSION['manufacturer_id'];
 
         $get_pro = "select * from products where manufacturer_id='$man_id'";
 
-        $run_pro = mysqli_query($con,$get_pro);
+        $run_pro = mysqli_query($con, $get_pro);
 
-        while($row_pro=mysqli_fetch_array($run_pro)){
-
+        while ($row_pro=mysqli_fetch_array($run_pro)) {
             $pro_id = $row_pro['product_id'];
 
-            $pro_org = $row_pro['manufacturer_id'];    
+            $pro_org = $row_pro['manufacturer_id'];
 
             $pro_image = $row_pro['product_img1'];
 
@@ -98,7 +93,7 @@ $man_id=$_SESSION['manufacturer_id'];
 
             $i++;
 
-        ?>
+            ?>
 
         <tr>
 

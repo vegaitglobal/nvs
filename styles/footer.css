@@ -14,13 +14,13 @@ body {
 @supports (display: grid) {
     main{
         max-width: none;
-        margin: 0; 
-        padding: 0px 20px; 
+        margin: 0;
+        padding: 0px 20px;
         
     }
     #flexi{
         max-width: none;
-        margin: 0; 
+        margin: 0;
         padding: 0px 20px;}
       
     .floxi {
@@ -30,7 +30,7 @@ body {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(170px, 280px));
         grid-gap: 15px;
-        justify-items: center;        
+        justify-items: center;
     }
        #flexi{
         display: grid;
@@ -41,7 +41,7 @@ body {
 
 .floxi {
     display: flex;
-    flex-flow: column; 
+    flex-flow: column;
     padding:15px;}
 
 .floxi > img {
@@ -71,7 +71,7 @@ main {
 */
 
 
-.card--link {    
+.card--link {
     margin: 0px auto;
     margin-top: auto;
 }
@@ -100,9 +100,9 @@ hr {
     width: 100%;
 }
 .footer_links {
-	color:#F78715 !important;
+    color:#F78715 !important;
      padding: 10px 0 0 15px;
-    text-shadow:  1px 1px 0 #000;   
+    text-shadow:  1px 1px 0 #000;
    }
 
 .social-links img{
@@ -111,18 +111,18 @@ hr {
 }
 
 .floxi .carddeck--title,
-	.floxi .carddeck--number {
-		font-size: 1.5em;
-		line-height: 1em;
-	    padding: 1em 0;
-	    text-transform: uppercase;
-	    font-weight: bold;
+    .floxi .carddeck--number {
+        font-size: 1.5em;
+        line-height: 1em;
+        padding: 1em 0;
+        text-transform: uppercase;
+        font-weight: bold;
         text-align: center;
-	}
+    }
 
-.floxi .card--title {	
+.floxi .card--title {
         text-align: center;
-	}
+    }
  .card{
         box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
 }
@@ -133,7 +133,7 @@ hr {
             max-width: none;
             margin: 0; }
           .floxi {
-            margin: 0;    
+            margin: 0;
             justify-content: center;
             align-items: center;
               width: 100%;

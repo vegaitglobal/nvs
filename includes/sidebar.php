@@ -7,54 +7,36 @@ $aCat  = array();
 
 /// organizations Code Starts ///
 
-if(isset($_REQUEST['man'])&&is_array($_REQUEST['man'])){
-
-foreach($_REQUEST['man'] as $sKey=>$sVal){
-
-if((int)$sVal!=0){
-
-$aMan[(int)$sVal] = (int)$sVal;
-
-}
-
-}
-
+if (isset($_REQUEST['man'])&&is_array($_REQUEST['man'])) {
+    foreach ($_REQUEST['man'] as $sKey => $sVal) {
+        if ((int)$sVal!=0) {
+            $aMan[(int)$sVal] = (int)$sVal;
+        }
+    }
 }
 
 /// organizations Code Ends ///
 
 /// Products Categories Code Starts ///
 
-if(isset($_REQUEST['p_cat'])&&is_array($_REQUEST['p_cat'])){
-
-foreach($_REQUEST['p_cat'] as $sKey=>$sVal){
-
-if((int)$sVal!=0){
-
-$aPCat[(int)$sVal] = (int)$sVal;
-
-}
-
-}
-
+if (isset($_REQUEST['p_cat'])&&is_array($_REQUEST['p_cat'])) {
+    foreach ($_REQUEST['p_cat'] as $sKey => $sVal) {
+        if ((int)$sVal!=0) {
+            $aPCat[(int)$sVal] = (int)$sVal;
+        }
+    }
 }
 
 /// Products Categories Code Ends ///
 
 /// Categories Code Starts ///
 
-if(isset($_REQUEST['cat'])&&is_array($_REQUEST['cat'])){
-
-foreach($_REQUEST['cat'] as $sKey=>$sVal){
-
-if((int)$sVal!=0){
-
-$aCat[(int)$sVal] = (int)$sVal;
-
-}
-
-}
-
+if (isset($_REQUEST['cat'])&&is_array($_REQUEST['cat'])) {
+    foreach ($_REQUEST['cat'] as $sKey => $sVal) {
+        if ((int)$sVal!=0) {
+            $aCat[(int)$sVal] = (int)$sVal;
+        }
+    }
 }
 
 /// Categories Code Ends ///
@@ -111,28 +93,23 @@ Sakrij
 
 $get_manfacturer = "select * from organizations where manufacturer_top='yes'";
 
-$run_manfacturer = mysqli_query($con,$get_manfacturer);
+$run_manfacturer = mysqli_query($con, $get_manfacturer);
 
-while($row_manfacturer = mysqli_fetch_array($run_manfacturer)){
-
+while ($row_manfacturer = mysqli_fetch_array($run_manfacturer)) {
     $manufacturer_id = $row_manfacturer['manufacturer_id'];
 
     $manufacturer_title = $row_manfacturer['manufacturer_title'];
 
     $manufacturer_image = $row_manfacturer['manufacturer_image'];
 
-        if($manufacturer_image == ""){
-
-        }
-        else{
-
+    if ($manufacturer_image == "") {
+    } else {
         $manufacturer_image = "
 
         <img src='admin_area/other_images/$manufacturer_image' width='20px' >&nbsp;
 
         ";
-
-        }
+    }
 
     echo "
 
@@ -144,7 +121,9 @@ while($row_manfacturer = mysqli_fetch_array($run_manfacturer)){
 
     <input ";
 
-    if(isset($aMan[$manufacturer_id])){ echo "checked='checked'"; }
+    if (isset($aMan[$manufacturer_id])) {
+        echo "checked='checked'";
+    }
 
     echo " type='checkbox' value='$manufacturer_id' name='manufacturer' class='get_manufacturer'>
 
@@ -160,31 +139,23 @@ while($row_manfacturer = mysqli_fetch_array($run_manfacturer)){
     </li>
 
     ";
-
-
 }
 
 
 $get_manfacturer = "select * from organizations where manufacturer_top='no'";
 
-$run_manfacturer = mysqli_query($con,$get_manfacturer);
+$run_manfacturer = mysqli_query($con, $get_manfacturer);
 
-while($row_manfacturer = mysqli_fetch_array($run_manfacturer)){
-
+while ($row_manfacturer = mysqli_fetch_array($run_manfacturer)) {
     $manufacturer_id = $row_manfacturer['manufacturer_id'];
 
     $manufacturer_title = $row_manfacturer['manufacturer_title'];
 
     $manufacturer_image = $row_manfacturer['manufacturer_image'];
 
-    if($manufacturer_image == ""){
-
-
-    }
-    else{
-
-    $manufacturer_image = "<img src='admin_area/other_images/$manufacturer_image' width='20px'> &nbsp;";
-
+    if ($manufacturer_image == "") {
+    } else {
+        $manufacturer_image = "<img src='admin_area/other_images/$manufacturer_image' width='20px'> &nbsp;";
     }
 
     echo "
@@ -197,7 +168,9 @@ while($row_manfacturer = mysqli_fetch_array($run_manfacturer)){
 
     <input ";
 
-    if(isset($aMan[$manufacturer_id])){ echo "checked='checked'"; }
+    if (isset($aMan[$manufacturer_id])) {
+        echo "checked='checked'";
+    }
 
     echo " type='checkbox' value='$manufacturer_id' name='manufacturer' class='get_manufacturer'>
 
@@ -213,7 +186,6 @@ while($row_manfacturer = mysqli_fetch_array($run_manfacturer)){
     </li>
 
     ";
-
 }
 
 ?>
@@ -272,7 +244,7 @@ while($row_manfacturer = mysqli_fetch_array($run_manfacturer)){
 
     <ul class="nav nav-pills nav-stacked category-menu" id="dev-p-cats">nav nav-pills nav-stacked category-menu Starts
 
-   <?php
+    <?php
 /*
 
    $get_p_cats = "select * from product_categories where p_cat_top='Da'";
@@ -444,24 +416,19 @@ Sakrij
 
 $get_cat = "select * from categories where cat_top='yes'";
 
-$run_cat = mysqli_query($con,$get_cat);
+$run_cat = mysqli_query($con, $get_cat);
 
-while($row_cat = mysqli_fetch_array($run_cat)){
-
+while ($row_cat = mysqli_fetch_array($run_cat)) {
     $cat_id = $row_cat['cat_id'];
 
     $cat_title = $row_cat['cat_title'];
 
     $cat_image = $row_cat['cat_image'];
 
-        if($cat_image == ""){
-
-        }
-        else{
-
+    if ($cat_image == "") {
+    } else {
         $cat_image = "<img src='admin_area/other_images/$cat_image' width='20px'>&nbsp;";
-
-        }
+    }
 
     echo "
 
@@ -473,7 +440,9 @@ while($row_cat = mysqli_fetch_array($run_cat)){
 
     <input ";
 
-    if(isset($aCat[$cat_id])){ echo "checked='checked'"; }
+    if (isset($aCat[$cat_id])) {
+        echo "checked='checked'";
+    }
 
     echo " type='checkbox' value='$cat_id' name='cat' class='get_cat' id='cat'> 
 
@@ -489,32 +458,26 @@ while($row_cat = mysqli_fetch_array($run_cat)){
     </li>
 
     ";
-
 }
 
 
 $get_cat = "select * from categories where cat_top='no'";
 
-$run_cat = mysqli_query($con,$get_cat);
+$run_cat = mysqli_query($con, $get_cat);
 
-while($row_cat = mysqli_fetch_array($run_cat)){
+while ($row_cat = mysqli_fetch_array($run_cat)) {
+    $cat_id = $row_cat['cat_id'];
 
-$cat_id = $row_cat['cat_id'];
+    $cat_title = $row_cat['cat_title'];
 
-$cat_title = $row_cat['cat_title'];
+    $cat_image = $row_cat['cat_image'];
 
-$cat_image = $row_cat['cat_image'];
+    if ($cat_image == "") {
+    } else {
+        $cat_image = "<img src='admin_area/other_images/$cat_image' width='20px'>&nbsp;";
+    }
 
-if($cat_image == ""){
-
-}
-else{
-
-$cat_image = "<img src='admin_area/other_images/$cat_image' width='20px'>&nbsp;";
-
-}
-
-echo "
+    echo "
 
 <li class='checkbox checkbox-primary'>
 
@@ -524,9 +487,11 @@ echo "
 
 <input ";
 
-if(isset($aCat[$cat_id])){ echo "checked='checked'"; }
+    if (isset($aCat[$cat_id])) {
+        echo "checked='checked'";
+    }
 
-echo " type='checkbox' value='$cat_id' name='cat' class='get_cat' id='cat'> 
+    echo " type='checkbox' value='$cat_id' name='cat' class='get_cat' id='cat'> 
 
 <span>
 $cat_image
@@ -540,7 +505,6 @@ $cat_title
 </li>
 
 ";
-
 }
 
 

@@ -1,16 +1,10 @@
 <?php
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts --->
 
@@ -84,45 +78,41 @@ else {
 <h4> Select Icon for Products </h4>
 
 
-<?php
+    <?php
 
-$get_p = "select * from products where status='product'";
+    $get_p = "select * from products where status='product'";
 
-$run_p = mysqli_query($con,$get_p);
+    $run_p = mysqli_query($con, $get_p);
 
-while($row_p = mysqli_fetch_array($run_p)){
+    while ($row_p = mysqli_fetch_array($run_p)) {
+        $p_id = $row_p['product_id'];
 
-$p_id = $row_p['product_id'];
+        $p_title = $row_p['product_title'];
 
-$p_title = $row_p['product_title'];
-
-echo "<input type='checkbox' value='$p_id' name='product_id[]'> &nbsp;$p_title <br> ";
-
-}
+        echo "<input type='checkbox' value='$p_id' name='product_id[]'> &nbsp;$p_title <br> ";
+    }
 
 
-?>
+    ?>
 
 <h4> Select Icon for Bundles </h4>
 
-<?php
+    <?php
 
-$get_p = "select * from products where status='bundle'";
+    $get_p = "select * from products where status='bundle'";
 
-$run_p = mysqli_query($con,$get_p);
+    $run_p = mysqli_query($con, $get_p);
 
-while($row_p = mysqli_fetch_array($run_p)){
+    while ($row_p = mysqli_fetch_array($run_p)) {
+        $p_id = $row_p['product_id'];
 
-$p_id = $row_p['product_id'];
+        $p_title = $row_p['product_title'];
 
-$p_title = $row_p['product_title'];
-
-echo "<input type='checkbox' value='$p_id' name='product_id[]'> &nbsp;$p_title <br> ";
-
-}
+        echo "<input type='checkbox' value='$p_id' name='product_id[]'> &nbsp;$p_title <br> ";
+    }
 
 
-?>
+    ?>
 
 
 </ul><!-- nav nav-pills nav-stacked category-menu Ends -->
@@ -171,36 +161,30 @@ echo "<input type='checkbox' value='$p_id' name='product_id[]'> &nbsp;$p_title <
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
+        $icon_title = escape($_POST['icon_title']);
 
-$icon_title = escape($_POST['icon_title']);
+        $icon_image = $_FILES['icon_image']['name'];
 
-$icon_image = $_FILES['icon_image']['name'];
+        $temp_name = $_FILES['icon_image']['tmp_name'];
 
-$temp_name = $_FILES['icon_image']['tmp_name'];
+        move_uploaded_file($temp_name, "icon_images/$icon_image");
 
-move_uploaded_file($temp_name,"icon_images/$icon_image");
+        foreach ($_POST['product_id'] as $product_id) {
+            $insert_icon = "insert into icons (icon_product,icon_title,icon_image) values ('$product_id','$icon_title','$icon_image')";
 
-foreach($_POST['product_id'] as $product_id){
+            $run_icon = mysqli_query($con, $insert_icon);
+        }
 
-$insert_icon = "insert into icons (icon_product,icon_title,icon_image) values ('$product_id','$icon_title','$icon_image')";
+        echo "<script>alert('New Icon Has Been Inserted')</script>";
 
-$run_icon = mysqli_query($con,$insert_icon);
-
-
-}
-
-echo "<script>alert('New Icon Has Been Inserted')</script>";
-
-echo "<script> window.open('index.php?view_icons','_self') </script>";
+        echo "<script> window.open('index.php?view_icons','_self') </script>";
+    }
 
 
-}
-
-
-?>
+    ?>
 
 
 <?php } ?>

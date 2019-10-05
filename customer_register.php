@@ -256,16 +256,14 @@ include("functions/functions.php");
 
                     $get_cat = "select * from categories ";
 
-                    $run_cat = mysqli_query($con,$get_cat);
+                    $run_cat = mysqli_query($con, $get_cat);
 
                     while ($row_cat=mysqli_fetch_array($run_cat)) {
-
                         $cat_id = $row_cat['cat_id'];
 
                         $cat_title = $row_cat['cat_title'];
 
                         echo "<option value='$cat_title'>$cat_title</option>";
-
                     }
                     echo "<option value='Sve'>Sve</option>";
                     ?>
@@ -466,20 +464,18 @@ include("includes/footer.php");
 
 <?php
 
-if(isset($_POST['register'])){
+if (isset($_POST['register'])) {
+    $secret = "6LciB1EUAAAAALJ29tYzKq7nnlOgK2lrXbFADieF";
 
-$secret = "6LciB1EUAAAAALJ29tYzKq7nnlOgK2lrXbFADieF";
+    $response = $_POST['g-recaptcha-response'];
 
-$response = $_POST['g-recaptcha-response'];
+    $remoteip = $_SERVER['REMOTE_ADDR'];
 
-$remoteip = $_SERVER['REMOTE_ADDR'];
+    $url = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip");
 
-$url = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip");
+    $result = json_decode($url, true);
 
-$result = json_decode($url, TRUE);
-
-    if($result['success'] == 1){
-
+    if ($result['success'] == 1) {
         $c_name = escape($_POST['c_name']);
 
         $c_email = filter_var($_POST['c_email'], FILTER_SANITIZE_EMAIL);
@@ -510,7 +506,7 @@ $result = json_decode($url, TRUE);
 
         $c_motiv_tmp = $_FILES['c_motiv']['tmp_name'];
 
-        $c_status =""; 
+        $c_status ="";
         
         $customer_datum =$_POST['datum'];
                 
@@ -522,21 +518,19 @@ $result = json_decode($url, TRUE);
         
         $get_email = "select * from volunteers where customer_email='$c_email'";
 
-        $run_email = mysqli_query($con,$get_email);
+        $run_email = mysqli_query($con, $get_email);
 
         $check_email = mysqli_num_rows($run_email);
 
-            if($check_email == 1){
+        if ($check_email == 1) {
+            echo "<script>alert('Ovaj email je već registrovan, pokušajte drugi')</script>";
 
-                echo "<script>alert('Ovaj email je već registrovan, pokušajte drugi')</script>";
-
-                exit();
-
-            }
+            exit();
+        }
         
-        move_uploaded_file($c_image_tmp,"customer/customer_images/$c_image");
-        move_uploaded_file($c_cv_tmp,"customer/customer_images/$c_cv");
-        move_uploaded_file($c_motiv_tmp,"customer/customer_images/$c_motiv");
+        move_uploaded_file($c_image_tmp, "customer/customer_images/$c_image");
+        move_uploaded_file($c_cv_tmp, "customer/customer_images/$c_cv");
+        move_uploaded_file($c_motiv_tmp, "customer/customer_images/$c_motiv");
         
             $customer_confirm_code = mt_rand();
 
@@ -558,7 +552,7 @@ $result = json_decode($url, TRUE);
             $headers .= "Return-Path: $from \r\n";
             $headers .= "Content-type: text/html \r\n";
 
-            mail($c_email,$subject,$message,$headers);
+            mail($c_email, $subject, $message, $headers);
             
             $nvs_email = "office@nvs.rs";
             $nvs_subject = "NOVA REGISTRACIJA";
@@ -572,49 +566,40 @@ $result = json_decode($url, TRUE);
             $nvs_headers .= "Return-Path: $from \r\n";
             $nvs_headers .= "Content-type: text/html \r\n";
          
-            mail($nvs_email,$nvs_subject,$nvs_message,$nvs_headers);
+            mail($nvs_email, $nvs_subject, $nvs_message, $nvs_headers);
         
         
         $insert_customer = "insert into volunteers (customer_name,customer_email,customer_pass,customer_country,customer_city,customer_contact,customer_address,customer_image,customer_status,customer_confirm_code,customer_datum,customer_pol,customer_profil,customer_sprema,customer_desc,customer_cv,customer_motiv,customer_vestina) values ('$c_name','$c_email','$c_pass','$c_country','$c_city','$c_contact','$c_address','$c_image','$c_status','$customer_confirm_code','$customer_datum','$c_pol','$c_profil','$c_sprema','$c_desc','$c_cv','$c_motiv','$c_vestina')";
 
 
-        $run_customer = mysqli_query($con,$insert_customer);
+        $run_customer = mysqli_query($con, $insert_customer);
 
         $sel_cart = "select * from wishlist where ip_add='$c_ip'";
 
-        $run_cart = mysqli_query($con,$sel_cart);
+        $run_cart = mysqli_query($con, $sel_cart);
 
         $check_cart = mysqli_num_rows($run_cart);
         
         $c_id=$customer_id;
 
-        if($check_cart>0){
-
+        if ($check_cart>0) {
             $_SESSION['customer_email']=$c_email;
             $_SESSION['customer_id']=$c_id;
 
             echo "<script>alert('Uspešno ste se registrovali')</script>";
 
             echo "<script>window.open('checkout.php','_self')</script>";
-
-        }else{
-
+        } else {
             $_SESSION['customer_email']=$c_email;
             $_SESSION['customer_id']=$c_id;
 
             echo "<script>alert('Uspešno ste se registrovali')</script>";
 
             echo "<script>window.open('index.php','_self')</script>";
-
         }
-
-        }
-else{
-
-    echo "<script>alert('Please Select Captcha, Try Again')</script>";
-
+    } else {
+        echo "<script>alert('Please Select Captcha, Try Again')</script>";
     }
-
 }
 
 ?>

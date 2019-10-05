@@ -2,54 +2,47 @@
 
 session_start();
 
-include("includes/db.php");                       
+include("includes/db.php");
 
-include("functions/functions.php");                
+include("functions/functions.php");
 
 $product_id = @$_GET['pro_id'];
 
 $get_product = "select * from posts where post_url='$product_id'";
 
-$run_product = mysqli_query($con,$get_product);
+$run_product = mysqli_query($con, $get_product);
 
 $check_product = mysqli_num_rows($run_product);
 
-if($check_product == 0){
-
+if ($check_product == 0) {
     echo "<script> window.open('index.php','_self') </script>";
+} else {
+    $row_product = mysqli_fetch_array($run_product);
 
-}
-else{
+    $pro_cat_id = $row_product['post_cat_id'];
 
+    $pro_id = $row_product['post_id'];
 
-$row_product = mysqli_fetch_array($run_product);
+    $pro_title = $row_product['post_title'];
 
-$pro_cat_id = $row_product['post_cat_id'];
+    $pro_content = $row_product['post_content'];
 
-$pro_id = $row_product['post_id'];
+    $pro_img1 = $row_product['post_image'];
 
-$pro_title = $row_product['post_title'];
+    $pro_date = $row_product['post_date'];
 
-$pro_content = $row_product['post_content'];
+    $pro_user = $row_product['post_user'];
 
-$pro_img1 = $row_product['post_image'];
+    $pro_label = $row_product['post_tags'];
 
-$pro_date = $row_product['post_date'];
+    $status = $row_product['post_status'];
 
-$pro_user = $row_product['post_user']; 
-
-$pro_label = $row_product['post_tags'];
-
-$status = $row_product['post_status'];
-
-$pro_url = $row_product['post_url'];
+    $pro_url = $row_product['post_url'];
 
 
-if($pro_label == ""){
+    if ($pro_label == "") {
         $product_label = "";
-    }
-    else{
-
+    } else {
         $product_label = "
 
         <a class='label sale' href='#' style='color:black;'>
@@ -61,18 +54,17 @@ if($pro_label == ""){
         </a>
 
         ";
+    }
 
-}
+    $get_cat = "select * from categories where cat_id='$pro_cat_id'";
 
-$get_cat = "select * from categories where cat_id='$pro_cat_id'";
+    $run_cat = mysqli_query($con, $get_cat);
 
-$run_cat = mysqli_query($con,$get_cat);
+    $row_cat = mysqli_fetch_array($run_cat);
 
-$row_cat = mysqli_fetch_array($run_cat);
+    $cat_title = $row_cat['cat_title'];
 
-$cat_title = $row_cat['cat_title'];
-
-?>
+    ?>
 
 <!DOCTYPE html>
 
@@ -108,9 +100,9 @@ $cat_title = $row_cat['cat_title'];
 <!-- <script id="dsq-count-scr" src="//nvs-rs.disqus.com/count.js" async></script> -->
 <body>
 
-<?php
-include("nav.php");
-?>
+    <?php
+    include("nav.php");
+    ?>
 
 
 
@@ -180,11 +172,11 @@ include("nav.php");
 
 
 
-<?php
+    <?php
 
-include("includes/footer.php");
+    include("includes/footer.php");
 
-?>
+    ?>
 
 
 </body>

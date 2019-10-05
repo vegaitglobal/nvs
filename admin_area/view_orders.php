@@ -1,16 +1,10 @@
 <?php
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -65,16 +59,14 @@ else {
 
             $get_cat = "select * from categories ";
 
-            $run_cat = mysqli_query($con,$get_cat);
+            $run_cat = mysqli_query($con, $get_cat);
 
             while ($row_cat=mysqli_fetch_array($run_cat)) {
-
                 $cat_id = $row_cat['cat_id'];
 
                 $cat_title = $row_cat['cat_title'];
 
-            echo "<option value='$cat_id'>$cat_title</option>";
-
+                echo "<option value='$cat_id'>$cat_title</option>";
             }
 
             ?>
@@ -113,16 +105,14 @@ else {
 
             $get_pro = "SELECT * FROM products WHERE status='active' ";
 
-            $run_pro = mysqli_query($con,$get_pro);
+            $run_pro = mysqli_query($con, $get_pro);
 
             while ($row_pro=mysqli_fetch_array($run_pro)) {
-
                 $pro_id = $row_pro['product_id'];
 
                 $pro_title = $row_pro['product_title'];
 
-            echo "<option value='$pro_id'>$pro_title</option>";
-
+                echo "<option value='$pro_id'>$pro_title</option>";
             }
 
             ?>
@@ -178,53 +168,51 @@ else {
 
 <tbody><!-- tbody Starts -->
 
-<?php
+    <?php
     
     
 
-  if(!isset($_POST['sortiraj']) & !isset($_POST['pozicija'])){
-    
-    $i = 0;
+    if (!isset($_POST['sortiraj']) & !isset($_POST['pozicija'])) {
+        $i = 0;
 
 
-    $get_orders = "select * from wishlist order by datum DESC ";
+        $get_orders = "select * from wishlist order by datum DESC ";
 
-    $run_orders = mysqli_query($con,$get_orders);
+        $run_orders = mysqli_query($con, $get_orders);
 
-    while ($row_orders = mysqli_fetch_array($run_orders)) {
+        while ($row_orders = mysqli_fetch_array($run_orders)) {
+            $order_id = $row_orders['wishlist_id'];
 
-        $order_id = $row_orders['wishlist_id'];
+            $c_id = $row_orders['customer_id'];
 
-        $c_id = $row_orders['customer_id'];
+            $product_id = $row_orders['product_id'];
 
-        $product_id = $row_orders['product_id'];
+            $order_date = $row_orders['datum'];
 
-        $order_date = $row_orders['datum'];
+            $order_status = $row_orders['status'];
 
-        $order_status = $row_orders['status'];
+            $get_products = "select * from products where product_id='$product_id'";
 
-        $get_products = "select * from products where product_id='$product_id'";
+            $run_products = mysqli_query($con, $get_products);
 
-        $run_products = mysqli_query($con,$get_products);
+            $row_products = mysqli_fetch_array($run_products);
 
-        $row_products = mysqli_fetch_array($run_products);
+            $product_title = $row_products['product_title'];
 
-        $product_title = $row_products['product_title'];
+            $i++;
 
-        $i++;
-
-        ?>
+            ?>
 
         <tr>
 
         <td><?php echo $i; ?></td>
 
         <td>
-        <?php 
+            <?php
 
             $get_customer = "select * from volunteers where customer_id='$c_id'";
 
-            $run_customer = mysqli_query($con,$get_customer);
+            $run_customer = mysqli_query($con, $get_customer);
 
             $row_customer = mysqli_fetch_array($run_customer);
         
@@ -236,13 +224,13 @@ else {
 
             echo $customer_name;
 
-         ?>
+            ?>
          </td>
 
        <td>
-        <?php
-         echo $customer_email;
-        /*
+            <?php
+             echo $customer_email;
+            /*
             $get_manufacturerid = "select * from products where product_id='$product_id'";
 
             $run_manufacturerid = mysqli_query($con,$get_manufacturerid);
@@ -260,12 +248,12 @@ else {
             $manufacturer_title = $row_manfacturer['manufacturer_title'];
 
             echo $manufacturer_title;
-         */
-        ?>
+             */
+            ?>
     </td>
 
     <td>
-        <?php
+            <?php
              echo $customer_contact;
             /*
 
@@ -287,25 +275,25 @@ else {
 
             echo $p_cat_title;
             */
-        ?>
+            ?>
      </td>        
         
 
         <td><?php echo $product_title; ?></td>
 
         <td>
-        <?php echo $order_date;   ?>
+            <?php echo $order_date;   ?>
         </td>
 
 
         <td>
-        <?php  echo $order_status; ?>
+            <?php  echo $order_status; ?>
         </td>
-     <?php
-        echo "<td class='noExl' ><a href='index.php?view_orders&approve=$order_id'>Prihvati</a></td>";
-        echo "<td class='noExl' ><a href='index.php?view_orders&unapprove=$order_id'>Odbij</a></td>";
+            <?php
+            echo "<td class='noExl' ><a href='index.php?view_orders&approve=$order_id'>Prihvati</a></td>";
+            echo "<td class='noExl' ><a href='index.php?view_orders&unapprove=$order_id'>Odbij</a></td>";
 
-      ?> 
+            ?> 
         <td class='noExl' >
 
             <a href="index.php?order_delete=<?php echo $order_id; ?>" >
@@ -320,63 +308,61 @@ else {
         </tr>
 
 
-<?php } }
+        <?php }
+    }
     
     
-if(isset($_POST['sortiraj'])){
+    if (isset($_POST['sortiraj'])) {
+        $i = 0;
     
-    $i = 0;
+        $the_cat_id = $_POST['cat'];
     
-    $the_cat_id = $_POST['cat'];
+        $query = "select * from products where cat_id= '$the_cat_id' ";
     
-    $query = "select * from products where cat_id= '$the_cat_id' ";
-    
-    $run_query = mysqli_query($con,$query);
+        $run_query = mysqli_query($con, $query);
 
-    while($row_query = mysqli_fetch_array($run_query)){
+        while ($row_query = mysqli_fetch_array($run_query)) {
+            $product_id = $row_query['product_id'];
 
-        $product_id = $row_query['product_id'];
-
-        $product_title = $row_query['product_title'];
+            $product_title = $row_query['product_title'];
             
-         $get_orders = "select * from wishlist where product_id = '$product_id' order by datum DESC ";
+             $get_orders = "select * from wishlist where product_id = '$product_id' order by datum DESC ";
 
-        $run_orders = mysqli_query($con,$get_orders);
+            $run_orders = mysqli_query($con, $get_orders);
 
-        while ($row_orders = mysqli_fetch_array($run_orders)) {
+            while ($row_orders = mysqli_fetch_array($run_orders)) {
+                $order_id = $row_orders['wishlist_id'];
 
-            $order_id = $row_orders['wishlist_id'];
+                $c_id = $row_orders['customer_id'];
 
-            $c_id = $row_orders['customer_id'];
+                $product_id = $row_orders['product_id'];
 
-            $product_id = $row_orders['product_id'];
+                $order_date = $row_orders['datum'];
 
-            $order_date = $row_orders['datum'];
+                $order_status = $row_orders['status'];
 
-            $order_status = $row_orders['status'];
+                $get_products = "select * from products where product_id='$product_id'";
 
-            $get_products = "select * from products where product_id='$product_id'";
+                $run_products = mysqli_query($con, $get_products);
 
-            $run_products = mysqli_query($con,$get_products);
+                $row_products = mysqli_fetch_array($run_products);
 
-            $row_products = mysqli_fetch_array($run_products);
+                $product_title = $row_products['product_title'];
 
-            $product_title = $row_products['product_title'];
+                $i++;
 
-            $i++;
-
-            ?>
+                ?>
 
             <tr>
 
             <td><?php echo $i; ?></td>
 
             <td>
-            <?php 
+                <?php
 
                 $get_customer = "select * from volunteers where customer_id='$c_id'";
 
-                $run_customer = mysqli_query($con,$get_customer);
+                $run_customer = mysqli_query($con, $get_customer);
 
                 $row_customer = mysqli_fetch_array($run_customer);
 
@@ -388,14 +374,14 @@ if(isset($_POST['sortiraj'])){
 
                 echo $customer_name;
 
-             ?>
+                ?>
              </td>
 
 
            <td>
-            <?php
+                <?php
                  echo $customer_email;
-            /*
+                /*
                 $get_manufacturerid = "select * from products where product_id='$product_id'";
 
                 $run_manufacturerid = mysqli_query($con,$get_manufacturerid);
@@ -413,12 +399,12 @@ if(isset($_POST['sortiraj'])){
                 $manufacturer_title = $row_manfacturer['manufacturer_title'];
 
                 echo $manufacturer_title;
-            */
-            ?>
+                */
+                ?>
         </td>
 
         <td>
-            <?php
+                <?php
                 echo $customer_contact;
                 /*
 
@@ -440,24 +426,24 @@ if(isset($_POST['sortiraj'])){
 
                 echo $p_cat_title;
                 */
-            ?>
+                ?>
          </td>
             
             <td><?php echo $product_title; ?></td>
 
             <td>
-            <?php echo $order_date;   ?>
+                <?php echo $order_date;   ?>
             </td>
 
 
             <td>
-            <?php  echo $order_status; ?>
+                <?php  echo $order_status; ?>
             </td>
-         <?php
-            echo "<td class='noExl'><a href='index.php?view_orders&approve=$order_id'>Prihvati</a></td>";
-            echo "<td class='noExl'><a href='index.php?view_orders&unapprove=$order_id'>Odbij</a></td>";
+                <?php
+                echo "<td class='noExl'><a href='index.php?view_orders&approve=$order_id'>Prihvati</a></td>";
+                echo "<td class='noExl'><a href='index.php?view_orders&unapprove=$order_id'>Odbij</a></td>";
 
-          ?> 
+                ?> 
             <td class='noExl'>
 
                 <a href="index.php?order_delete=<?php echo $order_id; ?>" >
@@ -471,56 +457,53 @@ if(isset($_POST['sortiraj'])){
 
             </tr>
 
- <?php      
-        }}
-      
+                <?php
+            }
+        }
+    }
     
-}
-    
     
 
- if(isset($_POST['pozicija'])){
+    if (isset($_POST['pozicija'])) {
+        $i = 0;
     
-    $i = 0;
+        $the_pro_id = $_POST['pro'];
     
-    $the_pro_id = $_POST['pro'];
-    
-    $get_poz = "select * from wishlist where product_id= '$the_pro_id' order by datum DESC ";
+        $get_poz = "select * from wishlist where product_id= '$the_pro_id' order by datum DESC ";
 
-    $run_poz = mysqli_query($con,$get_poz);
+        $run_poz = mysqli_query($con, $get_poz);
 
-    while ($row_poz = mysqli_fetch_array($run_poz)) {
+        while ($row_poz = mysqli_fetch_array($run_poz)) {
+            $order_id = $row_poz['wishlist_id'];
 
-        $order_id = $row_poz['wishlist_id'];
+            $c_id = $row_poz['customer_id'];
 
-        $c_id = $row_poz['customer_id'];
+            $order_date = $row_poz['datum'];
 
-        $order_date = $row_poz['datum'];
+            $order_status = $row_poz['status'];
 
-        $order_status = $row_poz['status'];
+            $get_products = "select * from products where product_id='$the_pro_id'";
 
-        $get_products = "select * from products where product_id='$the_pro_id'";
+            $run_products = mysqli_query($con, $get_products);
 
-        $run_products = mysqli_query($con,$get_products);
+            $row_products = mysqli_fetch_array($run_products);
 
-        $row_products = mysqli_fetch_array($run_products);
+            $product_title = $row_products['product_title'];
 
-        $product_title = $row_products['product_title'];
+            $i++;
 
-        $i++;
-
-        ?>
+            ?>
 
         <tr>
 
         <td><?php echo $i; ?></td>
 
         <td>
-        <?php 
+            <?php
 
             $get_customer = "select * from volunteers where customer_id='$c_id'";
 
-            $run_customer = mysqli_query($con,$get_customer);
+            $run_customer = mysqli_query($con, $get_customer);
 
             $row_customer = mysqli_fetch_array($run_customer);
 
@@ -533,13 +516,13 @@ if(isset($_POST['sortiraj'])){
             echo $customer_name;
 
 
-         ?>
+            ?>
          </td>
 
 
 
        <td>
-        <?php
+            <?php
              echo $customer_email;
             /*
             $get_manufacturerid = "select * from products where product_id='$the_pro_id'";
@@ -561,11 +544,11 @@ if(isset($_POST['sortiraj'])){
             echo $manufacturer_title;
             */
 
-        ?>
+            ?>
     </td>
 
     <td>
-        <?php
+            <?php
              echo $customer_contact;
 
             /*
@@ -587,24 +570,24 @@ if(isset($_POST['sortiraj'])){
 
             echo $p_cat_title;
             */
-        ?>
+            ?>
      </td>
         
        <td><?php echo $product_title; ?></td>
 
         <td>
-        <?php echo $order_date;   ?>
+            <?php echo $order_date;   ?>
         </td>
 
 
         <td>
-        <?php  echo $order_status; ?>
+            <?php  echo $order_status; ?>
         </td>
-     <?php
-        echo "<td class='noExl'><a href='index.php?view_orders&approve=$order_id'>Prihvati</a></td>";
-        echo "<td class='noExl'><a href='index.php?view_orders&unapprove=$order_id'>Odbij</a></td>";
+            <?php
+            echo "<td class='noExl'><a href='index.php?view_orders&approve=$order_id'>Prihvati</a></td>";
+            echo "<td class='noExl'><a href='index.php?view_orders&unapprove=$order_id'>Odbij</a></td>";
 
-      ?> 
+            ?> 
         <td class='noExl'>
 
             <a href="index.php?order_delete=<?php echo $order_id; ?>" >
@@ -617,13 +600,14 @@ if(isset($_POST['sortiraj'])){
 
 
         </tr>
- <?php      
-        }}
+            <?php
+        }
+    }
 
 
       
     
- ?>
+    ?>
 
 </tbody><!-- tbody Ends -->
 
@@ -640,45 +624,39 @@ if(isset($_POST['sortiraj'])){
 </div><!-- 2 row Ends -->
 
 
-<?php } 
+<?php }
 
-if(isset($_GET['approve'])){
-    
+if (isset($_GET['approve'])) {
     $the_comment_id = $_GET['approve'];
     
     $query = "UPDATE wishlist SET status = 'Prihvaćen' WHERE wishlist_id = $the_comment_id   ";
     $approve_comment_query = mysqli_query($con, $query);
     echo "<script>window.open('index.php?view_orders','_self')</script>";
-    
-    
 }
 
 
 
-if(isset($_GET['unapprove'])){
-    
+if (isset($_GET['unapprove'])) {
     $the_comment_id = $_GET['unapprove'];
     
     $query = "UPDATE wishlist SET status = 'Odbijen' WHERE wishlist_id = $the_comment_id ";
     $unapprove_comment_query = mysqli_query($con, $query);
-   echo "<script>window.open('index.php?view_orders','_self')</script>";
-    
-    
+    echo "<script>window.open('index.php?view_orders','_self')</script>";
 }
 
 ?>
 <script>
     $("button").click(function(){
-			$(function() {
-				$("#table2excel").table2excel({
-					exclude: ".noExl",
-					name: "Excel Document Name",
-					filename: "Prijave",
-					fileext: ".xls",
-					exclude_img: true,
-					exclude_links: true,
-					exclude_inputs: true
-				});
-			});
+            $(function() {
+                $("#table2excel").table2excel({
+                    exclude: ".noExl",
+                    name: "Excel Document Name",
+                    filename: "Prijave",
+                    fileext: ".xls",
+                    exclude_img: true,
+                    exclude_links: true,
+                    exclude_inputs: true
+                });
+            });
     });
-		</script>
+        </script>

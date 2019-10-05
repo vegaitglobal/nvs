@@ -71,7 +71,6 @@ if (!mysqli_num_rows($run_wishlist)) {
 $row_wishlist = mysqli_fetch_array($run_wishlist);
 
 if (isset($_POST['hours'])) {
-
     $hours = $_POST['hours'];
 
     if (!$hours || !is_numeric($hours)) {
@@ -85,42 +84,17 @@ if (isset($_POST['hours'])) {
 
         if ($run_save_hours) {
             $AlertsService->addAlert('success', 'Sati uspešno snimljeni');
-
-            header('Location: ' . $_SERVER['PHP_SELF']);
+            //TODO: redirect to self to clear POST
         } else {
             $AlertsService->addAlert('danger', 'Greška u snimanju sati');
         }
     }
 }
 
-?>
-
-<center><!-- center Starts -->
-
-    <h1> Unos sati </h1>
-
-</center><!-- center Ends -->
-
-<hr>
-
-<?php if ($AlertsService->hasAlerts()): ?>
-    <?php echo $AlertsService->getFirstAlert() ?>
-<?php endif ?>
-
-<form method="post" action="">
-
-    <div class="form-group">
-        <label class="control-label">
-            Unesi broj sati:
-            <input type="text" class="form-control" required name="hours" value="<?php echo $hours ?>"/>
-        </label>
-    </div>
-
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">
-            <i class="fa fa-check"></i>
-            Snimi
-        </button>
-    </div>
-
-</form>
+echo $twig->render('my_book_manage.html.twig', [
+    'title' => 'Unos sati',
+    'hasAlerts' => $AlertsService->hasAlerts(),
+    'firstAlert' => $AlertsService->getFirstAlert(),
+    'wishlist' => $row_wishlist,
+    'hours' => $hours,
+]);

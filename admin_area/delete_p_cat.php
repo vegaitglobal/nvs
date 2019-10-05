@@ -2,37 +2,30 @@
 
 
 
-if(!isset($_SESSION['admin_email'])){
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
-echo "<script>window.open('login.php','_self')</script>";
+    <?php
 
-}
+    if (isset($_GET['delete_p_cat'])) {
+        $delete_p_cat_id = $_GET['delete_p_cat'];
 
-else {
-
-?>
-
-<?php
-
-if(isset($_GET['delete_p_cat'])){
-
-    $delete_p_cat_id = $_GET['delete_p_cat'];
-
-    $delete_p_cat = "delete from product_categories where p_cat_id='$delete_p_cat_id'";
+        $delete_p_cat = "delete from product_categories where p_cat_id='$delete_p_cat_id'";
     
-    $select_p_cat = "select * from product_categories where p_cat_id='$delete_p_cat_id'";
+        $select_p_cat = "select * from product_categories where p_cat_id='$delete_p_cat_id'";
         
         $select_pro = "select * from products where p_cat_id='$delete_p_cat_id'";
     
         $delete_pro = "delete from products where p_cat_id='$delete_p_cat_id'";
         
-        $run_select_pro = mysqli_query($con,$select_pro);
+        $run_select_pro = mysqli_query($con, $select_pro);
     
-        while($row = mysqli_fetch_array($run_select_pro)){         
-            
-         $wish=  $row["product_id"];
-         $select_wish = "delete from wishlist where product_id='$wish'";
-         $run_delete_wish = mysqli_query($con,$select_wish);   
+        while ($row = mysqli_fetch_array($run_select_pro)) {
+            $wish=  $row["product_id"];
+            $select_wish = "delete from wishlist where product_id='$wish'";
+            $run_delete_wish = mysqli_query($con, $select_wish);
              
             
             $image1= $row["product_img1"];
@@ -45,7 +38,6 @@ if(isset($_GET['delete_p_cat'])){
             if (file_exists($file)) {
                  unlink($file);
             } else {
-                
             }
                    
        
@@ -54,54 +46,47 @@ if(isset($_GET['delete_p_cat'])){
             if (file_exists($file2)) {
                  unlink($file2);
             } else {
-                
             }
             
     
             $file3="../admin_area/product_images" ."/". $image3;
             
             
-           if (file_exists($file3)) {
+            if (file_exists($file3)) {
                  unlink($file3);
             } else {
-                
             }
-          }
+        }
 
 
-        $run_delete_pro = mysqli_query($con,$delete_pro);
+        $run_delete_pro = mysqli_query($con, $delete_pro);
     
     
-    $run_select = mysqli_query($con,$select_p_cat);        
+        $run_select = mysqli_query($con, $select_p_cat);
       
-        while($row = mysqli_fetch_array($run_select)){         
-            
+        while ($row = mysqli_fetch_array($run_select)) {
             $image1= $row["p_cat_image"];
                 $file="../admin_area/other_images" ."/". $image1;
             
             if (file_exists($file)) {
                  unlink($file);
-            } 
-       
+            }
         }
       
 
-$run_delete = mysqli_query($con,$delete_p_cat);
+        $run_delete = mysqli_query($con, $delete_p_cat);
 
-if($run_delete){
+        if ($run_delete) {
+            echo "<script>alert('Program je izbrisan')</script>";
 
-    echo "<script>alert('Program je izbrisan')</script>";
-
-    echo "<script>window.open('index.php?view_p_cats','_self')</script>";
-
-}
-
-}
+            echo "<script>window.open('index.php?view_p_cats','_self')</script>";
+        }
+    }
 
 
 
-?>
+    ?>
 
 
 
-<?php } ?>
+<?php }

@@ -1,17 +1,12 @@
 <?php
 
-if(!isset($_SESSION['manufacturer_email'])){
-
+if (!isset($_SESSION['manufacturer_email'])) {
     echo "<script>window.open('../org.php','_self')</script>";
-
-}
-
-else {
-
-$man_email=$_SESSION['manufacturer_email'];
-$man_id=$_SESSION['manufacturer_id'];
+} else {
+    $man_email=$_SESSION['manufacturer_email'];
+    $man_id=$_SESSION['manufacturer_id'];
     
-?>
+    ?>
 
 
 <div class="row"><!-- 1 row Starts -->
@@ -76,10 +71,9 @@ $man_id=$_SESSION['manufacturer_id'];
 
             $get_p_cats = "select * from product_categories where p_man_id= '$man_id'";
 
-            $run_p_cats = mysqli_query($con,$get_p_cats);
+            $run_p_cats = mysqli_query($con, $get_p_cats);
 
-            while($row_p_cats = mysqli_fetch_array($run_p_cats)){
-
+            while ($row_p_cats = mysqli_fetch_array($run_p_cats)) {
                 $p_cat_id = $row_p_cats['p_cat_id'];
 
                 $p_cat_title = $row_p_cats['p_cat_title'];

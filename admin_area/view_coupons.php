@@ -1,16 +1,10 @@
 <?php
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -72,42 +66,41 @@ else {
 
 <tbody><!-- tbody Starts -->
 
-<?php
+    <?php
 
-$i = 0;
+    $i = 0;
 
-$get_coupons = "select * from coupons";
+    $get_coupons = "select * from coupons";
 
-$run_coupons = mysqli_query($con,$get_coupons);
+    $run_coupons = mysqli_query($con, $get_coupons);
 
-while($row_coupons = mysqli_fetch_array($run_coupons)){
+    while ($row_coupons = mysqli_fetch_array($run_coupons)) {
+        $coupon_id = $row_coupons['coupon_id'];
 
-$coupon_id = $row_coupons['coupon_id'];
+        $product_id = $row_coupons['product_id'];
 
-$product_id = $row_coupons['product_id'];
+        $coupon_title = $row_coupons['coupon_title'];
 
-$coupon_title = $row_coupons['coupon_title'];
+        $coupon_price = $row_coupons['coupon_price'];
 
-$coupon_price = $row_coupons['coupon_price'];
+        $coupon_code = $row_coupons['coupon_code'];
 
-$coupon_code = $row_coupons['coupon_code'];
+        $coupon_limit = $row_coupons['coupon_limit'];
 
-$coupon_limit = $row_coupons['coupon_limit'];
-
-$coupon_used = $row_coupons['coupon_used'];
+        $coupon_used = $row_coupons['coupon_used'];
 
 
-$get_products = "select * from products where product_id='$product_id'";
+        $get_products = "select * from products where product_id='$product_id'";
 
-$run_products = mysqli_query($con,$get_products);
+        $run_products = mysqli_query($con, $get_products);
 
-$row_products = mysqli_fetch_array($run_products);
+        $row_products = mysqli_fetch_array($run_products);
 
-$product_title = $row_products['product_title'];
+        $product_title = $row_products['product_title'];
 
-$i++;
+        $i++;
 
-?>
+        ?>
 
 <tr>
 
@@ -147,7 +140,7 @@ $i++;
 
 </tr>
 
-<?php } ?>
+    <?php } ?>
 
 </tbody><!-- tbody Ends -->
 

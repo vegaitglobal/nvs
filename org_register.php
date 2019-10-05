@@ -442,20 +442,18 @@ include("includes/footer.php");
 
 <?php
 
-if(isset($_POST['register'])){
+if (isset($_POST['register'])) {
+    $secret = "6LciB1EUAAAAALJ29tYzKq7nnlOgK2lrXbFADieF";
 
-$secret = "6LciB1EUAAAAALJ29tYzKq7nnlOgK2lrXbFADieF";
+    $response = $_POST['g-recaptcha-response'];
 
-$response = $_POST['g-recaptcha-response'];
+    $remoteip = $_SERVER['REMOTE_ADDR'];
 
-$remoteip = $_SERVER['REMOTE_ADDR'];
+    $url = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip");
 
-$url = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip");
+    $result = json_decode($url, true);
 
-$result = json_decode($url, TRUE);
-
-    if($result['success'] == 1){
-
+    if ($result['success'] == 1) {
         $manufacturer_name = escape($_POST['manufacturer_name']);
     
         $manufacturer_name_full = escape($_POST['manufacturer_name_full']);
@@ -484,28 +482,25 @@ $result = json_decode($url, TRUE);
               
         $get_email = "select * from organizations where manufacturer_email='$manufacturer_email'";
 
-        $run_email = mysqli_query($con,$get_email);
+        $run_email = mysqli_query($con, $get_email);
 
         $check_email = mysqli_num_rows($run_email);
 
-            if($check_email == 1){
-
+        if ($check_email == 1) {
             echo "<script>alert('Email je već registrovan!')</script>";
 
             exit();
-
-            }
+        }
         
 
 
         $insert_manufacturer = "insert into organizations (manufacturer_title,manufacturer_title_full,manufacturer_top,manufacturer_image,manufacturer_opis,manufacturer_mesto,manufacturer_adresa,manufacturer_tel,manufacturer_email,manufacturer_pass,manufacturer_url,date) values ('$manufacturer_name','$manufacturer_name_full','$manufacturer_top','$manufacturer_image','$manufacturer_opis','$manufacturer_mesto','$manufacturer_adresa','$manufacturer_telefon','$manufacturer_email','$manufacturer_pass','$manufacturer_url',NOW())";
 
 
-        $run_manufacturer = mysqli_query($con,$insert_manufacturer);
+        $run_manufacturer = mysqli_query($con, $insert_manufacturer);
 
-            if($run_manufacturer){
-
-            move_uploaded_file($tmp_name,"admin_area/other_images/$manufacturer_image");
+        if ($run_manufacturer) {
+            move_uploaded_file($tmp_name, "admin_area/other_images/$manufacturer_image");
 
 
             $subject = "Hvala što ste se prijavili";
@@ -522,23 +517,17 @@ $result = json_decode($url, TRUE);
 
             $headers .= "Content-type: text/html\r\n";
 
-            mail($c_email,$subject,$message,$headers);
+            mail($c_email, $subject, $message, $headers);
 
             
 
-                echo "<script>alert('Hvala što ste se prijavili. Od Administratora ćete dobiti lozinku za pristup. Budite strpljivi!')</script>";
+            echo "<script>alert('Hvala što ste se prijavili. Od Administratora ćete dobiti lozinku za pristup. Budite strpljivi!')</script>";
 
-                echo "<script>window.open('checkorg.php','_self')</script>";
-
-            }
-
+            echo "<script>window.open('checkorg.php','_self')</script>";
         }
-else{
-
-    echo "<script>alert('Please Select Captcha, Try Again')</script>";
-
+    } else {
+        echo "<script>alert('Please Select Captcha, Try Again')</script>";
     }
-
 }
 
 ?>

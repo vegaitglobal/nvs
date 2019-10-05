@@ -1,16 +1,10 @@
 <?php
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -78,45 +72,44 @@ else {
 
 <tbody><!-- tbody Starts -->
 
-<?php
+    <?php
 
-$i = 0;
-
-
-$get_rel = "select * from bundle_product_relation";
-
-$run_rel = mysqli_query($con,$get_rel);
-
-while($row_rel = mysqli_fetch_array($run_rel)){
-
-$rel_id = $row_rel['rel_id'];
-
-$rel_title = $row_rel['rel_title'];
-
-$bundle_id = $row_rel['bundle_id'];
-
-$product_id = $row_rel['product_id'];
-
-$get_p = "select * from products where product_id='$product_id'";
-
-$run_p = mysqli_query($con,$get_p);
-
-$row_p = mysqli_fetch_array($run_p);
-
-$p_title = $row_p['product_title'];
+    $i = 0;
 
 
-$get_b = "select * from products where product_id='$bundle_id'";
+    $get_rel = "select * from bundle_product_relation";
 
-$run_b = mysqli_query($con,$get_b);
+    $run_rel = mysqli_query($con, $get_rel);
 
-$row_b = mysqli_fetch_array($run_b);
+    while ($row_rel = mysqli_fetch_array($run_rel)) {
+        $rel_id = $row_rel['rel_id'];
 
-$b_title = $row_b['product_title'];
+        $rel_title = $row_rel['rel_title'];
 
-$i++;
+        $bundle_id = $row_rel['bundle_id'];
 
-?>
+        $product_id = $row_rel['product_id'];
+
+        $get_p = "select * from products where product_id='$product_id'";
+
+        $run_p = mysqli_query($con, $get_p);
+
+        $row_p = mysqli_fetch_array($run_p);
+
+        $p_title = $row_p['product_title'];
+
+
+        $get_b = "select * from products where product_id='$bundle_id'";
+
+        $run_b = mysqli_query($con, $get_b);
+
+        $row_b = mysqli_fetch_array($run_b);
+
+        $b_title = $row_b['product_title'];
+
+        $i++;
+
+        ?>
 
 <tr>
 
@@ -152,7 +145,7 @@ $i++;
 
 </tr>
 
-<?php } ?>
+    <?php } ?>
 
 </tbody><!-- tbody Ends -->
 

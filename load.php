@@ -6,20 +6,15 @@ include("includes/db.php");
 
 include("functions/functions.php");
 
-switch($_REQUEST['sAction']){
+switch ($_REQUEST['sAction']) {
+    default:
+        getProducts();
 
-    default :
+        break;
 
-    getProducts();
+    case 'getPaginator';
 
-    break;
-
-    case'getPaginator';
-
-    getPaginator();
+        getPaginator();
 
     break;
-
 }
-
-?>

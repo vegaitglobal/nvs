@@ -1,16 +1,10 @@
 <?php
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 <div class="row"><!-- 1 row Starts -->
 
@@ -71,35 +65,34 @@ else {
 
 <tbody><!-- tbody Starts -->
 
-<?php
+    <?php
 
-$i = 0;
+    $i = 0;
 
-$get_icons = "select * from icons";
+    $get_icons = "select * from icons";
 
-$run_icons = mysqli_query($con,$get_icons);
+    $run_icons = mysqli_query($con, $get_icons);
 
-while($row_icons = mysqli_fetch_array($run_icons)){
+    while ($row_icons = mysqli_fetch_array($run_icons)) {
+        $icon_id = $row_icons['icon_id'];
 
-$icon_id = $row_icons['icon_id'];
+        $product_id = $row_icons['icon_product'];
 
-$product_id = $row_icons['icon_product'];
+        $icon_title = $row_icons['icon_title'];
 
-$icon_title = $row_icons['icon_title'];
+        $icon_image = $row_icons['icon_image'];
 
-$icon_image = $row_icons['icon_image'];
+        $get_p = "select * from products where product_id='$product_id'";
 
-$get_p = "select * from products where product_id='$product_id'";
+        $run_p = mysqli_query($con, $get_p);
 
-$run_p = mysqli_query($con,$get_p);
+        $row_p = mysqli_fetch_array($run_p);
 
-$row_p = mysqli_fetch_array($run_p);
+        $p_title = $row_p['product_title'];
 
-$p_title = $row_p['product_title'];
+        $i++;
 
-$i++;
-
-?>
+        ?>
 
 <tr>
 
@@ -137,7 +130,7 @@ $i++;
 
 </tr>
 
-<?php } ?>
+    <?php } ?>
 
 </tbody><!-- tbody Ends -->
 

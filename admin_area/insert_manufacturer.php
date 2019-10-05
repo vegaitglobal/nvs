@@ -1,132 +1,126 @@
 <?php
 
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 
 <div class="row"><!-- 1 row Starts -->
 
-	<div class="col-lg-12"><!-- col-lg-12 Starts -->
+    <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
-		<ol class="breadcrumb"><!-- breadcrumb Starts -->
+        <ol class="breadcrumb"><!-- breadcrumb Starts -->
 
-			<li class="active">
+            <li class="active">
 
-				<i class="fa fa-dashboard"></i> Dashboard / Unos organizations
+                <i class="fa fa-dashboard"></i> Dashboard / Unos organizations
 
-			</li>
+            </li>
 
-		</ol><!-- breadcrumb Ends -->
+        </ol><!-- breadcrumb Ends -->
 
-	</div><!-- col-lg-12 Ends -->
+    </div><!-- col-lg-12 Ends -->
 
 </div><!-- 1 row Ends -->
 
 
 <div class="row"><!-- 2 row Starts -->
 
-	<div class="col-lg-12"><!-- col-lg-12 Starts -->
+    <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
-	<div class="panel panel-default"><!-- panel panel-default Starts -->
+    <div class="panel panel-default"><!-- panel panel-default Starts -->
 
-		<div class="panel-heading"><!-- panel-heading Starts -->
+        <div class="panel-heading"><!-- panel-heading Starts -->
 
-			<h3 class="panel-title"><!-- panel-title Starts -->
+            <h3 class="panel-title"><!-- panel-title Starts -->
 
-				<i class="fa fa-money fa-fw"> </i> Unos organizacije
+                <i class="fa fa-money fa-fw"> </i> Unos organizacije
 
-			</h3><!-- panel-title Ends -->
+            </h3><!-- panel-title Ends -->
 
-		</div><!-- panel-heading Ends -->
+        </div><!-- panel-heading Ends -->
 
-		<div class="panel-body"><!-- panel-body Starts -->
+        <div class="panel-body"><!-- panel-body Starts -->
 
-		<form class="form-horizontal" action="" method="post" enctype="multipart/form-data"><!-- form-horizontal Starts -->
+        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data"><!-- form-horizontal Starts -->
 
-			<div class="form-group"><!-- form-group Starts -->
+            <div class="form-group"><!-- form-group Starts -->
 
-				<label class="col-md-3 control-label"> Skraćeno ime </label>
+                <label class="col-md-3 control-label"> Skraćeno ime </label>
 
-				<div class="col-md-6">
+                <div class="col-md-6">
 
-					<input type="text" name="manufacturer_name" class="form-control" >
+                    <input type="text" name="manufacturer_name" class="form-control" >
 
-				</div>
+                </div>
 
-			</div><!-- form-group Ends -->
+            </div><!-- form-group Ends -->
 
-			<div class="form-group"><!-- form-group Starts -->
+            <div class="form-group"><!-- form-group Starts -->
 
-				<label class="col-md-3 control-label"> Puno ime </label>
+                <label class="col-md-3 control-label"> Puno ime </label>
 
-				<div class="col-md-6">
+                <div class="col-md-6">
 
-					<input type="text" name="manufacturer_name_full" class="form-control" >
+                    <input type="text" name="manufacturer_name_full" class="form-control" >
 
-				</div>
+                </div>
 
-			</div><!-- form-group Ends -->
-
-
-			<div class="form-group"><!-- form-group Starts -->
-
-				<label class="col-md-3 control-label"> Mesto </label>
-
-				<div class="col-md-6">
-
-					<input type="text" name="manufacturer_mesto" class="form-control" >
-
-				</div>
-
-			</div><!-- form-group Ends -->
+            </div><!-- form-group Ends -->
 
 
-			<div class="form-group"><!-- form-group Starts -->
+            <div class="form-group"><!-- form-group Starts -->
 
-				<label class="col-md-3 control-label"> Adresa </label>
+                <label class="col-md-3 control-label"> Mesto </label>
 
-				<div class="col-md-6">
+                <div class="col-md-6">
 
-					<input type="text" name="manufacturer_adresa" class="form-control" >
+                    <input type="text" name="manufacturer_mesto" class="form-control" >
 
-				</div>
+                </div>
 
-			</div><!-- form-group Ends -->
+            </div><!-- form-group Ends -->
 
-			<div class="form-group"><!-- form-group Starts -->
 
-				<label class="col-md-3 control-label"> Telefon </label>
+            <div class="form-group"><!-- form-group Starts -->
 
-				<div class="col-md-6">
+                <label class="col-md-3 control-label"> Adresa </label>
 
-					<input type="text" name="manufacturer_telefon" class="form-control" >
+                <div class="col-md-6">
 
-				</div>
+                    <input type="text" name="manufacturer_adresa" class="form-control" >
 
-			</div><!-- form-group Ends -->
+                </div>
 
-			<div class="form-group"><!-- form-group Starts -->
+            </div><!-- form-group Ends -->
 
-				<label class="col-md-3 control-label"> Email </label>
+            <div class="form-group"><!-- form-group Starts -->
 
-				<div class="col-md-6">
+                <label class="col-md-3 control-label"> Telefon </label>
 
-					<input type="email" name="manufacturer_email" class="form-control" >
+                <div class="col-md-6">
 
-				</div>
+                    <input type="text" name="manufacturer_telefon" class="form-control" >
 
-			</div><!-- form-group Ends -->
-			
-			<div class="form-group">
+                </div>
+
+            </div><!-- form-group Ends -->
+
+            <div class="form-group"><!-- form-group Starts -->
+
+                <label class="col-md-3 control-label"> Email </label>
+
+                <div class="col-md-6">
+
+                    <input type="email" name="manufacturer_email" class="form-control" >
+
+                </div>
+
+            </div><!-- form-group Ends -->
+            
+            <div class="form-group">
 
             <label class="col-md-3 control-label"> Lozinka </label>
 
@@ -138,142 +132,138 @@ else {
 
             </div>
             
-			<div class="form-group"><!-- form-group Starts -->
+            <div class="form-group"><!-- form-group Starts -->
 
-				<label class="col-md-3 control-label"> Site </label>
+                <label class="col-md-3 control-label"> Site </label>
 
-				<div class="col-md-6">
+                <div class="col-md-6">
 
-					<input type="url" name="manufacturer_url" class="form-control" >
+                    <input type="url" name="manufacturer_url" class="form-control" >
 
-				</div>
+                </div>
 
-			</div><!-- form-group Ends -->
-			
-			<div class="form-group"><!-- form-group Starts -->
+            </div><!-- form-group Ends -->
+            
+            <div class="form-group"><!-- form-group Starts -->
 
-				<label class="col-md-3 control-label"> Facebook </label>
+                <label class="col-md-3 control-label"> Facebook </label>
 
-				<div class="col-md-6">
+                <div class="col-md-6">
 
-					<input type="url" name="manufacturer_fb" class="form-control" >
+                    <input type="url" name="manufacturer_fb" class="form-control" >
 
-				</div>
+                </div>
 
-			</div><!-- form-group Ends -->
+            </div><!-- form-group Ends -->
 
-			<div class="form-group"><!-- form-group Starts -->
+            <div class="form-group"><!-- form-group Starts -->
 
-				<label class="col-md-3 control-label"> Opis </label>
+                <label class="col-md-3 control-label"> Opis </label>
 
-				<div class="col-md-6">
+                <div class="col-md-6">
 
-					<textarea id="text1" class="form-control" rows="15" name="manufacturer_opis"></textarea>
+                    <textarea id="text1" class="form-control" rows="15" name="manufacturer_opis"></textarea>
 
-				</div>
+                </div>
 
-			</div><!-- form-group Ends -->
+            </div><!-- form-group Ends -->
 
 
 
-			<div class="form-group"><!-- form-group Starts -->
+            <div class="form-group"><!-- form-group Starts -->
 
-				<label class="col-md-3 control-label"> Prikaži kao prvog </label>
+                <label class="col-md-3 control-label"> Prikaži kao prvog </label>
 
-				<div class="col-md-6">
+                <div class="col-md-6">
 
-					<input type="radio" name="manufacturer_top" value="yes" >
+                    <input type="radio" name="manufacturer_top" value="yes" >
 
-						<label> Da </label>
+                        <label> Da </label>
 
-					<input type="radio" name="manufacturer_top" value="no" >
+                    <input type="radio" name="manufacturer_top" value="no" >
 
-						<label> Ne </label>
+                        <label> Ne </label>
 
-				</div>
+                </div>
 
-			</div><!-- form-group Ends -->
+            </div><!-- form-group Ends -->
 
-			<div class="form-group"><!-- form-group Starts -->
+            <div class="form-group"><!-- form-group Starts -->
 
-				<label class="col-md-3 control-label"> Logo Organizatora </label>
+                <label class="col-md-3 control-label"> Logo Organizatora </label>
 
-				<div class="col-md-6">
+                <div class="col-md-6">
 
-					<input type="file" name="manufacturer_image" class="form-control" >
+                    <input type="file" name="manufacturer_image" class="form-control" >
 
-				</div>
+                </div>
 
-			</div><!-- form-group Ends -->
+            </div><!-- form-group Ends -->
 
-			<div class="form-group"><!-- form-group Starts -->
+            <div class="form-group"><!-- form-group Starts -->
 
-				<label class="col-md-3 control-label"> </label>
+                <label class="col-md-3 control-label"> </label>
 
-				<div class="col-md-6">
+                <div class="col-md-6">
 
-					<input type="submit" name="submit" class="form-control btn btn-primary" value=" Unos podataka " >
+                    <input type="submit" name="submit" class="form-control btn btn-primary" value=" Unos podataka " >
 
-				</div>
+                </div>
 
-			</div><!-- form-group Ends -->
+            </div><!-- form-group Ends -->
 
-			</form><!-- form-horizontal Ends -->
+            </form><!-- form-horizontal Ends -->
 
-		</div><!-- panel-body Ends -->
+        </div><!-- panel-body Ends -->
 
-	</div><!-- panel panel-default Ends -->
+    </div><!-- panel panel-default Ends -->
 
-	</div><!-- col-lg-12 Ends -->
+    </div><!-- col-lg-12 Ends -->
 
 </div><!-- 2 row Ends -->
 
-<?php
+    <?php
 
-if(isset($_POST['submit'])){
-
-$manufacturer_name = escape($_POST['manufacturer_name']);
+    if (isset($_POST['submit'])) {
+        $manufacturer_name = escape($_POST['manufacturer_name']);
     
-$manufacturer_name_full = escape($_POST['manufacturer_name_full']);
+        $manufacturer_name_full = escape($_POST['manufacturer_name_full']);
     
-$manufacturer_mesto = escape($_POST['manufacturer_mesto']);
+        $manufacturer_mesto = escape($_POST['manufacturer_mesto']);
 
-$manufacturer_adresa = escape($_POST['manufacturer_adresa']);
+        $manufacturer_adresa = escape($_POST['manufacturer_adresa']);
     
-$manufacturer_telefon = escape($_POST['manufacturer_telefon']);
+        $manufacturer_telefon = escape($_POST['manufacturer_telefon']);
     
-$manufacturer_email = filter_var($_POST['manufacturer_email'], FILTER_SANITIZE_EMAIL);
+        $manufacturer_email = filter_var($_POST['manufacturer_email'], FILTER_SANITIZE_EMAIL);
     
-$manufacturer_pass = escape($_POST['manufacturer_pass']);
+        $manufacturer_pass = escape($_POST['manufacturer_pass']);
     
-$manufacturer_url = filter_var($_POST['manufacturer_url'], FILTER_SANITIZE_URL);
+        $manufacturer_url = filter_var($_POST['manufacturer_url'], FILTER_SANITIZE_URL);
 
-$manufacturer_fb = filter_var($_POST['manufacturer_fb'], FILTER_SANITIZE_URL);
+        $manufacturer_fb = filter_var($_POST['manufacturer_fb'], FILTER_SANITIZE_URL);
     
-$manufacturer_opis = $_POST['manufacturer_opis'];
+        $manufacturer_opis = $_POST['manufacturer_opis'];
 
-$manufacturer_top = $_POST['manufacturer_top'];
+        $manufacturer_top = $_POST['manufacturer_top'];
 
-$manufacturer_image = $_FILES['manufacturer_image']['name'];
+        $manufacturer_image = $_FILES['manufacturer_image']['name'];
 
-$tmp_name = $_FILES['manufacturer_image']['tmp_name'];
+        $tmp_name = $_FILES['manufacturer_image']['tmp_name'];
 
-move_uploaded_file($tmp_name,"other_images/$manufacturer_image");
+        move_uploaded_file($tmp_name, "other_images/$manufacturer_image");
 
-$insert_manufacturer = "insert into organizations (manufacturer_title,manufacturer_title_full,manufacturer_top,manufacturer_image,manufacturer_opis,manufacturer_mesto,manufacturer_adresa,manufacturer_tel,manufacturer_email,manufacturer_url,manufacturer_fb,manufacturer_pass,date) values ('$manufacturer_name','$manufacturer_name_full','$manufacturer_top','$manufacturer_image','$manufacturer_opis','$manufacturer_mesto','$manufacturer_adresa','$manufacturer_telefon','$manufacturer_email','$manufacturer_url','$manufacturer_fb','manufacturer_pass',NOW())";
+        $insert_manufacturer = "insert into organizations (manufacturer_title,manufacturer_title_full,manufacturer_top,manufacturer_image,manufacturer_opis,manufacturer_mesto,manufacturer_adresa,manufacturer_tel,manufacturer_email,manufacturer_url,manufacturer_fb,manufacturer_pass,date) values ('$manufacturer_name','$manufacturer_name_full','$manufacturer_top','$manufacturer_image','$manufacturer_opis','$manufacturer_mesto','$manufacturer_adresa','$manufacturer_telefon','$manufacturer_email','$manufacturer_url','$manufacturer_fb','manufacturer_pass',NOW())";
 
-$run_manufacturer = mysqli_query($con,$insert_manufacturer);
+        $run_manufacturer = mysqli_query($con, $insert_manufacturer);
 
-if($run_manufacturer){
+        if ($run_manufacturer) {
+            echo "<script>alert('Nova organizacija je uneta')</script>";
 
-echo "<script>alert('Nova organizacija je uneta')</script>";
+            echo "<script>window.open('index.php?view_organizations','_self')</script>";
+        }
+    }
 
-echo "<script>window.open('index.php?view_organizations','_self')</script>";
-
-}
-
-}
-
-?>
+    ?>
 
 <?php } ?>

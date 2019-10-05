@@ -1,14 +1,9 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
-
-echo "<script>window.open('login.php','_self')</script>";
-
-}
-
-else {
-
-?>
+if (!isset($_SESSION['admin_email'])) {
+    echo "<script>window.open('login.php','_self')</script>";
+} else {
+    ?>
 
 
 <div class="row"><!-- 1 row Starts -->
@@ -68,24 +63,23 @@ else {
 
 <tbody><!-- tbody Starts -->
 
-<?php
+    <?php
 
-$i=0;
+    $i=0;
 
-$get_p_cats = "select * from product_categories";
+    $get_p_cats = "select * from product_categories";
 
-$run_p_cats = mysqli_query($con,$get_p_cats);
+    $run_p_cats = mysqli_query($con, $get_p_cats);
 
-while($row_p_cats = mysqli_fetch_array($run_p_cats)){
+    while ($row_p_cats = mysqli_fetch_array($run_p_cats)) {
+        $p_cat_id = $row_p_cats['p_cat_id'];
 
-$p_cat_id = $row_p_cats['p_cat_id'];
-
-$p_cat_title = $row_p_cats['p_cat_title'];
+        $p_cat_title = $row_p_cats['p_cat_title'];
 
 
-$i++;
+        $i++;
 
-?>
+        ?>
 
 <tr>
 
@@ -117,7 +111,7 @@ $i++;
 
 </tr>
 
-<?php } ?>
+    <?php } ?>
 
 </tbody><!-- tbody Ends -->
 
