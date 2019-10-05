@@ -52,7 +52,7 @@ if (!isset($_SESSION['customer_email'])) {
     echo "active";
            } ?>">
 
-<a href="index.php?my_wishlist"> <i class="fa fa-heart fa-fw"></i> Moja lista želja </a>
+<a href="index.php?my_wishlist"> <i class="fa fa-heart fa-fw text-warning"></i> Moja lista želja </a>
 
 </li>
 
@@ -60,7 +60,7 @@ if (!isset($_SESSION['customer_email'])) {
     echo "active";
            } ?>">
 
-<a href="index.php?my_book"> <i class="fa fa-list fa-fw"></i> Volonterska knjižica </a>
+<a href="index.php?my_book"> <i class="fa fa-list fa-fw text-warning"></i> Volonterska knjižica </a>
 
 </li>
 
@@ -68,7 +68,7 @@ if (!isset($_SESSION['customer_email'])) {
     echo "active";
            } ?>">
 
-<a href="index.php?edit_account"> <i class="fa fa-pencil fa-fw"></i> Ažuriraj nalog </a>
+<a href="index.php?edit_account"> <i class="fa fa-pencil fa-fw text-warning"></i> Ažuriraj nalog </a>
 
 </li>
 
@@ -76,7 +76,7 @@ if (!isset($_SESSION['customer_email'])) {
     echo "active";
            } ?>">
 
-<a href="index.php?change_pass"> <i class="fa fa-user fa-fw"></i> Promeni lozinku </a>
+<a href="index.php?change_pass"> <i class="fa fa-user fa-fw text-warning"></i> Promeni lozinku </a>
 
 </li>
 
@@ -86,13 +86,13 @@ if (!isset($_SESSION['customer_email'])) {
     echo "active";
            } ?>">
 
-<a href="index.php?delete_account"> <i class="fa fa-trash-o fa-fw"></i> Izbriši nalog </a>
+<a href="index.php?delete_account"> <i class="fa fa-trash-o fa-fw text-warning"></i> Izbriši nalog </a>
 
 </li>
 
 <li>
 
-<a href="logout.php"> <i class="fa fa-sign-out fa-fw"></i> Odjava </a>
+<a href="logout.php"> <i class="fa fa-sign-out fa-fw text-warning"></i> Odjava </a>
 
 </li>
 
