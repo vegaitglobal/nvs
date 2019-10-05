@@ -61,7 +61,7 @@ echo "
 
 <li class="<?php if(isset($_GET['my_book'])){ echo "active"; } ?>">
 
-<a href="index.php?my_book"> <i class="fa fa-list"></i> Volonterska knjižica </a>
+<a href="index.php?my_book"> <i class="fa fa-list text-yelow"></i> Volonterska knjižica </a>
 
 </li>
 
