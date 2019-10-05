@@ -56,12 +56,11 @@ if (!isset($_SESSION['customer_email'])) {
 </button>
 
 
-<<<<<<< HEAD
+
 <a href="#" class="btn btn-sm btn-default" >
-=======
-<<<<<<< HEAD
+
 <a href="#" class="btn btn-sm btn-silver" >
->>>>>>> master
+
 <?php
 
 if(!isset($_SESSION['customer_email'])){
@@ -72,10 +71,9 @@ echo "Dobrodošli :Guest";
 }else{
 
 echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
-=======
+?>
 <a href="#" class="btn btn-success btn-sm" >
     <?php
->>>>>>> 977e9528f4cae3603459318416bb719fff240d90
 
     if (!isset($_SESSION['customer_email'])) {
         echo "Dobrodošli :Guest";
