@@ -1,4 +1,3 @@
-
 <center><!-- center Starts -->
 
     <h1> Volonterska knjižica </h1>
@@ -97,7 +96,7 @@
 
                 <td style="vertical-align:middle" >
                     <?php  if ($hours==0): ?>
-                        <a href="javascript:">
+                        <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>">
                             <i class="fa fa-plus"></i>
                             Unesi
                         </a>
