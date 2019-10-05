@@ -101,7 +101,7 @@ else {
 
         <div class="form-group" ><!-- form-group Starts -->
 
-            <label class="control-label" > Pozicija </label>
+            <label class="control-label" > \</label>
 
         
 
