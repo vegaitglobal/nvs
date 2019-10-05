@@ -7,8 +7,17 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
 require_once __DIR__.'/../vendor/autoload.php';
-require_once __DIR__.'/../src/Entity/Wishlist.php';
+
+// Entity
+$files = glob(__DIR__ . '/../src/Entity/*.php');
+
+foreach ($files as $file) {
+    require_once $file;
+}
+
+// Utils
 require_once __DIR__.'/../src/Utils/AlertService.php';
+require_once __DIR__.'/../src/Utils/TwigExtensions/Hash.php';
 
 $paths = [
     __DIR__.'/../src/Entity',
@@ -41,4 +50,9 @@ $loader = new Twig\Loader\FilesystemLoader([
 ]);
 
 // Instantiate our Twig
-$twig = new Twig\Environment($loader);
+$twig = new Twig\Environment($loader, [
+    'debug' => true,
+]);
+
+$twig->addExtension(new Twig\Extension\DebugExtension());
+$twig->addExtension(new Hash());
