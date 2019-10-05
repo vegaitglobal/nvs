@@ -34,16 +34,19 @@ if (isset($_POST['login'])) {
 
     <center>
 
-        <h1>Prijava</h1>
+        <h1><strong>PRIJAVA</strong></h1>
 
         <p class="lead" >Registrovan korisnik</p>
 
     </center>
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-sm-offset-0 col-md-offset-1">
+            <p class="text-muted text-center" >
+                Hvala vam što ste odlučili da se registrujete na naš sajt. Nadamo se da ćemo ispuniti vaša očekivanja. Vaše mišljenje nam je dragoceno i važnio pa nam pišite i tako nam pomozite da budemo bolji.
 
-    <p class="text-muted" >
-    Hvala vam što ste odlučili da se registrujete na naš sajt. Nadamo se da ćemo ispuniti vaša očekivanja. Vaše mišljenje nam je dragoceno i važnio pa nam pišite i tako nam pomozite da budemo bolji.
-
-    </p>
+            </p>
+        </div>
+    </div>
 
 </div><!-- box-header Ends -->
 

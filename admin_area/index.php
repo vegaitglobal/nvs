@@ -2,7 +2,7 @@
 
 session_start();
 
-include("includes/db.php");
+include("includes/db.php"); 
 
 include("includes/functions.php");
 
@@ -112,6 +112,17 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="container-fluid"><!-- container-fluid Starts -->
 
+<<<<<<< HEAD
+<?php
+
+if($_SERVER['REQUEST_METHOD'] == "GET") {
+      if(file_exists($_GET['path'].".php")) {
+            include_once($_GET['path'].".php"); 
+      } else {
+            die('Page does not exist'); 
+      }
+}
+=======
     <?php
 
     if (isset($_GET['dashboard'])) {
@@ -422,6 +433,7 @@ if (!isset($_SESSION['admin_email'])) {
     if (isset($_GET['edit_docs'])) {
         include("edit_docs.php");
     }
+>>>>>>> master
 
     ?>
 

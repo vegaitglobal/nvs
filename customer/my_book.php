@@ -1,12 +1,14 @@
-<center><!-- center Starts -->
 
-    <h1>Moja Volonterska knjižica </h1>
-
-</center><!-- center Ends -->
-
-<div class="manifestation-container"><!-- manifestation-container Starts -->
+<div class="panel-heading">
+    <h1> MOJA VOLONTERSKA KNJIŽICA </h1
+</div>
+      <div class="manifestation-container"><!-- manifestation-container Starts -->
 
     <p>Lista prethodnih manifestacija</p>
+
+<div class="panel-body">
+<div class="table-responsive"><!-- table-responsive Starts -->
+
 
     <div class="table-responsive"><!-- table-responsive Starts -->
 
@@ -123,3 +125,5 @@
     </div><!-- table-responsive Ends -->
 
 </div><!-- manifestation-container Ends -->
+</div><!-- table-responsive Ends -->
+</div>

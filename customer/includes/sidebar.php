@@ -1,7 +1,8 @@
 <div class="panel panel-default sidebar-menu"><!-- panel panel-default sidebar-menu Starts -->
 
-<div class="panel-heading"><!-- panel-heading Starts -->
+<div class="panel-default"><!-- panel-heading Starts -->
 
+<div id="user_panel" class="panel-body">
 <?php
 
 $customer_session = $_SESSION['customer_email'];
@@ -18,25 +19,30 @@ $customer_name = $row_customer['customer_name'];
 
 if (!isset($_SESSION['customer_email'])) {
 } else {
+    if($customer_image === "") {
+        $img = "user.jpg";
+    } else {
+        $img = "customer_images/$customer_image";
+    }
     echo "
 
-<center>
+<div class='row'>
+<div class='col-4 col-sm-4 col-md-4'>
 
-<img src='customer_images/$customer_image' class='img-responsive'>
+<img src='$img' class='img-responsive'>
 
-</center>
-
-<br>
-
-<h3 align='center' class='panel-title'> Prezime i ime : $customer_name </h3>
-
+</div>
+<div class='col-8 col-sm-4 col-md-8'>
+<p class=''> Prezime i ime:</p>
+<h3> $customer_name </h3>
+</div>
+</div><!-- End row -->
 ";
 }
-
 ?>
-
+</div>
 </div><!-- panel-heading Ends -->
-
+<hr>
 <div class="panel-body"><!-- panel-body Starts -->
 
 <ul class="nav nav-pills nav-stacked"><!-- nav nav-pills nav-stacked Starts -->

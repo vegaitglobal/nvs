@@ -6,6 +6,8 @@ include("includes/db.php");
 
 include("functions/functions.php");
 
+require_once __DIR__.'/app/bootstrap.php';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,8 +22,8 @@ include("functions/functions.php");
 
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100" rel="stylesheet" >
 
-    <link rel="stylesheet" title="" type="text/css" href="styles/dropmenu.css" media="all" />  
-    <link rel="stylesheet" title="" type="text/css" href="styles/header.css" media="all" /> 
+    <link rel="stylesheet" title="" type="text/css" href="styles/dropmenu.css" media="all" />
+    <link rel="stylesheet" title="" type="text/css" href="styles/header.css" media="all" />
     <link rel="stylesheet" title="" type="text/css" href="styles/footer.css" media="all" />
 
     <link href="styles/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +36,7 @@ include("functions/functions.php");
     <script src="js/jquery.min.js"> </script>
 
     <script src="js/bootstrap.min.js"></script>
-    
+
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
@@ -77,7 +79,7 @@ include("functions/functions.php");
                 </div>
 
             </div><!-- form-group Ends -->
-        
+
 
             <div class="form-group"><!-- form-group Starts -->
 
@@ -113,8 +115,8 @@ include("functions/functions.php");
 
                 </div>
 
-            </div><!-- form-group Ends -->   
-            
+            </div><!-- form-group Ends -->
+
             <div class="form-group"><!-- form-group Starts -->
 
                 <label class="col-md-3 control-label"> Telefon </label>
@@ -240,17 +242,17 @@ include("functions/functions.php");
         </div><!-- form-group Ends -->
 
 
- <!--        <div class="form-group"><!-- form-group Starts 
+ <!--        <div class="form-group"><!-- form-group Starts
 
             <label> Država </label>
 
             <input type="text" class="form-control" name="c_country" required>
 
-        </div><!-- form-group Ends 
-        
-     
-        
-        <div class="form-group" ><!-- form-group Starts 
+        </div><!-- form-group Ends
+
+
+
+        <div class="form-group" ><!-- form-group Starts
 
         <label class="col-md-3 control-label" > Oblast </label>
 
@@ -281,8 +283,8 @@ include("functions/functions.php");
             </div>
 
         </div><!-- form-group Ends -->
-        
-      
+
+
         <div class="form-group text-center"><!-- form-group Starts -->
 
             <center>
@@ -455,22 +457,22 @@ if (isset($_POST['register'])) {
 
     if ($result['success'] == 1) {
         $manufacturer_name = escape($_POST['manufacturer_name']);
-    
+
         $manufacturer_name_full = escape($_POST['manufacturer_name_full']);
-            
+
         $manufacturer_mesto = escape($_POST['manufacturer_mesto']);
 
         $manufacturer_adresa = escape($_POST['manufacturer_adresa']);
-            
+
         $manufacturer_telefon = escape($_POST['manufacturer_telefon']);
-            
+
         $manufacturer_email = filter_var($_POST['manufacturer_email'], FILTER_SANITIZE_EMAIL);
 
        // $manufacturer_pass = escape($_POST['c_pass']);//
         $manufacturer_pass = "abc-123";
-            
+
         $manufacturer_url = filter_var($_POST['manufacturer_url'], FILTER_SANITIZE_URL);
-            
+
         $manufacturer_opis = escape($_POST['manufacturer_opis']);
 
         $manufacturer_top = "no";
@@ -479,7 +481,7 @@ if (isset($_POST['register'])) {
 
         $tmp_name = $_FILES['manufacturer_image']['tmp_name'];
 
-              
+
         $get_email = "select * from organizations where manufacturer_email='$manufacturer_email'";
 
         $run_email = mysqli_query($con, $get_email);
@@ -491,7 +493,7 @@ if (isset($_POST['register'])) {
 
             exit();
         }
-        
+
 
 
         $insert_manufacturer = "insert into organizations (manufacturer_title,manufacturer_title_full,manufacturer_top,manufacturer_image,manufacturer_opis,manufacturer_mesto,manufacturer_adresa,manufacturer_tel,manufacturer_email,manufacturer_pass,manufacturer_url,date) values ('$manufacturer_name','$manufacturer_name_full','$manufacturer_top','$manufacturer_image','$manufacturer_opis','$manufacturer_mesto','$manufacturer_adresa','$manufacturer_telefon','$manufacturer_email','$manufacturer_pass','$manufacturer_url',NOW())";
@@ -505,21 +507,10 @@ if (isset($_POST['register'])) {
 
             $subject = "Hvala što ste se prijavili";
 
-            $from = "office@nvs.rs";
-
-            $message = "
-
-            <h2> Hvala što ste se prijavili $manufacturer_name </h2>
-            <p> Naknadno ćete dobiti lozinku za pristup sajtu!</p>
-            ";
-
-            $headers = "From: $from \r\n";
-
-            $headers .= "Content-type: text/html\r\n";
-
-            mail($c_email, $subject, $message, $headers);
-
-            
+            $mailer->sendEmail($c_email, $subject, [
+                "Hvala što ste se prijavili $manufacturer_name!",
+                "Naknadno ćete dobiti lozinku za pristup sajtu."
+            ]);
 
             echo "<script>alert('Hvala što ste se prijavili. Od Administratora ćete dobiti lozinku za pristup. Budite strpljivi!')</script>";
 

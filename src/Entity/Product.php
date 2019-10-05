@@ -24,7 +24,7 @@ class Product
      *
      * @ORM\Column(name="cat_id", type="integer", nullable=false)
      */
-    private $catId;
+    private $categoryId;
 
     /**
      * @var int
@@ -150,7 +150,19 @@ class Product
      *
      * @ORM\Column(name="p_cat_id", type="integer", nullable=false)
      */
-    private $categoryId;
+    private $productCategoryId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\JoinColumn(name="cat_id", referencedColumnName="cat_id")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ProductCategory")
+     * @ORM\JoinColumn(name="p_cat_id", referencedColumnName="p_cat_id")
+     */
+    private $productCategory;
 
     /**
      * Get id.
@@ -163,27 +175,27 @@ class Product
     }
 
     /**
-     * Set catId.
+     * Set categoryId.
      *
-     * @param int $catId
+     * @param int $categoryId
      *
      * @return Product
      */
-    public function setCatId($catId)
+    public function setCategoryId($categoryId)
     {
-        $this->catId = $catId;
+        $this->categoryId = $categoryId;
 
         return $this;
     }
 
     /**
-     * Get catId.
+     * Get categoryId.
      *
      * @return int
      */
-    public function getCatId()
+    public function getCategoryId()
     {
-        return $this->catId;
+        return $this->categoryId;
     }
 
     /**
@@ -595,26 +607,42 @@ class Product
     }
 
     /**
-     * Set categoryId.
+     * Set productCategoryId.
      *
-     * @param int $categoryId
+     * @param int $productCategoryId
      *
      * @return Product
      */
-    public function setCategoryId($categoryId)
+    public function setProductCategoryId($productCategoryId)
     {
-        $this->categoryId = $categoryId;
+        $this->productCategoryId = $productCategoryId;
 
         return $this;
     }
 
     /**
-     * Get categoryId.
+     * Get productCategoryId.
      *
      * @return int
      */
-    public function getCategoryId()
+    public function getProductCategoryId()
     {
-        return $this->categoryId;
+        return $this->productCategoryId;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @return ProductCategory
+     */
+    public function getProductCategory()
+    {
+        return $this->productCategory;
     }
 }

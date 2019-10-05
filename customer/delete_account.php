@@ -1,17 +1,19 @@
 
-<center>
 
+<div class="panel-heading">
     <h1>Da li zaista želite da izbrišete nalog!</h1>
-
+</div>
+<div class="panel-body">
+    <div class="container-fluid">
     <form action="" method="post">
 
         <input class="btn btn-danger" type="submit" name="yes" value="Da, želim da izbrišem nalog">
 
-        <input class="btn btn-primary" type="submit" name="no" value="Ne, ne želim da izbrišem nalog">
+        <input class="btn btn-success" type="submit" name="no" value="Ne, ne želim da izbrišem nalog">
 
     </form>
-
-</center>
+</div>
+</div>
 
 <?php
 

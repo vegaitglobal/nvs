@@ -1,6 +1,8 @@
-
-<h1 align="center">Promena lozinke </h1>
-
+<div class="panel-heading">
+<h1>Promena lozinke </h1>
+</div>
+<div class="panel-body">
+    <div class="container-fluid">
 <form action="" method="post"><!-- form Starts -->
 
     <div class="form-group"><!-- form-group Starts -->
@@ -33,13 +35,15 @@
 
         <button type="submit" name="submit" class="btn btn-primary">
 
-            <i class="fa fa-user-md"> </i> Promeni lozinku
+            <i class="fa fa-user-md"> </i> PROMENA LOZINKE
 
         </button>
 
     </div><!-- text-center Ends -->
 
 </form><!-- form Ends -->
+</div>
+</div>
 <?php
 
 if (isset($_POST['submit'])) {

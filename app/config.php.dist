@@ -1,0 +1,21 @@
+<?php
+
+function config(string $param)
+{
+    $app_config = [
+        'app_url' => 'http://localhost:8080',
+        'doctrine_db' => [
+            'driver'   => 'pdo_mysql',
+            'user'     => 'root',
+            'password' => '',
+            'dbname'   => 'nvs_nvs',
+        ],
+        'mailer_host' => 'smtp.gmail.com',
+        'mailer_port' => 587,
+        'mailer_encryption' => 'tls',
+        'mailer_user' => 'foobar@gmail.com',
+        'mailer_pass' => 'foobar123',
+    ];
+
+    return $app_config[$param];
+}

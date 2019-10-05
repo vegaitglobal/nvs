@@ -34,7 +34,7 @@ if (!isset($_SESSION['customer_email'])) {
 
 
      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 </head>
 
@@ -56,20 +56,22 @@ if (!isset($_SESSION['customer_email'])) {
 </button>
 
 
-<a href="#" class="btn btn-success btn-sm" >
-    <?php
 
-    if (!isset($_SESSION['customer_email'])) {
-        echo "Dobrodošli :Guest";
-    } else {
-        echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
-    }
+<a href="#" class="btn btn-sm btn-default" >
+
+<?php
+
+if(!isset($_SESSION['customer_email'])){
+
+echo "Dobrodošli :Guest";
 
 
-    ?>
+}else{
+
+echo "Dobrodošli : " . $_SESSION['customer_email'] . "";
+}
+?>
 </a>
-
-
 
 </div><!-- col-md-6 offer Ends -->
 <div class="navbar-collapse collapse right" id="navigation1">
@@ -124,7 +126,7 @@ if (!isset($_SESSION['customer_email'])) {
 
 <div class="navbar-header"><!-- navbar-header Starts -->
 
-    
+
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation"  >
 
         <span class="sr-only" >Toggle Navigation </span>
@@ -186,12 +188,12 @@ if (!isset($_SESSION['customer_email'])) {
                             <li>  <a href="../about.php"> O nama </a> </li>
 
                             <li>  <a href="../services.php"> Services </a> </li>
-                            
+
                             <li>  <a href="../docs.php"> Dokumenti </a> </li>
 
                             <li>  <a href="../contact.php"> Kontakt </a> </li>
 
-                        </ul>               
+                        </ul>
                  </li>
 
     </ul><!-- nav navbar-nav navbar-left Ends -->
@@ -204,7 +206,7 @@ if (!isset($_SESSION['customer_email'])) {
     } else {
         ?>
     <a class="btn btn-primary navbar-btn right" href="index.php?my_wishlist"><!-- btn btn-primary navbar-btn right Starts -->
-       
+
         <i class="fa fa-heart-o"></i>
 
         <span> <?php items($_SESSION['customer_email']); ?> želja na listi </span>
@@ -282,15 +284,15 @@ if (!isset($_SESSION['customer_email'])) {
     ?>
 <!-- col-md-12 Ends -->
 
-<div class="col-md-3"><!-- col-md-3 Starts -->
+<div class="col-12 col-sm-4 col-md-3"><!-- col-md-3 Starts -->
 
     <?php include("includes/sidebar.php"); ?>
 
 </div><!-- col-md-3 Ends -->
 
-<div class="col-md-9" ><!--- col-md-9 Starts -->
+<div class="col-12 col-sm-8 col-md-9"> <!--- col-md-9 Starts -->
 
-<div class="box" ><!-- box Starts -->
+<div id="panel" class="panel panel-default" ><!-- box Starts -->
 
     <?php
 
@@ -309,25 +311,12 @@ if (!isset($_SESSION['customer_email'])) {
 
         $from = "vojislavp@gmail.com";
 
-        $message = "
-
-        <h2>
-        Email Confirmation By NVS.rs $c_name
-        </h2>
-
-        <a href='db25.cpanelhosting.rs/nvs/customer/index.php?$customer_confirm_code'>
-
-        Klikni ovde da potvrdiš email adresu
-
-        </a>
-
-        ";
-
-        $headers = "Od: $from \r\n";
-
-        $headers .= "Content-type: text/html\r\n";
-
-        mail($c_email, $subject, $message, $headers);
+        $mailer->sendEmail($c_email, $subject, [
+            "Email Confirmation By NVS.rs $c_name",
+            "<a href='db25.cpanelhosting.rs/nvs/customer/index.php?$customer_confirm_code'>
+            Klikni ovde da potvrdiš email adresu
+            </a>"
+        ], $from);
 
         echo "<script>alert('Verifikacioni email vam je poslat, proverite poštu')</script>";
 
@@ -364,8 +353,7 @@ if (!isset($_SESSION['customer_email'])) {
     }
 
     ?>
-
-</div><!-- box Ends -->
+</div><!-- panel Ends -->
 
 
 </div><!--- col-md-9 Ends -->
