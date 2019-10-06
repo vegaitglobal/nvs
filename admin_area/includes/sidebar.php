@@ -171,7 +171,7 @@ if (!isset($_SESSION['admin_email'])) {
                 </li>
                 <li>
                 <li>
-                    <a href="index.php?path=view_orders_hours">
+                    <a href="index.php?path=view_orders_hours&req=">
                         <i class="fa fa-fw fa-list"></i> Sati
                     </a>
                 </li>
