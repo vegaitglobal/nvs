@@ -13,7 +13,7 @@ $run_customer = mysqli_query($con, $get_customer);
 $row_customer = mysqli_fetch_array($run_customer);
 
 $customer_image = $row_customer['customer_image'];
-$customer_image = $customer_image !== 'NULL' ? 'customer_images/' . $customer_image : '/images/profile-image-placeholder-large.png';
+$customer_image = $customer_image !== 'NULL' && $customer_image !== '' ? 'customer_images/' . $customer_image : '/images/profile-image-placeholder-large.png';
 
 $customer_name = $row_customer['customer_name'];
 

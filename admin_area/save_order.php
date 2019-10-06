@@ -20,9 +20,30 @@ if (!isset($_SESSION['admin_email'])) {
         $wishlist->setHours(intval($wishlistData['hours']));
         $wishlist->setHoursApproved(intval(boolval($wishlistData['hours_approved'])));
 
+        $product = $entityManager->getRepository('Product')->findOneBy([
+            'id' => $wishlist->getProductId()
+        ]);
+
         try {
             $entityManager->persist($wishlist);
             $entityManager->flush();
+
+            $product = $entityManager->getRepository('Product')->findOneBy([
+                'id' => $wishlist->getProductId()
+            ]);
+
+            $emailSubject = 'Unos sati za događaj ' . $product->getTitle();
+
+            $emailParagraphs = [
+                'Admin je ' . boolval($wishlistData['hours_approved']) ? 'odobrio ' : 'odbio unos od ' . $wishlistData['hours'] . ' sati za događaj ' . $product->getTitle(),
+                'Možete pogledati sva vaša prethodna volontiranja na <a href="' . config('app_url') . '/customer/index.php?my_book' . '"/>ovom linku</a>.',
+            ];
+
+            $mailer->sendEmail(
+                'office@nvs.rs',
+                $emailSubject,
+                $emailParagraphs
+            );
 
             echo "<script>window.open('index.php?path=view_orders_hours','_self')</script>";
         } catch (Exception $e) {
