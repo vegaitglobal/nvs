@@ -1,4 +1,8 @@
+<?php
 
+require_once __DIR__.'/../app/bootstrap.php';
+
+?>
 <div class="panel-heading">
     <h1> Moja Volonterska Knjižica</h1
 </div>
@@ -29,7 +33,7 @@
             $wishlistRepository = $entityManager->getRepository('Wishlist');
             $wishlists = $wishlistRepository->findBy([
                 'customerId' => $customer_id,
-                'status' => 'Prihvaćen'
+                'status' => Wishlist::STATUS_VALUE_TRUE
             ]);
 
             $productRepository = $entityManager->getRepository('Product');
@@ -77,12 +81,16 @@
 
                     <td style="vertical-align:middle" >
                         <?php if ($hours) : ?>
-                            <?php  if (is_null($hours_approved)) {
-                                echo "Sati u obradi";
-                            } else {
-                                echo $hours_approved ? 'Sati prihvaćeni' : 'Sati odbijeni';
-                            }?>
-                        <?php else : ?>
+                            <?php  if (is_null($hours_approved)): ?>
+                                <i class="fa fa-clock-0" title="U obradi"></i>
+                            <?php else: ?>
+                                <?php if ($hours_approved): ?>
+                                    <i class="fa fa-check" title="Odobreno"></i>
+                                <?php else: ?>
+                                    <i class="fa fa-times" title="Odbijeno"></i>
+                                <?php endif ?>
+                            <?php endif ?>
+                        <?php else: ?>
                             Gotovo
                         <?php endif ?>
                     </td>
@@ -118,11 +126,12 @@
 function canEnterHours(Wishlist $wishlist, Product $product)
 {
     $endDate = $product->getDo();
-    $endDateTwoWeeksLater = $endDate->add(new DateInterval('P2W'));
+    $endDateTwoWeeksLater = clone $endDate;
+    $endDateTwoWeeksLater->add(new DateInterval('P14D'));
     $currentDate = new DateTime('now');
 
     $dateOk = $currentDate >= $endDate && $currentDate <= $endDateTwoWeeksLater;
-    $accepted = $wishlist->getStatus() === 'Prihvaćen';
+    $accepted = $wishlist->getStatus() === Wishlist::STATUS_VALUE_TRUE;
     $hoursApproved = $wishlist->getHoursApproved();
 
     return $dateOk && $accepted && !$hoursApproved;
