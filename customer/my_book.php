@@ -2,13 +2,9 @@
 <div class="panel-heading">
     <h1> Moja Volonterska Knjižica</h1
 </div>
-      <div class="manifestation-container"><!-- manifestation-container Starts -->
+<div class="manifestation-container"><!-- manifestation-container Starts -->
 
-    <p>Lista prethodnih manifestacija</p>
-
-<div class="panel-body">
-<div class="table-responsive"><!-- table-responsive Starts -->
-
+<p>Lista prethodnih manifestacija</p>
 
     <div class="table-responsive"><!-- table-responsive Starts -->
 
@@ -107,9 +103,8 @@
                             </a>
                         <?php else : ?>
                             <span class="btn btn-link">
-                                <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>">
-                                    <i class="fa fa-pencil"></i>
-                                    Izmeni
+                                <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>" class="volunteering-pdf btn">
+                                    PDF
                                 </a>
                             </span>
                         <?php endif ?>
@@ -126,5 +121,3 @@
     </div><!-- table-responsive Ends -->
 
 </div><!-- manifestation-container Ends -->
-</div><!-- table-responsive Ends -->
-</div>
