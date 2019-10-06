@@ -9,8 +9,8 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['order_delete'])) {
-        $delete_id = $_GET['order_delete'];
+    if (isset($_GET['id'])) {
+        $delete_id = $_GET['id'];
 
         $delete_order = "delete from wishlist where wishlist_id='$delete_id'";
 
@@ -19,7 +19,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_delete) {
             echo "<script>alert('Order Has Been Deleted')</script>";
 
-            echo "<script>window.open('index.php?view_orders','_self')</script>";
+            echo "<script>window.open('index.php?path=view_orders','_self')</script>";
         }
     }
 
