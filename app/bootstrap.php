@@ -44,6 +44,7 @@ $alertsService = new AlertService();
 
 // Specify our Twig templates location
 $loader = new Twig\Loader\FilesystemLoader([
+    __DIR__.'/../src/AdminBundle/Resources/views',
     __DIR__.'/../src/CustomerBundle/Resources/views',
     __DIR__.'/../src/EmailBundle/Resources/views',
 ]);
