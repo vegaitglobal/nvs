@@ -14,6 +14,10 @@ class Wishlist
     // https://www.php.net/manual/en/function.hash.php
     const CODE_HASH_ALGORITHM = 'crc32b';
 
+    const STATUS_VALUE_NULL = 'U obradi';
+    const STATUS_VALUE_TRUE = 'Prihvaćen';
+    const STATUS_VALUE_FALSE = 'Odbijen';
+
     /**
      * @var int
      *
