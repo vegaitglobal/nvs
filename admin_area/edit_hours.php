@@ -26,12 +26,13 @@ if(isset($_GET['path']) && isset($_GET['id'])) {
                     <div class="form-group">
                         <label>Odaberite validaciju sati:</label>
                         <div class="form-group">
-                        <input name="hours_approved" type="radio" value="1" <?php if($wishlist['hours_approved'] == 1) { echo 'checked'; } ?> >Da</br>
-                        <input name="hours_approved" type="radio" value="0" <?php if($wishlist['hours_approved'] == 0) { echo 'checked'; } ?>>Ne
+                        <input name="hours_approved" type="radio" value="1" <?php if ($wishlist['hours_approved'] === '1') echo 'checked' ?>>Da</br>
+                        <input name="hours_approved" type="radio" value="0" <?php if ($wishlist['hours_approved'] === '0') echo 'checked' ?>>Ne
                         </div>
                     </div>
                     <div class="form-group">
-                        <input name='snimi' type="submit" value="SNIMI"class="btn btn-success">
+                        <button name='snimi' type="submit" class="btn btn-success">Sačuvaj</button>
+                        <a href="index.php?path=view_orders_hours">Nazad</a>
                     </div>
                 </form>
             </div>

@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-lg-12"><!-- col-lg-12 Starts -->
+
+        <ol class="breadcrumb"><!-- breadcrumb Starts  --->
+
+            <li class="active">
+
+                <i class="fa fa-dashboard"></i> Dashboard / Prijave
+
+            </li>
+
+        </ol><!-- breadcrumb Ends  --->
+
+    </div><!-- col-lg-12 Ends -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-money fa-fw"></i>
+                    Prijave
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                </div>
+
+                <div class="table-responsive">
+                    <table id="table2excel" class="table table-bordered table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>No:</th>
+                            <th><a href="index.php?path=view_order&req=name">Ime:</a></th>
+                            <th><a href="index.php?path=view_order&req=email">Email:</a></th>
+                            <th><a href="index.php?path=view_order&req=telephone">Telefon:</a></th>
+                            <th><a href="index.php?path=view_order&req=product_title">Pozicija:</a></th>
+                            <th><a href="index.php?path=view_order&req=date">Datum:</a></th>
+                            <th><a href="index.php?path=view_order&req=hours">Sati:</a></th>
+                            <th><a href="index.php?path=view_order&req=status">Status:</a></th>
+                            <th>&nbsp</th>
+                            <th>&nbsp</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for wishlist in wishlists %}
+                            <tr>
+                                <td>{{ wishlist.id }}</td>
+                                <td>{{ wishlist.volunteer.name }}</td>
+                                <td>{{ wishlist.volunteer.email }}</td>
+                                <td>{{ wishlist.volunteer.contact }}</td>
+                                <td>{{ wishlist.product.title }}</td>
+                                <td>{{ wishlist.datum | date('d. m. Y.') }}</td>
+                                <td>{{ wishlist.hours }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn {{ wishlist.hoursApproved is not null and wishlist.hoursApproved == 1 ? 'btn-success' : 'btn-default' }}">
+                                            <i class="fa fa-check"></i>
+                                        </a>
+                                        <a class="btn {{ wishlist.hoursApproved is not null and wishlist.hoursApproved == 0 ? 'btn-danger' : 'btn-default' }}">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="index.php?path=edit_hours&id={{ wishlist.id }}"><i class="fa fa-pencil"></i> Izmeni</a>
+                                </td>
+                                <td>
+                                    <a href="index.php?path=order_delete&id={{ wishlist.id }}"><i class="fa fa-trash-o"></i> Obriši</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
