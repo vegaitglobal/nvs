@@ -4,16 +4,16 @@
 
 To set up the project, run
 
-``` composer install
+    composer install
 
 ## Unit Testing
 
 PHP testing suite could be run with
 
-``` bin/phpunit -c app
+    bin/phpunit -c app
 
 ## Code Style
 
 Run PHP Code Sniffer with
 
-``` bin/phpcs --standard=app/ruleset.xml src
+    bin/phpcs --standard=app/ruleset.xml src
