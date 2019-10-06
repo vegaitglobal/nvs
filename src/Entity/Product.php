@@ -31,7 +31,7 @@ class Product
      *
      * @ORM\Column(name="manufacturer_id", type="integer", nullable=false)
      */
-    private $manufacturerId;
+    private $organizationId;
 
     /**
      * @var \DateTime
@@ -165,6 +165,12 @@ class Product
     private $productCategory;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Organization")
+     * @ORM\JoinColumn(name="manufacturer_id", referencedColumnName="manufacturer_id")
+     */
+    private $organization;
+
+    /**
      * Get id.
      *
      * @return int
@@ -199,27 +205,27 @@ class Product
     }
 
     /**
-     * Set manufacturerId.
+     * Set organizationId.
      *
-     * @param int $manufacturerId
+     * @param int $organizationId
      *
      * @return Product
      */
-    public function setManufacturerId($manufacturerId)
+    public function setOrganizationId($organizationId)
     {
-        $this->manufacturerId = $manufacturerId;
+        $this->organizationId = $organizationId;
 
         return $this;
     }
 
     /**
-     * Get manufacturerId.
+     * Get organizationId.
      *
      * @return int
      */
-    public function getManufacturerId()
+    public function getOrganizationId()
     {
-        return $this->manufacturerId;
+        return $this->organizationId;
     }
 
     /**
@@ -644,5 +650,13 @@ class Product
     public function getProductCategory()
     {
         return $this->productCategory;
+    }
+
+    /**
+     * @return Organization
+     */
+    public function getOrganization()
+    {
+        return $this->organization;
     }
 }

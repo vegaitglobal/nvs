@@ -14,6 +14,10 @@ class Wishlist
     // https://www.php.net/manual/en/function.hash.php
     const CODE_HASH_ALGORITHM = 'crc32b';
 
+    const STATUS_VALUE_NULL = 'U obradi';
+    const STATUS_VALUE_TRUE = 'Prihvaćen';
+    const STATUS_VALUE_FALSE = 'Odbijen';
+
     /**
      * @var int
      *
@@ -104,7 +108,7 @@ class Wishlist
     /**
      * @return string
      */
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -112,7 +116,7 @@ class Wishlist
     /**
      * @param string $code
      */
-    public function setCode(string $code)
+    public function setCode($code)
     {
         $this->code = $code;
     }
