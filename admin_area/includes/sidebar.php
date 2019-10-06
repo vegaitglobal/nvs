@@ -295,7 +295,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                 <li>
 
-                    <a href="index.php?path=view_orders">
+                    <a href="index.php?path=view_order">
 
                     <i class="fa fa-fw fa-list"></i> Prijave
 
