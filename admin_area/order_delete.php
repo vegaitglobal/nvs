@@ -22,11 +22,5 @@ if (!isset($_SESSION['admin_email'])) {
             echo "<script>window.open('index.php?path=view_orders','_self')</script>";
         }
     }
-
-
-
-    ?>
-
-
-
-<?php }
+}
+?>
