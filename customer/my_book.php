@@ -82,7 +82,7 @@ require_once __DIR__.'/../app/bootstrap.php';
                     <td style="vertical-align:middle" >
                         <?php if ($hours) : ?>
                             <?php  if (is_null($hours_approved)): ?>
-                                <i class="fa fa-clock-0" title="U obradi"></i>
+                                <i class="fa fa-clock-o" title="U obradi"></i>
                             <?php else: ?>
                                 <?php if ($hours_approved): ?>
                                     <i class="fa fa-check" title="Odobreno"></i>
@@ -97,15 +97,14 @@ require_once __DIR__.'/../app/bootstrap.php';
 
                     <td style="vertical-align:middle" >
                         <?php if ($hours_approved) : ?>
-                            <a href="wishlist_to_pdf.php?wishlist_id=<?php echo $wishlist->getId(); ?>" class="volunteering-pdf btn btn-sm btn-default">
+                            <a href="wishlist_to_pdf.php?wishlist_id=<?php echo $wishlist->getId() ?>" class="volunteering-pdf btn btn-sm">
                                 PDF
                             </a>
                         <?php elseif (canEnterHours($wishlist, $product)) : ?>
-                            <span class="btn btn-link">
-                                <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>" class="volunteering-pdf btn">
-                                    Izmeni
-                                </a>
-                            </span>
+                            <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>" class="btn btn-link">
+                                <i class="fa fa-pencil"></i>
+                                Izmeni
+                            </a>
                         <?php else : ?>
                             Gotovo
                         <?php endif ?>
@@ -130,10 +129,10 @@ function canEnterHours(Wishlist $wishlist, Product $product)
     $endDateTwoWeeksLater->add(new DateInterval('P14D'));
     $currentDate = new DateTime('now');
 
-    $dateOk = $currentDate >= $endDate && $currentDate <= $endDateTwoWeeksLater;
-    $accepted = $wishlist->getStatus() === Wishlist::STATUS_VALUE_TRUE;
-    $hoursApproved = $wishlist->getHoursApproved();
+    $dateCheck = $currentDate >= $endDate && $currentDate <= $endDateTwoWeeksLater;
+    $approvalCheck = $wishlist->getStatus() === Wishlist::STATUS_VALUE_TRUE;
+    $hoursApprovedCheck = is_null($wishlist->getHoursApproved());
 
-    return $dateOk && $accepted && !$hoursApproved;
+    return $dateCheck && $approvalCheck && $hoursApprovedCheck;
 }
 ?>
