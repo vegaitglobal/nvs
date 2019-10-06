@@ -32,14 +32,15 @@
                     <table id="table2excel" class="table table-bordered table-hover table-striped">
                         <thead>
                         <tr>
-                            <th>No:</th>
-                            <th><a href="index.php?path=view_order&req=name">Ime:</a></th>
-                            <th><a href="index.php?path=view_order&req=email">Email:</a></th>
-                            <th><a href="index.php?path=view_order&req=telephone">Telefon:</a></th>
-                            <th><a href="index.php?path=view_order&req=product_title">Pozicija:</a></th>
-                            <th><a href="index.php?path=view_order&req=date">Datum:</a></th>
-                            <th><a href="index.php?path=view_order&req=hours">Sati:</a></th>
-                            <th><a href="index.php?path=view_order&req=status">Status:</a></th>
+                            <th>Id</th>
+                            <th>Code</th>
+                            <th>Ime</th>
+                            <th>Email</th>
+                            <th>Telefon</th>
+                            <th>Pozicija</th>
+                            <th>Datum</th>
+                            <th>Sati</th>
+                            <th>Status</th>
                             <th>&nbsp</th>
                             <th>&nbsp</th>
                         </tr>
@@ -49,6 +50,7 @@
                         {% for wishlist in wishlists %}
                             <tr>
                                 <td>{{ wishlist.id }}</td>
+                                <td>{{ wishlist.code }}</td>
                                 <td>{{ wishlist.volunteer.name }}</td>
                                 <td>{{ wishlist.volunteer.email }}</td>
                                 <td>{{ wishlist.volunteer.contact }}</td>
