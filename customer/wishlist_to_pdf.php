@@ -2,7 +2,7 @@
 
 use Mpdf\Output\Destination;
 
-require_once __DIR__.'/../app/bootstrap.php';
+require_once __DIR__ . '/../app/bootstrap.php';
 
 session_start();
 
@@ -44,7 +44,6 @@ $mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/../tmp']);
 $html = $twig->render('wishlist_to_pdf.html.twig', [
     'wishlist' => $wishlist,
 ]);
-
 
 /**
  * Test inline with URL parameter "download=false"
