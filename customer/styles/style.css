@@ -75,6 +75,7 @@ text-transform: uppercase;
 
 .volunteering-pdf {
   background-color: rgb(85,85,85);
+  color: white;
 }
 
 @media (max-width: 991px) {
@@ -317,6 +318,10 @@ width:290px;
 }
 
 @media (max-width: 768px) {
+
+.table-responsive{
+  border: none;
+}
 
 .single {
 width:60%;
