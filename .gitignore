@@ -3,3 +3,5 @@ tmp
 app/config.php
 
 admin_area/product_images
+customer/customer_images
+

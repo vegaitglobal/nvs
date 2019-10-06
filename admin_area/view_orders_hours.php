@@ -7,14 +7,8 @@ if (!isset($_SESSION['admin_email'])) {
 }
 
 $qb = $entityManager->createQueryBuilder();
-$qb->select('wishlist, product')
-    ->from('Wishlist', 'wishlist')
-    ->leftJoin('wishlist.product', 'product')
-    ->where('wishlist.hours > :minHours')
-    ->andWhere('product.do > :now')
-    ->setParameter('minHours', 0)
-    ->setParameter('now', new DateTime());
-
+$qb->select('wishlist')
+    ->from('Wishlist', 'wishlist');
 $wishlists = $qb->getQuery()->getResult();
 
 echo $twig->render('view_orders_hours.html.twig', [
