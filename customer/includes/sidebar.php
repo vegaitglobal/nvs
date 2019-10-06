@@ -13,6 +13,7 @@ $run_customer = mysqli_query($con, $get_customer);
 $row_customer = mysqli_fetch_array($run_customer);
 
 $customer_image = $row_customer['customer_image'];
+$customer_image = $customer_image !== 'NULL' ? 'customer_images/' . $customer_image : '/images/profile-image-placeholder-large.png';
 
 $customer_name = $row_customer['customer_name'];
 
@@ -22,7 +23,7 @@ if (!isset($_SESSION['customer_email'])) {
 
 <center>
 
-<img src='customer_images/$customer_image' class='img-responsive'>
+<img src='$customer_image' class='img-responsive'>
 
 </center>
 
