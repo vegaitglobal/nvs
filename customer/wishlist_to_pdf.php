@@ -1,5 +1,7 @@
 <?php
 
+use Mpdf\Output\Destination;
+
 require_once __DIR__.'/../app/bootstrap.php';
 
 session_start();
@@ -43,9 +45,16 @@ $html = $twig->render('wishlist_to_pdf.html.twig', [
     'wishlist' => $wishlist,
 ]);
 
-// TODO: remove temporary preview
-echo $html;exit;
+
+/**
+ * Test inline with URL parameter "download=false"
+ * Example: http://nvs.localhost/customer/wishlist_to_pdf.php?wishlist_id=123456&download=false
+ */
 
 $mpdf->WriteHTML($html);
 
-$mpdf->Output('Potvrda o volontiranju.pdf', 'D');
+$fileName = 'Potvrda o volontiranju.pdf';
+
+$forceDownload = filter_var($_GET['download'] ?? true, FILTER_VALIDATE_BOOLEAN) ?? true;
+
+$mpdf->Output($fileName, $forceDownload ? Destination::DOWNLOAD : Destination::INLINE);

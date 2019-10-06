@@ -1,9 +1,168 @@
-"volonter" {{ wishlist.volunteer.name }}
-"Novi Sad Business Run" {{ wishlist.product.title }}
-"10. 10. 2019." {{ wishlist.product.od | date('d. m. Y.') }}
-"October 10, 2019 00:00" {{ wishlist.product.do | date }}
-"Novi Sad" {{ wishlist.product.lokacija }}
-"Novi Sad evropska prestonica kulture 2021" {{ wishlist.product.productCategory.title }}
-"Zdravlje" {{ wishlist.product.category.title }}
-"October 5, 2019 21:56" {{ "now" | date }}
-"NVS681fa0b9.19" {{ wishlist.code }}
+<html>
+<head>
+    <style>
+        @page {
+            margin: 0;
+            header: header;
+            footer: footer;
+        }
+
+        body {
+            font-family: sans-serif;
+            font-size: 1.2em;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            padding: 50px 0;
+            width: 100%;
+            text-align: center;
+            background: rgb(255,102,0);
+            background: linear-gradient(-90deg, rgba(255,102,0,1) 0%, rgba(255,102,0,1) 45%, rgba(255,255,255,0) 45%, rgba(255,255,255,0) 100%);
+        }
+
+        header img {
+            margin: 0 auto;
+        }
+
+        section {
+            position: absolute;
+            top: 200px;
+            padding: 0 60px;
+            text-align: justify;
+        }
+
+        h1 {
+            padding-bottom: 30px;
+            text-align: center;
+        }
+
+        h2 {
+            padding-bottom: 30px;
+            color: #ffb800;
+            text-align: center;
+        }
+
+        p {
+            padding-bottom: 24px;
+        }
+
+        .text-muted {
+            color: grey;
+            font-size: 0.7em;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            padding: 20px 60px;
+            font-size: 8pt;
+            font-weight: bold;
+        }
+
+        footer p {
+            padding-bottom: 5px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<htmlpageheader name="header">
+    <header>
+        <img src="/images/nvs-logo-small-email.png">
+    </header>
+</htmlpageheader>
+
+<section>
+    <h1>POTVRDA O VOLONTIRANJU</h1>
+    <h2>{{ wishlist.volunteer.name }}</h2>
+    <p>
+        Ovim se potvrđuje da je <strong>{{ wishlist.volunteer.name }}</strong>
+        volontirao na manifestaciji <strong>{{ wishlist.product.title }}</strong>
+        koja se održala <strong>{{ wishlist.product.od | date('d. m. Y.') }}</strong>
+        {% if wishlist.product %}
+            u mestu <strong>{{ wishlist.product.lokacija }}</strong>
+        {% endif %}
+        u organizaciji <strong>{{ wishlist.product.productCategory.title }}</strong>
+        .
+    </p>
+
+    <p>
+        <strong>{{ wishlist.volunteer.name }}</strong> je svojim volonterskim angažmanom
+        doprineo da se mladi prepoznaju kao važan segment društva
+        i značajan kreativni kapacitet grada.
+    </p>
+
+    <table style="vertical-align: top; margin: 60px 0;">
+        <tr>
+            <td>
+                Datum izdavanja: {{ 'now' | date('d. m. Y.') }}
+            </td>
+            <td align="right">
+                Novosadski &gt;olonterski servis
+                <br>
+                <img src="/images/nvs-logo-small-email.png" width="40" height="40">
+            </td>
+        </tr>
+    </table>
+
+    <p class="text-muted">
+        Volontersku potvrdu možete pripojiti vašem CV-u, njome možete opisati vaše volontersko iskustvo, možete planirati druge
+        volonterske aktivnosti, možete je pokazati porodici i prijateljima, na potvrdu možete biti ponosni.
+    </p>
+    <p class="text-muted">
+        Novosadski volonterski servis (#n>s) je program organizovanja volonterskih aktivnosti u Novom Sadu koja je nastala na
+        inicijativu Evropske prestonice mladih OPENS 2019 i Fondacije „Novi Sad 2021 – Evropska prestonica kulture“. Osim pružanja
+        značajne volonterske podrške tokom realizacije aktivnosti obe prestonice, #n>s je usmeren i na sport, zdravlje i socijalnu
+        zaštitu i zaštitu životne sredine.
+    </p>
+    <p class="text-muted">
+        Svaka volonterska aktivnost je prilika za učešće, učenje, sticanje novh veština, poznanstava i upoznavanje svoje loklane
+        zajednice. Volontiranje gaji vrednosti i vrline u nama poput humanosti, solidarnosti, deljenja i razumevanja. Nudeći svoje
+        vreme, energiju i kreativnosti kroz volontiranje činite svet boljim.
+    </p>
+
+    <table>
+        <tr>
+            <td>
+                <img src="/images/OPENS.jpg" width="80" height="auto">
+                <img src="/images/prestonica_mladih.png" width="80" height="auto">
+            </td>
+            <td align="right">
+                <img src="/images/220px-European_Capital_of_Culture_logo.png" width="80" height="auto">
+            </td>
+        </tr>
+    </table>
+
+    {#
+    "volonter" {{ wishlist.volunteer.name }}
+    "Novi Sad Business Run" {{ wishlist.product.title }}
+    "10. 10. 2019." {{ wishlist.product.od | date('d. m. Y.') }}
+    "October 10, 2019 00:00" {{ wishlist.product.do | date }}
+    "Novi Sad" {{ wishlist.product.lokacija }}
+    "Novi Sad evropska prestonica kulture 2021" {{ wishlist.product.productCategory.title }}
+    "Zdravlje" {{ wishlist.product.category.title }}
+    "October 5, 2019 21:56" {{ "now" | date }}
+    "NVS681fa0b9.19" {{ wishlist.code }}
+    #}
+</section>
+
+
+<htmlpagefooter name="footer">
+    <footer>
+        ID potvrde: {{ wishlist.code }}
+        <br>
+        <br>
+        Ova potvrda se izdaje kao uverenje o realizovanom volonterskom angažmanu i ne može se koristiti kao sredstvo / diploma.
+    </footer>
+</htmlpagefooter>
+</body>
+</html>
