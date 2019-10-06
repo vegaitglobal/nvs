@@ -101,7 +101,7 @@ require_once __DIR__.'/../app/bootstrap.php';
                                 PDF
                             </a>
                         <?php elseif (canEnterHours($wishlist, $product)) : ?>
-                            <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist_id ?>" class="btn btn-link">
+                            <a href="index.php?my_book_manage&wishlist_id=<?php echo $wishlist->getId() ?>" class="btn btn-link">
                                 <i class="fa fa-pencil"></i>
                                 Izmeni
                             </a>
