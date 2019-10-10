@@ -1,3 +1,4 @@
+{% macro image_path(name) %}/src/CustomerBundle/Resources/public/images/pdf/{{ name }}{% endmacro %}
 <html>
 <head>
     <style>
@@ -53,10 +54,6 @@
             font-size: 0.7em;
         }
 
-        .text-script {
-            font-family: 'Waiting for the Sunrise', cursive;
-        }
-
         table {
             width: 100%;
         }
@@ -81,7 +78,7 @@
 <body>
 <htmlpageheader name="header">
     <header>
-        <img src="/images/nvs-logo-small-email.png">
+        <img src="{{ _self.image_path('nvs.png') }}" width="116" height="116">
     </header>
 </htmlpageheader>
 
@@ -112,13 +109,13 @@
             <td align="right">
                 Novosadski &gt;olonterski servis
                 <br>
-                <img src="/images/nvs-logo-small-email.png" width="40" height="40">
+                <img src="{{ _self.image_path('nvs-small.png')}}" width="40" height="40">
             </td>
         </tr>
     </table>
 
-    <img src="/images/volontiranje-je-stvar-srca.jpg">
-    
+    <img src="{{ _self.image_path('volontiranje-je-stvar-srca.jpg')}}">
+
     <p class="text-muted">
         Volontersku potvrdu možete pripojiti vašem CV-u, njome možete opisati vaše volontersko iskustvo, možete planirati druge
         volonterske aktivnosti, možete je pokazati porodici i prijateljima, na potvrdu možete biti ponosni.
@@ -138,11 +135,11 @@
     <table>
         <tr>
             <td>
-                <img src="/images/OPENS.jpg" width="80" height="auto">
-                <img src="/images/prestonica_mladih.png" width="80" height="auto">
+                <img src="{{ _self.image_path('opens-2019.png')}}" width="auto" height="24" style="margin-right: 15px">
+                <img src="{{ _self.image_path('european-youth-capital.png')}}" width="auto" height="24">
             </td>
             <td align="right">
-                <img src="/images/220px-European_Capital_of_Culture_logo.png" width="80" height="auto">
+                <img src="{{ _self.image_path('european-capital-of-culture.png')}}" width="auto" height="40">
             </td>
         </tr>
     </table>
