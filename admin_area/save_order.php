@@ -45,9 +45,10 @@ if (!isset($_SESSION['admin_email'])) {
                 $emailParagraphs
             );
 
-            echo "<script>window.open('index.php?path=view_orders_hours','_self')</script>";
         } catch (Exception $e) {
-            echo "Upit nije prosao";
+            echo "Email nije poslat";
         }
+
+        echo "<script>window.open('index.php?path=view_orders_hours','_self')</script>";
     }
 }
