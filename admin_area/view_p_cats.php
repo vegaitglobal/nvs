@@ -88,9 +88,9 @@ if (!isset($_SESSION['admin_email'])) {
 <td> <?php echo $p_cat_title; ?> </td>
 
 
-<td> 
+<td>
 
-<a href="index.php?delete_p_cat=<?php echo $p_cat_id; ?>">
+<a href="index.php?path=delete_p_cat&id=<?php echo $p_cat_id; ?>">
 
 <i class="fa fa-trash-o"></i> Briši
 
@@ -98,9 +98,9 @@ if (!isset($_SESSION['admin_email'])) {
 
 </td>
 
-<td> 
+<td>
 
-<a href="index.php?edit_p_cat=<?php echo $p_cat_id; ?>">
+<a href="index.php?path=edit_p_cat&id=<?php echo $p_cat_id; ?>">
 
 <i class="fa fa-pencil"></i> Promeni
 

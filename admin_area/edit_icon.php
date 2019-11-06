@@ -8,8 +8,8 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['edit_icon'])) {
-        $edit_id = $_GET['edit_icon'];
+    if (isset($_GET['id'])) {
+        $edit_id = $_GET['id'];
 
         $get_icon = "select * from icons where icon_id='$edit_id'";
 
@@ -212,7 +212,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_update) {
             echo "<script> alert('One Icon Has Been Updated') </script>";
 
-            echo "<script>window.open('index.php?view_icons','_self')</script>";
+            echo "<script>window.open('index.php?path=view_icons','_self')</script>";
         }
     }
 

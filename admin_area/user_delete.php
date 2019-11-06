@@ -7,8 +7,8 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['user_delete'])) {
-        $delete_id = $_GET['user_delete'];
+    if (isset($_GET['id'])) {
+        $delete_id = $_GET['id'];
 
         $delete_user = "delete from admins where admin_id='$delete_id'";
 
@@ -17,7 +17,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_delete) {
             echo "<script>alert('One User Has Been Deleted')</script>";
 
-            echo "<script>window.open('index.php?view_users','_self')</script>";
+            echo "<script>window.open('index.php?path=view_users','_self')</script>";
         }
     }
 

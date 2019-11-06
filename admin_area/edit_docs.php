@@ -3,8 +3,8 @@
 if (!isset($_SESSION['admin_email'])) {
     echo "<script>window.open('login.php','_self')</script>";
 } else {
-    if (isset($_GET['edit_docs'])) {
-        $edit_id = $_GET['edit_docs'];
+    if (isset($_GET['id'])) {
+        $edit_id = $_GET['id'];
 
         $get_d = "select * from docs where docs_id='$edit_id'";
 
@@ -42,7 +42,7 @@ if (!isset($_SESSION['admin_email'])) {
 </div><!-- row Ends -->
 
 
-<div class="row"><!-- 2 row Starts --> 
+<div class="row"><!-- 2 row Starts -->
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
@@ -114,7 +114,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </div><!-- col-lg-12 Ends -->
 
-</div><!-- 2 row Ends --> 
+</div><!-- 2 row Ends -->
 
 
 
@@ -137,7 +137,7 @@ if (!isset($_SESSION['admin_email'])) {
             }
         }
 
-   
+
         $update_docs = "update docs set docs_title='$docs_title',docs_doc='$docs_doc' where docs_id='$d_id'";
 
         $run_product = mysqli_query($con, $update_docs);
@@ -145,7 +145,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_product) {
              move_uploaded_file($temp_name1, "../docs/$docs_doc");
 
-               echo "<script>window.open('index.php?view_docs','_self')</script>";
+               echo "<script>window.open('index.php?path=view_docs','_self')</script>";
         }
     }
 } ?>

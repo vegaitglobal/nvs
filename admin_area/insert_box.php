@@ -110,7 +110,7 @@ if (!isset($_SESSION['admin_email'])) {
         $box_title = escape($_POST['box_title']);
 
         $box_desc = escape($_POST['box_desc']);
-    
+
         $box_url = filter_var($_POST['box_url'], FILTER_SANITIZE_URL);
 
         $insert_box = "insert into boxes_section (box_title,box_desc,box_url) values ('$box_title','$box_desc','$box_url')";
@@ -119,7 +119,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         echo "<script>alert('New Box Has Been Inserted')</script>";
 
-        echo "<script>window.open('index.php?view_boxes','_self')</script>";
+        echo "<script>window.open('index.php?path=view_boxes','_self')</script>";
     }
 
 

@@ -3,8 +3,8 @@
 if (!isset($_SESSION['admin_email'])) {
     echo "<script>window.open('login.php','_self')</script>";
 } else {
-    if (isset($_GET['edit_product'])) {
-        $edit_id = $_GET['edit_product'];
+    if (isset($_GET['id'])) {
+        $edit_id = $_GET['id'];
 
         $get_p = "select * from products where product_id='$edit_id'";
 
@@ -43,7 +43,7 @@ if (!isset($_SESSION['admin_email'])) {
         $p_desc = $row_edit['product_desc'];
 
         $p_label = $row_edit['product_label'];
-    
+
         $p_status = $row_edit['status'];
 
         $p_url = $row_edit['product_url'];
@@ -60,9 +60,9 @@ if (!isset($_SESSION['admin_email'])) {
     $row_manfacturer = mysqli_fetch_array($run_manufacturer);
 
     $manufacturer_id = $row_manfacturer['manufacturer_id'];
-    
+
     $manufacturer_title = $row_manfacturer['manufacturer_title'];
-    
+
 
     $get_cat = "select * from categories where cat_id='$cat'";
 
@@ -77,9 +77,9 @@ if (!isset($_SESSION['admin_email'])) {
 <script type="text/javascript">
     $(document).ready(function(){
         $('#manufacturer').on('change',function(){
-           
+
             var manID = $(this).val();
-          
+
             if(manID){
                 $.ajax({
                     type:'POST',
@@ -87,12 +87,12 @@ if (!isset($_SESSION['admin_email'])) {
                     data:'id='+manID,
                     success:function(html){
                         $('#program').html(html);
-                       
+
                     }
-                }); 
+                });
             }else{
                 $('#program').html('<option value="">Izaberi prvo Organizaciju</option>');
-   
+
             }
         });
 
@@ -120,7 +120,7 @@ if (!isset($_SESSION['admin_email'])) {
 </div><!-- row Ends -->
 
 
-<div class="row"><!-- 2 row Starts --> 
+<div class="row"><!-- 2 row Starts -->
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
@@ -265,7 +265,7 @@ Product Url Example : asistent-prevodilac
 <br><a class="btn btn-primary" href="<?php if (!empty($p_image2)) {
     echo "product_images/".$p_image2;
                                      } ?>">
-    <?php echo $p_image2; ?> 
+    <?php echo $p_image2; ?>
 </a>
 
 </div>
@@ -282,7 +282,7 @@ Product Url Example : asistent-prevodilac
 <br><a class="btn btn-primary " href="<?php if (!empty($p_image3)) {
     echo "product_images/".$p_image3;
                                       } ?>">
-    <?php echo $p_image3; ?> 
+    <?php echo $p_image3; ?>
 </a>
 
 </div>
@@ -456,7 +456,7 @@ Product Url Example : asistent-prevodilac
 
 </div><!-- col-lg-12 Ends -->
 
-</div><!-- 2 row Ends --> 
+</div><!-- 2 row Ends -->
 
 
 
@@ -472,13 +472,13 @@ Product Url Example : asistent-prevodilac
         $product_cat = $_POST['product_cat'];
         $cat = $_POST['cat'];
         $manufacturer_id = $_POST['manufacturer'];
-    
+
         $product_kolicina = $_POST['product_kolicina'];
         $product_keywords = $_POST['product_keywords'];
         $product_od = $_POST['product_od'];
         $product_do = $_POST['product_do'];
         $product_lokacija =$_POST['product_lokacija'];
-    
+
         $product_desc = $_POST['product_desc'];
 
         $product_label = $_POST['product_label'];
@@ -542,7 +542,7 @@ Product Url Example : asistent-prevodilac
 
             echo "<script> alert('Pozicija je ažurirana') </script>";
 
-            echo "<script>window.open('index.php?view_products','_self')</script>";
+            echo "<script>window.open('index.php?path=view_products','_self')</script>";
         }
     }
 

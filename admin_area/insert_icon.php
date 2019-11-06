@@ -180,7 +180,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         echo "<script>alert('New Icon Has Been Inserted')</script>";
 
-        echo "<script> window.open('index.php?view_icons','_self') </script>";
+        echo "<script> window.open('index.php?path=view_icons','_self') </script>";
     }
 
 

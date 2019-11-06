@@ -280,7 +280,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         $i++;
 
-        ?>      
+        ?>
 
 
     <tr>
@@ -295,9 +295,9 @@ if (!isset($_SESSION['admin_email'])) {
         $row_customer = mysqli_fetch_array($run_customer);
         $customer_email = $row_customer['customer_email'];
         ?>
-    <a href="index.php?edit_volunteers=<?php echo $c_id; ?>" > <?php echo $customer_email;?> </a>
-   
-    
+    <a href="index.php?path=edit_customers&id=<?php echo $c_id; ?>" > <?php echo $customer_email;?> </a>
+
+
     </td>
 
 
@@ -377,15 +377,15 @@ Pogledaj i ostale <i class="fa fa-arrow-circle-right" ></i>
         $list_id = $row_list['manufacturer_id'];
 
         $list_title = $row_list['manufacturer_title_full'];
-    
+
         $list_mesto = $row_list['manufacturer_mesto'];
-    
+
         $list_email = $row_list['manufacturer_email'];
- 
+
 
         $i++;
 
-        ?>      
+        ?>
 
 
     <tr>
@@ -393,7 +393,7 @@ Pogledaj i ostale <i class="fa fa-arrow-circle-right" ></i>
     <td><?php echo $i; ?></td>
 
     <td>
-      <a href="index.php?edit_manufacturer=<?php echo $list_id; ?>" > <?php echo $list_title;?> </a>
+      <a href="index.php?path=edit_manufacturer&id=<?php echo $list_id; ?>" > <?php echo $list_title;?> </a>
     </td>
 
     <td><?php echo $list_mesto; ?></td>
@@ -469,7 +469,7 @@ Pogledaj i ostale <i class="fa fa-arrow-circle-right" ></i>
 
         <hr class="dotted short">
 
-        
+
     </div><!-- mb-md Ends -->
 
 </div><!-- panel-body Ends -->

@@ -9,8 +9,8 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['delete_term'])) {
-        $delete_id = $_GET['delete_term'];
+    if (isset($_GET['id'])) {
+        $delete_id = $_GET['id'];
 
         $delete_term = "delete from terms where term_id='$delete_id'";
 
@@ -19,7 +19,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_term) {
             echo "<script>alert(' One Term Box Has Been Deleted ')</script>";
 
-            echo "<script>window.open('index.php?view_terms','_self')</script>";
+            echo "<script>window.open('index.php?path=view_terms','_self')</script>";
         }
     }
 

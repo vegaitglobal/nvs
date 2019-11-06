@@ -9,7 +9,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="row" ><!-- 1 row Starts -->
 
-<div class="col-lg-12" ><!-- col-lg-12 Starts --> 
+<div class="col-lg-12" ><!-- col-lg-12 Starts -->
 
 <ol class="breadcrumb"><!-- breadcrumb Starts -->
 
@@ -23,7 +23,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 
 
-</div><!-- col-lg-12 Ends --> 
+</div><!-- col-lg-12 Ends -->
 
 </div><!-- 1 row Ends -->
 
@@ -135,7 +135,7 @@ if (!isset($_SESSION['admin_email'])) {
 
             echo "<script>alert('New Slide Has Been Inserted')</script>";
 
-            echo "<script>window.open('index.php?view_slides','_self')</script>";
+            echo "<script>window.open('index.php?path=view_slides','_self')</script>";
         } else {
             echo "<script>alert('You have already inserted 4 slides')</script>";
         }

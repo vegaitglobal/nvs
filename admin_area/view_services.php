@@ -11,7 +11,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="row" ><!-- 1 row Starts -->
 
-<div class="col-lg-12" ><!-- col-lg-12 Starts --> 
+<div class="col-lg-12" ><!-- col-lg-12 Starts -->
 
 <ol class="breadcrumb"><!-- breadcrumb Starts -->
 
@@ -23,7 +23,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </ol><!-- breadcrumb Ends -->
 
-</div><!-- col-lg-12 Ends --> 
+</div><!-- col-lg-12 Ends -->
 
 </div><!-- 1 row Ends -->
 
@@ -37,7 +37,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <h3 class="panel-title">
 
-<i class="fa fa-money fa-fw"></i> View Services 
+<i class="fa fa-money fa-fw"></i> View Services
 
 </h3>
 
@@ -93,13 +93,13 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="panel-footer"><!-- panel-footer Starts -->
 
-<a href="index.php?delete_service=<?php echo $service_id; ?>" class="pull-left">
+<a href="index.php?path=delete_service&id=<?php echo $service_id; ?>" class="pull-left">
 
 <i class="fa fa-trash-o"></i> Delete
 
 </a>
 
-<a href="index.php?edit_service=<?php echo $service_id; ?>" class="pull-right">
+<a href="index.php?path=edit_service&id=<?php echo $service_id; ?>" class="pull-right">
 
 <i class="fa fa-pencil"></i> Edit
 

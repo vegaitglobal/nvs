@@ -2,7 +2,7 @@
 
 session_start();
 
-include("includes/db.php"); 
+include("includes/db.php");
 
 include("includes/functions.php");
 
@@ -75,9 +75,9 @@ if (!isset($_SESSION['admin_email'])) {
     <link href="css/style.css" rel="stylesheet">
 
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" >
-    
+
      <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-      <script>tinymce.init({ selector:'#text1,#product_desc,#product_video,#product_features,#about_desc,#content', 
+      <script>tinymce.init({ selector:'#text1,#product_desc,#product_video,#product_features,#about_desc,#content',
                 menubar: true,
                 plugins: [
           /*      'advlist autolink lists link image charmap print preview anchor textcolor',
@@ -90,15 +90,15 @@ if (!isset($_SESSION['admin_email'])) {
              /* toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',*/
                 toolbar1: "insert |undo redo | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | sizeselect fontselect  fontsizeselect ",
                 toolbar2: "| link unlink anchor | image media | styleselect formatselect  |  print preview code | caption | removeformat",
-                fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt 48pt 60pt 72pt 84pt 96pt", 
+                fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt 48pt 60pt 72pt 84pt 96pt",
               content_css: [
                 '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-                '//www.tinymce.com/css/codepen.min.css']            
-                                         
+                '//www.tinymce.com/css/codepen.min.css']
+
           });</script>
 
      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 </head>
 
@@ -114,15 +114,15 @@ if (!isset($_SESSION['admin_email'])) {
 
 <?php
 
-if($_SERVER['REQUEST_METHOD'] == "GET") {
+//if($_SERVER['REQUEST_METHOD'] == "GET") {
     if(isset($_GET['path'])) {
       if(file_exists($_GET['path'].".php")) {
-            include_once($_GET['path'].".php"); 
+            include_once($_GET['path'].".php");
       } else {
-            echo 'Page does not exist'; 
+            echo 'Page does not exist';
       }
     }
-}
+//}
 
     ?>
 

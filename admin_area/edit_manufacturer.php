@@ -8,8 +8,8 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['edit_manufacturer'])) {
-        $edit_manufacturer = $_GET['edit_manufacturer'];
+    if (isset($_GET['id'])) {
+        $edit_manufacturer = $_GET['id'];
 
         $get_manufacturer = "select * from organizations where manufacturer_id='$edit_manufacturer'";
 
@@ -24,21 +24,21 @@ if (!isset($_SESSION['admin_email'])) {
         $m_title_full = $row_manufacturer['manufacturer_title_full'];
 
         $m_top = $row_manufacturer['manufacturer_top'];
-    
+
         $m_image = $row_manufacturer['manufacturer_image'];
 
         $new_m_image = $row_manufacturer['manufacturer_image'];
-    
+
         $m_opis = $row_manufacturer['manufacturer_opis'];
-    
+
         $m_mesto = $row_manufacturer['manufacturer_mesto'];
-    
+
         $m_adresa = $row_manufacturer['manufacturer_adresa'];
-    
+
         $m_tel = $row_manufacturer['manufacturer_tel'];
-    
+
         $m_email = $row_manufacturer['manufacturer_email'];
-    
+
         $m_url = $row_manufacturer['manufacturer_url'];
 
         $m_fb = $row_manufacturer['manufacturer_fb'];
@@ -203,7 +203,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-md-6">
 
-<input type="radio" name="manufacturer_top" value="yes" 
+<input type="radio" name="manufacturer_top" value="yes"
     <?php if ($m_top == 'no') {
     } else {
         echo "checked='checked'";
@@ -211,7 +211,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <label> Da </label>
 
-<input type="radio" name="manufacturer_top" value="no" 
+<input type="radio" name="manufacturer_top" value="no"
     <?php if ($m_top == 'no') {
         echo "checked='checked'";
     } else {
@@ -271,28 +271,28 @@ if (!isset($_SESSION['admin_email'])) {
 
     if (isset($_POST['update'])) {
         $manufacturer_name = escape($_POST['manufacturer_name']);
-    
+
         $manufacturer_name_full = escape($_POST['manufacturer_name_full']);
-    
+
         $manufacturer_mesto = escape($_POST['manufacturer_mesto']);
 
         $manufacturer_adresa = escape($_POST['manufacturer_adresa']);
-    
+
         $manufacturer_telefon = escape($_POST['manufacturer_telefon']);
-    
+
         $manufacturer_email = filter_var($_POST['manufacturer_email'], FILTER_SANITIZE_EMAIL);
-    
+
         $manufacturer_url = filter_var($_POST['manufacturer_url'], FILTER_SANITIZE_URL);
 
         $manufacturer_fb = filter_var($_POST['manufacturer_fb'], FILTER_SANITIZE_URL);
-    
+
         $manufacturer_opis = escape($_POST['manufacturer_opis']);
 
         $manufacturer_top = $_POST['manufacturer_top'];
-    
+
 
         $manufacturer_image = $_FILES['manufacturer_image']['name'];
-    
+
         $tmp_name = $_FILES['manufacturer_image']['tmp_name'];
 
 
@@ -305,9 +305,9 @@ if (!isset($_SESSION['admin_email'])) {
                   unlink($file);
             }
         }
-    
 
-    
+
+
         $update_manufacturer = "update organizations set manufacturer_title='$manufacturer_name',manufacturer_title_full='$manufacturer_name_full',manufacturer_top='$manufacturer_top',manufacturer_image='$manufacturer_image',manufacturer_opis='$manufacturer_opis',manufacturer_mesto='$manufacturer_mesto',manufacturer_adresa='$manufacturer_adresa',manufacturer_tel='$manufacturer_telefon',manufacturer_email='$manufacturer_email', manufacturer_url='$manufacturer_url', manufacturer_fb='$manufacturer_fb' where manufacturer_id='$m_id'";
 
         $run_manufacturer = mysqli_query($con, $update_manufacturer);
@@ -317,7 +317,7 @@ if (!isset($_SESSION['admin_email'])) {
 
             echo "<script>alert('Organizacija je ažurirana')</script>";
 
-            echo "<script>window.open('index.php?view_organizations','_self')</script>";
+            echo "<script>window.open('index.php?path=view_manufacturers','_self')</script>";
         }
     }
 

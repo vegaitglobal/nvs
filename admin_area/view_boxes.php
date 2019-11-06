@@ -30,7 +30,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
-<div class="panel panel-default"><!-- panel panel-default Starts --> 
+<div class="panel panel-default"><!-- panel panel-default Starts -->
 
 <div class="panel-heading"><!-- panel-heading Starts -->
 
@@ -84,13 +84,13 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="panel-footer"><!-- panel-footer Starts -->
 
-<a href="index.php?delete_box=<?php echo $box_id; ?>" class="pull-left">
+<a href="index.php?path=delete_box&id=<?php echo $box_id; ?>" class="pull-left">
 
 <i class="fa fa-trash-o"></i> Delete
 
 </a>
 
-<a href="index.php?edit_box=<?php echo $box_id; ?>" class="pull-right">
+<a href="index.php?path=edit_box&id=<?php echo $box_id; ?>" class="pull-right">
 
 <i class="fa fa-pencil"></i> Edit
 
@@ -109,7 +109,7 @@ if (!isset($_SESSION['admin_email'])) {
 </div><!-- panel-body Ends -->
 
 
-</div><!-- panel panel-default Ends --> 
+</div><!-- panel panel-default Ends -->
 
 </div><!-- col-lg-12 Ends -->
 

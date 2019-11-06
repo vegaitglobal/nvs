@@ -9,8 +9,8 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['edit_box'])) {
-        $edit_box = $_GET['edit_box'];
+    if (isset($_GET['id'])) {
+        $edit_box = $_GET['id'];
 
         $get_boxes = "select * from boxes_section where box_id='$edit_box'";
 
@@ -23,7 +23,7 @@ if (!isset($_SESSION['admin_email'])) {
         $box_title = $row_boxes['box_title'];
 
         $box_desc = $row_boxes['box_desc'];
-        
+
         $box_url = $row_boxes['box_url'];
     }
 
@@ -136,7 +136,7 @@ if (!isset($_SESSION['admin_email'])) {
         $box_title = escape($_POST['box_title']);
 
         $box_desc = escape($_POST['box_desc']);
-    
+
         $box_url = filter_var($_POST['box_url'], FILTER_SANITIZE_URL);
 
         $update_box = "update boxes_section set box_title='$box_title',box_desc='$box_desc',box_url='$box_url' where box_id='$box_id'";
@@ -145,7 +145,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         echo "<script>alert('Box je ažuriran')</script>";
 
-        echo "<script>window.open('index.php?view_boxes','_self')</script>";
+        echo "<script>window.open('index.php?path=view_boxes','_self')</script>";
     }
 
 

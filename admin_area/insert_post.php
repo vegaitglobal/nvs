@@ -25,7 +25,7 @@ if (!isset($_SESSION['admin_email'])) {
 </div><!-- row Ends -->
 
 
-<div class="row"><!-- 2 row Starts --> 
+<div class="row"><!-- 2 row Starts -->
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
@@ -44,8 +44,8 @@ if (!isset($_SESSION['admin_email'])) {
 <div class="panel-body"><!-- panel-body Starts -->
 
 
-    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">    
-     
+    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+
      <div class="form-group" ><!-- form-group Starts -->
 
     <label class="col-md-3 control-label" >Naziv bloga </label>
@@ -57,8 +57,8 @@ if (!isset($_SESSION['admin_email'])) {
         </div>
 
     </div><!-- form-group Ends -->
-     
-     
+
+
     <div class="form-group" ><!-- form-group Starts -->
 
     <label class="col-md-3 control-label" >  Url bloga </label>
@@ -78,7 +78,7 @@ if (!isset($_SESSION['admin_email'])) {
     </div>
 
     </div><!-- form-group Ends -->
-      
+
 
      <div class="form-group" ><!-- form-group Starts -->
 
@@ -113,8 +113,8 @@ if (!isset($_SESSION['admin_email'])) {
         </div>
 
         </div><!-- form-group Ends -->
-      
- 
+
+
        <div class="form-group">
         <label class="col-md-3 control-label" > Status </label>
         <div class="col-md-6" >
@@ -125,22 +125,22 @@ if (!isset($_SESSION['admin_email'])) {
          </select>
            </div>
       </div>
-      
-      
+
+
      <div class="form-group" ><!-- form-group Starts -->
         <label class="col-md-3 control-label" >Slika</label>
         <div class="col-md-6" >
             <input type="file" name="image" class="form-control" required >
         </div>
     </div><!-- form-group Ends -->
-     
+
      <div class="form-group" ><!-- form-group Starts -->
         <label class="col-md-3 control-label" > Tag </label>
     <div class="col-md-6" >
         <input type="text" name="post_tags" class="form-control" >
     </div>
     </div><!-- form-group Ends -->
-      
+
       <div class="form-group">
          <label class="col-md-2 control-label" for="post_content">Post Content</label>
          <div class="col-md-9 col-md-offset-2" >
@@ -148,7 +148,7 @@ if (!isset($_SESSION['admin_email'])) {
          </textarea>
       </div>
         </div>
-      
+
 
 
        <div class="form-group">
@@ -166,51 +166,51 @@ if (!isset($_SESSION['admin_email'])) {
 
 </div><!-- col-lg-12 Ends -->
 
-</div><!-- 2 row Ends --> 
+</div><!-- 2 row Ends -->
 
 
 
 
 
     <?php
-   
+
 
     if (isset($_POST['create_post'])) {
             $post_title        = escape($_POST['title']);
-       
+
             $post_user         = $admin_name;
             $post_cat_id        = $_POST['post_category'];
             $post_status       = $_POST['post_status'];
             $post_url           = escape($_POST['post_url']);
-    
+
             $post_image        = $_FILES['image']['name'];
             $post_image_temp   = $_FILES['image']['tmp_name'];
-    
-    
+
+
             $post_tags         = escape($_POST['post_tags']);
             $post_content      = $_POST['post_content'];
             $post_date         = date('d-m-y');
 
-       
-           
+
+
         $query = "INSERT INTO posts(post_cat_id, post_title, post_user, post_date,post_image,post_content,post_tags,post_status,post_url) ";
-             
+
         $query .= "VALUES({$post_cat_id},'{$post_title}','{$post_user}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}','{$post_url}') ";
-             
+
         $create_post_query = mysqli_query($con, $query);
-          
+
         confirmQuery($create_post_query);
 
         $the_post_id = mysqli_insert_id($con);
 
 
-             
+
         if ($create_post_query) {
             move_uploaded_file($post_image_temp, "blogs_images/$post_image");
 
             echo "<script>alert('Blog je unet')</script>";
 
-            echo "<script>window.open('index.php?view_posts','_self')</script>";
+            echo "<script>window.open('index.php?path=view_posts','_self')</script>";
         }
     }
-} ?>   
+} ?>

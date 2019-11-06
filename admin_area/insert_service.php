@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="row" ><!-- 1 row Starts -->
 
-<div class="col-lg-12" ><!-- col-lg-12 Starts --> 
+<div class="col-lg-12" ><!-- col-lg-12 Starts -->
 
 <ol class="breadcrumb"><!-- breadcrumb Starts -->
 
@@ -22,7 +22,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </ol><!-- breadcrumb Ends -->
 
-</div><!-- col-lg-12 Ends --> 
+</div><!-- col-lg-12 Ends -->
 
 </div><!-- 1 row Ends -->
 
@@ -170,7 +170,7 @@ if (!isset($_SESSION['admin_email'])) {
             if ($run_service) {
                 echo "<script>alert('New Service Column Has Been Inserted')</script>";
 
-                echo "<script>window.open('index.php?view_services','_self')</script>";
+                echo "<script>window.open('index.php?path=view_services','_self')</script>";
             }
         }
     }

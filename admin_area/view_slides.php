@@ -85,13 +85,13 @@ if (!isset($_SESSION['admin_email'])) {
 
 <center><!-- center Starts -->
 
-<a href="index.php?delete_slide=<?php echo $slide_id; ?>" class="pull-left" >
+<a href="index.php?path=delete_slide&id=<?php echo $slide_id; ?>" class="pull-left" >
 
 <i class="fa fa-trash-o" ></i> Delete
 
 </a>
 
-<a href="index.php?edit_slide=<?php echo $slide_id; ?>" class="pull-right" >
+<a href="index.php?path=edit_slide&id=<?php echo $slide_id; ?>" class="pull-right" >
 
 <i class="fa fa-pencil" ></i> Edit
 

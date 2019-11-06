@@ -24,6 +24,10 @@ if (!isset($_SESSION['admin_email'])) {
             'id' => $wishlist->getProductId()
         ]);
 
+        $customer = $entityManager->getRepository('Volunteer')->findOneBy([
+            'id' => $wishlist->getCustomerId()
+        ]);
+
         try {
             $entityManager->persist($wishlist);
             $entityManager->flush();
@@ -32,15 +36,16 @@ if (!isset($_SESSION['admin_email'])) {
                 'id' => $wishlist->getProductId()
             ]);
 
+            $email_to      = $customer->getEmail();
             $emailSubject = 'Unos sati za događaj ' . $product->getTitle();
 
             $emailParagraphs = [
-                'Admin je ' . boolval($wishlistData['hours_approved']) ? 'odobrio ' : 'odbio unos od ' . $wishlistData['hours'] . ' sati za događaj ' . $product->getTitle(),
+                'Admin je ' . (boolval($wishlistData['hours_approved']) ? 'odobrio ' : 'odbio unos od ') . $wishlistData['hours'] . ' sati za događaj ' . $product->getTitle(),
                 'Možete pogledati sva vaša prethodna volontiranja na <a href="' . config('app_url') . '/customer/index.php?my_book' . '"/>ovom linku</a>.',
             ];
 
             $mailer->sendEmail(
-                'office@nvs.rs',
+                $email_to,
                 $emailSubject,
                 $emailParagraphs
             );

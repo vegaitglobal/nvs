@@ -78,7 +78,7 @@ if (!isset($_SESSION['admin_email'])) {
         $docs_id = $row_pro['docs_id'];
 
         $docs_title = $row_pro['docs_title'];
-   
+
         $docs_doc = $row_pro['docs_doc'];
 
         $i++;
@@ -95,7 +95,7 @@ if (!isset($_SESSION['admin_email'])) {
 
     <td>
 
-        <a href="index.php?delete_docs=<?php echo $docs_id; ?>">
+        <a href="index.php?path=delete_docs&id=<?php echo $docs_id; ?>">
 
         <i class="fa fa-trash-o"> </i> Briši
 
@@ -105,7 +105,7 @@ if (!isset($_SESSION['admin_email'])) {
 
     <td>
 
-        <a href="index.php?edit_docs=<?php echo $docs_id; ?>">
+        <a href="index.php?path=edit_docs&id=<?php echo $docs_id; ?>">
 
         <i class="fa fa-pencil"> </i> Menjaj
 

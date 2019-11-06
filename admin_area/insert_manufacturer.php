@@ -119,19 +119,19 @@ if (!isset($_SESSION['admin_email'])) {
                 </div>
 
             </div><!-- form-group Ends -->
-            
+
             <div class="form-group">
 
             <label class="col-md-3 control-label"> Lozinka </label>
 
                 <div class="col-md-6">
-                 
+
                     <input  type="password" class="form-control"  name="manufacturer_pass" >
 
                 </div>
 
             </div>
-            
+
             <div class="form-group"><!-- form-group Starts -->
 
                 <label class="col-md-3 control-label"> Site </label>
@@ -143,7 +143,7 @@ if (!isset($_SESSION['admin_email'])) {
                 </div>
 
             </div><!-- form-group Ends -->
-            
+
             <div class="form-group"><!-- form-group Starts -->
 
                 <label class="col-md-3 control-label"> Facebook </label>
@@ -226,23 +226,23 @@ if (!isset($_SESSION['admin_email'])) {
 
     if (isset($_POST['submit'])) {
         $manufacturer_name = escape($_POST['manufacturer_name']);
-    
+
         $manufacturer_name_full = escape($_POST['manufacturer_name_full']);
-    
+
         $manufacturer_mesto = escape($_POST['manufacturer_mesto']);
 
         $manufacturer_adresa = escape($_POST['manufacturer_adresa']);
-    
+
         $manufacturer_telefon = escape($_POST['manufacturer_telefon']);
-    
+
         $manufacturer_email = filter_var($_POST['manufacturer_email'], FILTER_SANITIZE_EMAIL);
-    
+
         $manufacturer_pass = escape($_POST['manufacturer_pass']);
-    
+
         $manufacturer_url = filter_var($_POST['manufacturer_url'], FILTER_SANITIZE_URL);
 
         $manufacturer_fb = filter_var($_POST['manufacturer_fb'], FILTER_SANITIZE_URL);
-    
+
         $manufacturer_opis = $_POST['manufacturer_opis'];
 
         $manufacturer_top = $_POST['manufacturer_top'];
@@ -260,7 +260,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_manufacturer) {
             echo "<script>alert('Nova organizacija je uneta')</script>";
 
-            echo "<script>window.open('index.php?view_organizations','_self')</script>";
+            echo "<script>window.open('index.php?path=view_manufacturers','_self')</script>";
         }
     }
 

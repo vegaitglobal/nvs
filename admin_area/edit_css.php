@@ -102,7 +102,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         echo "<script>alert('css File Has Been Updated')</script>";
 
-        echo "<script>window.open('index.php?edit_css','_self')</script>";
+        echo "<script>window.open('index.php?path=edit_css','_self')</script>";
     }
 
     ?>

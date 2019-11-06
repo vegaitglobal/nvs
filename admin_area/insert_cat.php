@@ -128,7 +128,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_cat) {
             echo "<script> alert('Nov oblast je dodat')</script>";
 
-            echo "<script> window.open('index.php?view_cats','_self') </script>";
+            echo "<script> window.open('index.php?path=view_cats','_self') </script>";
         }
     }
 

@@ -23,7 +23,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </div><!-- 1 row Ends -->
 
-<div class="row"><!-- 2 row Starts --> 
+<div class="row"><!-- 2 row Starts -->
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
@@ -120,7 +120,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <td class="noExl">
 
-    <a href="index.php?edit_volunteers=<?php echo $c_id; ?>" >
+    <a href="index.php?path=edit_customers&id=<?php echo $c_id; ?>" >
 
         <i class="fa fa-pencil" ></i> Pogledaj
 
@@ -130,7 +130,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <td class="noExl">
 
-    <a href="index.php?customer_reset=<?php echo $c_id; ?>" >
+    <a href="index.php?path=customer_reset&id=<?php echo $c_id; ?>" >
 
         <i class="fa fa-pencil" ></i> Reset na 123
 
@@ -140,7 +140,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <td class="noExl">
 
-    <a href="index.php?customer_delete=<?php echo $c_id; ?>" >
+    <a href="index.php?path=customer_delete&id=<?php echo $c_id; ?>" >
 
         <i class="fa fa-trash-o" ></i> Delete
 
@@ -162,7 +162,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </div><!-- table-responsive Ends -->
 
- <!-- <a href="#"><button class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i> Exportuj u Excel</button></a> 
+ <!-- <a href="#"><button class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i> Exportuj u Excel</button></a>
  <button id='DLtoExcel-2'  class="btn btn-danger">Export Html Table to Excel</button>-->
 
 
@@ -173,7 +173,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </div><!-- col-lg-12 Ends -->
 
-</div><!-- 2 row Ends --> 
+</div><!-- 2 row Ends -->
 
 <script>
     $("button").click(function(){

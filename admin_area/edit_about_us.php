@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 
 
-  
+
     <?php
 
     $get_about_us = "select * from about_us";
@@ -23,11 +23,11 @@ if (!isset($_SESSION['admin_email'])) {
 
     $about_desc = $row_about_us['about_desc'];
 
-    ?> 
+    ?>
 
 <div class="row" ><!-- 1 row Starts -->
 
-<div class="col-lg-12" ><!-- col-lg-12 Starts --> 
+<div class="col-lg-12" ><!-- col-lg-12 Starts -->
 
 <ol class="breadcrumb"><!-- breadcrumb Starts -->
 
@@ -39,7 +39,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </ol><!-- breadcrumb Ends -->
 
-</div><!-- col-lg-12 Ends --> 
+</div><!-- col-lg-12 Ends -->
 
 </div><!-- 1 row Ends -->
 
@@ -147,7 +147,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_about_us) {
             echo "<script>alert('O nama je ažurirano')</script>";
 
-            echo "<script>window.open('index.php?dashboard','_self')</script>";
+            echo "<script>window.open('index.php?path=dashboard','_self')</script>";
         }
     }
 

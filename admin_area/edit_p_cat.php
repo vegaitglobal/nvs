@@ -7,8 +7,8 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['edit_p_cat'])) {
-        $edit_p_cat_id = $_GET['edit_p_cat'];
+    if (isset($_GET['id'])) {
+        $edit_p_cat_id = $_GET['id'];
 
         $edit_p_cat_query = "select * from product_categories where p_cat_id='$edit_p_cat_id'";
 
@@ -194,7 +194,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-md-6" >
 
-<input type="radio" name="p_cat_hrana" value="Da" 
+<input type="radio" name="p_cat_hrana" value="Da"
     <?php if ($p_cat_hrana == 'no') {
     } else {
         echo "checked='checked'";
@@ -202,7 +202,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <label> Da </label>
 
-<input type="radio" name="p_cat_hrana" value="Ne" 
+<input type="radio" name="p_cat_hrana" value="Ne"
     <?php if ($p_cat_hrana == 'no') {
         echo "checked='checked'";
     } else {
@@ -222,7 +222,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-md-6" >
 
-<input type="radio" name="p_cat_smestaj" value="Da" 
+<input type="radio" name="p_cat_smestaj" value="Da"
     <?php if ($p_cat_smestaj == 'no') {
     } else {
         echo "checked='checked'";
@@ -230,7 +230,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <label> Da </label>
 
-<input type="radio" name="p_cat_smestaj" value="Ne" 
+<input type="radio" name="p_cat_smestaj" value="Ne"
     <?php if ($p_cat_smestaj == 'no') {
         echo "checked='checked'";
     } else {
@@ -249,7 +249,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-md-6" >
 
-<input type="radio" name="p_cat_top" value="Da" 
+<input type="radio" name="p_cat_top" value="Da"
     <?php if ($p_cat_top == 'no') {
     } else {
         echo "checked='checked'";
@@ -257,7 +257,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <label> Da </label>
 
-<input type="radio" name="p_cat_top" value="Ne" 
+<input type="radio" name="p_cat_top" value="Ne"
     <?php if ($p_cat_top == 'no') {
         echo "checked='checked'";
     } else {
@@ -323,7 +323,7 @@ if (!isset($_SESSION['admin_email'])) {
         $temp_name = $_FILES['p_cat_image']['tmp_name'];
 
 
-    
+
 
         if (empty($p_cat_image)) {
             $p_cat_image = $new_p_cat_image;
@@ -357,7 +357,7 @@ if (!isset($_SESSION['admin_email'])) {
 
             echo "<script>alert('Program je ažuriran')</script>";
 
-            echo "<script>window.open('index.php?view_p_cats','_self')</script>";
+            echo "<script>window.open('index.php?path=view_p_cats','_self')</script>";
         }
     }
 

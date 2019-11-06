@@ -112,7 +112,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <td>
 
-<a href="index.php?user_delete=<?php echo $admin_id; ?>" >
+<a href="index.php?path=user_delete&id=<?php echo $admin_id; ?>" >
 
 <i class="fa fa-trash-o" ></i> Delete
 

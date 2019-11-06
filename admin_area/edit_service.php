@@ -4,8 +4,8 @@
 if (!isset($_SESSION['admin_email'])) {
     echo "<script>window.open('login.php','_self')</script>";
 } else {
-    if (isset($_GET['edit_service'])) {
-        $edit_id = $_GET['edit_service'];
+    if (isset($_GET['id'])) {
+        $edit_id = $_GET['id'];
 
         $get_services = "select * from services where service_id='$edit_id'";
 
@@ -28,11 +28,11 @@ if (!isset($_SESSION['admin_email'])) {
         $new_s_image = $row_services['service_image'];
     }
 
-    ?>  
+    ?>
 
 <div class="row" ><!-- 1 row Starts -->
 
-<div class="col-lg-12" ><!-- col-lg-12 Starts --> 
+<div class="col-lg-12" ><!-- col-lg-12 Starts -->
 
 <ol class="breadcrumb"><!-- breadcrumb Starts -->
 
@@ -44,7 +44,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </ol><!-- breadcrumb Ends -->
 
-</div><!-- col-lg-12 Ends --> 
+</div><!-- col-lg-12 Ends -->
 
 </div><!-- 1 row Ends -->
 
@@ -188,7 +188,7 @@ if (!isset($_SESSION['admin_email'])) {
             }
         }
 
-   
+
         $update_services = "update services set service_title='$service_title',service_image='$service_image',service_desc='$service_desc',service_button='$service_button',service_url='$service_url' where service_id='$service_id'";
 
         $run_services = mysqli_query($con, $update_services);
@@ -198,7 +198,7 @@ if (!isset($_SESSION['admin_email'])) {
 
             echo "<script>alert('One Service Column Has Been Updated')</script>";
 
-            echo "<script>window.open('index.php?view_services','_self')</script>";
+            echo "<script>window.open('index.php?path=view_services','_self')</script>";
         }
     }
 

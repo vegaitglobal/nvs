@@ -8,8 +8,8 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['delete_icon'])) {
-        $delete_id = $_GET['delete_icon'];
+    if (isset($_GET['id'])) {
+        $delete_id = $_GET['id'];
 
         $delete_icon = "delete from icons where icon_id='$delete_id'";
 
@@ -18,7 +18,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_delete) {
             echo "<script>alert('One Icon Has Been Deleted')</script>";
 
-            echo "<script> window.open('index.php?view_icons','_self') </script>";
+            echo "<script> window.open('index.php?path=view_icons','_self') </script>";
         }
     }
 

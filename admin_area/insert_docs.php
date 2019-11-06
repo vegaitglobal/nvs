@@ -25,7 +25,7 @@ if (!isset($_SESSION['admin_email'])) {
 </div><!-- row Ends -->
 
 
-<div class="row"><!-- 2 row Starts --> 
+<div class="row"><!-- 2 row Starts -->
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
@@ -45,7 +45,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <form class="form-horizontal" method="post" enctype="multipart/form-data"><!-- form-horizontal Starts -->
 
-    
+
     <div class="form-group" ><!-- form-group Starts -->
 
         <label class="col-md-3 control-label" >Naziv Dokumenta </label>
@@ -95,7 +95,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </div><!-- col-lg-12 Ends -->
 
-</div><!-- 2 row Ends --> 
+</div><!-- 2 row Ends -->
 
 
 
@@ -103,24 +103,24 @@ if (!isset($_SESSION['admin_email'])) {
 
     if (isset($_POST['submit'])) {
         $docs_title = escape($_POST['docs_title']);
-    
+
         $docs_doc = $_FILES['docs_doc']['name'];
-   
+
         $temp_name1 = $_FILES['docs_doc']['tmp_name'];
-  
-    
-  
+
+
+
         $insert_doc = "insert into docs (docs_title,docs_doc) values ('$docs_title','$docs_doc')";
 
         $run_doc = mysqli_query($con, $insert_doc);
-    
+
 
         if ($run_doc) {
             move_uploaded_file($temp_name1, "../docs/$docs_doc");
 
             echo "<script>alert('Dokumenat je unet')</script>";
 
-            echo "<script>window.open('index.php?view_docs','_self')</script>";
+            echo "<script>window.open('index.php?path=view_docs','_self')</script>";
         }
     }
 

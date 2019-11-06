@@ -49,7 +49,7 @@ if (!isset($_SESSION['admin_email'])) {
     if (isset($_POST['checkBoxArray'])) {
         foreach ($_POST['checkBoxArray'] as $postValueId) {
             $bulk_options = $_POST['bulk_options'];
-        
+
             switch ($bulk_options) {
                 case 'published':
                     $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}  ";
@@ -117,7 +117,7 @@ if (!isset($_SESSION['admin_email'])) {
 <form action="" method='post'>
 
 <table class="table table-bordered table-hover">
-              
+
 
         <div id="bulkOptionContainer" class="col-xs-4">
 
@@ -129,17 +129,17 @@ if (!isset($_SESSION['admin_email'])) {
          <option value="clone">Clone</option>
         </select>
 
-        </div> 
+        </div>
 
-            
+
 <div class="col-xs-4">
 
 <input type="submit" name="submit" class="btn btn-success" value="Apply">
-<a class="btn btn-primary" href="index.php?insert_post">Add New</a>
+<a class="btn btn-primary" href="index.php?path=insert_post">Add New</a>
 
  </div>
-         
-   
+
+
 
                 <thead>
                     <tr>
@@ -157,12 +157,12 @@ if (!isset($_SESSION['admin_email'])) {
                         <th>Views</th>
                     </tr>
                 </thead>
-                
+
                       <tbody>
-                      
+
 
     <?php
-    
+
     $query = "SELECT * FROM posts ORDER BY post_date DESC ";
     $select_posts = mysqli_query($con, $query);
 
@@ -176,16 +176,16 @@ if (!isset($_SESSION['admin_email'])) {
         $post_tags          = $row['post_tags'];
         $post_date          = $row['post_date'];
         $post_views   = $row['post_views'];
-        
+
         echo "<tr>";
-        
+
         ?>
-        
+
  <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $post_id; ?>'></td>
-          
-        
+
+
         <?php
-     
+
         echo "<td>$post_id </td>";
 
 
@@ -194,8 +194,8 @@ if (!isset($_SESSION['admin_email'])) {
         }
 
          echo "<td>$post_title</td>";
-            
-        
+
+
         $query = "SELECT * FROM categories WHERE cat_id = {$post_cat_id} ";
         $select_categories_id = mysqli_query($con, $query);
 
@@ -203,12 +203,12 @@ if (!isset($_SESSION['admin_email'])) {
             $cat_id = $row['cat_id'];
             $cat_title = $row['cat_title'];
 
-        
+
             echo "<td>$cat_title</td>";
         }
-        
 
-        
+
+
         echo "<td>$post_status</td>";
         echo "<td><img width='100' src='blogs_images/$post_image' alt='image'></td>";
         echo "<td>$post_tags</td>";
@@ -216,8 +216,8 @@ if (!isset($_SESSION['admin_email'])) {
 
 
         echo "<td>$post_date </td>";
-        
-        echo "<td><a class='btn btn-info' href='index.php?edit_post&p_id={$post_id}'>Edit</a></td>";
+
+        echo "<td><a class='btn btn-info' href='index.php?path=edit_post&p_id={$post_id}'>Edit</a></td>";
 
 
         ?>
@@ -248,36 +248,36 @@ if (!isset($_SESSION['admin_email'])) {
     }
 
     ?>
-  
+
             </tbody>
             </table>
-            
+
         </form>
-    
+
     <?php
 
     if (isset($_POST['delete'])) {
         $the_post_id = escape($_POST['post_id']);
-    
+
         $query = "DELETE FROM posts WHERE post_id = {$the_post_id} ";
         $delete_query = mysqli_query($con, $query);
-        echo "<script>window.open('index.php?view_posts','_self')</script>";
+        echo "<script>window.open('index.php?path=view_posts','_self')</script>";
     }
 
 
     if (isset($_GET['reset'])) {
         $the_post_id = escape($_GET['reset']);
-    
+
         $query = "UPDATE posts SET post_views_count = 0 WHERE post_id = $the_post_id  ";
         $reset_query = mysqli_query($con, $query);
-        echo "<script>window.open('index.php?view_posts','_self')</script>";
+        echo "<script>window.open('index.php?path=view_posts','_self')</script>";
     }
 
-    ?> 
+    ?>
 
 
 <script>
- 
+
     $(document).ready(function(){
 
 
@@ -316,4 +316,4 @@ if (!isset($_SESSION['admin_email'])) {
 
 
 
-<?php } ?>           
+<?php } ?>

@@ -78,7 +78,7 @@ if (!isset($_SESSION['admin_email'])) {
         $manufacturer_title_full = $row_organizations['manufacturer_title_full'];
 
         $manufacturer_mesto = $row_organizations['manufacturer_mesto'];
-    
+
         $manufacturer_adresa = $row_organizations['manufacturer_adresa'];
 
         $i++;
@@ -95,7 +95,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <td>
 
-<a href="index.php?delete_manufacturer=<?php echo $manufacturer_id; ?>">
+<a href="index.php?path=delete_manufacturer&id=<?php echo $manufacturer_id; ?>">
 
 <i class="fa fa-trash-o"></i> Briši
 
@@ -105,7 +105,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <td>
 
-<a href="index.php?edit_manufacturer=<?php echo $manufacturer_id; ?>">
+<a href="index.php?path=edit_manufacturer&id=<?php echo $manufacturer_id; ?>">
 
 <i class="fa fa-pencil"></i> Promeni
 

@@ -10,9 +10,9 @@ if (!isset($_SESSION['admin_email'])) {
 <script type="text/javascript">
     $(document).ready(function(){
         $('#manufacturer').on('change',function(){
-           
+
             var manID = $(this).val();
-          
+
             if(manID){
                 $.ajax({
                     type:'POST',
@@ -20,12 +20,12 @@ if (!isset($_SESSION['admin_email'])) {
                     data:'id='+manID,
                     success:function(html){
                         $('#program').html(html);
-                       
+
                     }
-                }); 
+                });
             }else{
                 $('#program').html('<option value="">Izaberi prvo Organizaciju</option>');
-   
+
             }
         });
 
@@ -54,7 +54,7 @@ if (!isset($_SESSION['admin_email'])) {
 </div><!-- row Ends -->
 
 
-<div class="row"><!-- 2 row Starts --> 
+<div class="row"><!-- 2 row Starts -->
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
@@ -383,7 +383,7 @@ Url primer : asistent-prodaje
 
 </div><!-- col-lg-12 Ends -->
 
-</div><!-- 2 row Ends --> 
+</div><!-- 2 row Ends -->
 
 
 
@@ -433,12 +433,12 @@ Url primer : asistent-prodaje
     values ('$cat','$manufacturer_id',NOW(),'$product_title','$product_url','$product_img1','$product_img2','$product_img3','$product_kolicina','$product_desc','$product_features','$product_video','$product_keywords','$product_label','$status','$product_lokacija','$product_od','$product_do')";
 
         $run_product = mysqli_query($con, $insert_product);
-    
+
 
         if ($run_product) {
             echo "<script>alert('Pozicija je uneta')</script>";
 
-            echo "<script>window.open('index.php?view_products','_self')</script>";
+            echo "<script>window.open('index.php?path=view_products','_self')</script>";
         }
     }
 

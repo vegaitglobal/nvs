@@ -7,11 +7,11 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['delete_docs'])) {
-        $delete_id = $_GET['delete_docs'];
-    
+    if (isset($_GET['id'])) {
+        $delete_id = $_GET['id'];
+
         $select_cat = "select * from docs where docs_id='$delete_id'";
-    
+
         $run_select1 = mysqli_query($con, $select_cat);
 
         while ($row = mysqli_fetch_array($run_select1)) {
@@ -33,7 +33,7 @@ if (!isset($_SESSION['admin_email'])) {
 
             echo "<script>alert('Dokument je izbrisan')</script>";
 
-            echo "<script>window.open('index.php?view_docs','_self')</script>";
+            echo "<script>window.open('index.php?path=view_docs','_self')</script>";
         }
     }
 

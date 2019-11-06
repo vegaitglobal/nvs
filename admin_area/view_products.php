@@ -80,9 +80,9 @@ if (!isset($_SESSION['admin_email'])) {
 
     while ($row_pro=mysqli_fetch_array($run_pro)) {
         $pro_id = $row_pro['product_id'];
-    
+
         $pro_org = $row_pro['manufacturer_id'];
-    
+
         $pro_image = $row_pro['product_img1'];
 
         $pro_title = $row_pro['product_title'];
@@ -92,7 +92,7 @@ if (!isset($_SESSION['admin_email'])) {
         $pro_kolicina = $row_pro['product_kolicina'];
 
         $pro_od = $row_pro['product_od'];
-    
+
         $pro_do = $row_pro['product_do'];
 
         $i++;
@@ -123,26 +123,26 @@ if (!isset($_SESSION['admin_email'])) {
         echo $manufacturer_title;
         ?>
 </td>
- 
+
 <td> <?php echo $pro_kolicina; ?></td>
 <td><?php echo $pro_od; ?></td>
 <td><?php echo $pro_do; ?></td>
 <td>
 
-<a href="index.php?delete_product=<?php echo $pro_id; ?>"><i class="fa fa-trash-o"></i> Brisi</a>
+<a href="index.php?path=delete_product&id=<?php echo $pro_id; ?>"><i class="fa fa-trash-o"></i> Brisi</a>
 
 </td>
 
 <td>
 
-<a href="index.php?edit_product=<?php echo $pro_id; ?>"><i class="fa fa-pencil"> </i> Edit</a>
+<a href="index.php?path=edit_product&id=<?php echo $pro_id; ?>"><i class="fa fa-pencil"> </i> Edit</a>
 
 </td>
 
 <td>
 
-<a href="index.php?view_products&archive=<?php echo $pro_id; ?>"><i class="fa fa-thumb-tack"> </i> Arhiviraj</a>
- 
+<a href="index.php?path=view_products&archive=<?php echo $pro_id; ?>"><i class="fa fa-thumb-tack"> </i> Arhiviraj</a>
+
 </td>
 
 </tr>
@@ -206,9 +206,9 @@ if (!isset($_SESSION['admin_email'])) {
 
     while ($row_pro=mysqli_fetch_array($run_pro)) {
         $pro_id = $row_pro['product_id'];
-    
+
         $pro_org = $row_pro['manufacturer_id'];
-    
+
         $pro_image = $row_pro['product_img1'];
 
         $pro_title = $row_pro['product_title'];
@@ -218,7 +218,7 @@ if (!isset($_SESSION['admin_email'])) {
         $pro_kolicina = $row_pro['product_kolicina'];
 
         $pro_od = $row_pro['product_od'];
-    
+
         $pro_do = $row_pro['product_do'];
 
         $i++;
@@ -255,20 +255,20 @@ if (!isset($_SESSION['admin_email'])) {
 <td><?php echo $pro_do; ?></td>
 <td>
 
-<a href="index.php?delete_product=<?php echo $pro_id; ?>"><i class="fa fa-trash-o"></i> Brisi</a>
+<a href="index.php?path=delete_product&id=<?php echo $pro_id; ?>"><i class="fa fa-trash-o"></i> Brisi</a>
 
 </td>
 
 <td>
 
-<a href="index.php?edit_product=<?php echo $pro_id; ?>"><i class="fa fa-pencil"> </i> Edit</a>
+<a href="index.php?path=edit_product&id=<?php echo $pro_id; ?>"><i class="fa fa-pencil"> </i> Edit</a>
 
 </td>
 
 <td>
 
-<a href="index.php?view_products&active=<?php echo $pro_id; ?>"><i class="fa fa-thumb-tack"> </i> Aktiviraj</a>
- 
+<a href="index.php?path=view_products&active=<?php echo $pro_id; ?>"><i class="fa fa-thumb-tack"> </i> Aktiviraj</a>
+
 </td>
 
 </tr>
@@ -303,21 +303,21 @@ if (!isset($_SESSION['admin_email'])) {
 
 if (isset($_GET['archive'])) {
     $the_id = $_GET['archive'];
-    
+
 
     $query = "UPDATE products SET status = 'archive' WHERE product_id = $the_id   ";
     $approve_query = mysqli_query($con, $query);
-    echo "<script>window.open('index.php?view_products','_self')</script>";
+    echo "<script>window.open('index.php?path=view_products','_self')</script>";
 }
 
 
 
 if (isset($_GET['active'])) {
     $the_id = $_GET['active'];
-    
+
     $query = "UPDATE products SET status = 'active' WHERE product_id = $the_id   ";
     $unapprove_query = mysqli_query($con, $query);
-    echo "<script>window.open('index.php?view_products','_self')</script>";
+    echo "<script>window.open('index.php?path=view_products','_self')</script>";
 }
 
 

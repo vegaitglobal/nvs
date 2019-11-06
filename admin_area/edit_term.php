@@ -3,8 +3,8 @@
 if (!isset($_SESSION['admin_email'])) {
     echo "<script>window.open('login.php','_self')</script>";
 } else {
-    if (isset($_GET['edit_term'])) {
-        $edit_id = $_GET['edit_term'];
+    if (isset($_GET['id'])) {
+        $edit_id = $_GET['id'];
 
         $get_term = "select * from terms where term_id='$edit_id'";
 
@@ -145,7 +145,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_term) {
             echo "<script>alert('One Term Box Has Been Updated ')</script>";
 
-            echo "<script>window.open('index.php?view_terms','_self')</script>";
+            echo "<script>window.open('index.php?path=view_terms','_self')</script>";
         }
     }
 

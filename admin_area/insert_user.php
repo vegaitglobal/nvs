@@ -185,6 +185,8 @@ if (!isset($_SESSION['admin_email'])) {
 
         $admin_pass = escape($_POST['admin_pass']);
 
+        $hashed_password = password_hash($admin_pass, PASSWORD_BCRYPT );
+
         $admin_country = escape($_POST['admin_country']);
 
         $admin_job = $_POST['admin_job'];
@@ -208,7 +210,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_admin) {
             echo "<script>alert('One User Has Been Inserted successfully')</script>";
 
-            echo "<script>window.open('index.php?view_users','_self')</script>";
+            echo "<script>window.open('index.php?path=view_users','_self')</script>";
         }
     }
 

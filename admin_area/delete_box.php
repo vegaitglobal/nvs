@@ -9,8 +9,8 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['delete_box'])) {
-        $delete_id = $_GET['delete_box'];
+    if (isset($_GET['id'])) {
+        $delete_id = $_GET['id'];
 
         $delete_box = "delete from boxes_section where box_id='$delete_id'";
 
@@ -19,7 +19,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_delete) {
             echo "<script>alert('One Box Has Been Deleted')</script>";
 
-            echo "<script>window.open('index.php?view_boxes','_self')</script>";
+            echo "<script>window.open('index.php?path=view_boxes','_self')</script>";
         }
     }
 

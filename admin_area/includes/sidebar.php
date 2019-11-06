@@ -242,7 +242,7 @@ if (!isset($_SESSION['admin_email'])) {
                 <!-- contact us li Ends -->
                 <li>
                     <!-- about us li Starts -->
-                    <a href="index.php?edit_about_us">
+                    <a href="index.php?path=edit_about_us">
                         <i class="fa fa-fw fa-edit"></i> Promeni O Nama
                     </a>
                 </li>

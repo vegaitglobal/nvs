@@ -3,8 +3,8 @@
 if (!isset($_SESSION['admin_email'])) {
     echo "<script>window.open('login.php','_self')</script>";
 } else {
-    if (isset($_GET['edit_volunteers'])) {
-        $edit_id = $_GET['edit_volunteers'];
+    if (isset($_GET['id'])) {
+        $edit_id = $_GET['id'];
 
         $get_d = "select * from volunteers where customer_id='$edit_id'";
 
@@ -46,11 +46,11 @@ if (!isset($_SESSION['admin_email'])) {
         $customer_desc = $row_customer['customer_desc'];
 
         $customer_vestina = $row_customer['customer_vestina'];
-    
+
         $customer_sati = $row_customer['customer_sati'];
-    
+
         $customer_eval = $row_customer['customer_eval'];
-    
+
         $get_cat = "select * from categories where cat_id='$customer_profil'";
 
         $run_cat = mysqli_query($con, $get_cat);
@@ -81,7 +81,7 @@ if (!isset($_SESSION['admin_email'])) {
 </div><!-- row Ends -->
 
 
-<div class="row"><!-- 2 row Starts --> 
+<div class="row"><!-- 2 row Starts -->
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
@@ -100,9 +100,9 @@ if (!isset($_SESSION['admin_email'])) {
 <div class="panel-body"><!-- panel-body Starts -->
 
 <form class="form-horizontal" method="post" enctype="multipart/form-data"><!-- form-horizontal Starts -->
-   
-         
-        
+
+
+
         <div class="form-group">
             <!-- form-group Starts -->
 
@@ -112,8 +112,8 @@ if (!isset($_SESSION['admin_email'])) {
 
             </div>
         </div><!-- form-group Ends -->
-        
-        
+
+
         <div class="form-group">
             <!-- form-group Starts -->
 
@@ -123,13 +123,13 @@ if (!isset($_SESSION['admin_email'])) {
 
             </div>
         </div><!-- form-group Ends -->
-        
-        
+
+
     <div class="form-group"><!-- form-group Starts -->
 
         <label class="col-md-3 control-label" > Evaulacija: </label>
 
-        <div class="col-md-6" > 
+        <div class="col-md-6" >
 
             <textarea  style="background-color : #deffbc;" class="form-control" rows="5" name="c_eval"><?php echo $customer_eval;?></textarea>
 
@@ -141,7 +141,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         <label class="col-md-3 control-label"> Email: </label>
 
-       <div class="col-md-6" > 
+       <div class="col-md-6" >
         <input type="text" name="c_email" class="form-control" required value="<?php echo $customer_email; ?>">
         </div>
 
@@ -151,7 +151,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         <label class="col-md-3 control-label"> Država: </label>
 
-       <div class="col-md-6" > 
+       <div class="col-md-6" >
         <input type="text" name="c_country" class="form-control" required value="<?php echo $customer_country; ?>">
         </div>
 
@@ -161,7 +161,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         <label class="col-md-3 control-label"> Mesto: </label>
 
-      <div class="col-md-6" > 
+      <div class="col-md-6" >
         <input type="text" name="c_city" class="form-control" required value="<?php echo $customer_city; ?>">
         </div>
 
@@ -170,8 +170,8 @@ if (!isset($_SESSION['admin_email'])) {
     <div class="form-group" ><!-- form-group Starts -->
 
         <label class="col-md-3 control-label"> Telefon: </label>
-        
-        <div class="col-md-6" > 
+
+        <div class="col-md-6" >
 
         <input type="text" name="c_contact" class="form-control" required value="<?php echo $customer_contact; ?>">
         </div>
@@ -181,8 +181,8 @@ if (!isset($_SESSION['admin_email'])) {
     <div class="form-group" ><!-- form-group Starts -->
 
         <label class="col-md-3 control-label"> Adresa: </label>
-        
-        <div class="col-md-6" > 
+
+        <div class="col-md-6" >
 
         <input type="text" name="c_address" class="form-control" required value="<?php echo $customer_address; ?>">
         </div>
@@ -193,8 +193,8 @@ if (!isset($_SESSION['admin_email'])) {
          <div class="form-group"><!-- form-group Starts -->
 
             <label class="col-md-3 control-label"> Datum rođenja:</label>
-            
-            <div class="col-md-6" > 
+
+            <div class="col-md-6" >
 
             <input type="date" class="form-control" name="datum" value="<?php echo $customer_datum; ?>" required>
              </div>
@@ -249,10 +249,10 @@ if (!isset($_SESSION['admin_email'])) {
              <div class="col-md-4">
                 <input type="text" class="form-control" value="<?php echo $customer_profil; ?>"  placeholder="ili upiši ovde ako nije navedeno" name="profil" required>
             </div>
-       
+
 
         </div><!-- form-group Ends -->
-        
+
 
 
         <div class="form-group" ><!-- form-group Starts -->
@@ -280,60 +280,60 @@ if (!isset($_SESSION['admin_email'])) {
 
             <label class="col-md-3 control-label"> Slika: </label>
 
-           <div class="col-md-6" > 
+           <div class="col-md-6" >
             <input type="file" name="c_image" class="form-control"  ><br>
 
             <img src="../customer/customer_images/<?php echo $customer_image; ?>" width="100" height="100" class="img-responsive" >
 
         </div>
     </div><!-- form-group Ends -->
-    
+
     <div class="form-group" ><!-- form-group Starts -->
 
         <label class="col-md-3 control-label" > CV :</label>
 
-       <div class="col-md-6" > 
+       <div class="col-md-6" >
         <input type="file" name="c_cv" class="form-control" > <br>
         <a href="<?php if (!empty($customer_cv)) {
             echo "../customer/customer_images/".$customer_cv;
                  } ?>" ><?php echo $customer_cv; ?></a>
-    </div>              
+    </div>
 
-   
+
     </div><!-- form-group Ends -->
-    
+
     <div class="form-group" ><!-- form-group Starts -->
 
         <label class="col-md-3 control-label" > Motivaciono pismo:</label>
 
-       <div class="col-md-6" > 
+       <div class="col-md-6" >
         <input type="file" name="c_motiv" class="form-control" > <br>
            <a  href="<?php if (!empty($customer_motiv)) {
                 echo "../customer/customer_images/".$customer_motiv;
                      } ?>">
                <?php echo $customer_motiv; ?> </a>
         </div>
-   
+
     </div><!-- form-group Ends -->
-    
-    
+
+
     <div class="form-group"><!-- form-group Starts -->
 
         <label class="col-md-3 control-label" > Omiljena izreka: </label>
 
-        <div class="col-md-6" > 
+        <div class="col-md-6" >
 
             <textarea  class="form-control" rows="5" name="c_izreka"><?php echo $customer_desc; ?></textarea>
 
         </div>
 
     </div><!-- form-group Ends -->
-    
+
      <div class="form-group"><!-- form-group Starts -->
 
         <label class="col-md-3 control-label" > Najznačajnija znanja i veštine: </label>
 
-        <div class="col-md-6" > 
+        <div class="col-md-6" >
 
             <textarea  class="form-control" rows="5" name="c_vestina"><?php echo $customer_vestina; ?></textarea>
 
@@ -363,7 +363,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 </div><!-- col-lg-12 Ends -->
 
-</div><!-- 2 row Ends --> 
+</div><!-- 2 row Ends -->
     <?php
 
     if (isset($_POST['update'])) {
@@ -388,13 +388,13 @@ if (!isset($_SESSION['admin_email'])) {
         $c_profil = $_POST['profil'];
 
         $c_sprema = $_POST['sprema'];
-    
+
         $c_izreka = escape($_POST['c_izreka']);
-    
+
         $c_vestina = escape($_POST['c_vestina']);
-    
+
         $c_sati = escape($_POST['c_sati']);
-    
+
         $c_eval = escape($_POST['c_eval']);
 
         $c_image = $_FILES['c_image']['name'];
@@ -424,7 +424,7 @@ if (!isset($_SESSION['admin_email'])) {
                 unlink($file);
             }
         }
-    
+
         $c_motiv = $_FILES['c_motiv']['name'];
 
         $c_motiv_tmp = $_FILES['c_motiv']['tmp_name'];

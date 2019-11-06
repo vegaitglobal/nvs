@@ -110,7 +110,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <td>
 
-<a href="index.php?delete_icon=<?php echo $icon_id; ?>">
+<a href="index.php?path=delete_icon$id=<?php echo $icon_id; ?>">
 
 <i class="fa fa-trash-o"> </i> Delete
 
@@ -120,7 +120,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <td>
 
-<a href="index.php?edit_icon=<?php echo $icon_id; ?>">
+<a href="index.php?path=edit_icon&id=<?php echo $icon_id; ?>">
 
 <i class="fa fa-pencil"> </i> Edit
 

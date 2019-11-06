@@ -5,7 +5,7 @@ if (!isset($_SESSION['admin_email'])) {
 } else {
     ?>
 
- 
+
 <div class="row"><!-- 1 row Starts -->
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
@@ -124,7 +124,7 @@ if (!isset($_SESSION['admin_email'])) {
         if ($run_term) {
             echo "<script>alert('New Term Has Been Inserted')</script>";
 
-            echo "<script>window.open('index.php?view_terms','_self')</script>";
+            echo "<script>window.open('index.php?path=view_terms','_self')</script>";
         }
     }
 

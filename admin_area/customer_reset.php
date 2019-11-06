@@ -5,8 +5,8 @@ require_once __DIR__.'/../app/bootstrap.php';
 if (!isset($_SESSION['admin_email'])) {
     echo "<script>window.open('login.php','_self')</script>";
 } else {
-    if (isset($_GET['customer_reset'])) {
-        $reset_id = $_GET['customer_reset'];
+    if (isset($_GET['id'])) {
+        $reset_id = $_GET['id'];
 
         $customer= " select * from volunteers where customer_id='$reset_id' ";
 
@@ -37,6 +37,6 @@ if (!isset($_SESSION['admin_email'])) {
         }
 
 
-        echo "<script>window.open('index.php?view_volunteers','_self')</script>";
+        echo "<script>window.open('index.php?path=view_customers','_self')</script>";
     }
 }

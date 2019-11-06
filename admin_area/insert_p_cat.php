@@ -229,7 +229,7 @@ $manufacturer_title
 
     if (isset($_POST['submit'])) {
         $p_cat_title = escape($_POST['p_cat_title']);
-    
+
         $p_cat_opis = $_POST['p_cat_opis'];
 
         $p_cat_top = $_POST['p_cat_top'];
@@ -238,21 +238,21 @@ $manufacturer_title
 
         $temp_name = $_FILES['p_cat_image']['tmp_name'];
 
-    
+
         $p_cat_lokacija = escape($_POST['p_cat_lokacija']);
-    
+
         $p_cat_od = $_POST['p_cat_od'];
-    
+
         $p_cat_do = $_POST['p_cat_do'];
-    
+
         $p_cat_hrana = $_POST['p_cat_hrana'];
 
         $p_cat_smestaj = $_POST['p_cat_smestaj'];
-    
+
         $p_man_id = $_POST['manufacturer'];
-    
-    
-    
+
+
+
         $insert_p_cat = "insert into product_categories (p_cat_title,p_cat_opis,p_cat_top,p_cat_image,p_cat_lokacija,p_cat_od,p_cat_do,p_cat_hrana,p_cat_smestaj,p_man_id) values ('$p_cat_title','$p_cat_opis','$p_cat_top','$p_cat_image','$p_cat_lokacija','$p_cat_od','$p_cat_do','$p_cat_hrana','$p_cat_smestaj','$p_man_id')";
 
         $run_p_cat = mysqli_query($con, $insert_p_cat);
@@ -262,7 +262,7 @@ $manufacturer_title
 
             echo "<script>alert('Nov program je unet')</script>";
 
-            echo "<script>window.open('index.php?view_p_cats','_self')</script>";
+            echo "<script>window.open('index.php?path=view_p_cats','_self')</script>";
         }
     }
 

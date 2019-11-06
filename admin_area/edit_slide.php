@@ -10,8 +10,8 @@ if (!isset($_SESSION['admin_email'])) {
 
     <?php
 
-    if (isset($_GET['edit_slide'])) {
-        $edit_id = $_GET['edit_slide'];
+    if (isset($_GET['id'])) {
+        $edit_id = $_GET['id'];
 
         $edit_slide = "select * from slider where slide_id='$edit_id'";
 
@@ -35,7 +35,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="row" ><!-- 1 row Starts -->
 
-<div class="col-lg-12" ><!-- col-lg-12 Starts --> 
+<div class="col-lg-12" ><!-- col-lg-12 Starts -->
 
 <ol class="breadcrumb"><!-- breadcrumb Starts -->
 
@@ -49,7 +49,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 
 
-</div><!-- col-lg-12 Ends --> 
+</div><!-- col-lg-12 Ends -->
 
 </div><!-- 1 row Ends -->
 
@@ -170,7 +170,7 @@ if (!isset($_SESSION['admin_email'])) {
 
             echo "<script>alert('One Slide Has Been Updated')</script>";
 
-            echo "<script>window.open('index.php?view_slides','_self')</script>";
+            echo "<script>window.open('index.php?path=view_slides','_self')</script>";
         }
     }
 

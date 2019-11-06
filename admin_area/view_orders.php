@@ -49,7 +49,7 @@ if (!isset($_SESSION['admin_email'])) {
         <div class="form-group" ><!-- form-group Starts -->
 
         <label class="control-label" > Oblast </label>
-    
+
 
             <select name="cat" class="form-control" >
 
@@ -73,7 +73,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         </select>
 
-     
+
 
         </div><!-- form-group Ends -->
         <div class="form-group" ><!-- form-group Starts -->
@@ -81,13 +81,13 @@ if (!isset($_SESSION['admin_email'])) {
             <label class="control-label" ></label>
 
             <input type="submit" name="sortiraj" value="Sortiraj" class="btn btn-primary form-control" >
-  
+
 
         </div><!-- form-group Ends -->
 
     </form><!-- form-horizontal Ends -->
-    </div>   
-        
+    </div>
+
     <div class="col-md-7">
         <form class="form-inline" method="post" enctype="multipart/form-data"><!-- form-horizontal Starts -->
 
@@ -95,7 +95,7 @@ if (!isset($_SESSION['admin_email'])) {
 
             <label class="control-label" > \</label>
 
-        
+
 
             <select name="pro" class="form-control" >
 
@@ -119,10 +119,10 @@ if (!isset($_SESSION['admin_email'])) {
 
             </select>
 
-        
+
 
         </div><!-- form-group Ends -->
-        
+
         <div class="form-group" ><!-- form-group Starts -->
 
             <label class="control-label" ></label>
@@ -138,7 +138,7 @@ if (!isset($_SESSION['admin_email'])) {
 <div class="col-md-2">
      <button class="btn btn-success">Export u Excel</button>
 </div>
-</div> 
+</div>
 <br>
 
 <div class="table-responsive"><!-- table-responsive Starts -->
@@ -154,7 +154,7 @@ if (!isset($_SESSION['admin_email'])) {
 <th>Email:</th>
 <th>Telefon:</th>
 <th>Pozicija:</th>
-<th>Sati:</th>
+<!--<th>Sati:</th>-->
 <th>Datum:</th>
 <th>Status:</th>
 <th class="noExl">Odobri:</th>
@@ -170,8 +170,8 @@ if (!isset($_SESSION['admin_email'])) {
 <tbody><!-- tbody Starts -->
 
     <?php
-    
-    
+
+
 
     if (!isset($_POST['sortiraj']) & !isset($_POST['pozicija'])) {
         $i = 0;
@@ -216,11 +216,11 @@ if (!isset($_SESSION['admin_email'])) {
             $run_customer = mysqli_query($con, $get_customer);
 
             $row_customer = mysqli_fetch_array($run_customer);
-        
+
             $customer_name = $row_customer['customer_name'];
 
             $customer_email = $row_customer['customer_email'];
-        
+
             $customer_contact = $row_customer['customer_contact'];
 
             echo $customer_name;
@@ -252,12 +252,6 @@ if (!isset($_SESSION['admin_email'])) {
              */
             ?>
     </td>
-    
-    <td>
-
-       
-
-    </td>
 
     <td>
             <?php
@@ -283,8 +277,8 @@ if (!isset($_SESSION['admin_email'])) {
             echo $p_cat_title;
             */
             ?>
-     </td>        
-        
+     </td>
+
 
         <td><?php echo $product_title; ?></td>
 
@@ -292,19 +286,19 @@ if (!isset($_SESSION['admin_email'])) {
             <?php echo $order_date;   ?>
         </td>
 
-        
+
 
         <td>
             <?php  echo $order_status; ?>
         </td>
             <?php
-            echo "<td class='noExl' ><a href='index.php?view_orders&approve=$order_id'>Prihvati</a></td>";
-            echo "<td class='noExl' ><a href='index.php?view_orders&unapprove=$order_id'>Odbij</a></td>";
+            echo "<td class='noExl' ><a href='index.php?path=view_orders&approve=$order_id'>Prihvati</a></td>";
+            echo "<td class='noExl' ><a href='index.php?path=view_orders&unapprove=$order_id'>Odbij</a></td>";
 
-            ?> 
+            ?>
         <td class='noExl' >
 
-            <a href="index.php?order_delete=<?php echo $order_id; ?>" >
+            <a href="index.php?path=order_delete&id=<?php echo $order_id; ?>" >
 
             <i class="fa fa-trash-o" ></i> Delete
 
@@ -318,22 +312,22 @@ if (!isset($_SESSION['admin_email'])) {
 
         <?php }
     }
-    
-    
+
+
     if (isset($_POST['sortiraj'])) {
         $i = 0;
-    
+
         $the_cat_id = $_POST['cat'];
-    
+
         $query = "select * from products where cat_id= '$the_cat_id' ";
-    
+
         $run_query = mysqli_query($con, $query);
 
         while ($row_query = mysqli_fetch_array($run_query)) {
             $product_id = $row_query['product_id'];
 
             $product_title = $row_query['product_title'];
-            
+
              $get_orders = "select * from wishlist where product_id = '$product_id' order by datum DESC ";
 
             $run_orders = mysqli_query($con, $get_orders);
@@ -436,25 +430,25 @@ if (!isset($_SESSION['admin_email'])) {
                 */
                 ?>
          </td>
-            
+
             <td><?php echo $product_title; ?></td>
 
             <td>
                 <?php echo $order_date;   ?>
             </td>
 
-            <td>
-            <?php echo $hours;   ?>
-            </td>
+<!--            <td>-->
+<!--            --><?php //echo $hours;   ?>
+<!--            </td>-->
 
             <td>
                 <?php  echo $order_status; ?>
             </td>
                 <?php
-                echo "<td class='noExl'><a href='index.php?view_orders&approve=$order_id'>Prihvati</a></td>";
-                echo "<td class='noExl'><a href='index.php?view_orders&unapprove=$order_id'>Odbij</a></td>";
+                echo "<td class='noExl'><a href='index.php?path=view_orders&approve=$order_id'>Prihvati</a></td>";
+                echo "<td class='noExl'><a href='index.php?path=view_orders&unapprove=$order_id'>Odbij</a></td>";
 
-                ?> 
+                ?>
             <td class='noExl'>
 
                 <a href="index.php?order_delete=<?php echo $order_id; ?>" >
@@ -472,14 +466,14 @@ if (!isset($_SESSION['admin_email'])) {
             }
         }
     }
-    
-    
+
+
 
     if (isset($_POST['pozicija'])) {
         $i = 0;
-    
+
         $the_pro_id = $_POST['pro'];
-    
+
         $get_poz = "select * from wishlist where product_id= '$the_pro_id' order by datum DESC ";
 
         $run_poz = mysqli_query($con, $get_poz);
@@ -583,23 +577,23 @@ if (!isset($_SESSION['admin_email'])) {
             */
             ?>
      </td>
-        
+
        <td><?php echo $product_title; ?></td>
 
         <td>
             <?php echo $order_date;   ?>
         </td>
 
-        <td> <?php echo $hours; ?> </td>
+<!--        <td> --><?php //echo $hours; ?><!-- </td>-->
 
         <td>
             <?php  echo $order_status; ?>
         </td>
             <?php
-            echo "<td class='noExl'><a href='index.php?view_orders&approve=$order_id'>Prihvati</a></td>";
-            echo "<td class='noExl'><a href='index.php?view_orders&unapprove=$order_id'>Odbij</a></td>";
+            echo "<td class='noExl'><a href='index.php?path=view_orders&approve=$order_id'>Prihvati</a></td>";
+            echo "<td class='noExl'><a href='index.php?path=view_orders&unapprove=$order_id'>Odbij</a></td>";
 
-            ?> 
+            ?>
         <td class='noExl'>
 
             <a href="index.php?order_delete=<?php echo $order_id; ?>" >
@@ -617,8 +611,8 @@ if (!isset($_SESSION['admin_email'])) {
     }
 
 
-      
-    
+
+
     ?>
 
 </tbody><!-- tbody Ends -->
@@ -640,20 +634,20 @@ if (!isset($_SESSION['admin_email'])) {
 
 if (isset($_GET['approve'])) {
     $the_comment_id = $_GET['approve'];
-    
+
     $query = "UPDATE wishlist SET status = 'Prihvaćen' WHERE wishlist_id = $the_comment_id   ";
     $approve_comment_query = mysqli_query($con, $query);
-    echo "<script>window.open('index.php?view_orders','_self')</script>";
+    echo "<script>window.open('index.php?path=view_orders','_self')</script>";
 }
 
 
 
 if (isset($_GET['unapprove'])) {
     $the_comment_id = $_GET['unapprove'];
-    
+
     $query = "UPDATE wishlist SET status = 'Odbijen' WHERE wishlist_id = $the_comment_id ";
     $unapprove_comment_query = mysqli_query($con, $query);
-    echo "<script>window.open('index.php?view_orders','_self')</script>";
+    echo "<script>window.open('index.php?path=view_orders','_self')</script>";
 }
 
 ?>

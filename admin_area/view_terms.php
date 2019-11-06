@@ -80,14 +80,14 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="panel-footer"><!-- panel-footer Starts -->
 
-<a href="index.php?delete_term=<?php echo $term_id; ?>" class="pull-left">
+<a href="index.php?path=delete_term&id=<?php echo $term_id; ?>" class="pull-left">
 
 <i class="fa fa-trash-o"></i> Delete
 
 </a>
 
 
-<a href="index.php?edit_term=<?php echo $term_id; ?>" class="pull-right">
+<a href="index.php?path=edit_term&id=<?php echo $term_id; ?>" class="pull-right">
 
 <i class="fa fa-pencil"></i> Edit
 
