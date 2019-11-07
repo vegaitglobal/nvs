@@ -5,7 +5,6 @@ if (!isset($_SESSION['manufacturer_email'])) {
 } else {
     $man_email=$_SESSION['manufacturer_email'];
     $man_id=$_SESSION['manufacturer_id'];
-    
     ?>
 <h1 align="center">Promeni lozinku </h1>
 
@@ -59,13 +58,23 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
         $new_pass_again = escape($_POST['new_pass_again']);
 
-        $sel_old_pass = "select * from organizations where manufacturer_pass='$old_pass'";
+        $sel_email = "select * from organizations where manufacturer_email='$c_email'";
 
-        $run_old_pass = mysqli_query($con, $sel_old_pass);
+        $run_email = mysqli_query($con, $sel_email);
 
-        $check_old_pass = mysqli_num_rows($run_old_pass);
+        $check_email = mysqli_num_rows($run_email);
 
-        if ($check_old_pass==0) {
+        if ($check_email !== 0) {
+            $row_customer = mysqli_fetch_array($run_email);
+
+            $is_correct = password_verify($old_pass, $row_email['manufacturer_pass']);
+
+            if (!$is_correct && $row_email['manufacturer_pass'] != $old_pass) {
+                echo "<script>alert('Niste uneli ispravnu lozinku')</script>";
+
+                exit();
+            }
+        }else{
             echo "<script>alert('Niste uneli ispravnu lozinku')</script>";
 
             exit();
@@ -77,7 +86,9 @@ if (!isset($_SESSION['manufacturer_email'])) {
             exit();
         }
 
-        $update_pass = "update organizations set manufacturer_pass='$new_pass' where manufacturer_email='$c_email'";
+        $hashed_password = password_hash($new_pass, PASSWORD_BCRYPT );
+
+        $update_pass = "update organizations set manufacturer_pass='$hashed_password' where manufacturer_email='$c_email'";
 
         $run_pass = mysqli_query($con, $update_pass);
 
@@ -86,6 +97,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
             echo "<script>window.open('index.php?dashboard','_self')</script>";
         }
+
     }
 }
 ?>

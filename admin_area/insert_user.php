@@ -195,14 +195,25 @@ if (!isset($_SESSION['admin_email'])) {
 
         $admin_about = escape($_POST['admin_about']);
 
-
         $admin_image = $_FILES['admin_image']['name'];
 
         $temp_admin_image = $_FILES['admin_image']['tmp_name'];
 
+        $get_email = "select * from admins where admin_email='$admin_email'";
+
+        $run_email = mysqli_query($con, $get_email);
+
+        $check_email = mysqli_num_rows($run_email);
+
+        if ($check_email == 1) {
+            echo "<script>alert('Ovaj email je već registrovan, pokušajte drugi')</script>";
+
+            exit();
+        }
+
         move_uploaded_file($temp_admin_image, "admin_images/$admin_image");
 
-        $insert_admin = "insert into admins (admin_name,admin_email,admin_pass,admin_image,admin_contact,admin_country,admin_job,admin_about) values ('$admin_name','$admin_email','$admin_pass','$admin_image','$admin_contact','$admin_country','$admin_job','$admin_about')";
+        $insert_admin = "insert into admins (admin_name,admin_email,admin_pass,admin_image,admin_contact,admin_country,admin_job,admin_about) values ('$admin_name','$admin_email','$hashed_password','$admin_image','$admin_contact','$admin_country','$admin_job','$admin_about')";
 
         $run_admin = mysqli_query($con, $insert_admin);
 
@@ -214,9 +225,6 @@ if (!isset($_SESSION['admin_email'])) {
         }
     }
 
-
     ?>
-
-
 
 <?php }  ?>

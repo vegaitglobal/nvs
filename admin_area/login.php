@@ -54,18 +54,26 @@ if (isset($_POST['admin_login'])) {
 
     $admin_pass = mysqli_real_escape_string($con, $_POST['admin_pass']);
 
-    $get_admin = "select * from admins where admin_email='$admin_email' AND admin_pass='$admin_pass'";
+    $get_admin = "select * from admins where admin_email='$admin_email'";
 
     $run_admin = mysqli_query($con, $get_admin);
 
     $count = mysqli_num_rows($run_admin);
 
     if ($count==1) {
-        $_SESSION['admin_email']=$admin_email;
 
-        echo "<script>alert('You are Logged in into admin panel')</script>";
+        $row_customer = mysqli_fetch_array($run_admin);
 
-        echo "<script>window.open('index.php?path=dashboard','_self')</script>";
+        $is_correct = password_verify($admin_pass, $row_customer['admin_pass']);
+
+        if ($is_correct || $row_customer['admin_pass'] == $admin_pass) {
+            $_SESSION['admin_email']=$admin_email;
+            echo "<script>alert('You are Logged in into admin panel')</script>";
+
+            echo "<script>window.open('index.php?path=dashboard','_self')</script>";
+        }else{
+            echo "<script>alert('Email or Password is Wrong')</script>";
+        }
     } else {
         echo "<script>alert('Email or Password is Wrong')</script>";
     }

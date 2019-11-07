@@ -82,7 +82,7 @@ require_once __DIR__.'/app/bootstrap.php';
 
             <label> Email</label>
 
-            <input type="text" class="form-control" name="c_email" required>
+            <input type="text" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" name="c_email" required>
 
         </div><!-- form-group Ends -->
 
@@ -484,6 +484,8 @@ if (isset($_POST['register'])) {
 
         $c_pass = escape($_POST['c_pass']);
 
+        $hashed_password = password_hash($c_pass, PASSWORD_BCRYPT );
+
         $c_country = escape($_POST['c_country']);
 
         $c_city = escape($_POST['c_city']);
@@ -552,7 +554,7 @@ if (isset($_POST['register'])) {
             ]);
 
 
-        $insert_customer = "insert into volunteers (customer_name,customer_email,customer_pass,customer_country,customer_city,customer_contact,customer_address,customer_image,customer_status,customer_confirm_code,customer_datum,customer_pol,customer_profil,customer_sprema,customer_desc,customer_cv,customer_motiv,customer_vestina) values ('$c_name','$c_email','$c_pass','$c_country','$c_city','$c_contact','$c_address','$c_image','$c_status','$customer_confirm_code','$customer_datum','$c_pol','$c_profil','$c_sprema','$c_desc','$c_cv','$c_motiv','$c_vestina')";
+        $insert_customer = "insert into volunteers (customer_name,customer_email,customer_pass,customer_country,customer_city,customer_contact,customer_address,customer_image,customer_status,customer_confirm_code,customer_datum,customer_pol,customer_profil,customer_sprema,customer_desc,customer_cv,customer_motiv,customer_vestina) values ('$c_name','$c_email','$hashed_password','$c_country','$c_city','$c_contact','$c_address','$c_image','$c_status','$customer_confirm_code','$customer_datum','$c_pol','$c_profil','$c_sprema','$c_desc','$c_cv','$c_motiv','$c_vestina')";
 
 
         $run_customer = mysqli_query($con, $insert_customer);

@@ -34,7 +34,7 @@ if (isset($_POST['hours'])) {
     $hours = $_POST['hours'];
 
     if (!$alertsService->hasAlerts()) {
-        $hoursChanged = $wishlist->getHours() === $hours;
+        $hoursChanged = $wishlist->getHours() !== (int)$hours;
 
         $wishlist->setHours($hours);
 

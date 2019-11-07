@@ -75,7 +75,7 @@ require_once __DIR__.'/../app/bootstrap.php';
                                 Unesi
                             </a>
                         <?php else : ?>
-                            <?php echo $hours; ?>
+                            <?php echo $hours . ' h'; ?>
                         <?php endif ?>
                     </td>
 
@@ -91,7 +91,7 @@ require_once __DIR__.'/../app/bootstrap.php';
                                 <?php endif ?>
                             <?php endif ?>
                         <?php else: ?>
-                            Gotovo
+                            <i class="fa fa-clock-o" title="U obradi"></i>
                         <?php endif ?>
                     </td>
 
@@ -105,6 +105,8 @@ require_once __DIR__.'/../app/bootstrap.php';
                                 <i class="fa fa-pencil"></i>
                                 Izmeni
                             </a>
+                        <?php elseif(!$hours && is_null($wishlist->getHoursApproved())) : ?>
+
                         <?php else : ?>
                             Gotovo
                         <?php endif ?>
@@ -125,14 +127,15 @@ require_once __DIR__.'/../app/bootstrap.php';
 function canEnterHours(Wishlist $wishlist, Product $product)
 {
     $endDate = $product->getDo();
+    $startDate = $product->getOd();
     $endDateTwoWeeksLater = clone $endDate;
     $endDateTwoWeeksLater->add(new DateInterval('P14D'));
     $currentDate = new DateTime('now');
 
-    $dateCheck = $currentDate >= $endDate && $currentDate <= $endDateTwoWeeksLater;
-    $approvalCheck = $wishlist->getStatus() === Wishlist::STATUS_VALUE_TRUE;
-    $hoursApprovedCheck = is_null($wishlist->getHoursApproved());
+    $dateCheck = $currentDate >= $startDate && $currentDate <= $endDateTwoWeeksLater;
+    //$approvalCheck = $wishlist->getStatus() === Wishlist::STATUS_VALUE_TRUE;
+    //$hoursApprovedCheck = is_null($wishlist->getHoursApproved());
 
-    return $dateCheck && $approvalCheck && $hoursApprovedCheck;
+    return $dateCheck;
 }
 ?>

@@ -55,13 +55,23 @@ if (isset($_POST['submit'])) {
 
     $new_pass_again = escape($_POST['new_pass_again']);
 
-    $sel_old_pass = "select * from volunteers where customer_pass='$old_pass'";
+    $get_customer = "select * from volunteers where customer_email='$c_email'";
 
-    $run_old_pass = mysqli_query($con, $sel_old_pass);
+    $run_customer = mysqli_query($con, $get_customer);
 
-    $check_old_pass = mysqli_num_rows($run_old_pass);
+    $check_customer = mysqli_num_rows($run_customer);
 
-    if ($check_old_pass==0) {
+    if ($check_customer != 0) {
+        $row_customer = mysqli_fetch_array($run_customer);
+
+        $is_correct = password_verify($old_pass, $row_customer['customer_pass']);
+
+        if (!$is_correct && $row_customer['customer_pass'] != $old_pass) {
+            echo "<script>alert('Vaša lozinka nije ispravna, pokušajte ponovo')</script>";
+
+            exit();
+        }
+    }else{
         echo "<script>alert('Vaša lozinka nije ispravna, pokušajte ponovo')</script>";
 
         exit();
@@ -73,7 +83,9 @@ if (isset($_POST['submit'])) {
         exit();
     }
 
-    $update_pass = "update volunteers set customer_pass='$new_pass' where customer_email='$c_email'";
+    $hashed_password = password_hash($new_pass, PASSWORD_BCRYPT );
+
+    $update_pass = "update volunteers set customer_pass='$hashed_password' where customer_email='$c_email'";
 
     $run_pass = mysqli_query($con, $update_pass);
 

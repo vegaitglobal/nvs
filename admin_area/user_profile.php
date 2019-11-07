@@ -118,7 +118,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-md-6"><!-- col-md-6 Starts -->
 
-<input type="text" name="admin_pass" class="form-control" required value="<?php echo $admin_pass; ?>">
+<input type="password" name="admin_pass" class="form-control" required value="<?php echo $admin_pass; ?>">
 
 </div><!-- col-md-6 Ends -->
 
@@ -223,6 +223,10 @@ if (!isset($_SESSION['admin_email'])) {
 
         $admin_pass = $_POST['admin_pass'];
 
+        $is_hashed = password_get_info($admin_pass);
+
+        $password = $is_hashed['algo'] == 0 ? password_hash($admin_pass, PASSWORD_BCRYPT ) : $admin_pass;
+
         $admin_country = $_POST['admin_country'];
 
         $admin_job = $_POST['admin_job'];
@@ -230,7 +234,6 @@ if (!isset($_SESSION['admin_email'])) {
         $admin_contact = $_POST['admin_contact'];
 
         $admin_about = $_POST['admin_about'];
-
 
         $admin_image = $_FILES['admin_image']['name'];
 
@@ -242,7 +245,7 @@ if (!isset($_SESSION['admin_email'])) {
             $admin_image = $new_admin_image;
         }
 
-        $update_admin = "update admins set admin_name='$admin_name',admin_email='$admin_email',admin_pass='$admin_pass',admin_image='$admin_image',admin_contact='$admin_contact',admin_country='$admin_country',admin_job='$admin_job',admin_about='$admin_about' where admin_id='$admin_id'";
+        $update_admin = "update admins set admin_name='$admin_name',admin_email='$admin_email',admin_pass='$password',admin_image='$admin_image',admin_contact='$admin_contact',admin_country='$admin_country',admin_job='$admin_job',admin_about='$admin_about' where admin_id='$admin_id'";
 
         $run_admin = mysqli_query($con, $update_admin);
 

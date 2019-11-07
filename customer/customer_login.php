@@ -9,20 +9,25 @@ if (isset($_POST['login'])) {
 
     $customer_pass = escape($_POST['c_pass']);
 
-    $select_customer = "select * from volunteers where customer_email='$customer_email' AND customer_pass='$customer_pass'";
+    $select_customer = "select * from volunteers where customer_email='$customer_email'";
 
     $run_customer = mysqli_query($con, $select_customer);
 
     $check_customer = mysqli_num_rows($run_customer);
 
+    if ($check_customer !== 0) {
+        $row_customer = mysqli_fetch_array($run_customer);
 
-    if ($check_customer === 0) {
+        $is_correct = password_verify($customer_pass, $row_customer['customer_pass']);
+
+        if ($is_correct || $row_customer['customer_pass'] == $customer_pass) {
+            $_SESSION['customer_email'] = $customer_email;
+            $login_success = true;
+        } else {
+            $login_failure = true;
+        }
+    }else{
         $login_failure = true;
-    }
-
-    if ($check_customer === 1) {
-        $_SESSION['customer_email']=$customer_email;
-        $login_success = true;
     }
 }
 

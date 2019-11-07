@@ -63,7 +63,7 @@ if (isset($_POST['login'])) {
 
     $manufacturer_pass = escape($_POST['c_pass']);
 
-    $select_customer = "select * from organizations where manufacturer_email='$manufacturer_email' AND manufacturer_pass='$manufacturer_pass'";
+    $select_customer = "select * from organizations where manufacturer_email='$manufacturer_email'";
 
     $run_customer = mysqli_query($con, $select_customer);
     $row_man = mysqli_fetch_array($run_customer);
@@ -71,20 +71,26 @@ if (isset($_POST['login'])) {
 
     $check_customer = mysqli_num_rows($run_customer);
 
+    if ($check_customer !== 0) {
 
-    if ($check_customer==0) {
-        echo "<script>alert('Nalog ili lozinka su neispravni')</script>";
+        $is_correct = password_verify($manufacturer_pass, $row_man['manufacturer_pass']);
 
-        exit();
-    }
-
-    if ($check_customer==1) {
+        if ($is_correct || $row_man['manufacturer_pass'] == $manufacturer_pass) {
             $_SESSION['manufacturer_email']=$manufacturer_email;
             $_SESSION['manufacturer_id']=$m_id;
 
-        echo "<script>alert('Prijavljeni ste')</script>";
+            echo "<script>alert('Prijavljeni ste')</script>";
 
-        echo "<script>window.open('organization/index.php?dashboard','_self')</script>";
+            echo "<script>window.open('organization/index.php?dashboard','_self')</script>";
+        }  else {
+            echo "<script>alert('Nalog ili lozinka su neispravni')</script>";
+
+            exit();
+        }
+    }else{
+        echo "<script>alert('Nalog ili lozinka su neispravni')</script>";
+
+        exit();
     }
 }
 
