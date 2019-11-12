@@ -16,7 +16,6 @@ if (!isset($_SESSION['admin_email'])) {
 
         $c_email = $row_customer['customer_email'];
 
-
         $reset_customer = "update volunteers set customer_pass='123' where customer_id='$reset_id'";
 
         $run_customer = mysqli_query($con, $reset_customer);

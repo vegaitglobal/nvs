@@ -74,7 +74,7 @@ include("nav.php");
 
 <center>
 
-<h3> Unesite vašu Email adresu, mi ćemo vam poslati vašu lozinku </h3>
+<h3> Unesite vašu Email adresu, mi ćemo vam poslati privremenu lozinku </h3>
 
 </center>
 
@@ -130,6 +130,8 @@ if (isset($_POST['forgot_pass'])) {
 
     $c_name = $row_c['customer_name'];
 
+    $c_id = $row_c['customer_id'];
+
     $c_pass = $row_c['customer_pass'];
 
     if ($count_c == 0) {
@@ -137,20 +139,25 @@ if (isset($_POST['forgot_pass'])) {
 
         exit();
     } else {
-        $from = "vojislavp@gmail.com";
 
-        $subject = "Vaša lozinka je";
+        $reset_customer = "update volunteers set customer_pass='123' where customer_id='$c_id'";
 
-        $mailer->sendEmail($c_email, $subject, [
-            "Vaša lozinka je poslata.",
-            "Dragi $c_name ",
-            "vaša lozinka je <b>$c_pass</b>.",
-            "<a href='checkout.php'>Kliknite ovde da bi pristupili vašem nalogu</a>"
-        ], $from);
+        $run_customer = mysqli_query($con, $reset_customer);
+        if ($run_customer) {
+            $from = "vojislavp@gmail.com";
 
-        echo "<script> alert('Vaša lozinka je poslata, proverite vaš email ') </script>";
+            $subject = "Promena lozinke";
 
-        echo "<script>window.open('checkout.php','_self')</script>";
+            $mailer->sendEmail($c_email, $subject, [
+                "Dragi $c_name ",
+                "Vaša lozinka je: 123",
+                "Cim se prijavite mozete je promeniti. "
+            ], $from);
+
+            echo "<script> alert('Vaša lozinka je poslata, proverite vaš email ') </script>";
+
+            echo "<script>window.open('checkout.php','_self')</script>";
+        }
     }
 }
 
