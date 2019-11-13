@@ -105,6 +105,8 @@ require_once __DIR__.'/../app/bootstrap.php';
                                 <i class="fa fa-pencil"></i>
                                 Izmeni
                             </a>
+                        <?php elseif(!$hours && is_null($wishlist->getHoursApproved())) : ?>
+
                         <?php else : ?>
                             Gotovo
                         <?php endif ?>
