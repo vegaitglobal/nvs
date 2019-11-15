@@ -74,7 +74,7 @@ include("nav.php");
 
 <center>
 
-<h3> Unesite vašu Email adresu, mi ćemo vam poslati privremenu lozinku </h3>
+<h3> Unesite vašu Email adresu, mi ćemo vam poslati link za kreiranje nove lozinke</h3>
 
 </center>
 
@@ -139,25 +139,31 @@ if (isset($_POST['forgot_pass'])) {
 
         exit();
     } else {
+        $token = uniqid(rand(5,15),1);
 
-        $reset_customer = "update volunteers set customer_pass='123' where customer_id='$c_id'";
+        $hours = time() + (1 * 24 * 60 * 60);
+        $expDate = date("Y-m-d H:i:s", $hours);
 
-        $run_customer = mysqli_query($con, $reset_customer);
-        if ($run_customer) {
+        $insert_temp_pass = "insert into password_reset_temp (email,token,expDate) values ('$c_email','$token','$expDate')";
+
+        $run_temp_pass = mysqli_query($con, $insert_temp_pass);
+        if($run_temp_pass) {
             $from = "vojislavp@gmail.com";
 
             $subject = "Promena lozinke";
 
             $mailer->sendEmail($c_email, $subject, [
-                "Dragi $c_name ",
-                "Vaša lozinka je: 123",
-                "Cim se prijavite mozete je promeniti. "
+                "Zdravo $c_name, ",
+                'Kliknite <a href="' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '">ovde</a> da biste promenili lozinku ili na link ispod:',
+                '<a href="' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '">' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '</a>',
+                '<br>Pozdrav,'
             ], $from);
 
             echo "<script> alert('Vaša lozinka je poslata, proverite vaš email ') </script>";
 
             echo "<script>window.open('checkout.php','_self')</script>";
         }
+
     }
 }
 

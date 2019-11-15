@@ -1,20 +1,20 @@
 <?php
 $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
 ?>
- 
+
     <style type="text/css">
         @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic);
 
         body,
         select,
-       /*  
-    
+       /*
+
         form .row .add .dugme-over, */
          div {
             font-family: "Open Sans", sans-serif !important;
         }
 
-        
+
         #bittop .social {
             float: none;
             position: absolute;
@@ -114,7 +114,7 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
         #accounts .display.features #features_block_hack .feature.full-width .body h3 {
             font-size: 19px;
         }
-        
+
         footer {
             background:url(./images/topband_pattern.jpg);
         }
@@ -136,14 +136,14 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
             }
         }
 
-                 
+
         #accounts .display.features div.wrapper .oppcategory:hover {
             background-color: #F78715;
         }
 
-       
 
-       
+
+
 
         a.dugme,
         input.dugme,
@@ -172,8 +172,8 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
         }
 
     </style>
-    
- 
+
+
 
 
 <div id="accounts" class="displaymode" style="zoom: 1;">
@@ -181,7 +181,7 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
         <div id="header">
             <div class="mod_site_title">
                 <div class="kontainer">
-                    
+
                     <div id="bittop" class="cf">
                         <div id="account-links">
                             <div class="social-links-top">
@@ -189,7 +189,7 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                                 <a href="https://www.facebook.com/nsvolonterskiservis" target="_blank"><img class="social-top" src="images/icon-facebook.png" alt="Facebook"></a>
                                 <a href="https://www.instagram.com/nsvolonterskiservis" target="_blank"><img class="social-top" src="images/icon-instagram.png" alt="Instagram"></a>-->
                                 <?php
-                                  
+
                                 if (!isset($_SESSION['customer_email'])) {
                                     //echo  "<a class='dugme' href='' >Dobrodošli :Gost</a>";
                                 } else {
@@ -199,9 +199,9 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                                 ?>
                             </div>
                             <div class="account-dugmes-top">
-                            
+
                                 <?php
-                                
+
                                 if (!isset($_SESSION['customer_email'])) {
                                     echo "<a class='dugme' href='customer_register.php' >Registracija</a>";
                                     echo "<a class='dugme' href='checkout.php' >Prijava</a>";
@@ -210,13 +210,13 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                                 }
 
                                 ?>
-                            
+
                             </div>
                         </div>
                         <div id="logo">
                             <a href="index.php"><img  src="images/logo_large.png" alt="NVS" title="NVS" /></a>
                         </div>
-                        
+
                         <script type="text/javascript">
                            /* var $jq = jQuery.noConflict();*/
                             $(document).ready(function() {
@@ -229,17 +229,17 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                             });
 
                         </script>
-                        
+
                         <nav id="responsive-nav" class="cf">
                             <div class="nav-dugmes">
                                 <div class="nav-stack"><img src="images/cos-nav-stack.png" alt="Navigation"></div>
                             </div>
                             <div class="account-dugmes">
                                 <div id="mobile-account-links">
-                                    
+
                                     <div class="account-dugmes-top">
                                 <?php
-                                
+
                                 if (!isset($_SESSION['customer_email'])) {
                                     echo "<a class='dugme' href='customer_register.php' >Registracija</a>";
                                     echo "<a class='dugme' href='checkout.php' >Prijava</a>";
@@ -260,35 +260,35 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                             } else {
                                 echo "<li class=' parent'>";
                             }
-                            ?>        
+                            ?>
                                 <a  class="tab" href="shop.php">Volonterske ponude</a></li>
-                            
+
                             <?php
                             if ($page=="org") {
                                 echo "<li class='selected'>";
                             } else {
                                 echo "<li class=' parent'>";
                             }
-                            ?>                            
+                            ?>
                                 <a  class="tab" href="org.php">Organizacije</a></li>
-                            
-                            
+
+
                             <?php
                             if ($page=="blog") {
                                 echo "<li class='selected'>";
                             } else {
                                 echo "<li class=' parent'>";
                             }
-                            ?> 
+                            ?>
                                 <a  class="tab" href="blog.php">Blog</a></li>
-                                
+
                             <?php
                             if ($page=="about" or $page=="services" or $page=="contact") {
                                 echo "<li class='selected'>";
                             } else {
                                 echo "<li class=' parent'>";
                             }
-                            ?>   
+                            ?>
                                 <a  class="tab" href="javascript:void(0)">O nama</a>
                                 <ul id="">
                                     <li><a id="" href="about.php">NVS</a></li>
@@ -298,13 +298,13 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                                 </ul>
                             </li>
                         </ul>
-                        
+
                     </div>
                 </div>
             </div>
 
         </div><!-- end #header -->
-        
+
         <div id="kontainer">
             <div id="wrapper">
                 <div id="kontent">
@@ -354,17 +354,20 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                             if ($page=="forgot_pass") {
                                 echo "<h1>Nova lozinka</h1>";
                             }
+                            if ($page=="reset-password" || strpos($page, 'token')) {
+                                echo "<h1>Nova lozinka</h1>";
+                            }
                             ?>
-                                        
+
                                       <!--  <div id="header_join_dugme"><a class="dugme" href="customer_register.php">PRIKLJUČI SE</a></div> -->
                                     </div>
 
                                     <div class="inner cf"></div>
-                                    
-                                    
+
+
                                 </div>
                             </div>
-    
+
 
 
                         </div><!-- end .content -->
@@ -374,6 +377,6 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
             </div><!-- end #main -->
         </div><!-- end #content -->
     </div><!-- end #wrapper -->
-   
+
    </div>
    <div style="clear:both;"></div>
