@@ -44,7 +44,58 @@ require_once __DIR__.'/app/bootstrap.php';
 include("nav.php");
 ?>
 
+<?php
+$success = false;
+if (isset($_POST['forgot_pass'])) {
+    $c_email = escape($_POST['c_email']);
 
+    $sel_c = "select * from volunteers where customer_email='$c_email'";
+
+    $run_c = mysqli_query($con, $sel_c);
+
+    $count_c = mysqli_num_rows($run_c);
+
+    $row_c = mysqli_fetch_array($run_c);
+
+    $c_name = $row_c['customer_name'];
+
+    $c_id = $row_c['customer_id'];
+
+    $c_pass = $row_c['customer_pass'];
+
+    if ($count_c == 0) {
+        echo "<script> alert('Žao nam je, vaš email nije u našoj evidenciji') </script>";
+
+       // exit();
+    } else {
+        $token = uniqid(rand(5,15),1);
+
+        $hours = time() + (1 * 24 * 60 * 60);
+        $expDate = date("Y-m-d H:i:s", $hours);
+
+        $insert_temp_pass = "insert into password_reset_temp (email,token,expDate) values ('$c_email','$token','$expDate')";
+
+        $run_temp_pass = mysqli_query($con, $insert_temp_pass);
+        if($run_temp_pass) {
+            $from = "vojislavp@gmail.com";
+
+            $subject = "Promena lozinke";
+
+            $mailer->sendEmail($c_email, $subject, [
+                "Zdravo $c_name, ",
+                'Kliknite <a href="' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '">ovde</a> da biste promenili lozinku ili na link ispod:',
+                '<a href="' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '">' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '</a>',
+                '<br>Pozdrav,'
+            ], $from);
+
+            $success = true;
+
+        }
+
+    }
+}
+
+?>
 
 <div id="content" ><!-- content Starts -->
 <div class="container" ><!-- container Starts -->
@@ -68,6 +119,12 @@ include("nav.php");
 
 <div class="col-md-12" ><!-- col-md-12 Starts -->
 
+
+<?php if($success){
+    echo '<div class="alert alert-success fade in">
+          Poslali smo link za kreiranje nove lozinke na vaš email.
+          </div>';
+    } else{ ?>
 <div class="box"><!-- box Starts -->
 
 <div class="box-header"><!-- box-header Starts -->
@@ -95,7 +152,7 @@ include("nav.php");
 </div><!-- center div Ends -->
 
 </div><!-- box Ends -->
-
+    <?php } ?>
 </div><!-- col-md-12 Ends -->
 
 
@@ -114,58 +171,4 @@ include("includes/footer.php");
 
 </body>
 </html>
-
-<?php
-
-if (isset($_POST['forgot_pass'])) {
-    $c_email = escape($_POST['c_email']);
-
-    $sel_c = "select * from volunteers where customer_email='$c_email'";
-
-    $run_c = mysqli_query($con, $sel_c);
-
-    $count_c = mysqli_num_rows($run_c);
-
-    $row_c = mysqli_fetch_array($run_c);
-
-    $c_name = $row_c['customer_name'];
-
-    $c_id = $row_c['customer_id'];
-
-    $c_pass = $row_c['customer_pass'];
-
-    if ($count_c == 0) {
-        echo "<script> alert('Žao nam je, vaš email nije u našoj evidenciji') </script>";
-
-        exit();
-    } else {
-        $token = uniqid(rand(5,15),1);
-
-        $hours = time() + (1 * 24 * 60 * 60);
-        $expDate = date("Y-m-d H:i:s", $hours);
-
-        $insert_temp_pass = "insert into password_reset_temp (email,token,expDate) values ('$c_email','$token','$expDate')";
-
-        $run_temp_pass = mysqli_query($con, $insert_temp_pass);
-        if($run_temp_pass) {
-            $from = "vojislavp@gmail.com";
-
-            $subject = "Promena lozinke";
-
-            $mailer->sendEmail($c_email, $subject, [
-                "Zdravo $c_name, ",
-                'Kliknite <a href="' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '">ovde</a> da biste promenili lozinku ili na link ispod:',
-                '<a href="' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '">' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '</a>',
-                '<br>Pozdrav,'
-            ], $from);
-
-            echo "<script> alert('Vaša lozinka je poslata, proverite vaš email ') </script>";
-
-            echo "<script>window.open('checkout.php','_self')</script>";
-        }
-
-    }
-}
-
-?>
 
