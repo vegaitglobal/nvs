@@ -50,6 +50,12 @@ text-transform: uppercase;
   margin-top: 0;
 }
 
+@media (max-width: 767px) {
+	.manifestation-container {
+		padding-left: 18px;
+	}
+}
+
 .manifestation-container > p{
   font-weight: 600;
 }
@@ -58,6 +64,8 @@ text-transform: uppercase;
   background-color: #fff;
   border-radius: 10px;
   border: 0;
+  white-space: nowrap;
+  overflow-x: scroll;
 }
 
 .manifestation-container > .table-responsive > table > tbody > tr > td{
@@ -69,12 +77,21 @@ text-transform: uppercase;
   padding: 0 10px;
 }
 
+.manifestation-container .btn-link {
+	padding: 0;
+}
+
 .manifestation-name {
   background-color: rgb(255,218,127);
 }
 
-.volunteering-pdf {
+.volunteering-pdf, .volunteering-pdf:focus {
   background-color: rgb(85,85,85);
+  color: white;
+}
+
+.volunteering-pdf:hover {
+  background-color: #777;
   color: white;
 }
 
@@ -194,7 +211,7 @@ color:black
  .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     color: #555;
     background-color: #FFDEAD;
-    
+
 }
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
@@ -301,7 +318,7 @@ z-index:2;
 
 /* Products Styles  */
 
- 
+
 
 #hot h2 {
 text-transform: uppercase;
@@ -515,7 +532,7 @@ padding: 15px;
 }
 
  .biggertext {
-     
+
      font-size: large;
 }
 
@@ -562,7 +579,7 @@ text-align:center;
 }
 @media (max-width: 768px) {
 
-    
+
 .center-responsive {
 width:70%;
 margin:0 auto;
@@ -673,7 +690,7 @@ color: #999999;
  font-size: 18px;
  color:#555555;
  font-weight: 700;
- 
+
  }
 
 
@@ -1019,13 +1036,13 @@ width:90%;
   display:         flex;
   flex-wrap: wrap;
 }
- 
+
 .flex {
   display: flex;
     -webkit-flex: 1; /* Safari 6.1+ */
     -ms-flex: 1; /* IE 10 */
     flex: 1;
-   
+
 }
 
 .navbar#top .btn-default {
@@ -1041,7 +1058,7 @@ width:90%;
 
 .navbar {
   border: none;
-  border-radius: 0px 
+  border-radius: 0px
 }
 
 .lead {
@@ -1057,8 +1074,8 @@ width:90%;
 }
 
 #panel.panel .panel-heading {
-  background-color: #fff; 
-  border-radius: 8px 8px 0px 0px; 
+  background-color: #fff;
+  border-radius: 8px 8px 0px 0px;
 }
 
 .panel .container-fluid form {
@@ -1099,7 +1116,7 @@ width:90%;
 }
 
 #user_panel .col-md-8 p {
-  font-size: 13px; 
+  font-size: 13px;
   color: #ffb800;
   font-weight: 400;
   padding: 0px;
@@ -1107,19 +1124,30 @@ width:90%;
 }
 
 #user_panel .col-md-8 h3 {
-  font-size: 18px; 
-  color: #000; 
+  font-size: 18px;
+  color: #000;
   font-weight: 500;
   padding: 0px;
   margin: 0px
 }
 
 .col-md-3 hr {
-  margin: 0px 7px; 
+  margin: 0px 7px;
   padding: 0px;
   border-width: 2px;
 }
 
 h1 {
     text-transform: uppercase;
+}
+
+/* Volonterska knjizica */
+.form-group .btn:first-of-type {
+	margin-right: 10px;
+}
+
+@media (max-width: 991px) {
+	.panel-heading-title {
+		font-size: 28px;
+	}
 }

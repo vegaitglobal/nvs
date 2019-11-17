@@ -4,7 +4,7 @@ require_once __DIR__.'/../app/bootstrap.php';
 
 ?>
 <div class="panel-heading">
-    <h1> Moja Volonterska Knjižica</h1
+    <h1 class="panel-heading-title"> Moja Volonterska Knjižica</h1
 </div>
 <div class="manifestation-container"><!-- manifestation-container Starts -->
 

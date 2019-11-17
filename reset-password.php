@@ -83,7 +83,7 @@ include("nav.php");
 
                                     <div class="form-group"><!-- form-group Starts -->
 
-                                        <label>Unesite novu lozinku</label>
+                                        <label class="form-group-label" style="float: left;">Unesite novu lozinku</label>
 
                                         <input type="text" name="new_pass" class="form-control" required="">
 
