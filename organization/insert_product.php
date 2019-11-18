@@ -5,7 +5,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 } else {
     $man_email=$_SESSION['manufacturer_email'];
     $man_id=$_SESSION['manufacturer_id'];
-    
+
     ?>
 
 
@@ -28,7 +28,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 </div><!-- row Ends -->
 
 
-<div class="row"><!-- 2 row Starts --> 
+<div class="row"><!-- 2 row Starts -->
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
@@ -307,7 +307,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
 </div><!-- col-lg-12 Ends -->
 
-</div><!-- 2 row Ends --> 
+</div><!-- 2 row Ends -->
 
 
     <?php
@@ -343,12 +343,12 @@ if (!isset($_SESSION['manufacturer_email'])) {
         $temp_name2 = $_FILES['product_img2']['tmp_name'];
         $temp_name3 = $_FILES['product_img3']['tmp_name'];
 
-    
 
-        $insert_product = "insert into products (cat_id,manufacturer_id,date,product_title,product_url,product_img1,product_img2,product_img3,product_kolicina,product_desc,product_features,product_video,product_keywords,product_label,status,product_lokacija,product_od,product_do) values ('$cat','$manufacturer_id',NOW(),'$product_title','$product_url','$product_img1','$product_img2','$product_img3','$product_kolicina','$product_desc','$product_features','$product_video','$product_keywords','$product_label','$status','$product_lokacija','$product_od','$product_do')";
+
+        $insert_product = "insert into products (cat_id,manufacturer_id,date,product_title,product_url,product_img1,product_img2,product_img3,product_kolicina,product_desc,product_features,product_video,product_keywords,product_label,status,product_lokacija,product_od,product_do,p_cat_id) values ('$cat','$manufacturer_id',NOW(),'$product_title','$product_url','$product_img1','$product_img2','$product_img3','$product_kolicina','$product_desc','$product_features','$product_video','$product_keywords','$product_label','$status','$product_lokacija','$product_od','$product_do','0')";
 
         $run_product = mysqli_query($con, $insert_product);
-    
+
 
         if ($run_product) {
             move_uploaded_file($temp_name1, "../admin_area/product_images/$product_img1");
