@@ -56,6 +56,11 @@ text-transform: uppercase;
 	}
 }
 
+.manifestation-container .table-link {
+  vertical-align: 100%;
+  margin-left: 5px;
+}
+
 .manifestation-container > p{
   font-weight: 600;
 }
@@ -72,6 +77,11 @@ text-transform: uppercase;
   border: none;
 }
 
+.manifestation-container > .table-responsive > table > tbody > tr > td:nth-child(2){
+  display: flex;
+  align-items: center;
+}
+
 .manifestation-container .btn{
   border-radius: 10px;
   padding: 0 10px;
@@ -79,6 +89,15 @@ text-transform: uppercase;
 
 .manifestation-container .btn-link {
 	padding: 0;
+}
+
+.manifestation-container .table-img {
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .manifestation-name {

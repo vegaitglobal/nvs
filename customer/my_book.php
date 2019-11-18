@@ -51,11 +51,13 @@ require_once __DIR__.'/../app/bootstrap.php';
 
                     <td style="vertical-align:middle" >
 
-                        <img src="../admin_area/product_images/<?php echo $product->getImg1(); ?>" width="60" height="60">
+                        <div class="table-img" style="background-image: url('../admin_area/product_images/<?php echo $product->getImg1(); ?>');">
+
+						</div>
 
                         &nbsp;&nbsp;&nbsp;
 
-                        <a href="../pozicija-<?php echo $product->getUrl(); ?>">
+                        <a href="../pozicija-<?php echo $product->getUrl(); ?>" class="table-link">
 
                             <?php echo $product->getTitle(); ?>
 
