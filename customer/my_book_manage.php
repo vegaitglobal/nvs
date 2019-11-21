@@ -32,7 +32,9 @@ if (!$wishlist) {
 
 if (isset($_POST['hours'])) {
     $hours = $_POST['hours'];
-
+    if(!ctype_digit($hours)){
+        $alertsService->addAlert('danger', 'Morate uneti ceo broj');
+    }
     if (!$alertsService->hasAlerts()) {
         $hoursChanged = $wishlist->getHours() !== (int)$hours;
 
