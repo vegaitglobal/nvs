@@ -70,7 +70,8 @@ text-transform: uppercase;
   border-radius: 10px;
   border: 0;
   white-space: nowrap;
-  overflow-x: scroll;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .manifestation-container > .table-responsive > table > tbody > tr > td{
