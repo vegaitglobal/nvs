@@ -318,10 +318,7 @@ $page = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
                             if ($page=="shop") {
                                 echo "<h1>Najnovije volonterske pozicije</h1>";
                             }
-                            if (strpos($page, 'ponuda') !== false) {
-                                echo "<h1>Detalji ponude</h1>";
-                            }
-                            if (strpos($page, 'pozicija') !== false) {
+                            if (strpos($page, 'ponuda') !== false || strpos($page, 'pozicija') !== false) {
                                 echo "<h1>Detalji ponude</h1>";
                             }
                             if ($page=="org") {

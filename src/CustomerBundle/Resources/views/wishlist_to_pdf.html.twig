@@ -89,7 +89,7 @@
         Ovim se potvrđuje da je <strong>{{ wishlist.volunteer.name }}</strong>
         volontirao na manifestaciji <strong>{{ wishlist.product.title }}</strong>
         koja se održala <strong>{{ wishlist.product.od | date('d. m. Y.') }}</strong>
-        {% if wishlist.product %}
+        {% if wishlist.product.lokacija %}
             u mestu <strong>{{ wishlist.product.lokacija }}</strong>
         {% endif %}
         u organizaciji <strong>{{ wishlist.product.organization.title }}</strong>.
