@@ -16,6 +16,12 @@ if (!isset($_SESSION['admin_email'])) {
         $wishlist = $entityManager->getRepository('Wishlist')->findOneBy([
             'id' => $wishlistData['id']
         ]);
+        if(!ctype_digit($wishlistData['hours'])){
+            echo "<script>alert('Morate uneti ceo broj')</script>";
+            $id = $wishlistData['id'];
+            echo "<script>window.open('index.php?path=edit_hours&id=$id','_self')</script>";
+            exit();
+        }
 
         $wishlist->setHours(intval($wishlistData['hours']));
         $wishlist->setHoursApproved(intval(boolval($wishlistData['hours_approved'])));
