@@ -74,6 +74,28 @@ text-transform: uppercase;
   -webkit-overflow-scrolling: touch;
 }
 
+.manifestation-container > .table-responsive > table::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.manifestation-container > .table-responsive > table::-webkit-scrollbar:vertical {
+   width: 10px;
+}
+
+.manifestation-container > .table-responsive > table::-webkit-scrollbar:horizontal {
+   height: 10px;
+}
+
+.manifestation-container > .table-responsive > table::-webkit-scrollbar-thumb {
+   background-color: rgb(214, 59, 59);
+   border-radius: 10px;
+   border: 2px solid rgb(180, 30, 30);
+}
+
+.manifestation-container > .table-responsive > table::-webkit-scrollbar-track {
+   background-color: rgb(231, 30, 30);
+}
+
 .manifestation-container > .table-responsive > table > tbody > tr > td{
   border: none;
 }
