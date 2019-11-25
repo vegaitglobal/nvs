@@ -44,7 +44,7 @@ if (isset($_POST['hours'])) {
             $entityManager->persist($wishlist);
             $entityManager->flush();
 
-            if(is_null($hoursApproved)){
+            if(is_null($hoursApproved) || !$hoursChanged){
                 $alertsService->addAlert('success', 'Sati uspešno snimljeni');
             }else{
                 $alertsService->addAlert('success', 'Vaše izmene su poslate administratoru');
