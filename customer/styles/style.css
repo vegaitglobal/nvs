@@ -53,6 +53,7 @@ text-transform: uppercase;
 @media (max-width: 767px) {
 	.manifestation-container {
 		padding-left: 18px;
+		padding-right: 18px;
 	}
 }
 
@@ -62,7 +63,10 @@ text-transform: uppercase;
 }
 
 .manifestation-container > p{
-  font-weight: 600;
+	margin-bottom: 20px;
+	font-size: 15px;
+	font-weight: 300;
+	line-height: 1.4;
 }
 
 .manifestation-container > .table-responsive > table{
@@ -71,29 +75,28 @@ text-transform: uppercase;
   border: 0;
   white-space: nowrap;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
-.manifestation-container > .table-responsive > table::-webkit-scrollbar {
-    -webkit-appearance: none;
+.manifestation-container > .table-responsive::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
 }
 
-.manifestation-container > .table-responsive > table::-webkit-scrollbar:vertical {
-   width: 10px;
+/* Track */
+.manifestation-container > .table-responsive::-webkit-scrollbar-track {
+  background-color: #eee;
+  border-radius: 10px;
 }
 
-.manifestation-container > .table-responsive > table::-webkit-scrollbar:horizontal {
-   height: 10px;
+/* Handle */
+.manifestation-container > .table-responsive::-webkit-scrollbar-thumb {
+  background-color: rgb(255,218,127);
+  border-radius: 10px;
 }
 
-.manifestation-container > .table-responsive > table::-webkit-scrollbar-thumb {
-   background-color: rgb(214, 59, 59);
-   border-radius: 10px;
-   border: 2px solid rgb(180, 30, 30);
-}
-
-.manifestation-container > .table-responsive > table::-webkit-scrollbar-track {
-   background-color: rgb(231, 30, 30);
+/* Handle on hover */
+.manifestation-container > .table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #ffb800;
 }
 
 .manifestation-container > .table-responsive > table > tbody > tr > td{
