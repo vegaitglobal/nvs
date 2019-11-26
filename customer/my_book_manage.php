@@ -33,18 +33,23 @@ if (!$wishlist) {
 if (isset($_POST['hours'])) {
     $hours = $_POST['hours'];
     if(!ctype_digit($hours)){
-        $alertsService->addAlert('danger', 'Morate uneti ceo broj');
+        $alertsService->addAlert('danger', 'Unesite broj koristeći isključivo cifre od 0 do 9.');
     }
     if (!$alertsService->hasAlerts()) {
         $hoursChanged = $wishlist->getHours() !== (int)$hours;
-
+        $hoursApproved = $wishlist->getHoursApproved();
         $wishlist->setHours($hours);
 
         try {
             $entityManager->persist($wishlist);
             $entityManager->flush();
 
-            $alertsService->addAlert('success', 'Sati uspešno snimljeni');
+            if(is_null($hoursApproved) || !$hoursChanged){
+                $alertsService->addAlert('success', 'Sati uspešno snimljeni');
+            }else{
+                $alertsService->addAlert('success', 'Vaše izmene su poslate administratoru');
+            }
+
 
             if ($hoursChanged) {
                 $emailSubject = 'Volonter ' . $customer_name . ' je uneo ' . $hours . ' sati za događaj ' . $product->getTitle();
