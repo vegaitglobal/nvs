@@ -33,7 +33,7 @@ if (!$wishlist) {
 if (isset($_POST['hours'])) {
     $hours = $_POST['hours'];
     if(!ctype_digit($hours)){
-        $alertsService->addAlert('danger', 'Morate uneti ceo broj');
+        $alertsService->addAlert('danger', 'Unesite broj koristeći isključivo cifre od 0 do 9.');
     }
     if (!$alertsService->hasAlerts()) {
         $hoursChanged = $wishlist->getHours() !== (int)$hours;

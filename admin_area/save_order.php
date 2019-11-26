@@ -17,7 +17,7 @@ if (!isset($_SESSION['admin_email'])) {
             'id' => $wishlistData['id']
         ]);
         if(!ctype_digit($wishlistData['hours'])){
-            echo "<script>alert('Morate uneti ceo broj')</script>";
+            echo "<script>alert('Unesite broj koristeći isključivo cifre od 0 do 9.')</script>";
             $id = $wishlistData['id'];
             echo "<script>window.open('index.php?path=edit_hours&id=$id','_self')</script>";
             exit();
