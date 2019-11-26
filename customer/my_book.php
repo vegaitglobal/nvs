@@ -13,6 +13,15 @@ require_once __DIR__.'/../app/bootstrap.php';
     <div class="table-responsive"><!-- table-responsive Starts -->
 
         <table class="table table-bordered table-hover"><!-- table table-bordered table-hover Starts -->
+			<thead>
+				<tr>
+					<th>Broj:</th>
+					<th>Pozicija</th>
+					<th>Sati</th>
+					<th>Status</th>
+					<th>Izbriši</th>
+				</tr>
+			</thead>
 
             <tbody>
 

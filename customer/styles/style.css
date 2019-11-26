@@ -45,36 +45,59 @@ text-transform: uppercase;
 
 .manifestation-container{
   background-color: rgb(255,249,235);
-  padding: 10px 5px 30px 50px;
+  padding: 15px;
   margin: -15px;
   margin-top: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 @media (max-width: 767px) {
 	.manifestation-container {
-		padding-left: 18px;
-		padding-right: 18px;
+		padding-left: 30px;
+		padding-right: 30px;
 	}
 }
 
 .manifestation-container .table-link {
-  vertical-align: 100%;
+  vertical-align: middle;
   margin-left: 5px;
 }
 
-.manifestation-container > p{
+.manifestation-container > p {
 	margin-bottom: 20px;
+	margin-left: 15px;
 	font-size: 15px;
 	font-weight: 300;
 	line-height: 1.4;
 }
 
-.manifestation-container > .table-responsive > table{
+@media (max-width: 767px) {
+	.manifestation-container > p {
+		margin-left: 0;
+	}
+}
+
+.manifestation-container > .table-responsive {
+	background-color: rgb(255,249,235) !important;
+	padding: 5px 15px !important;
+}
+
+@media (max-width: 767px) {
+	.manifestation-container > .table-responsive {
+		padding: 0 !important;
+	}
+}
+
+.manifestation-container > .table-responsive > table {
   background-color: #fff;
-  border-radius: 10px;
   border: 0;
   white-space: nowrap;
   overflow-x: auto;
+}
+
+.manifestation-container > .table-responsive > table th {
+	border-top: 1px solid #ddd !important;
 }
 
 .manifestation-container > .table-responsive::-webkit-scrollbar {
@@ -99,15 +122,6 @@ text-transform: uppercase;
   background: #ffb800;
 }
 
-.manifestation-container > .table-responsive > table > tbody > tr > td{
-  border: none;
-}
-
-.manifestation-container > .table-responsive > table > tbody > tr > td:nth-child(2){
-  display: flex;
-  align-items: center;
-}
-
 .manifestation-container .btn{
   border-radius: 10px;
   padding: 0 10px;
@@ -124,6 +138,7 @@ text-transform: uppercase;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+	vertical-align: middle;
 }
 
 .manifestation-name {
