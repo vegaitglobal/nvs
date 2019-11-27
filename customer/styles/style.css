@@ -98,6 +98,11 @@ text-transform: uppercase;
 
 .manifestation-container > .table-responsive > table th {
 	border-top: 1px solid #ddd !important;
+	background-color: #fff;
+}
+
+.manifestation-container > .table-responsive > table td {
+	background-color: #fff;
 }
 
 .manifestation-container > .table-responsive::-webkit-scrollbar {
@@ -1133,6 +1138,10 @@ width:90%;
   padding: 0px;
 }
 
+.panel-body {
+	padding: 5px 30px;
+}
+
 #panel.panel .panel-heading {
   background-color: #fff;
   border-radius: 8px 8px 0px 0px;
@@ -1146,7 +1155,6 @@ width:90%;
 
 #panel.panel .table-responsive {
   background-color: #fff;
-  padding: 5px 15px;
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
