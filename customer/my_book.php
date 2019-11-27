@@ -77,6 +77,9 @@ require_once __DIR__.'/../app/bootstrap.php';
                     <?php
                         $hours = $wishlist->getHours();
                         $hours_approved = $wishlist->getHoursApproved();
+                        $endDateTwoWeeksLater = clone $product->getDo();
+                        $endDateTwoWeeksLater->add(new DateInterval('P14D'));
+                        $currentDate = new DateTime('now');
                     ?>
 
                     <td style="vertical-align:middle" >
@@ -116,7 +119,7 @@ require_once __DIR__.'/../app/bootstrap.php';
                                 <i class="fa fa-pencil"></i>
                                 Izmeni
                             </a>
-                        <?php elseif(!$hours && is_null($wishlist->getHoursApproved())) : ?>
+                        <?php elseif(!$hours && is_null($wishlist->getHoursApproved()) && $currentDate <= $endDateTwoWeeksLater) : ?>
 
                         <?php else : ?>
                             Gotovo
