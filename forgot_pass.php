@@ -83,8 +83,8 @@ if (isset($_POST['forgot_pass'])) {
 
             $mailer->sendEmail($c_email, $subject, [
                 "Zdravo $c_name, ",
-                'Kliknite <a href="' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '">ovde</a> da biste promenili lozinku ili na link ispod:',
-                '<a href="' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '">' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '</a>',
+                'Kliknite <a href="' . config('app_url') . '/reset-password.php?token=' . $token . '&email=' . $c_email . '">ovde</a> da biste promenili lozinku ili na link ispod:',
+                '<a href="' . config('app_url') . '/reset-password.php?token=' . $token . '&email=' . $c_email . '">' . config('app_url') . 'reset-password?token=' . $token . '&email=' . $c_email . '</a>',
                 '<br>Pozdrav,'
             ], $from);
 
