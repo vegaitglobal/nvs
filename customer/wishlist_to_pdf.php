@@ -41,8 +41,17 @@ if (!$wishlist) {
 
 $mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/../tmp']);
 
+
+$get_pdf_text = "select * from volunteer_booklet";
+$run_pdf_text = mysqli_query($con, $get_pdf_text);
+
+$row_pdf_text = mysqli_fetch_array($run_pdf_text);
+
+$pdf_text = $row_pdf_text['pdf_text'];
+
 $html = $twig->render('wishlist_to_pdf.html.twig', [
     'wishlist' => $wishlist,
+    'pdf' => $pdf_text
 ]);
 
 /**

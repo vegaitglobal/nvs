@@ -248,6 +248,13 @@ if (!isset($_SESSION['admin_email'])) {
                 </li>
                 <!-- about us li Ends -->
                 <li>
+                    <!-- about us li Starts -->
+                    <a href="index.php?path=edit_volunteer_booklet">
+                        <i class="fa fa-fw fa-edit"></i> Promeni Volontersku knjižicu
+                    </a>
+                </li>
+                <!-- about us li Ends -->
+                <li>
                     <!-- manufacturer li Starts -->
                     <a href="#" data-toggle="collapse" data-target="#docs">
                         <!-- anchor Starts -->

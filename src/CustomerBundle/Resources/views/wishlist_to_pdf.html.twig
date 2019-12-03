@@ -115,22 +115,23 @@
     </table>
 
     <img src="{{ _self.image_path('volontiranje-je-stvar-srca.jpg')}}">
-
-    <p class="text-muted">
-        Volontersku potvrdu možete pripojiti vašem CV-u, njome možete opisati vaše volontersko iskustvo, možete planirati druge
-        volonterske aktivnosti, možete je pokazati porodici i prijateljima, na potvrdu možete biti ponosni.
-    </p>
-    <p class="text-muted">
-        Novosadski volonterski servis (#n>s) je program organizovanja volonterskih aktivnosti u Novom Sadu koja je nastala na
-        inicijativu Evropske prestonice mladih OPENS 2019 i Fondacije „Novi Sad 2021 – Evropska prestonica kulture“. Osim pružanja
-        značajne volonterske podrške tokom realizacije aktivnosti obe prestonice, #n>s je usmeren i na sport, zdravlje i socijalnu
-        zaštitu i zaštitu životne sredine.
-    </p>
-    <p class="text-muted">
-        Svaka volonterska aktivnost je prilika za učešće, učenje, sticanje novh veština, poznanstava i upoznavanje svoje loklane
-        zajednice. Volontiranje gaji vrednosti i vrline u nama poput humanosti, solidarnosti, deljenja i razumevanja. Nudeći svoje
-        vreme, energiju i kreativnosti kroz volontiranje činite svet boljim.
-    </p>
+    {{ pdf | raw }}
+    {#<p class="text-muted">#}
+        {##}
+        {#Volontersku potvrdu možete pripojiti vašem CV-u, njome možete opisati vaše volontersko iskustvo, možete planirati druge#}
+        {#volonterske aktivnosti, možete je pokazati porodici i prijateljima, na potvrdu možete biti ponosni.#}
+    {#</p>#}
+    {#<p class="text-muted">#}
+        {#Novosadski volonterski servis (#n>s) je program organizovanja volonterskih aktivnosti u Novom Sadu koja je nastala na#}
+        {#inicijativu Evropske prestonice mladih OPENS 2019 i Fondacije „Novi Sad 2021 – Evropska prestonica kulture“. Osim pružanja#}
+        {#značajne volonterske podrške tokom realizacije aktivnosti obe prestonice, #n>s je usmeren i na sport, zdravlje i socijalnu#}
+        {#zaštitu i zaštitu životne sredine.#}
+    {#</p>#}
+    {#<p class="text-muted">#}
+        {#Svaka volonterska aktivnost je prilika za učešće, učenje, sticanje novh veština, poznanstava i upoznavanje svoje loklane#}
+        {#zajednice. Volontiranje gaji vrednosti i vrline u nama poput humanosti, solidarnosti, deljenja i razumevanja. Nudeći svoje#}
+        {#vreme, energiju i kreativnosti kroz volontiranje činite svet boljim.#}
+    {#</p>#}
 
     <table>
         <tr>
@@ -139,6 +140,7 @@
                 <img src="{{ _self.image_path('european-youth-capital.png')}}" width="auto" height="24">
             </td>
             <td align="right">
+                <img src="{{ _self.image_path('vektorski-logotip-epk.jpg')}}" width="50" height="50">
                 <img src="{{ _self.image_path('european-capital-of-culture.png')}}" width="auto" height="40">
             </td>
         </tr>

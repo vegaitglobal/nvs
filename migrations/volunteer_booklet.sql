@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS `volunteer_booklet` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `short_desc` text COLLATE utf8_unicode_ci NOT NULL,
+  `pdf_text` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `volunteer_booklet` (`id`, `short_desc`, `pdf_text`) VALUES
+(1, 'Ovo je mesto na kojem moÅ¾ete zabeleÅ¾iti vaÅ¡e volonterske sate nakon svake volonterske avanture.\r\nPosle uspeÅ¡nog unosa, moÅ¾ete odÅ¡tampati svoju jedinstvenu volontersku potvrdu.', '<p class=\"text-muted\">Volontersku potvrdu moÅ¾ete pripojiti va&scaron;em CV-u, njome moÅ¾ete opisati va&scaron;e volontersko iskustvo, moÅ¾ete planirati druge volonterske aktivnosti, moÅ¾ete je pokazati porodici i prijateljima, na potvrdu moÅ¾ete biti ponosni.</p>\r\n<p class=\"text-muted\">Novosadski volonterski servis (#n&gt;s) je program organizovanja volonterskih aktivnosti u Novom Sadu koja je nastala na inicijativu Evropske prestonice mladih OPENS 2019 i Fondacije &bdquo;Novi Sad 2021 &ndash; Evropska prestonica kulture&ldquo;. Osim pruÅ¾anja znaÄajne volonterske podr&scaron;ke tokom realizacije aktivnosti obe prestonice, #n&gt;s je usmeren i na sport, zdravlje i socijalnu za&scaron;titu i za&scaron;titu Å¾ivotne sredine.</p>\r\n<p class=\"text-muted\">Svaka volonterska aktivnost je prilika za uÄe&scaron;Ä‡e, uÄenje, sticanje novh ve&scaron;tina, poznanstava i upoznavanje svoje loklane zajednice. Volontiranje gaji vrednosti i vrline u nama poput humanosti, solidarnosti, deljenja i razumevanja. NudeÄ‡i svoje vreme, energiju i kreativnosti kroz volontiranje Äinite svet boljim.</p>');

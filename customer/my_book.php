@@ -7,8 +7,17 @@ require_once __DIR__.'/../app/bootstrap.php';
     <h1 class="panel-heading-title"> Moja Volonterska Knjižica</h1
 </div>
 <div class="manifestation-container"><!-- manifestation-container Starts -->
+<?php
+$get_volunteer_booklet = "select * from volunteer_booklet";
 
-<p>Lista prethodnih manifestacija</p>
+$run_volunteer_booklet = mysqli_query($con, $get_volunteer_booklet);
+
+$row_volunteer_booklet = mysqli_fetch_array($run_volunteer_booklet);
+
+$desc = $row_volunteer_booklet['short_desc'];
+
+    ?>
+<p><?php echo  $desc; ?></p>
 
     <div class="table-responsive"><!-- table-responsive Starts -->
 
