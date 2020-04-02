@@ -115,7 +115,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
         </div><!-- form-group Ends -->
 
-        
+
         <div class="form-group" ><!-- form-group Starts -->
 
             <label class="col-md-3 control-label" >Lokacija</label>
@@ -157,7 +157,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
             <div class="col-md-6" >
 
-                <input type="radio" name="p_cat_hrana" value="Da" 
+                <input type="radio" name="p_cat_hrana" value="Da"
                 <?php if ($p_cat_hrana == 'no') {
                 } else {
                     echo "checked='checked'";
@@ -165,7 +165,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
                 <label> Da </label>
 
-                <input type="radio" name="p_cat_hrana" value="Ne" 
+                <input type="radio" name="p_cat_hrana" value="Ne"
                 <?php if ($p_cat_hrana == 'no') {
                     echo "checked='checked'";
                 } else {
@@ -185,7 +185,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
             <div class="col-md-6" >
 
-                <input type="radio" name="p_cat_smestaj" value="Da" 
+                <input type="radio" name="p_cat_smestaj" value="Da"
                 <?php if ($p_cat_smestaj == 'no') {
                 } else {
                     echo "checked='checked'";
@@ -193,7 +193,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
                 <label> Da </label>
 
-                <input type="radio" name="p_cat_smestaj" value="Ne" 
+                <input type="radio" name="p_cat_smestaj" value="Ne"
                 <?php if ($p_cat_smestaj == 'no') {
                     echo "checked='checked'";
                 } else {
@@ -212,7 +212,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
             <div class="col-md-6" >
 
-                <input type="file" name="p_cat_image" class="form-control" >
+                <input type="file" accept="image/*" name="p_cat_image" class="form-control" >
 
                 <br>
 
@@ -255,7 +255,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
         $p_cat_image = $_FILES['p_cat_image']['name'];
 
         $temp_name = $_FILES['p_cat_image']['tmp_name'];
-  
+
 
         if (empty($p_cat_image)) {
             $p_cat_image = $new_p_cat_image;
@@ -266,7 +266,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
                 unlink($file);
             }
         }
-    
+
          move_uploaded_file($temp_name, "../admin_area/other_images/$p_cat_image");
 
         $p_cat_lokacija = escape($_POST['p_cat_lokacija']);

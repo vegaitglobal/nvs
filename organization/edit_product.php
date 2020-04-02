@@ -5,7 +5,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 } else {
     $man_email=$_SESSION['manufacturer_email'];
     $man_id=$_SESSION['manufacturer_id'];
-    
+
 
 
     if (isset($_GET['edit_product'])) {
@@ -88,7 +88,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 </div><!-- row Ends -->
 
 
-<div class="row"><!-- 2 row Starts --> 
+<div class="row"><!-- 2 row Starts -->
 
 <div class="col-lg-12"><!-- col-lg-12 Starts -->
 
@@ -141,7 +141,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
         </div><!-- form-group Ends -->
 
-  
+
 
         <div class="form-group" ><!-- form-group Starts -->
 
@@ -181,7 +181,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
             <div class="col-md-6" >
 
-                <input type="file" name="product_img1" class="form-control" >
+                <input type="file" accept="image/*" name="product_img1" class="form-control" >
                 <br><img src="../admin_area/product_images/<?php echo $p_image1; ?>" width="100" height="100" >
 
             </div>
@@ -194,11 +194,11 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
             <div class="col-md-6" >
 
-                <input type="file" name="product_img2" class="form-control" >
+                <input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="product_img2" class="form-control" >
                 <br><a class="btn btn-primary" href="<?php if (!empty($p_image2)) {
                     echo "../admin_area/product_images/".$p_image2;
                                                      } ?>">
-               <?php echo $p_image2; ?> 
+               <?php echo $p_image2; ?>
                 </a>
 
             </div>
@@ -211,11 +211,11 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
             <div class="col-md-6" >
 
-                <input type="file" name="product_img3" class="form-control" >
+                <input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="product_img3" class="form-control" >
                 <br><a class="btn btn-primary " href="<?php if (!empty($p_image3)) {
                     echo "../admin_area/product_images/".$p_image3;
                                                       } ?>">
-                   <?php echo $p_image3; ?> 
+                   <?php echo $p_image3; ?>
                 </a>
 
             </div>
@@ -377,7 +377,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
 </div><!-- col-lg-12 Ends -->
 
-</div><!-- 2 row Ends --> 
+</div><!-- 2 row Ends -->
 
 
 

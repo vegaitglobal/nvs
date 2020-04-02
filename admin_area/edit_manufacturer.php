@@ -230,7 +230,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-md-6">
 
-<input type="file" name="manufacturer_image" class="form-control" >
+<input type="file" accept="image/*" name="manufacturer_image" class="form-control" >
 
 <br>
 

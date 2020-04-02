@@ -204,7 +204,7 @@ if (!isset($_SESSION['admin_email'])) {
         <div class="col-md-6" >
 
            <div class="col-md-6">
-             <input  type="file" name="image" value="<?php echo $post_image ?>">
+             <input  type="file" accept="image/*" name="image" value="<?php echo $post_image ?>">
               </div>
             <div class="col-md-6">
             <img width="200" src="blogs_images/<?php echo $post_image; ?>" alt="">

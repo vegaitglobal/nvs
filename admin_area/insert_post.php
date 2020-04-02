@@ -130,7 +130,7 @@ if (!isset($_SESSION['admin_email'])) {
      <div class="form-group" ><!-- form-group Starts -->
         <label class="col-md-3 control-label" >Slika</label>
         <div class="col-md-6" >
-            <input type="file" name="image" class="form-control" required >
+            <input type="file" accept="image/*" name="image" class="form-control" required >
         </div>
     </div><!-- form-group Ends -->
 

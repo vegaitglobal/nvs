@@ -5,7 +5,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 } else {
     $man_email=$_SESSION['manufacturer_email'];
     $man_id=$_SESSION['manufacturer_id'];
-    
+
     ?>
     <div class="row"><!-- 1 row Starts -->
 
@@ -70,7 +70,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
         </div><!-- form-group Ends -->
 
- 
+
         <div class="form-group" ><!-- form-group Starts -->
 
             <label class="col-md-3 control-label" >Lokacija</label>
@@ -150,7 +150,7 @@ if (!isset($_SESSION['manufacturer_email'])) {
 
             <div class="col-md-6" >
 
-                <input type="file" name="p_cat_image" class="form-control" >
+                <input type="file" accept="image/*" name="p_cat_image" class="form-control" >
 
             </div>
 

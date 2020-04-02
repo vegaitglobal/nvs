@@ -82,7 +82,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         <div class="col-md-6" >
 
-            <input type="file" name="docs_doc" class="form-control" >
+            <input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="docs_doc" class="form-control" >
             <br><a  href="<?php if (!empty($d_doc)) {
                 echo "../docs/".$d_doc;
                           } ?>">

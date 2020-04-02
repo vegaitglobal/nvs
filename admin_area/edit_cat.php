@@ -57,7 +57,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <h3 class="panel-title"><!-- panel-title Starts -->
 
-<i class="fa fa-money fa-fw"></i> Uredi oblasti 
+<i class="fa fa-money fa-fw"></i> Uredi oblasti
 
 </h3><!-- panel-title Ends -->
 
@@ -85,7 +85,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-md-6">
 
-<input type="radio" name="cat_top" value="yes" 
+<input type="radio" name="cat_top" value="yes"
     <?php if ($c_top == 'no') {
     } else {
         echo "checked='checked'";
@@ -93,7 +93,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <label>Da</label>
 
-<input type="radio" name="cat_top" value="no" 
+<input type="radio" name="cat_top" value="no"
     <?php if ($c_top == 'no') {
         echo "checked='checked'";
     } else {
@@ -111,7 +111,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-md-6">
 
-<input type="file" name="cat_image" class="form-control">
+<input type="file" accept="image/*" name="cat_image" class="form-control">
 
 <br>
 
@@ -155,7 +155,7 @@ if (!isset($_SESSION['admin_email'])) {
 
         $temp_name = $_FILES['cat_image']['tmp_name'];
 
-        
+
 
         if (empty($cat_image)) {
             $cat_image= $new_c_image;
@@ -166,7 +166,7 @@ if (!isset($_SESSION['admin_email'])) {
                   unlink($file);
             }
         }
-    
+
         move_uploaded_file($temp_name, "other_images/$cat_image");
 
         $update_cat = "update categories set cat_title='$cat_title',cat_top='$cat_top',cat_image='$cat_image' where cat_id='$c_id'";

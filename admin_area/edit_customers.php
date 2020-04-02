@@ -281,7 +281,7 @@ if (!isset($_SESSION['admin_email'])) {
             <label class="col-md-3 control-label"> Slika: </label>
 
            <div class="col-md-6" >
-            <input type="file" name="c_image" class="form-control"  ><br>
+            <input type="file" accept="image/*" name="c_image" class="form-control"  ><br>
 
             <img src="../customer/customer_images/<?php echo $customer_image; ?>" width="100" height="100" class="img-responsive" >
 
@@ -293,7 +293,7 @@ if (!isset($_SESSION['admin_email'])) {
         <label class="col-md-3 control-label" > CV :</label>
 
        <div class="col-md-6" >
-        <input type="file" name="c_cv" class="form-control" > <br>
+        <input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="c_cv" class="form-control" > <br>
         <a href="<?php if (!empty($customer_cv)) {
             echo "../customer/customer_images/".$customer_cv;
                  } ?>" ><?php echo $customer_cv; ?></a>
@@ -307,7 +307,7 @@ if (!isset($_SESSION['admin_email'])) {
         <label class="col-md-3 control-label" > Motivaciono pismo:</label>
 
        <div class="col-md-6" >
-        <input type="file" name="c_motiv" class="form-control" > <br>
+        <input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="c_motiv" class="form-control" > <br>
            <a  href="<?php if (!empty($customer_motiv)) {
                 echo "../customer/customer_images/".$customer_motiv;
                      } ?>">

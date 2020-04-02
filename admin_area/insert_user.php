@@ -145,7 +145,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-md-6"><!-- col-md-6 Starts -->
 
-<input type="file" name="admin_image" class="form-control" required>
+<input type="file" accept="image/*"  name="admin_image" class="form-control" required>
 
 </div><!-- col-md-6 Ends -->
 

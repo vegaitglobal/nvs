@@ -80,7 +80,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-md-6">
 
-<input type="file" name="cat_image" class="form-control">
+<input type="file" accept="image/*" name="cat_image" class="form-control">
 
 </div>
 

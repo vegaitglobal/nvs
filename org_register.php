@@ -235,7 +235,7 @@ require_once __DIR__.'/app/bootstrap.php';
 
                 <div class="col-md-9">
 
-                    <input type="file" name="manufacturer_image" class="form-control" >
+                    <input type="file" accept="image/*" name="manufacturer_image" class="form-control" >
 
                 </div>
 

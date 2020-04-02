@@ -42,7 +42,7 @@ $row_customer = mysqli_fetch_array($run_customer);
     $customer_desc = $row_customer['customer_desc'];
 
     $customer_vestina = $row_customer['customer_vestina'];
-    
+
 $get_cat = "select * from categories where cat_id='$customer_profil'";
 
 $run_cat = mysqli_query($con, $get_cat);
@@ -169,10 +169,10 @@ $row_cat = mysqli_fetch_array($run_cat);
              <div class="col-md-6">
                 <input type="text" class="form-control" value="<?php echo $customer_profil; ?>"  placeholder="ili upiši ovde ako nije navedeno" name="profil" required>
             </div>
-       
+
 
         </div><!-- form-group Ends -->
-        
+
 
 
         <div class="form-group" ><!-- form-group Starts -->
@@ -200,41 +200,41 @@ $row_cat = mysqli_fetch_array($run_cat);
 
             <label> Slika: </label>
 
-            <input type="file" name="c_image" class="form-control"  ><br>
+            <input type="file" accept="image/*"  name="c_image" class="form-control"  ><br>
 
             <img src="customer_images/<?php echo $customer_image; ?>" width="100" height="100" class="img-responsive" >
 
 
     </div><!-- form-group Ends -->
-    
+
     <div class="form-group" ><!-- form-group Starts -->
 
         <label class="control-label" > CV :</label>
 
-        <input type="file" name="c_cv" class="form-control" > <br>
+        <input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="c_cv" class="form-control" > <br>
         <a href="<?php if (!empty($customer_cv)) {
             echo "customer_images/".$customer_cv;
                  } ?>" ><?php echo $customer_cv; ?></a>
-  
-               
 
-   
+
+
+
     </div><!-- form-group Ends -->
-    
+
     <div class="form-group" ><!-- form-group Starts -->
 
         <label class="control-label" > Motivaciono pismo:</label>
 
-        <input type="file" name="c_motiv" class="form-control" > <br>
+        <input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="c_motiv" class="form-control" > <br>
            <a  href="<?php if (!empty($customer_motiv)) {
                 echo "customer_images/".$customer_motiv;
                      } ?>">
                 <?php echo $customer_motiv; ?> </a>
 
-   
+
     </div><!-- form-group Ends -->
-    
-    
+
+
     <div class="form-group"><!-- form-group Starts -->
 
         <label > Omiljena izreka: </label>
@@ -246,7 +246,7 @@ $row_cat = mysqli_fetch_array($run_cat);
         </div>
 
     </div><!-- form-group Ends -->
-    
+
      <div class="form-group"><!-- form-group Starts -->
 
         <label > Najznačajnija znanja i veštine: </label>
@@ -301,9 +301,9 @@ if (isset($_POST['update'])) {
     $c_profil = $_POST['profil'];
 
     $c_sprema = $_POST['sprema'];
-    
+
     $c_izreka = escape($_POST['c_izreka']);
-    
+
     $c_vestina = escape($_POST['c_vestina']);
 
     $c_image = $_FILES['c_image']['name'];
@@ -333,7 +333,7 @@ if (isset($_POST['update'])) {
                 unlink($file);
         }
     }
-    
+
      $c_motiv = $_FILES['c_motiv']['name'];
 
      $c_motiv_tmp = $_FILES['c_motiv']['tmp_name'];

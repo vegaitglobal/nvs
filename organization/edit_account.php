@@ -157,7 +157,7 @@ $row_manufacturer = mysqli_fetch_array($run_manufacturer);
 
         <div class="col-md-6">
 
-            <input type="file" name="manufacturer_image" class="form-control" >
+            <input type="file" accept="image/*" name="manufacturer_image" class="form-control" >
 
             <br>
 
@@ -204,7 +204,7 @@ if (isset($_POST['update'])) {
     $manufacturer_telefon = escape($_POST['manufacturer_telefon']);
 
     $manufacturer_email = filter_var($_POST['manufacturer_email'], FILTER_SANITIZE_EMAIL);
-    
+
     $manufacturer_url = filter_var($_POST['manufacturer_url'], FILTER_SANITIZE_URL);
 
     $manufacturer_opis = escape($_POST['manufacturer_opis']);
@@ -223,7 +223,7 @@ if (isset($_POST['update'])) {
               unlink($file);
         }
     }
-    
+
     move_uploaded_file($tmp_name, "../admin_area/other_images/$manufacturer_image");
 
     $update_manufacturer = "update organizations set manufacturer_title='$manufacturer_name',manufacturer_title_full='$manufacturer_name_full',manufacturer_image='$manufacturer_image',manufacturer_opis='$manufacturer_opis',manufacturer_mesto='$manufacturer_mesto',manufacturer_adresa='$manufacturer_adresa',manufacturer_tel='$manufacturer_telefon',manufacturer_email='$manufacturer_email', manufacturer_url='$manufacturer_url' where manufacturer_id='$m_id'";

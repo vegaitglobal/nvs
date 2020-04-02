@@ -181,7 +181,7 @@ if (!isset($_SESSION['admin_email'])) {
 
 <div class="col-md-6"><!-- col-md-6 Starts -->
 
-<input type="file" name="admin_image" class="form-control" >
+<input type="file" accept="image/*"  name="admin_image" class="form-control" >
 <br>
 <img src="admin_images/<?Php echo $admin_image; ?>" width="70" height="70" >
 

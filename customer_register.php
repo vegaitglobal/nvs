@@ -207,7 +207,7 @@ require_once __DIR__.'/app/bootstrap.php';
 
             <label> Slika (nije obavezna)</label>
 
-            <input type="file" class="form-control" name="c_image">
+            <input type="file" accept="image/*" class="form-control" name="c_image">
 
         </div><!-- form-group Ends -->
 
@@ -215,7 +215,7 @@ require_once __DIR__.'/app/bootstrap.php';
 
             <label> CV (nije obavezna)</label>
 
-            <input type="file" class="form-control" name="c_cv">
+            <input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" class="form-control" name="c_cv">
 
         </div><!-- form-group Ends -->
 
@@ -223,7 +223,7 @@ require_once __DIR__.'/app/bootstrap.php';
 
             <label> Motivaciono pismo (nije obavezna)</label>
 
-            <input type="file" class="form-control" name="c_motiv">
+            <input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"  class="form-control" name="c_motiv">
 
         </div><!-- form-group Ends -->
 

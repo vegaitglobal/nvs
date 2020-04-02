@@ -248,7 +248,7 @@ Product Url Example : asistent-prevodilac
 
 <div class="col-md-6" >
 
-<input type="file" name="product_img1" class="form-control" >
+<input type="file" accept="image/*" name="product_img1" class="form-control" >
 <br><img src="product_images/<?php echo $p_image1; ?>" width="100" height="100" >
 
 </div>
@@ -261,7 +261,7 @@ Product Url Example : asistent-prevodilac
 
 <div class="col-md-6" >
 
-<input type="file" name="product_img2" class="form-control" >
+<input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="product_img2" class="form-control" >
 <br><a class="btn btn-primary" href="<?php if (!empty($p_image2)) {
     echo "product_images/".$p_image2;
                                      } ?>">
@@ -278,7 +278,7 @@ Product Url Example : asistent-prevodilac
 
 <div class="col-md-6" >
 
-<input type="file" name="product_img3" class="form-control" >
+<input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="product_img3" class="form-control" >
 <br><a class="btn btn-primary " href="<?php if (!empty($p_image3)) {
     echo "product_images/".$p_image3;
                                       } ?>">

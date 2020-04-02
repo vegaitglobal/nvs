@@ -196,7 +196,7 @@ Url primer : asistent-prodaje
 
 <div class="col-md-6" >
 
-<input type="file" name="product_img1" class="form-control" required >
+<input type="file" accept="image/*" name="product_img1" class="form-control" required >
 
 </div>
 
@@ -208,7 +208,7 @@ Url primer : asistent-prodaje
 
 <div class="col-md-6" >
 
-<input type="file" name="product_img2" class="form-control" >
+<input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="product_img2" class="form-control" >
 
 </div>
 
@@ -220,7 +220,7 @@ Url primer : asistent-prodaje
 
 <div class="col-md-6" >
 
-<input type="file" name="product_img3" class="form-control"  >
+<input type="file" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="product_img3" class="form-control"  >
 
 </div>
 
